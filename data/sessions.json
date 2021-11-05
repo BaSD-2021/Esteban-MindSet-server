@@ -1,0 +1,24 @@
+[
+    {
+        "idSession": "1",
+        "idPsicologist": "1",
+        "idPostulant": "1",
+        "date": [
+            {
+                "day": "Tuesday",
+                "time": "9:00hs"
+            }
+        ]
+    },
+    {
+        "idSession": "2",
+        "idPsicologist": "3",
+        "idPostulant": "4",
+        "date": [
+            {
+                "day": "Monday",
+                "time": "12:00hs"
+            }
+        ]
+    }
+]
