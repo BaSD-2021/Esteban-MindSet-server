@@ -1,0 +1,26 @@
+{
+  "name": "basd-mindset",
+  "version": "0.0.1",
+  "description": "MindSet App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estefrare/BaSD-MindSet.git"
+  },
+  "author": "Ignacio Aristo, Joaquin Leimeter, Nicolas Cagnina, Martin Raveglia, Rodrigo Pellizzari, Esteban Frare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/estefrare/BaSD-MindSet/issues"
+  },
+  "homepage": "https://github.com/estefrare/BaSD-MindSet#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
