@@ -19,6 +19,7 @@ const createPosition = (req, res) => {
 }
 
 const updatePosition = () => {
+  
 }
 
 const removePosition = (req, res) => {
@@ -26,12 +27,13 @@ const removePosition = (req, res) => {
 }
 
 const listPositions = (req, res) => {
-  fs.readFile('./data/positions.json', (err, data) => {
+  fs.readFile('./data/positions.json', 'utf8', (err, data) => {
     if (err) throw err;
-    // console.log(data);
+    console.log(data);
+    res.send(JSON.parse(data))
   });
-  res.send(data)
 }
+
 
 module.exports = {
   createPosition,
