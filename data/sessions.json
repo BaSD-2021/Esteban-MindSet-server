@@ -1,1 +1,51 @@
-[{"date":"Mon, 12 Nov 2005 13:30:00 GMT","state":"Done"},{"idSession":"2","date":"Mon, 25 Nov 2005 13:30:00 GMT","state":"Cancelled"},{"idSession":3,"idPsicologist":102,"idPostulant":1002,"date":"Mon, 25 Dec 1995 13:30:00 GMT","state":"Done"},{"idSession":4,"idPsicologist":103,"idPostulant":1003,"date":"Mon, 25 Dec 1995 13:30:00 GMT","state":"Done"},{"idSession":5,"idPsicologist":104,"idPostulant":1004,"date":"Mon, 25 Dec 1995 13:30:00 GMT","state":"Done"},{"idSession":6,"idPsicologist":2,"idPostulant":1005,"date":"Mon, 25 Dec 1995 13:30:00 GMT","state":"Done"},{"idSession":7,"idPsicologist":105,"idPostulant":1006,"date":"Mon, 25 Dec 1995 13:30:00 GMT","state":"Done"}]
+[
+    {
+        "idSession": 1,
+        "idPsicologist": 100,
+        "idPostulant": 1000,
+        "date": "Mon, 25 Dec 2021 13:30:00 GMT",
+        "state": "Pending"
+    },
+    {
+        "idSession": 2,
+        "idPsicologist": 101,
+        "idPostulant": 1001,
+        "date": "Tue, 25 Nov 2021 13:30:00 GMT",
+        "state": "Pending"
+    },
+    {
+        "idSession": 3,
+        "idPsicologist": 102,
+        "idPostulant": 1002,
+        "date": "Fri, 21 May 2021 11:00:00 GMT",
+        "state": "Cancelled"
+    },
+    {
+        "idSession": 4,
+        "idPsicologist": 103,
+        "idPostulant": 1003,
+        "date": "Tue, 14 Dec 2021 14:30:00 GMT",
+        "state": "Pending"
+    },
+    {
+        "idSession": 5,
+        "idPsicologist": 104,
+        "idPostulant": 1004,
+        "date": "Wed, 25 Oct 2021 13:30:00 GMT",
+        "state": "Done"
+    },
+    {
+        "idSession": 6,
+        "idPsicologist": 2,
+        "idPostulant": 1005,
+        "date": "Tue, 15 Dec 2021 13:30:00 GMT",
+        "state": "Pending"
+    },
+    {
+        "idSession": 7,
+        "idPsicologist": 105,
+        "idPostulant": 1006,
+        "date": "Mon, 12 Dec 2021 13:30:00 GMT",
+        "state": "Cancelled"
+    }
+]
