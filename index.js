@@ -8,5 +8,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/admins', admins.getAdmins)
+app.get('/updateAdmin/:id', admins.updateAdmin)
 
 app.listen(PORT, () => console.log(`Server runing on port ${PORT}`))
