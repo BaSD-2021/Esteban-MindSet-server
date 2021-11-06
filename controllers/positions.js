@@ -61,7 +61,7 @@ const listPositions = (req, res) => {
     if(err) {
       res.status(400).send(err)
     } else {
-      res.status(201).json(JSON.parse(data))
+      res.status(200).json(JSON.parse(data))
     }
   });
 }
