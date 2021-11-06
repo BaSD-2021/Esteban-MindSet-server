@@ -1,8 +1,8 @@
 const express = require('express');
+const positions = require('./controllers/positions.js')
 const app = express();
 const PORT = 4000;
 
-const positions = require('./controllers/positions.js')
 
 app.get('/', (req, res) => {
     res.send('La Bestia does the best readmes ever');

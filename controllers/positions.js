@@ -3,8 +3,7 @@ const Positions = require('../data/positions.json')
 
 /** Description. takes params: idClient, jobDescription, vacancy, professionalProfiles and status. ID is generated automatically*/
 const createPosition = (req, res) => {
-  const newPosition =
-    {
+  const newPosition = {
       id: new Date().getTime().toString(),
       idClient: req.query.idClient,
       jobDescription: req.query.jobDescription,
@@ -14,50 +13,60 @@ const createPosition = (req, res) => {
     }
     Positions.push(newPosition)
     fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
-      if (err) throw err
+      if (err) {
+        res.status(400).send(err)
+      } else {
+        res.status(201).json(newPosition)
+      }
     })
-    res.send('created position')
 }
 
 /** Description. takes params: id (this is the id you want to update) , idClient, jobDescription, vacancy, professionalProfiles and status.*/
 const updatePosition = (req, res) => {
-  const positionIdToUpdate = req.query.id
-  for (const position in Positions) {
-    if(Positions[position].id == positionIdToUpdate){
-      Positions[position].idClient = req.query.idClient,
-      Positions[position].jobDescription = req.query.jobDescription,
-      Positions[position].vacancy = req.query.vacancy,
-      Positions[position].professionalProfiles = req.query.professionalProfiles,
-      Positions[position].status = req.query.status
-      res.send(`updated position id:${positionIdToUpdate}`)
-      break //there should be just 1 position to update, each is unique
+  let updatedPosition
+  const updatedPositions =  Positions.map((position) => {
+    if(position.id === req.query.id) {
+      updatedPosition = {
+        id: req.query.id,
+        idClient: req.query.idClient,
+        jobDescription: req.query.jobDescription || position.jobDescription,
+        vacancy: req.query.vacancy || position.vacancy,
+        professionalProfiles: req.query.professionalProfiles || position.professionalProfiles,
+        status: req.query.status || position.status
+      }
+      return updatedPosition
     }
-  }
-  fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
-    if (err) throw err
+    return position
+  })
+  fs.writeFile('./data/positions.json', JSON.stringify(updatedPositions), {}, err => {
+    if(error) {
+      res.status(400).send(error)
+    } else {
+      res.status(201).json(updatedPosition)
+    }
   })
 }
 
 /** Description. takes param id and removes it*/
 const removePosition = (req, res) => {
-  const positionToRemove = req.query.id
-  for (const position in Positions) {
-    if(Positions[position].id == positionToRemove){
-      Positions.splice(position, 1)
-      break //there should be just 1 position to update, each is unique
+  const filteredPositions = Positions.filter(position => position.id != req.query.id)
+  fs.writeFile('./data/positions.json', JSON.stringify(filteredPositions), {}, err => {
+    if(err) {
+      res.status(400).send(err)
+    } else {
+      res.status(201).json(filteredPositions)
     }
-  }
-  fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
-    if (err) throw err
   })
-  res.send(`removed position id:${positionToRemove}`)
 }
 
 /** Description. takes no params, shows all positions*/
 const listPositions = (req, res) => {
   fs.readFile('./data/positions.json', 'utf8', (err, data) => {
-    if (err) throw err;
-    res.send(JSON.parse(data))
+    if(err) {
+      res.status(400).send(err)
+    } else {
+      res.status(201).json(JSON.parse(data))
+    }
   });
 }
 
