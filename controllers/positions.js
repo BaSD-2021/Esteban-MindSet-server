@@ -29,7 +29,6 @@ const updatePosition = (req, res) => {
       Positions[position].vacancy = req.query.vacancy,
       Positions[position].professionalProfiles = req.query.professionalProfiles,
       Positions[position].status = req.query.status
-      console.log('entered if')
       res.send(`updated position id:${positionIdToUpdate}`)
       break //there should be just 1 position to update, each is unique
     }
@@ -60,7 +59,6 @@ const listPositions = (req, res) => {
     if (err) throw err;
     res.send(JSON.parse(data))
   });
-  console.log(Positions)
 }
 
 module.exports = {
