@@ -1,11 +1,11 @@
 const fs = require('fs')
 const Positions = require('../data/positions.json')
 
+/** Description. takes params: idClient, jobDescription, vacancy, professionalProfiles and status. ID is generated automatically*/
 const createPosition = (req, res) => {
   const newPosition =
     {
-      // idPosition: new Date().getTime().toString(),
-      idPosition: req.query.idPosition,
+      id: new Date().getTime().toString(),
       idClient: req.query.idClient,
       jobDescription: req.query.jobDescription,
       vacancy: req.query.vacancy,
@@ -16,21 +16,22 @@ const createPosition = (req, res) => {
     fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
       if (err) throw err
     })
-    res.send('create position')
+    res.send('created position')
 }
 
+/** Description. takes params: id (this is the id you want to update) , idClient, jobDescription, vacancy, professionalProfiles and status.*/
 const updatePosition = (req, res) => {
+  const positionIdToUpdate = req.query.id
   for (const position in Positions) {
-    if(Positions[position].idPosition == req.query.idPosition){
-      Positions[position].idPosition = req.query.idPosition,
+    if(Positions[position].id == positionIdToUpdate){
       Positions[position].idClient = req.query.idClient,
       Positions[position].jobDescription = req.query.jobDescription,
       Positions[position].vacancy = req.query.vacancy,
       Positions[position].professionalProfiles = req.query.professionalProfiles,
       Positions[position].status = req.query.status
       console.log('entered if')
-      res.send('updated position')
-      break
+      res.send(`updated position id:${positionIdToUpdate}`)
+      break //there should be just 1 position to update, each is unique
     }
   }
   fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
@@ -38,19 +39,22 @@ const updatePosition = (req, res) => {
   })
 }
 
+/** Description. takes param id and removes it*/
 const removePosition = (req, res) => {
-  const positionToRemove = req.query.idPosition
+  const positionToRemove = req.query.id
   for (const position in Positions) {
-    if(Positions[position].idPosition == positionToRemove){
+    if(Positions[position].id == positionToRemove){
       Positions.splice(position, 1)
-      break
+      break //there should be just 1 position to update, each is unique
     }
   }
   fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
     if (err) throw err
   })
+  res.send(`removed position id:${positionToRemove}`)
 }
 
+/** Description. takes no params, shows all positions*/
 const listPositions = (req, res) => {
   fs.readFile('./data/positions.json', 'utf8', (err, data) => {
     if (err) throw err;
