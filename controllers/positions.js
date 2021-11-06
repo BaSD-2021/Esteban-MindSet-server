@@ -4,7 +4,8 @@ const Positions = require('../data/positions.json')
 const createPosition = (req, res) => {
   const newPosition =
     {
-      idPosition: new Date().getTime().toString(),
+      //idPosition: new Date().getTime().toString(),
+      idPosition: req.query.idPosition,
       idClient: req.query.idClient,
       jobDescription: req.query.jobDescription,
       vacancy: req.query.vacancy,
@@ -18,8 +19,21 @@ const createPosition = (req, res) => {
     res.send('create position')
 }
 
-const updatePosition = () => {
-  
+const updatePosition = (req, res) => {
+  const positionToUpdate = req.query.idPosition
+  for (const position of Positions) {
+    if(position.idPosition === positionToUpdate){
+      position.idClient = req.query.idClient,
+      position.jobDescription = req.query.jobDescription,
+      position.vacancy = req.query.vacancy,
+      position.professionalProfiles = req.query.professionalProfiles,
+      position.status = req.query.status
+    }
+    res.send(position)
+  }
+  fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
+    if (err) throw err
+  })
 }
 
 const removePosition = (req, res) => {
