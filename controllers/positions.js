@@ -1,7 +1,6 @@
 const fs = require('fs')
 const Positions = require('../data/positions.json')
 
-/** Description. takes params: idClient, jobDescription, vacancy, professionalProfiles and status. ID is generated automatically*/
 const createPosition = (req, res) => {
   const newPosition = {
       id: new Date().getTime().toString(),
@@ -21,7 +20,6 @@ const createPosition = (req, res) => {
     })
 }
 
-/** Description. takes params: id (this is the id you want to update) , idClient, jobDescription, vacancy, professionalProfiles and status.*/
 const updatePosition = (req, res) => {
   let updatedPosition
   const updatedPositions =  Positions.map((position) => {
@@ -47,7 +45,6 @@ const updatePosition = (req, res) => {
   })
 }
 
-/** Description. takes param id and removes it*/
 const removePosition = (req, res) => {
   const filteredPositions = Positions.filter(position => position.id != req.query.id)
   fs.writeFile('./data/positions.json', JSON.stringify(filteredPositions), {}, err => {
@@ -59,7 +56,6 @@ const removePosition = (req, res) => {
   })
 }
 
-/** Description. takes no params, shows all positions*/
 const listPositions = (req, res) => {
   fs.readFile('./data/positions.json', 'utf8', (err, data) => {
     if(err) {
