@@ -10,17 +10,15 @@ const updateApplication = (req, res) => {
 
 }
 
-const removeApplication = (req, res) => {
+const deleteApplication = (req, res) => {
 
 }
 
-const listApplication = (req, res) => {
-
-}
+const listApplication = (req, res) => res.status(400).json(Applications)
 
 module.exports = {
   createApplication,
   updateApplication,
-  removeApplication,
+  deleteApplication,
   listApplication,
 }
