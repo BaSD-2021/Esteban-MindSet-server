@@ -3,12 +3,12 @@ const Positions = require('../data/positions.json')
 
 const createPosition = (req, res) => {
   const newPosition = {
-      id: new Date().getTime().toString(),
-      idClient: req.query.idClient,
-      jobDescription: req.query.jobDescription,
-      vacancy: req.query.vacancy,
-      professionalProfiles: req.query.professionalProfiles,
-      status: req.query.status
+    id: new Date().getTime().toString(),
+    idClient: req.query.idClient,
+    jobDescription: req.query.jobDescription,
+    vacancy: req.query.vacancy,
+    professionalProfiles: req.query.professionalProfiles,
+    status: req.query.status
     }
     Positions.push(newPosition)
     fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
@@ -36,39 +36,42 @@ const updatePosition = (req, res) => {
     }
     return position
   })
+
+  if(updatedPosition === undefined) {
+    res.status(404).send('position not found')
+  } else if (JSON.stringify(updatedPositions) === JSON.stringify(Positions)){
+    res.status(201).send('position found but not changed')
+  }
+
   fs.writeFile('./data/positions.json', JSON.stringify(updatedPositions), {}, err => {
-    if(error) {
-      res.status(400).send(error)
+    if(err) {
+      res.status(400).send(err)
     } else {
       res.status(201).json(updatedPosition)
     }
   })
 }
 
-const removePosition = (req, res) => {
-  const filteredPositions = Positions.filter(position => position.id != req.query.id)
+const deletePosition = (req, res) => {
+  const filteredPositions = Positions.filter(position => position.id !== req.query.id)
+  const removedPosition = Positions.filter(position => position.id === req.query.id) 
+  console.log(removedPosition)
+  if(removedPosition.length === 0) res.status(404).send('Position not found')
   fs.writeFile('./data/positions.json', JSON.stringify(filteredPositions), {}, err => {
     if(err) {
       res.status(400).send(err)
     } else {
-      res.status(201).json(filteredPositions)
+      res.status(201).json(removedPosition)
     }
   })
 }
 
-const listPositions = (req, res) => {
-  fs.readFile('./data/positions.json', 'utf8', (err, data) => {
-    if(err) {
-      res.status(400).send(err)
-    } else {
-      res.status(200).json(JSON.parse(data))
-    }
-  });
-}
+const listPositions = (req, res) => res.status(200).json(Positions)
+
 
 module.exports = {
   createPosition,
   updatePosition,
-  removePosition,
+  deletePosition,
   listPositions
 }

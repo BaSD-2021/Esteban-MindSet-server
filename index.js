@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 //POSITIONS
 app.get('/positions', positions.listPositions)
 app.get('/positions/create', positions.createPosition)
-app.get('/positions/remove', positions.removePosition)
+app.get('/positions/remove', positions.deletePosition)
 app.get('/positions/update', positions.updatePosition)
 
 app.listen(PORT, () => console.log(`Server runing on port ${PORT}`))
