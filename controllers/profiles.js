@@ -73,7 +73,7 @@ const updateProfile = (req, res) => {
   }
 
   if (!profileIdPosition) {
-    errorResHelper(`The idProfile given does not exist.`, res)
+    errorResHelper(`The 'idProfile' given does not exist.`, res)
     return
   }
 
@@ -85,7 +85,33 @@ const updateProfile = (req, res) => {
     }
   })
 }
-const removeProfile = (req, res) => {}
+
+const removeProfile = (req, res) => {
+  let profileIdPosition
+  let removedProfile = {}
+
+  profiles.forEach((profile, id) => {
+    if (profile.idProfile === parseInt(req.params.id)) {
+      removedProfile = profile
+      profileIdPosition = id
+      profiles.splice(id, 1)
+    }
+  })
+
+  if (!profileIdPosition) {
+    errorResHelper(`The 'idProfile' given does not exist.`, res)
+    return
+  }
+
+  fs.writeFile("./data/profiles.json", JSON.stringify(profiles), (err) => {
+    if (err) {
+      errorResHelper(err, res)
+    } else {
+      res.status(201).json(removedProfile)
+    }
+  })
+}
+
 const listProfiles = (req, res) => {}
 
 module.exports = {
