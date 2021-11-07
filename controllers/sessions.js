@@ -5,7 +5,14 @@ const Sessions = require('../data/sessions.json')
 
 const listSession = (req, res) => {
 
-    res.json(Sessions);
+    fs.writeFile('./data/sessions.json', JSON.stringify(Sessions), {}, (error) => {
+        if (error) {
+            res.status(400).send(error)
+        } else {
+            res.status(201).json(Sessions)
+        }
+    })
+
 
 }
 
