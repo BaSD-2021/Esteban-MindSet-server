@@ -13,9 +13,9 @@ const createApplication = (req, res) => {
   Applications.push(newApplication)
   fs.writeFile('./data/applications.json', JSON.stringify(Applications), {}, err => {
     if (err) {
-      throw res.status(400).send(err)
+      return res.status(400).send(err)
     } 
-    res.status(201).send(newApplication)
+    return res.status(201).send(newApplication)
   })
 }
 
