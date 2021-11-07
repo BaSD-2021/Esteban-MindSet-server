@@ -13,10 +13,9 @@ const createPosition = (req, res) => {
   Positions.push(newPosition)
   fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
     if (err) {
-      res.status(400).send(err)
-    } else {
-      res.status(201).json(newPosition)
-    }
+      return res.status(400).send(err)
+    } 
+    return res.status(201).json(newPosition)
   })
 }
 
@@ -45,10 +44,9 @@ const updatePosition = (req, res) => {
 
   fs.writeFile('./data/positions.json', JSON.stringify(updatedPositions), {}, err => {
     if(err) {
-      res.status(400).send(err)
-    } else {
-      res.status(201).json(updatedPosition)
+      return res.status(400).send(err)
     }
+    return res.status(201).json(updatedPosition)
   })
 }
 
@@ -59,13 +57,11 @@ const deletePosition = (req, res) => {
   if(removedPosition.length === 0) res.status(404).send('Position not found')
   fs.writeFile('./data/positions.json', JSON.stringify(filteredPositions), {}, err => {
     if(err) {
-      res.status(400).send(err)
-    } else {
-      res.status(201).json(removedPosition)
-    }
+      return res.status(400).send(err)
+    } 
+    return res.status(201).json(removedPosition)
   })
 }
-
 const listPositions = (req, res) => res.status(200).json(Positions)
 
 
