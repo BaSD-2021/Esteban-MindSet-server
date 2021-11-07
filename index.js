@@ -11,5 +11,6 @@ app.get('/', (req, res) => {
 app.get('/psychologists', psychologists.getPsychologists)
 app.get('/psychologists/create/', psychologists.createPsychologist)
 app.get('/psychologists/delete/', psychologists.deletePsychologist)
+app.get('/psychologists/update/', psychologists.updatePsychologist)
 
 app.listen(PORT, () => console.log(`Server runing on port ${PORT}`))
