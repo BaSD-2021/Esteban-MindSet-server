@@ -44,16 +44,16 @@ const updateSession = (req, res) => {
         return session
     })
 
-    if (updatedSession === undefined)
+    if (updatedSession === undefined) res.status(404).send('Session NOT found')
 
-        fs.writeFile('./data/sessions.json', JSON.stringify(updatedSessions), {}, (error) => {
-            if (error) {
-                res.status(400).send(error)
-            } else {
-                res.status(201).json(updatedSession)
+    fs.writeFile('./data/sessions.json', JSON.stringify(updatedSessions), {}, (error) => {
+        if (error) {
+            res.status(400).send(error)
+        } else {
+            res.status(201).json(updatedSession)
 
-            }
-        })
+        }
+    })
 
 }
 
