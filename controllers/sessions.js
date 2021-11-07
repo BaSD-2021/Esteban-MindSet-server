@@ -59,13 +59,16 @@ const updateSession = (req, res) => {
 
 
 const deleteSession = (req, res) => {
-    const filterSessions = Sessions.filter(session => session.idSession != req.query.idSession)
+    const filteredSessions = Sessions.filter(session => session.idSession != req.query.idSession)
+    const deletedSession = Sessions.filter(session => session.idSession == req.query.idSession)
 
-    fs.writeFile('./data/sessions.json', JSON.stringify(Sessions), {}, (error) => {
+    if (deletedSession.length === 0) res.status(404).send('Session NOT found')
+
+    fs.writeFile('./data/sessions.json', JSON.stringify(filteredSessions), {}, (error) => {
         if (error) {
             res.status(400).send(error)
         } else {
-            res.status(201).json(filterSessions)
+            res.status(201).json(deletedSession)
         }
     })
 
