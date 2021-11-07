@@ -1,0 +1,332 @@
+[
+  {
+    "idClient": 1,
+    "name": "Wordpedia",
+    "phone": "+1 (602) 684-9166",
+    "location": {
+      "country": "United States",
+      "state": "Arizona",
+      "city": "Peoria",
+      "address": "71299 Hagan Trail"
+    },
+    "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+    "logo": "http://dummyimage.com/195x125.png/cc0000/ffffff",
+    "created": { "idAdmin": 96, "timestamp": "2020-12-21T00:24:00Z" },
+    "modified": []
+  },
+  {
+    "idClient": 2,
+    "name": "Ooba",
+    "phone": "+1 (941) 921-3451",
+    "location": {
+      "country": "United States",
+      "state": "Florida",
+      "city": "Seminole",
+      "address": "29 Eliot Terrace"
+    },
+    "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+    "logo": "http://dummyimage.com/209x230.png/ff4444/ffffff",
+    "created": { "idAdmin": 6, "timestamp": "2021-04-10T17:35:12Z" },
+    "modified": []
+  },
+  {
+    "idClient": 3,
+    "name": "Mymm",
+    "phone": "+1 (562) 512-7414",
+    "location": {
+      "country": "United States",
+      "state": "California",
+      "city": "Whittier",
+      "address": "965 Namekagon Park"
+    },
+    "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+    "logo": "http://dummyimage.com/241x214.png/cc0000/ffffff",
+    "created": { "idAdmin": 24, "timestamp": "2021-03-23T18:56:50Z" },
+    "modified": [{ "idAdmin": 21, "timestamp": "2021-10-29T00:10:49Z" }]
+  },
+  {
+    "idClient": 4,
+    "name": "Thoughtstorm",
+    "phone": "+1 (907) 263-7367",
+    "location": {
+      "country": "United States",
+      "state": "Alaska",
+      "city": "Anchorage",
+      "address": "1 Straubel Place"
+    },
+    "description": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
+    "logo": "http://dummyimage.com/120x175.png/5fa2dd/ffffff",
+    "created": { "idAdmin": 7, "timestamp": "2021-06-12T22:02:12Z" },
+    "modified": []
+  },
+  {
+    "idClient": 5,
+    "name": "Brainsphere",
+    "phone": "+1 (413) 357-0095",
+    "location": {
+      "country": "United States",
+      "state": "Massachusetts",
+      "city": "Springfield",
+      "address": "72580 Drewry Court"
+    },
+    "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+    "logo": "http://dummyimage.com/135x119.png/cc0000/ffffff",
+    "created": { "idAdmin": 47, "timestamp": "2021-07-04T10:09:10Z" },
+    "modified": []
+  },
+  {
+    "idClient": 6,
+    "name": "Myworks",
+    "phone": "+1 (814) 520-9631",
+    "location": {
+      "country": "United States",
+      "state": "Pennsylvania",
+      "city": "Erie",
+      "address": "795 Lawn Lane"
+    },
+    "description": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+    "logo": "http://dummyimage.com/116x123.png/cc0000/ffffff",
+    "created": { "idAdmin": 19, "timestamp": "2021-08-14T09:41:20Z" },
+    "modified": []
+  },
+  {
+    "idClient": 7,
+    "name": "Thoughtstorm",
+    "phone": "+1 (320) 358-3981",
+    "location": {
+      "country": "United States",
+      "state": "Minnesota",
+      "city": "Saint Cloud",
+      "address": "21 Linden Trail"
+    },
+    "description": "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+    "logo": "http://dummyimage.com/228x170.png/dddddd/000000",
+    "created": { "idAdmin": 28, "timestamp": "2020-12-07T13:41:05Z" },
+    "modified": []
+  },
+  {
+    "idClient": 8,
+    "name": "Riffwire",
+    "phone": "+1 (559) 559-4292",
+    "location": {
+      "country": "United States",
+      "state": "California",
+      "city": "Fresno",
+      "address": "872 Nobel Place"
+    },
+    "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+    "logo": "http://dummyimage.com/201x116.png/ff4444/ffffff",
+    "created": { "idAdmin": 7, "timestamp": "2021-07-23T11:24:33Z" },
+    "modified": [
+      { "idAdmin": 20, "timestamp": "2021-05-19T02:00:04Z" },
+      { "idAdmin": 83, "timestamp": "2020-12-07T21:32:37Z" },
+      { "idAdmin": 46, "timestamp": "2021-09-12T15:40:55Z" }
+    ]
+  },
+  {
+    "idClient": 9,
+    "name": "Skinte",
+    "phone": "+1 (626) 526-8449",
+    "location": {
+      "country": "United States",
+      "state": "California",
+      "city": "Pasadena",
+      "address": "5 Namekagon Center"
+    },
+    "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+    "logo": "http://dummyimage.com/173x159.png/dddddd/000000",
+    "created": { "idAdmin": 59, "timestamp": "2021-10-25T03:48:37Z" },
+    "modified": [
+      { "idAdmin": 93, "timestamp": "2021-02-07T08:52:25Z" },
+      { "idAdmin": 68, "timestamp": "2021-05-09T05:55:54Z" },
+      { "idAdmin": 67, "timestamp": "2021-07-02T05:59:54Z" }
+    ]
+  },
+  {
+    "idClient": 10,
+    "name": "Tekfly",
+    "phone": "+1 (803) 948-6938",
+    "location": {
+      "country": "United States",
+      "state": "South Carolina",
+      "city": "Columbia",
+      "address": "58475 International Junction"
+    },
+    "description": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+    "logo": "http://dummyimage.com/218x224.png/dddddd/000000",
+    "created": { "idAdmin": 53, "timestamp": "2021-10-10T05:18:01Z" },
+    "modified": [{ "idAdmin": 65, "timestamp": "2021-01-31T18:43:46Z" }]
+  },
+  {
+    "idClient": 11,
+    "name": "Dynabox",
+    "phone": "+1 (540) 603-5069",
+    "location": {
+      "country": "United States",
+      "state": "Virginia",
+      "city": "Roanoke",
+      "address": "7 Eastwood Road"
+    },
+    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+    "logo": "http://dummyimage.com/145x175.png/cc0000/ffffff",
+    "created": { "idAdmin": 54, "timestamp": "2021-01-06T21:23:12Z" },
+    "modified": []
+  },
+  {
+    "idClient": 12,
+    "name": "Buzzbean",
+    "phone": "+1 (804) 952-1309",
+    "location": {
+      "country": "United States",
+      "state": "Virginia",
+      "city": "Hampton",
+      "address": "43 High Crossing Park"
+    },
+    "description": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+    "logo": "http://dummyimage.com/234x233.png/cc0000/ffffff",
+    "created": { "idAdmin": 97, "timestamp": "2021-08-23T20:40:53Z" },
+    "modified": [
+      { "idAdmin": 83, "timestamp": "2021-02-04T09:30:50Z" },
+      { "idAdmin": 49, "timestamp": "2021-10-01T07:25:14Z" },
+      { "idAdmin": 2, "timestamp": "2021-05-17T12:18:53Z" }
+    ]
+  },
+  {
+    "idClient": 13,
+    "name": "Vinte",
+    "phone": "+1 (402) 116-5843",
+    "location": {
+      "country": "United States",
+      "state": "Nebraska",
+      "city": "Omaha",
+      "address": "48349 Esch Hill"
+    },
+    "description": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+    "logo": "http://dummyimage.com/114x124.png/cc0000/ffffff",
+    "created": { "idAdmin": 29, "timestamp": "2020-11-14T20:01:36Z" },
+    "modified": [
+      { "idAdmin": 98, "timestamp": "2021-04-20T18:22:54Z" },
+      { "idAdmin": 81, "timestamp": "2021-08-22T00:18:01Z" }
+    ]
+  },
+  {
+    "idClient": 14,
+    "name": "Kazio",
+    "phone": "+1 (917) 546-3188",
+    "location": {
+      "country": "United States",
+      "state": "New York",
+      "city": "Jamaica",
+      "address": "62 Eggendart Trail"
+    },
+    "description": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+    "logo": "http://dummyimage.com/112x226.png/ff4444/ffffff",
+    "created": { "idAdmin": 99, "timestamp": "2020-11-23T18:53:28Z" },
+    "modified": [
+      { "idAdmin": 98, "timestamp": "2021-02-09T20:33:41Z" },
+      { "idAdmin": 63, "timestamp": "2021-06-10T03:11:45Z" },
+      { "idAdmin": 91, "timestamp": "2021-08-31T00:15:19Z" }
+    ]
+  },
+  {
+    "idClient": 15,
+    "name": "Yoveo",
+    "phone": "+1 (239) 304-8383",
+    "location": {
+      "country": "United States",
+      "state": "Florida",
+      "city": "Naples",
+      "address": "43994 Scofield Trail"
+    },
+    "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+    "logo": "http://dummyimage.com/208x103.png/cc0000/ffffff",
+    "created": { "idAdmin": 27, "timestamp": "2020-12-22T06:23:09Z" },
+    "modified": [
+      { "idAdmin": 99, "timestamp": "2021-04-03T03:38:53Z" },
+      { "idAdmin": 88, "timestamp": "2021-08-11T01:47:52Z" },
+      { "idAdmin": 57, "timestamp": "2021-08-27T06:27:55Z" }
+    ]
+  },
+  {
+    "idClient": 16,
+    "name": "Gabcube",
+    "phone": "+1 (513) 692-6748",
+    "location": {
+      "country": "United States",
+      "state": "Ohio",
+      "city": "Cincinnati",
+      "address": "86 Hermina Way"
+    },
+    "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+    "logo": "http://dummyimage.com/211x133.png/5fa2dd/ffffff",
+    "created": { "idAdmin": 56, "timestamp": "2021-04-18T05:44:40Z" },
+    "modified": [
+      { "idAdmin": 93, "timestamp": "2021-10-01T00:45:30Z" },
+      { "idAdmin": 57, "timestamp": "2021-09-08T07:44:35Z" },
+      { "idAdmin": 63, "timestamp": "2021-08-29T05:15:29Z" }
+    ]
+  },
+  {
+    "idClient": 17,
+    "name": "Skajo",
+    "phone": "+1 (706) 176-4005",
+    "location": {
+      "country": "United States",
+      "state": "Georgia",
+      "city": "Cumming",
+      "address": "21 Mesta Trail"
+    },
+    "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.\n\nVestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
+    "logo": "http://dummyimage.com/118x187.png/cc0000/ffffff",
+    "created": { "idAdmin": 15, "timestamp": "2021-07-01T02:38:25Z" },
+    "modified": [{ "idAdmin": 17, "timestamp": "2020-12-26T04:45:43Z" }]
+  },
+  {
+    "idClient": 18,
+    "name": "Innotype",
+    "phone": "+1 (772) 928-6037",
+    "location": {
+      "country": "United States",
+      "state": "Florida",
+      "city": "Vero Beach",
+      "address": "6872 Acker Drive"
+    },
+    "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+    "logo": "http://dummyimage.com/184x144.png/ff4444/ffffff",
+    "created": { "idAdmin": 98, "timestamp": "2021-04-03T15:24:00Z" },
+    "modified": [{ "idAdmin": 37, "timestamp": "2021-10-28T21:14:05Z" }]
+  },
+  {
+    "idClient": 19,
+    "name": "Nlounge",
+    "phone": "+1 (423) 228-1254",
+    "location": {
+      "country": "United States",
+      "state": "Tennessee",
+      "city": "Chattanooga",
+      "address": "6 Judy Way"
+    },
+    "description": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
+    "logo": "http://dummyimage.com/174x209.png/ff4444/ffffff",
+    "created": { "idAdmin": 51, "timestamp": "2021-10-19T07:56:48Z" },
+    "modified": [{ "idAdmin": 6, "timestamp": "2021-03-20T07:16:14Z" }]
+  },
+  {
+    "idClient": 20,
+    "name": "Yakitri",
+    "phone": "+1 (816) 113-5321",
+    "location": {
+      "country": "United States",
+      "state": "Missouri",
+      "city": "Kansas City",
+      "address": "9 Little Fleur Drive"
+    },
+    "description": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+    "logo": "http://dummyimage.com/206x152.png/ff4444/ffffff",
+    "created": { "idAdmin": 7, "timestamp": "2021-09-29T13:12:01Z" },
+    "modified": [
+      { "idAdmin": 87, "timestamp": "2021-04-20T12:54:23Z" },
+      { "idAdmin": 93, "timestamp": "2021-09-10T14:26:48Z" }
+    ]
+  }
+]
