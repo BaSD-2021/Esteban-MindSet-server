@@ -3,7 +3,20 @@ const Applications = require('../data/applications.json')
 
 
 const createApplication = (req, res) => {
-
+  const newApplication = {
+    id: new Date().getTime().toString(),
+    idPosition: req.query.idPosition,
+    idPostulant: req.query.idPostulant,
+    date: req.query.date
+  }
+  console.log(newApplication)
+  Applications.push(newApplication)
+  fs.writeFile('./data/applications.json', JSON.stringify(Applications), {}, err => {
+    if (err) {
+      throw res.status(400).send(err)
+    } 
+    res.status(201).send(newApplication)
+  })
 }
 
 const updateApplication = (req, res) => {
