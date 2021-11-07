@@ -112,7 +112,14 @@ const removeProfile = (req, res) => {
   })
 }
 
-const listProfiles = (req, res) => {}
+const listProfiles = (req, res) => {
+  if (!profiles.length) {
+    errorResHelper(`The Profiles List seems to be empty.`, res)
+    return
+  }
+
+  res.status(201).json(profiles)
+}
 
 module.exports = {
   createProfile,
