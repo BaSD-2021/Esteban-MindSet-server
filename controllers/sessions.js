@@ -26,7 +26,6 @@ const createSession = (req, res) => {
     })
 }
 
-
 const updateSession = (req, res) => {
     let updatedSession
     const updatedSessions = Sessions.map((session) => {
@@ -56,7 +55,6 @@ const updateSession = (req, res) => {
     })
 
 }
-
 
 const deleteSession = (req, res) => {
     const filteredSessions = Sessions.filter(session => session.idSession != req.query.idSession)
