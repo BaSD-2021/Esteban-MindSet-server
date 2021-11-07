@@ -10,14 +10,14 @@ const createPosition = (req, res) => {
     professionalProfiles: req.query.professionalProfiles,
     status: req.query.status
     }
-    Positions.push(newPosition)
-    fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
-      if (err) {
-        res.status(400).send(err)
-      } else {
-        res.status(201).json(newPosition)
-      }
-    })
+  Positions.push(newPosition)
+  fs.writeFile('./data/positions.json', JSON.stringify(Positions), {}, err => {
+    if (err) {
+      res.status(400).send(err)
+    } else {
+      res.status(201).json(newPosition)
+    }
+  })
 }
 
 const updatePosition = (req, res) => {
