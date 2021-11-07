@@ -1,21 +1,9 @@
 const fs = require('fs')
 const Sessions = require('../data/sessions.json')
 
-
-
 const listSession = (req, res) => {
-
-    fs.writeFile('./data/sessions.json', JSON.stringify(Sessions), {}, (error) => {
-        if (error) {
-            res.status(400).send(error)
-        } else {
-            res.status(201).json(Sessions)
-        }
-    })
-
-
+    res.status(201).json(Sessions)
 }
-
 
 const createSession = (req, res) => {
 
@@ -56,14 +44,16 @@ const updateSession = (req, res) => {
         return session
     })
 
-    fs.writeFile('./data/sessions.json', JSON.stringify(updatedSessions), {}, (error) => {
-        if (error) {
-            res.status(400).send(error)
-        } else {
-            res.status(201).json(updatedSession)
+    if (updatedSession === undefined)
 
-        }
-    })
+        fs.writeFile('./data/sessions.json', JSON.stringify(updatedSessions), {}, (error) => {
+            if (error) {
+                res.status(400).send(error)
+            } else {
+                res.status(201).json(updatedSession)
+
+            }
+        })
 
 }
 
@@ -81,17 +71,6 @@ const deleteSession = (req, res) => {
 
 }
 
-
 module.exports = {
-    createSession,
-    listSession,
-    updateSession,
-    deleteSession,
-
+    createSession, listSession, updateSession, deleteSession,
 }
-
-
-
-
-
-
