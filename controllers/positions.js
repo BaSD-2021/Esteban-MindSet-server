@@ -36,10 +36,11 @@ const updatePosition = (req, res) => {
     return position
   })
 
-  if(updatedPosition === undefined) {
-    res.status(404).send('position not found')
-  } else if (JSON.stringify(updatedPositions) === JSON.stringify(Positions)){
-    res.status(201).send('position found but not changed')
+  if(!updatedPosition) {
+    return res.status(404).send('position not found')
+  } 
+  if (JSON.stringify(updatedPositions) === JSON.stringify(Positions)){
+    return res.status(201).send('position found but not changed')
   }
 
   fs.writeFile('./data/positions.json', JSON.stringify(updatedPositions), {}, err => {
@@ -51,8 +52,15 @@ const updatePosition = (req, res) => {
 }
 
 const deletePosition = (req, res) => {
-  const filteredPositions = Positions.filter(position => position.id !== req.query.id)
-  const removedPosition = Positions.filter(position => position.id === req.query.id) 
+  let removedPosition
+  const filteredPositions = Positions.filter(app => {
+  if(app.id === req.query.id) {
+    removedPosition = app
+    return false
+  }
+  return true
+  })
+
   if(removedPosition.length === 0) res.status(404).send('Position not found')
   fs.writeFile('./data/positions.json', JSON.stringify(filteredPositions), {}, err => {
     if(err) {
@@ -62,7 +70,6 @@ const deletePosition = (req, res) => {
   })
 }
 const listPositions = (req, res) => res.status(200).json(Positions)
-
 
 module.exports = {
   createPosition,

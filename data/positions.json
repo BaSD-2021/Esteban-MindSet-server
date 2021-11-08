@@ -1,35 +1,12 @@
 [
   {
-    "id": "1636321091874",
-    "jobDescription": "Tsponaaaaa",
-    "vacancy": "1",
-    "professionalProfiles": [
-      "Logistics",
-      "Logistics expert",
-      "treasury"
-    ],
-    "status": "closed"
-  },
-  {
-    "id": "1636321608020",
-    "idClient": "65",
-    "jobDescription": "Logistics",
-    "vacancy": "1",
-    "professionalProfiles": [
-      "Logistics",
-      "treasury"
-    ],
-    "status": "open"
-  },
-  {
     "id": "1636321609906",
-    "idClient": "65",
-    "jobDescription": "Logistics",
+    "jobDescription": "Tsponaaaaa",
     "vacancy": "1",
     "professionalProfiles": [
       "Logistics"
     ],
-    "status": "open"
+    "status": "closed"
   },
   {
     "id": "1636321615909",
@@ -39,6 +16,72 @@
     "professionalProfiles": [
       "Logistics",
       "",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636387994933",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388119780",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388120438",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388121253",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388172140",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388179133",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
       "treasury"
     ],
     "status": "closed"

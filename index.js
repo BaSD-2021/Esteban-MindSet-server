@@ -8,7 +8,6 @@ app.get('/', (req, res) => {
     res.send('La Bestia does the best readmes ever');
 })
 
-//POSITIONS
 app.get('/positions', positions.listPositions)
 app.get('/positions/create', positions.createPosition)
 app.get('/positions/remove', positions.deletePosition)
