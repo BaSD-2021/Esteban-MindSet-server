@@ -7,11 +7,11 @@ app.get("/", (req, res) => {
   res.send("La Bestia does the best readmes ever")
 })
 
-app.get("/clients/add", clients.createClient)
+app.get("/clients/create", clients.createClient)
 
 app.get("/clients/update/:id", clients.updateClient)
 
-app.get("/clients/remove/:id", clients.removeClient)
+app.get("/clients/delete/:id", clients.deleteClient)
 
 app.get("/clients", clients.listClients)
 
