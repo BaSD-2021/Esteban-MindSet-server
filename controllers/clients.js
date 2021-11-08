@@ -52,7 +52,51 @@ const createClient = (req, res) => {
     return res.status(201).json(newClient)
   })
 }
-const updateClient = (req, res) => {}
+const updateClient = (req, res) => {
+  const now2ISO = new Date().toISOString()
+  const missing = []
+  let clientFoundPosition
+
+  clients.forEach((client, id) => {
+    if (client.idClient === parseInt(req.params.id)) {
+      client.name = req.query.name ?? client.name
+      client.phone = req.query.phone ?? client.phone
+      client.location.country = req.query.country ?? client.location.country
+      client.location.state = req.query.state ?? client.state
+      client.location.city = req.query.city ?? client.city
+      client.location.address = req.query.address ?? client.address
+      client.description = req.query.description ?? client.description
+      client.logo = req.query.logo ?? client.logo
+      client.modified = {
+        idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'")),
+        timestamp: now2ISO,
+      }
+      clientFoundPosition = id + 1
+    }
+  })
+
+  if (!clientFoundPosition) {
+    return errorResHelper(
+      `The 'idClient' (${req.params.id}) given does not exist.`,
+      res,
+      404
+    )
+  }
+
+  if (missing.length) {
+    return errorResHelper(
+      `queryParam ${missing.join(" and ")} is missing.`,
+      res
+    )
+  }
+
+  fs.writeFile("./data/clients.json", JSON.stringify(clients), (err) => {
+    if (err) {
+      return errorResHelper(err, res)
+    }
+    return res.status(201).json(clients[clientFoundPosition - 1])
+  })
+}
 const deleteClient = (req, res) => {}
 const listClients = (req, res) => {}
 
