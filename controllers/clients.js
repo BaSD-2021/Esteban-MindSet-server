@@ -94,7 +94,7 @@ const updateClient = (req, res) => {
     if (err) {
       return errorResHelper(err, res)
     }
-    return res.status(201).json(clients[clientFoundPosition - 1])
+    return res.status(200).json(clients[clientFoundPosition - 1])
   })
 }
 const deleteClient = (req, res) => {
