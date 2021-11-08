@@ -36,10 +36,9 @@ const createProfile = (req, res) => {
 
   fs.writeFile("./data/profiles.json", JSON.stringify(profiles), (err) => {
     if (err) {
-      errorResHelper(err, res)
-    } else {
-      res.status(201).json(newProfile)
+      return errorResHelper(err, res)
     }
+    return res.status(201).json(newProfile)
   })
 }
 
@@ -72,16 +71,14 @@ const updateProfile = (req, res) => {
 
   fs.writeFile("./data/profiles.json", JSON.stringify(profiles), (err) => {
     if (err) {
-      errorResHelper(err, res)
-    } else {
-      res.status(201).json(profiles[profileIdPosition])
+      return errorResHelper(err, res)
     }
+    return res.status(201).json(profiles[profileIdPosition])
   })
 }
 
 const deleteProfile = (req, res) => {
   let removedProfile
-  console.log(req.params.id)
   profiles.forEach((profile, id) => {
     if (profile.idProfile === parseInt(req.params.id)) {
       removedProfile = profile
@@ -95,10 +92,9 @@ const deleteProfile = (req, res) => {
 
   fs.writeFile("./data/profiles.json", JSON.stringify(profiles), (err) => {
     if (err) {
-      errorResHelper(err, res)
-    } else {
-      res.status(201).json(removedProfile)
+      return errorResHelper(err, res)
     }
+    return res.status(201).json(removedProfile)
   })
 }
 
@@ -106,8 +102,7 @@ const listProfiles = (req, res) => {
   if (!profiles.length) {
     return errorResHelper(`The Profiles List seems to be empty.`, res, 404)
   }
-
-  res.status(201).json(profiles)
+  return res.status(201).json(profiles)
 }
 
 module.exports = {
