@@ -61,27 +61,9 @@
         "start_date": "9/1/2021",
         "end_date": "8/9/2020"
       },
-      "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-      "available": true
+      "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
     },
-    "inverview_psy": [
-      {
-        "date": "24/12/2021",
-        "hour": {
-          "from": "930",
-          "to": "1030"
-        }
-      }
-    ],
-    "inverview_company": [
-      {
-        "date": "25/12/2021",
-        "hour": {
-          "from": "1030",
-          "to": "1130"
-        }
-      }
-    ]
+    "available": true
   },
   {
     "id": 2,
@@ -145,27 +127,9 @@
         "start_date": "10/23/2021",
         "end_date": "10/1/2021"
       },
-      "description": "Nunc nisl.",
-      "available": false
+      "description": "Nunc nisl."
     },
-    "inverview_psy": [
-      {
-        "date": "24/12/2021",
-        "hour": {
-          "from": "930",
-          "to": "1030"
-        }
-      }
-    ],
-    "inverview_company": [
-      {
-        "date": "25/12/2021",
-        "hour": {
-          "from": "1030",
-          "to": "1130"
-        }
-      }
-    ]
+    "available": false
   },
   {
     "id": 3,
@@ -227,27 +191,9 @@
         "start_date": "7/30/2021",
         "end_date": "5/25/2020"
       },
-      "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",
-      "available": true
+      "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc."
     },
-    "inverview_psy": [
-      {
-        "date": "24/12/2021",
-        "hour": {
-          "from": "930",
-          "to": "1030"
-        }
-      }
-    ],
-    "inverview_company": [
-      {
-        "date": "25/12/2021",
-        "hour": {
-          "from": "1030",
-          "to": "1130"
-        }
-      }
-    ]
+    "available": true
   },
   {
     "id": 4,
@@ -311,27 +257,9 @@
         "start_date": "4/11/2020",
         "end_date": "11/6/2021"
       },
-      "description": "Phasellus id sapien in sapien iaculis congue.",
-      "available": true
+      "description": "Phasellus id sapien in sapien iaculis congue."
     },
-    "inverview_psy": [
-      {
-        "date": "24/12/2021",
-        "hour": {
-          "from": "930",
-          "to": "1030"
-        }
-      }
-    ],
-    "inverview_company": [
-      {
-        "date": "25/12/2021",
-        "hour": {
-          "from": "1030",
-          "to": "1130"
-        }
-      }
-    ]
+    "available": true
   },
   {
     "id": 5,
@@ -395,27 +323,9 @@
         "start_date": "10/15/2021",
         "end_date": "11/24/2020"
       },
-      "description": "Aenean lectus.",
-      "available": false
+      "description": "Aenean lectus."
     },
-    "inverview_psy": [
-      {
-        "date": "24/12/2021",
-        "hour": {
-          "from": "930",
-          "to": "1030"
-        }
-      }
-    ],
-    "inverview_company": [
-      {
-        "date": "25/12/2021",
-        "hour": {
-          "from": "1030",
-          "to": "1130"
-        }
-      }
-    ]
+    "available": false
   },
   {
     "id": 6,
@@ -479,26 +389,8 @@
         "start_date": "5/25/2020",
         "end_date": "2/23/2021"
       },
-      "description": "Curabitur gravida nisi at nibh.",
-      "available": true
+      "description": "Curabitur gravida nisi at nibh."
     },
-    "inverview_psy": [
-      {
-        "date": "24/12/2021",
-        "hour": {
-          "from": "930",
-          "to": "1030"
-        }
-      }
-    ],
-    "inverview_company": [
-      {
-        "date": "25/12/2021",
-        "hour": {
-          "from": "1030",
-          "to": "1130"
-        }
-      }
-    ]
+    "available": true
   }
 ]
