@@ -40,14 +40,14 @@ const updatePosition = (req, res) => {
     return res.status(404).send('position not found')
   } 
   if (JSON.stringify(updatedPositions) === JSON.stringify(Positions)){
-    return res.status(201).send('position found but not changed')
+    return res.status(200).send('position found but not changed')
   }
 
   fs.writeFile('./data/positions.json', JSON.stringify(updatedPositions), {}, err => {
     if(err) {
       return res.status(400).send(err)
     }
-    return res.status(201).json(updatedPosition)
+    return res.status(200).json(updatedPosition)
   })
 }
 
@@ -61,12 +61,12 @@ const deletePosition = (req, res) => {
     return true
   })
 
-  if(removedPosition.length === 0) res.status(404).send('Position not found')
+  if(!removedPosition.length) res.status(404).send('Position not found')
   fs.writeFile('./data/positions.json', JSON.stringify(filteredPositions), {}, err => {
     if(err) {
       return res.status(400).send(err)
     } 
-    return res.status(201).json(removedPosition)
+    return res.status(204).json(removedPosition)
   })
 }
 const listPositions = (req, res) => res.status(200).json(Positions)
