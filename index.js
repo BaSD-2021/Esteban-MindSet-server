@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 
 app.get('/sessions', sessions.listSession)
 app.get('/sessions/create', sessions.createSession)
-app.get('/sessions/delete', sessions.deleteSession)
+app.get('/sessions/remove', sessions.removeSession)
 app.get('/sessions/update', sessions.updateSession)
 
 app.listen(PORT, () => console.log(`Server runing on port ${PORT}`))
