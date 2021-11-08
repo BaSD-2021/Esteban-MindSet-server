@@ -37,39 +37,32 @@ const updateSession = (req, res) => {
                 date: req.query.date || session.date,
                 state: req.query.state || session.state
             }
-
             return updatedSession
         }
         return session
     })
-
-    if (updatedSession === undefined) res.status(404).send('Session NOT found')
+    if (!updatedSession) res.status(404).send('Session NOT found')
 
     fs.writeFile('./data/sessions.json', JSON.stringify(updatedSessions), {}, (error) => {
         if (error) {
             res.status(400).send(error)
         } else {
             res.status(201).json(updatedSession)
-
         }
     })
-
 }
 
 const deleteSession = (req, res) => {
     const filteredSessions = Sessions.filter(session => session.idSession != req.query.idSession)
     const deletedSession = Sessions.filter(session => session.idSession == req.query.idSession)
-
     if (deletedSession.length === 0) res.status(404).send('Session NOT found')
 
     fs.writeFile('./data/sessions.json', JSON.stringify(filteredSessions), {}, (error) => {
         if (error) {
             res.status(400).send(error)
-        } else {
-            res.status(201).json(deletedSession)
         }
+        res.status(201).json(deletedSession)
     })
-
 }
 
 module.exports = {
