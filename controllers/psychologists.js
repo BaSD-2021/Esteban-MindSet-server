@@ -32,6 +32,10 @@ const deletePsychologist = (req, res) => {
   const params = req.query
   const filteredPsychologists = Psychologists.filter(psychologist => psychologist.id !== params.id)
 
+  if (JSON.stringify(filteredPsychologists) === JSON.stringify(Psychologists)){
+    return res.status(404).send('psychologist not found')
+  }
+
   fs.writeFile('./data/psychologists.json', JSON.stringify(filteredPsychologists), {}, (error) => {
     if(error) {
       res.status(400).send(error)
@@ -42,7 +46,6 @@ const deletePsychologist = (req, res) => {
 
 const updatePsychologist = (req, res) => {
   const params = req.query
-  const filteredPsychologists = Psychologists.filter(psychologist => psychologist.id !== params.id)
   let updatedPsychologist
 
   const updatedPsychologists = Psychologists.map((psychologist) => {
@@ -65,14 +68,14 @@ const updatePsychologist = (req, res) => {
     return res.status(404).send('psychologist not found')
   } 
   if (JSON.stringify(updatedPsychologists) === JSON.stringify(Psychologists)){
-    return res.status(201).send('psychologist found, but there was nothing to change')
+    return res.status(200).send('psychologist found, but there was nothing to change')
   }
 
   fs.writeFile('./data/psychologists.json', JSON.stringify(updatedPsychologists), {}, err => {
     if(error) {
       res.status(400).send(error)
     }
-    return res.status(201).json(updatedPsychologists)
+    return res.status(200).json(updatedPsychologists)
   })
   res.send(updatedPsychologist)
 }
