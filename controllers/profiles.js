@@ -102,7 +102,7 @@ const deleteProfile = (req, res) => {
     if (err) {
       return errorResHelper(err, res)
     }
-    return res.status(200).json(removedProfile)
+    return res.status(204).json(removedProfile)
   })
 }
 
