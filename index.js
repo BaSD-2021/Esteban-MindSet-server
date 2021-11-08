@@ -6,6 +6,7 @@ const PORT = 4000;
 app.get('/', (req, res) => {
     res.send('La Bestia does the best readmes ever');
 })
+
 //PPLICATIONS   
 app.get('/applications', applications.listApplication) 
 app.get('/applications/create', applications.createApplication) 

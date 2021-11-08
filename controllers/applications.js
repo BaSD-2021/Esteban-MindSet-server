@@ -7,9 +7,9 @@ const createApplication = (req, res) => {
     id: new Date().getTime().toString(),
     idPosition: req.query.idPosition,
     idPostulant: req.query.idPostulant,
-    date: req.query.date
+    date: req.query.date,
+    profile: req.query.profile
   }
-  console.log(newApplication)
   Applications.push(newApplication)
   fs.writeFile('./data/applications.json', JSON.stringify(Applications), {}, err => {
     if (err) {
