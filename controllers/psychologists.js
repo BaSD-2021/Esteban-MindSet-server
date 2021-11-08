@@ -40,7 +40,7 @@ const deletePsychologist = (req, res) => {
     if(error) {
       res.status(400).send(error)
     }
-    return res.status(201).json(filteredPsychologists)
+    return res.status(204).json(filteredPsychologists)
 })
 }
 
