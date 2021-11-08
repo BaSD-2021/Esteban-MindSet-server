@@ -97,7 +97,30 @@ const updateClient = (req, res) => {
     return res.status(201).json(clients[clientFoundPosition - 1])
   })
 }
-const deleteClient = (req, res) => {}
+const deleteClient = (req, res) => {
+  let removedClient
+  clients.forEach((client, id) => {
+    if (client.idClient === parseInt(req.params.id)) {
+      removedClient = client
+      clients.splice(id, 1)
+    }
+  })
+
+  if (!removedClient) {
+    return errorResHelper(
+      `The 'idClient' (${req.params.id}) given does not exist.`,
+      res,
+      404
+    )
+  }
+
+  fs.writeFile("./data/clients.json", JSON.stringify(clients), (err) => {
+    if (err) {
+      return errorResHelper(err, res)
+    }
+    return res.status(201).json(removedClient)
+  })
+}
 const listClients = (req, res) => {}
 
 module.exports = {
