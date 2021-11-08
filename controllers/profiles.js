@@ -102,7 +102,7 @@ const deleteProfile = (req, res) => {
     if (err) {
       return errorResHelper(err, res)
     }
-    return res.status(201).json(removedProfile)
+    return res.status(200).json(removedProfile)
   })
 }
 
@@ -110,7 +110,7 @@ const listProfiles = (req, res) => {
   if (!profiles.length) {
     return errorResHelper(`The Profiles List seems to be empty.`, res, 404)
   }
-  return res.status(201).json(profiles)
+  return res.status(200).json(profiles)
 }
 
 module.exports = {
