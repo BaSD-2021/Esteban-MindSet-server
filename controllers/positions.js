@@ -21,7 +21,7 @@ const createPosition = (req, res) => {
 
 const updatePosition = (req, res) => {
   let updatedPosition
-  const updatedPositions =  Positions.map((position) => {
+  const updatedPositions = Positions.map((position) => {
     if(position.id === req.query.id) {
       updatedPosition = {
         id: req.query.id,
@@ -53,7 +53,6 @@ const updatePosition = (req, res) => {
 const deletePosition = (req, res) => {
   const filteredPositions = Positions.filter(position => position.id !== req.query.id)
   const removedPosition = Positions.filter(position => position.id === req.query.id) 
-  console.log(removedPosition)
   if(removedPosition.length === 0) res.status(404).send('Position not found')
   fs.writeFile('./data/positions.json', JSON.stringify(filteredPositions), {}, err => {
     if(err) {
