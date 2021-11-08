@@ -1,6 +1,6 @@
 [
   {
-    "idPostulant": 1,
+    "id": 1,
     "first_name": "Bowie",
     "last_name": "Hucknall",
     "email": "bhucknall0@slate.com",
@@ -36,22 +36,26 @@
       },
       "university": "The College of Wooster"
     },
-    "work_experience": {
-      "company": "Voomm",
-      "date": {
-        "start_date": "6/16/2020",
-        "end_date": "3/21/2021"
-      },
-      "description": "Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit."
-    },
-    "course": {
-      "institute": "NHTV Breda University of Professional Education",
-      "date": {
-        "start_date": "8/21/2020",
-        "end_date": "8/20/2021"
-      },
-      "description": "7/14/2020"
-    },
+    "work_experience": [
+      {
+        "company": "Voomm",
+        "date": {
+          "start_date": "6/16/2020",
+          "end_date": "3/21/2021"
+        },
+        "description": "Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit."
+      }
+    ],
+    "course": [
+      {
+        "institute": "NHTV Breda University of Professional Education",
+        "date": {
+          "start_date": "8/21/2020",
+          "end_date": "8/20/2021"
+        },
+        "description": "7/14/2020"
+      }
+    ],
     "about": {
       "date": {
         "start_date": "9/1/2021",
@@ -80,7 +84,7 @@
     ]
   },
   {
-    "idPostulant": 2,
+    "id": 2,
     "first_name": "Cherri",
     "last_name": "Theuss",
     "email": "ctheuss1@hao123.com",
@@ -97,8 +101,8 @@
     },
     "secondary_studies": {
       "date": {
-        "start_date\"": "12/31/2020",
-        "end_date\"": "2/8/2021"
+        "start_date": "12/31/2020",
+        "end_date": "2/8/2021"
       },
       "school": "University of New England"
     },
@@ -116,22 +120,26 @@
       },
       "university": "Hanover College"
     },
-    "work_experience": {
-      "company": "Voolith",
-      "date": {
-        "start_date": "5/1/2020",
-        "end_date": "5/18/2020"
-      },
-      "description": "In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus."
-    },
-    "course": {
-      "institute": "Universidad ICESI",
-      "date": {
-        "start_date": "8/11/2020",
-        "end_date": "4/12/2020"
-      },
-      "description": "6/2/2021"
-    },
+    "work_experience": [
+      {
+        "company": "Voolith",
+        "date": {
+          "start_date": "5/1/2020",
+          "end_date": "5/18/2020"
+        },
+        "description": "In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus."
+      }
+    ],
+    "course": [
+      {
+        "institute": "Universidad ICESI",
+        "date": {
+          "start_date": "8/11/2020",
+          "end_date": "4/12/2020"
+        },
+        "description": "6/2/2021"
+      }
+    ],
     "about": {
       "date": {
         "start_date": "10/23/2021",
@@ -160,7 +168,7 @@
     ]
   },
   {
-    "idPostulant": 3,
+    "id": 3,
     "first_name": "Ashlee",
     "last_name": "Porrett",
     "email": "aporrett2@histats.com",
@@ -196,14 +204,16 @@
       },
       "university": "Nile University"
     },
-    "work_experience": {
-      "company": "Feedbug",
-      "date": {
-        "start_date": "5/14/2020",
-        "end_date": "4/3/2021"
-      },
-      "description": "Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus."
-    },
+    "work_experience": [
+      {
+        "company": "Feedbug",
+        "date": {
+          "start_date": "5/14/2020",
+          "end_date": "4/3/2021"
+        },
+        "description": "Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus."
+      }
+    ],
     "course": {
       "institute": "University of Lusaka",
       "date": {
@@ -240,7 +250,7 @@
     ]
   },
   {
-    "idPostulant": 4,
+    "id": 4,
     "first_name": "Carma",
     "last_name": "Bortolazzi",
     "email": "cbortolazzi3@newsvine.com",
@@ -276,22 +286,26 @@
       },
       "university": "Al-Batterjee Medical College"
     },
-    "work_experience": {
-      "company": "Yambee",
-      "date": {
-        "start_date": "4/2/2021",
-        "end_date": "1/2/2021"
-      },
-      "description": "Nulla tellus. In sagittis dui vel nisl."
-    },
-    "course": {
-      "institute": "Australian Defence Force Academy",
-      "date": {
-        "start_date": "10/1/2021",
-        "end_date": "10/20/2020"
-      },
-      "description": "5/14/2020"
-    },
+    "work_experience": [
+      {
+        "company": "Yambee",
+        "date": {
+          "start_date": "4/2/2021",
+          "end_date": "1/2/2021"
+        },
+        "description": "Nulla tellus. In sagittis dui vel nisl."
+      }
+    ],
+    "course": [
+      {
+        "institute": "Australian Defence Force Academy",
+        "date": {
+          "start_date": "10/1/2021",
+          "end_date": "10/20/2020"
+        },
+        "description": "5/14/2020"
+      }
+    ],
     "about": {
       "date": {
         "start_date": "4/11/2020",
@@ -320,7 +334,7 @@
     ]
   },
   {
-    "idPostulant": 5,
+    "id": 5,
     "first_name": "Killian",
     "last_name": "Francescone",
     "email": "kfrancescone4@google.ca",
@@ -356,22 +370,26 @@
       },
       "university": "Nakhchivan State University"
     },
-    "work_experience": {
-      "company": "Youbridge",
-      "date": {
-        "start_date": "7/16/2021",
-        "end_date": "8/6/2021"
-      },
-      "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci."
-    },
-    "course": {
-      "institute": "Fachhochschule Potsdam",
-      "date": {
-        "start_date": "5/28/2020",
-        "end_date": "1/20/2021"
-      },
-      "description": "1/16/2021"
-    },
+    "work_experience": [
+      {
+        "company": "Youbridge",
+        "date": {
+          "start_date": "7/16/2021",
+          "end_date": "8/6/2021"
+        },
+        "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci."
+      }
+    ],
+    "course": [
+      {
+        "institute": "Fachhochschule Potsdam",
+        "date": {
+          "start_date": "5/28/2020",
+          "end_date": "1/20/2021"
+        },
+        "description": "1/16/2021"
+      }
+    ],
     "about": {
       "date": {
         "start_date": "10/15/2021",
@@ -400,7 +418,7 @@
     ]
   },
   {
-    "idPostulant": 6,
+    "id": 6,
     "first_name": "Mel",
     "last_name": "Iskower",
     "email": "miskower5@msu.edu",
@@ -436,22 +454,26 @@
       },
       "university": "French University in Armenia (UFAR)"
     },
-    "work_experience": {
-      "company": "Realblab",
-      "date": {
-        "start_date": "4/28/2020",
-        "end_date": "8/10/2020"
-      },
-      "description": "In congue."
-    },
-    "course": {
-      "institute": "BGC Trust University, Bangladesh",
-      "date": {
-        "start_date": "8/14/2020",
-        "end_date": "7/16/2020"
-      },
-      "description": "8/14/2021"
-    },
+    "work_experience": [
+      {
+        "company": "Realblab",
+        "date": {
+          "start_date": "4/28/2020",
+          "end_date": "8/10/2020"
+        },
+        "description": "In congue."
+      }
+    ],
+    "course": [
+      {
+        "institute": "BGC Trust University, Bangladesh",
+        "date": {
+          "start_date": "8/14/2020",
+          "end_date": "7/16/2020"
+        },
+        "description": "8/14/2021"
+      }
+    ],
     "about": {
       "date": {
         "start_date": "5/25/2020",
