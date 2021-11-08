@@ -1,5 +1,5 @@
 const fs = require('fs');
-const admins = require('../data/admin.json');
+const admins = require('../data/admins.json');
 
 //Get all admins
 
@@ -18,7 +18,8 @@ const updateAdmin = (req, res) => {
         admins.forEach(admin => {
             if (admin.id === parseInt(req.params.id)){
                 !req.query.email ? null : admin.email = req.query.email;
-                !req.query.password ? null : admin.password = req.query.password
+                !req.query.password ? null : admin.password = req.query.password;
+                !req.query.name ? null : admin.name = req.query.name;
             }   
         })
     }   else{
