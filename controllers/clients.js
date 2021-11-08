@@ -118,7 +118,7 @@ const deleteClient = (req, res) => {
     if (err) {
       return errorResHelper(err, res)
     }
-    return res.status(200).json(removedClient)
+    return res.status(204).json(removedClient)
   })
 }
 const listClients = (req, res) => {
