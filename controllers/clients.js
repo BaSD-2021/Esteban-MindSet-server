@@ -121,7 +121,12 @@ const deleteClient = (req, res) => {
     return res.status(201).json(removedClient)
   })
 }
-const listClients = (req, res) => {}
+const listClients = (req, res) => {
+  if (!clients.length) {
+    return errorResHelper(`The Clients List seems to be empty.`, res, 404)
+  }
+  return res.status(201).json(clients)
+}
 
 module.exports = {
   createClient,
