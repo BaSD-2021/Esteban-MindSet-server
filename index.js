@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
 
 app.get('/interviews', interviews.listInterviews)
 app.get('/interviews/create', interviews.createInterview)
-
+app.get('/interviews/update', interviews.updateInterview)
 
 app.listen(PORT, () => console.log(`Server runing on port ${PORT}`))
