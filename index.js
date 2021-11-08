@@ -1,14 +1,20 @@
 const express = require("express")
+const profiles = require("./controllers/profiles")
 const clients = require("./controllers/clients")
-const positions = require("./controllers/positions.js")
+const positions = require("./controllers/positions")
 const applications = require("./controllers/applications")
-const psychologists = require("./controllers/psychologists.js")
+const psychologists = require("./controllers/psychologists")
 const app = express()
 const PORT = 4000
 
 app.get("/", (req, res) => {
   res.send("La Bestia does the best readmes ever")
 })
+
+app.get("/profiles", profiles.listProfiles)
+app.get("/profiles/create", profiles.createProfile)
+app.get("/profiles/update/:id", profiles.updateProfile)
+app.get("/profiles/delete/:id", profiles.deleteProfile)
 
 app.get("/clients", clients.listClients)
 app.get("/clients/create", clients.createClient)
