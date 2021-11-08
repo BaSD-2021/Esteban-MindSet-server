@@ -1,7 +1,6 @@
 const fs = require('fs')
 const Applications = require('../data/applications.json')
 
-
 const createApplication = (req, res) => {
   const newApplication = {
     id: new Date().getTime().toString(),
