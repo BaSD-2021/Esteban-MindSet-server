@@ -9,7 +9,7 @@ const createProfile = (req, res) => {
   const now2ISO = new Date().toISOString()
   const missing = []
   const newProfile = {
-    idProfile: new Date().getTime().toString(),
+    id: new Date().getTime().toString(),
     name: req.query.name ?? missing.push("'name'"),
     created: {
       idAdmin: req.query.idAdmin ?? missing.push("'idAdmin'"),
@@ -48,7 +48,7 @@ const updateProfile = (req, res) => {
   let profileFoundPosition
 
   profiles.forEach((profile, id) => {
-    if (profile.idProfile === parseInt(req.params.id)) {
+    if (profile.id === parseInt(req.params.id)) {
       profile.name = req.query.name ?? profile.name
       profile.modified = {
         idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'")),
@@ -60,7 +60,7 @@ const updateProfile = (req, res) => {
 
   if (!profileFoundPosition) {
     return errorResHelper(
-      `The 'idProfile' (${req.params.id}) given does not exist.`,
+      `The profile 'id' (${req.params.id}) given does not exist.`,
       res,
       404
     )
@@ -84,7 +84,7 @@ const updateProfile = (req, res) => {
 const deleteProfile = (req, res) => {
   let removedProfile
   profiles.forEach((profile, id) => {
-    if (profile.idProfile === parseInt(req.params.id)) {
+    if (profile.id === parseInt(req.params.id)) {
       removedProfile = profile
       profiles.splice(id, 1)
     }
@@ -92,7 +92,7 @@ const deleteProfile = (req, res) => {
 
   if (!removedProfile) {
     return errorResHelper(
-      `The 'idProfile' (${req.params.id}) given does not exist.`,
+      `The profile 'id' (${req.params.id}) given does not exist.`,
       res,
       404
     )
