@@ -2,11 +2,10 @@ const fs = require('fs')
 const Sessions = require('../data/sessions.json')
 
 const listSession = (req, res) => {
-    res.status(201).json(Sessions)
+    res.status(200).json(Sessions)
 }
 
 const createSession = (req, res) => {
-
     const newSession = {
         idSession: req.query.idSession,
         idPsicologist: req.query.idPsicologist,
@@ -14,15 +13,12 @@ const createSession = (req, res) => {
         date: req.query.date,
         state: req.query.state,
     }
-
     Sessions.push(newSession)
-
     fs.writeFile('./data/sessions.json', JSON.stringify(Sessions), {}, (error) => {
         if (error) {
-            res.status(400).send(error)
-        } else {
-            res.status(201).json(newSession)
+            return res.status(400).send(error)
         }
+        return res.status(201).json(newSession)
     })
 }
 
@@ -42,29 +38,26 @@ const updateSession = (req, res) => {
         return session
     })
     if (!updatedSession) res.status(404).send('Session NOT found')
-
     fs.writeFile('./data/sessions.json', JSON.stringify(updatedSessions), {}, (error) => {
         if (error) {
-            res.status(400).send(error)
-        } else {
-            res.status(201).json(updatedSession)
+            return res.status(400).send(error)
         }
+        return res.status(201).json(updatedSession)
     })
 }
 
-const removeSession = (req, res) => {
+const deleteSession = (req, res) => {
     const filteredSessions = Sessions.filter(session => session.idSession != req.query.idSession)
-    const removedSession = Sessions.filter(session => session.idSession == req.query.idSession)
-    if (removedSession.length === 0) res.status(404).send('Session NOT found')
-
+    const deletedSession = Sessions.filter(session => session.idSession == req.query.idSession)
+    if (deletedSession.length === 0) res.status(404).send('Session NOT found')
     fs.writeFile('./data/sessions.json', JSON.stringify(filteredSessions), {}, (error) => {
         if (error) {
-            res.status(400).send(error)
+            return res.status(400).send(error)
         }
-        res.status(201).json(removedSession)
+        return res.status(201).json(deletedSession)
     })
 }
 
 module.exports = {
-    createSession, listSession, updateSession, removeSession,
+    createSession, listSession, updateSession, deleteSession,
 }
