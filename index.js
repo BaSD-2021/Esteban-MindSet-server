@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
   res.send("La Bestia does the best readmes ever")
 })
 
-app.get("/profiles/add", profiles.createProfile)
+app.get("/profiles/create", profiles.createProfile)
 
 app.get("/profiles/update/:id", profiles.updateProfile)
 

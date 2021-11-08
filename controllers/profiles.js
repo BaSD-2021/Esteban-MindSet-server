@@ -12,22 +12,22 @@ const createProfile = (req, res) => {
     idProfile: new Date().getTime().toString(),
     name: req.query.name ?? missing.push("'name'"),
     created: {
-      admin: req.query.idAdmin ?? missing.push("'idAdmin'"),
+      idAdmin: req.query.idAdmin ?? missing.push("'idAdmin'"),
       timestamp: now2ISO,
     },
     modified: {},
   }
 
-  if (missing.length) {
+  if (profiles.filter((el) => el.name === req.query.name).length > 0) {
     return errorResHelper(
-      `queryParam ${missing.join(" and ")} is missing.`,
+      `Profile name '${req.query.name}' already exists.`,
       res
     )
   }
 
-  if (profiles.filter((el) => el.name === req.query.name).length > 0) {
+  if (missing.length) {
     return errorResHelper(
-      `Profile name '${req.query.name}' already exists.`,
+      `queryParam ${missing.join(" and ")} is missing.`,
       res
     )
   }
@@ -51,22 +51,22 @@ const updateProfile = (req, res) => {
     if (profile.idProfile === parseInt(req.params.id)) {
       profile.name = req.query.name ?? profile.name
       profile.modified = {
-        admin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'")),
+        idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'")),
         timestamp: now2ISO,
       }
       profileIdPosition = id
     }
   })
 
+  if (!profileIdPosition) {
+    return errorResHelper(`The 'idProfile' given does not exist.`, res, 404)
+  }
+
   if (missing.length) {
     return errorResHelper(
       `queryParam ${missing.join(" and ")} is missing.`,
       res
     )
-  }
-
-  if (!profileIdPosition) {
-    return errorResHelper(`The 'idProfile' given does not exist.`, res, 404)
   }
 
   fs.writeFile("./data/profiles.json", JSON.stringify(profiles), (err) => {
