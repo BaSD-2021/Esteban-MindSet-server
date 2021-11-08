@@ -54,11 +54,11 @@ const updatePosition = (req, res) => {
 const deletePosition = (req, res) => {
   let removedPosition
   const filteredPositions = Positions.filter(app => {
-  if(app.id === req.query.id) {
-    removedPosition = app
-    return false
-  }
-  return true
+    if(app.id === req.query.id) {
+      removedPosition = app
+      return false
+    }
+    return true
   })
 
   if(removedPosition.length === 0) res.status(404).send('Position not found')
