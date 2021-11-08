@@ -7,4 +7,8 @@ app.get('/', (req, res) => {
     res.send('La Bestia does the best readmes ever');
 })
 
+app.get('/interviews', interviews.listInterviews)
+app.get('/interviews/create', interviews.createInterview)
+
+
 app.listen(PORT, () => console.log(`Server runing on port ${PORT}`))
