@@ -28,16 +28,16 @@ const deleteApplication = (req, res) => {
     return true
   })
 
-  if(removedApplication.length === 0) res.status(404).send('application not found')
+  if(!removedApplication.length) res.status(404).send('application not found')
   fs.writeFile('./data/applications.json', JSON.stringify(filteredApplications), {}, err => {
     if (err) {
       return res.status(400).send(err)
     }
-    return res.status(200).send(removedApplication)
+    return res.status(204).send(removedApplication)
   }) 
 }
 
-const listApplication = (req, res) => res.status(400).json(Applications)
+const listApplication = (req, res) => res.status(200).json(Applications)
 
 module.exports = {
   createApplication,
