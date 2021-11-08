@@ -1,9 +1,9 @@
 const express = require("express")
 const profiles = require("./controllers/profiles")
 const clients = require("./controllers/clients")
-const positions = require("./controllers/positions.js")
+const positions = require("./controllers/positions")
 const applications = require("./controllers/applications")
-const psychologists = require("./controllers/psychologists.js")
+const psychologists = require("./controllers/psychologists")
 const app = express()
 const PORT = 4000
 
