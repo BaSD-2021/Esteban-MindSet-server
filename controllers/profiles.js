@@ -45,7 +45,7 @@ const createProfile = (req, res) => {
 const updateProfile = (req, res) => {
   const now2ISO = new Date().toISOString()
   const missing = []
-  let profileIdPosition
+  let profileFoundPosition
 
   profiles.forEach((profile, id) => {
     if (profile.idProfile === parseInt(req.params.id)) {
@@ -54,12 +54,16 @@ const updateProfile = (req, res) => {
         idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'")),
         timestamp: now2ISO,
       }
-      profileIdPosition = id
+      profileFoundPosition = id + 1
     }
   })
 
-  if (!profileIdPosition) {
-    return errorResHelper(`The 'idProfile' given does not exist.`, res, 404)
+  if (!profileFoundPosition) {
+    return errorResHelper(
+      `The 'idProfile' (${req.params.id}) given does not exist.`,
+      res,
+      404
+    )
   }
 
   if (missing.length) {
@@ -73,7 +77,7 @@ const updateProfile = (req, res) => {
     if (err) {
       return errorResHelper(err, res)
     }
-    return res.status(201).json(profiles[profileIdPosition])
+    return res.status(201).json(profiles[profileFoundPosition - 1])
   })
 }
 
@@ -87,7 +91,11 @@ const deleteProfile = (req, res) => {
   })
 
   if (!removedProfile) {
-    return errorResHelper(`The 'idProfile' given does not exist.`, res, 404)
+    return errorResHelper(
+      `The 'idProfile' (${req.params.id}) given does not exist.`,
+      res,
+      404
+    )
   }
 
   fs.writeFile("./data/profiles.json", JSON.stringify(profiles), (err) => {
