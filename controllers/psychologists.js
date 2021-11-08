@@ -22,24 +22,21 @@ const createPsychologist = (req, res) => {
 
   fs.writeFile('./data/psychologists.json', JSON.stringify(Psychologists), {}, (error) => {
     if(error) {
-        res.status(400).send(error)
-    } else {
-        res.status(201).json(newPsychologist)
-    }
+      res.status(400).send(error)
+    } 
+    return res.status(201).json(newPsychologist)
 })
 }
 
 const deletePsychologist = (req, res) => {
   const params = req.query
   const filteredPsychologists = Psychologists.filter(psychologist => psychologist.id !== params.id)
-  res.send(filteredPsychologists);
 
   fs.writeFile('./data/psychologists.json', JSON.stringify(filteredPsychologists), {}, (error) => {
     if(error) {
-        res.status(400).send(error)
-    } else {
-        res.status(201).json(filteredPsychologists)
+      res.status(400).send(error)
     }
+    return res.status(201).json(filteredPsychologists)
 })
 }
 
@@ -48,9 +45,13 @@ const updatePsychologist = (req, res) => {
   const filteredPsychologists = Psychologists.filter(psychologist => psychologist.id !== params.id)
   let updatedPsychologist
 
-  const updatedPsychologists =  Psychologists.map((psychologist) => {
-    if(psychologist.id === params.id) {
+// el metodo map retorna el array actualizado, en este caso el nuevo array actualizado
+  // se guarda en la variable updatedPsychologists
+  const updatedPsychologists = Psychologists.map((psychologist) => {
 
+    // en cada iteracion se debe devolver un valor, este valor va a ser el nuevo
+    // valor que va a tener el item en el nuevo array
+    if(psychologist.id === params.id) {
       updatedPsychologist = {
         id: params.id,
         first_name: params.first_name || psychologist.first_name,
@@ -60,18 +61,26 @@ const updatePsychologist = (req, res) => {
         availability: JSON.parse(req.query.availability) || psychologist.availability,
         address: params.address || psychologist.address,
       }
-      filteredPsychologists.push(updatedPsychologist)
-      res.send(updatedPsychologist)
+      return updatedPsychologist
     }
+    // si no quieren modificar el item, lo retornan sin cambiar nada
+    return psychologist
   })
 
-  fs.writeFile('./data/psychologists.json', JSON.stringify(filteredPsychologists), {}, err => {
+  if(!updatedPsychologist) {
+    return res.status(404).send('psychologist not found')
+  } 
+  if (JSON.stringify(updatedPsychologists) === JSON.stringify(Psychologists)){
+    return res.status(201).send('psychologist found, but there was nothing to change')
+  }
+
+  fs.writeFile('./data/psychologists.json', JSON.stringify(updatedPsychologists), {}, err => {
     if(error) {
       res.status(400).send(error)
-    } else {
-      res.status(201).json(updatedPsychologist)
     }
+    return res.status(201).json(updatedPsychologists)
   })
+  res.send(updatedPsychologist)
 }
 
 module.exports = {
