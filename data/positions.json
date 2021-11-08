@@ -1,0 +1,89 @@
+[
+  {
+    "id": "1636321609906",
+    "jobDescription": "Tsponaaaaa",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636321615909",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636387994933",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388119780",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388120438",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388121253",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388172140",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  },
+  {
+    "id": "1636388179133",
+    "idClient": "65",
+    "jobDescription": "Logistics",
+    "vacancy": "1",
+    "professionalProfiles": [
+      "Logistics",
+      "treasury"
+    ],
+    "status": "closed"
+  }
+]
