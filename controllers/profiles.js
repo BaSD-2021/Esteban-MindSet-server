@@ -1,39 +1,35 @@
 const fs = require("fs")
 const profiles = require("../data/profiles.json")
 
-const errorResHelper = (errorDescription, res) => {
-  res.status(400).send(
-    JSON.stringify({
-      error: errorDescription,
-    })
-  )
+const errorResHelper = (errorDescription, res, errCode = 400) => {
+  res.status(errCode).json({ error: errorDescription })
 }
 
 const createProfile = (req, res) => {
-  const formattedNow2ISO = new Date()
-    .toISOString()
-    .split("T")
-    .join(" ")
-    .split(".")[0]
+  const now2ISO = new Date().toISOString()
   const missing = []
   const newProfile = {
     idProfile: new Date().getTime().toString(),
     name: req.query.name ?? missing.push("'name'"),
     created: {
       admin: req.query.idAdmin ?? missing.push("'idAdmin'"),
-      timestamp: formattedNow2ISO,
+      timestamp: now2ISO,
     },
-    modified: [],
+    modified: {},
   }
 
   if (missing.length) {
-    errorResHelper(`queryParam ${missing.join(" and ")} is missing.`, res)
-    return
+    return errorResHelper(
+      `queryParam ${missing.join(" and ")} is missing.`,
+      res
+    )
   }
 
   if (profiles.filter((el) => el.name === req.query.name).length > 0) {
-    errorResHelper(`Profile name '${req.query.name}' already exists.`, res)
-    return
+    return errorResHelper(
+      `Profile name '${req.query.name}' already exists.`,
+      res
+    )
   }
 
   profiles.push(newProfile)
@@ -48,33 +44,30 @@ const createProfile = (req, res) => {
 }
 
 const updateProfile = (req, res) => {
-  const formattedNow2ISO = new Date()
-    .toISOString()
-    .split("T")
-    .join(" ")
-    .split(".")[0]
+  const now2ISO = new Date().toISOString()
   const missing = []
   let profileIdPosition
 
   profiles.forEach((profile, id) => {
     if (profile.idProfile === parseInt(req.params.id)) {
       profile.name = req.query.name ?? profile.name
-      profile.modified.push({
+      profile.modified = {
         admin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'")),
-        timestamp: formattedNow2ISO,
-      })
+        timestamp: now2ISO,
+      }
       profileIdPosition = id
     }
   })
 
   if (missing.length) {
-    errorResHelper(`queryParam ${missing.join(" and ")} is missing.`, res)
-    return
+    return errorResHelper(
+      `queryParam ${missing.join(" and ")} is missing.`,
+      res
+    )
   }
 
   if (!profileIdPosition) {
-    errorResHelper(`The 'idProfile' given does not exist.`, res)
-    return
+    return errorResHelper(`The 'idProfile' given does not exist.`, res, 404)
   }
 
   fs.writeFile("./data/profiles.json", JSON.stringify(profiles), (err) => {
@@ -86,21 +79,18 @@ const updateProfile = (req, res) => {
   })
 }
 
-const removeProfile = (req, res) => {
-  let profileIdPosition
-  let removedProfile = {}
-
+const deleteProfile = (req, res) => {
+  let removedProfile
+  console.log(req.params.id)
   profiles.forEach((profile, id) => {
     if (profile.idProfile === parseInt(req.params.id)) {
       removedProfile = profile
-      profileIdPosition = id
       profiles.splice(id, 1)
     }
   })
 
-  if (!profileIdPosition) {
-    errorResHelper(`The 'idProfile' given does not exist.`, res)
-    return
+  if (!removedProfile) {
+    return errorResHelper(`The 'idProfile' given does not exist.`, res, 404)
   }
 
   fs.writeFile("./data/profiles.json", JSON.stringify(profiles), (err) => {
@@ -114,8 +104,7 @@ const removeProfile = (req, res) => {
 
 const listProfiles = (req, res) => {
   if (!profiles.length) {
-    errorResHelper(`The Profiles List seems to be empty.`, res)
-    return
+    return errorResHelper(`The Profiles List seems to be empty.`, res, 404)
   }
 
   res.status(201).json(profiles)
@@ -124,6 +113,6 @@ const listProfiles = (req, res) => {
 module.exports = {
   createProfile,
   updateProfile,
-  removeProfile,
+  deleteProfile,
   listProfiles,
 }
