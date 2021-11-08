@@ -2,7 +2,7 @@ const fs = require('fs')
 const Interviews = require('../data/interviews.json')
 
 const listInterviews = (req, res) => {
-    res.status(201).json(Interviews)
+    res.status(200).json(Interviews)
 }
 
 const createInterview = (req, res) => {
@@ -14,15 +14,11 @@ const createInterview = (req, res) => {
         date: req.query.date
     }
     Interviews.push(newInterview)
-
     fs.writeFile('./data/interviews.json', JSON.stringify(Interviews), {}, (error) => {
         if (error) {
-            res.status(400).send(error)
-        } else {
-            res.status(201).send(newInterview)
+            return res.status(400).send(error)
         }
-
-
+        return res.status(201).send(newInterview)
     })
 }
 
@@ -44,28 +40,24 @@ const updateInterview = (req, res) => {
     if (!updateInterview) res.status(404).send('Interview NOT found')
     fs.writeFile('./data/interviews.json', JSON.stringify(updatedInterviews), {}, (error) => {
         if (error) {
-            res.status(400).send(error)
-        } else {
-            res.status(201).send(updatedInterview)
+            return res.status(400).send(error)
         }
+        return res.status(201).send(updatedInterview)
     })
 }
 
-const removeInterview = (req, res) => {
+const deleteInterview = (req, res) => {
     const filteredInterview = Interviews.filter(interview => interview.id != req.query.id)
-    const removeInterview = Interviews.filter(interview => interview.id == req.query.id)
-    if (removeInterview.length === 0) res.status(404).send('Interview NOT found')
-
+    const deleteInterview = Interviews.filter(interview => interview.id == req.query.id)
+    if (!deleteInterview.length) res.status(404).send('Interview NOT found')
     fs.writeFile('./data/interviews.json', JSON.stringify(filteredInterview), {}, (error) => {
         if (error) {
-            res.status(400).send(error)
-        } else {
-            res.status(201).send(removeInterview)
+            return res.status(400).send(error)
         }
+        return res.status(201).send(deleteInterview)
     })
 }
 
-
 module.exports = {
-    listInterviews, createInterview, updateInterview, removeInterview
+    listInterviews, createInterview, updateInterview, deleteInterview
 }
