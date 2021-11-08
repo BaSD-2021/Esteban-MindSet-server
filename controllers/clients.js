@@ -9,7 +9,7 @@ const createClient = (req, res) => {
   const now2ISO = new Date().toISOString()
   const missing = []
   const newClient = {
-    idClient: new Date().getTime().toString(),
+    id: new Date().getTime().toString(),
     name: req.query.name ?? missing.push("'name'"),
     phone: req.query.phone ?? missing.push("'phone'"),
     location: {
@@ -58,7 +58,7 @@ const updateClient = (req, res) => {
   let clientFoundPosition
 
   clients.forEach((client, id) => {
-    if (client.idClient === parseInt(req.params.id)) {
+    if (client.id === parseInt(req.params.id)) {
       client.name = req.query.name ?? client.name
       client.phone = req.query.phone ?? client.phone
       client.location.country = req.query.country ?? client.location.country
@@ -77,7 +77,7 @@ const updateClient = (req, res) => {
 
   if (!clientFoundPosition) {
     return errorResHelper(
-      `The 'idClient' (${req.params.id}) given does not exist.`,
+      `The client 'id' (${req.params.id}) given does not exist.`,
       res,
       404
     )
@@ -100,7 +100,7 @@ const updateClient = (req, res) => {
 const deleteClient = (req, res) => {
   let removedClient
   clients.forEach((client, id) => {
-    if (client.idClient === parseInt(req.params.id)) {
+    if (client.id === parseInt(req.params.id)) {
       removedClient = client
       clients.splice(id, 1)
     }
@@ -108,7 +108,7 @@ const deleteClient = (req, res) => {
 
   if (!removedClient) {
     return errorResHelper(
-      `The 'idClient' (${req.params.id}) given does not exist.`,
+      `The client 'id' (${req.params.id}) given does not exist.`,
       res,
       404
     )
