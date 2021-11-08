@@ -19,8 +19,15 @@ const createApplication = (req, res) => {
 }
 
 const deleteApplication = (req, res) => {
-  const filteredApplications = Applications.filter(app => app.id !== req.query.id)
-  const removedApplication = Applications.filter(app => app.id === req.query.id)
+  let removedApplication
+  const filteredApplications = Applications.filter(app => {
+    if(app.id === req.query.id) {
+      removedApplication = app
+      return false
+    }
+    return true
+  })
+
   if(removedApplication.length === 0) res.status(404).send('application not found')
   fs.writeFile('./data/applications.json', JSON.stringify(filteredApplications), {}, err => {
     if (err) {
