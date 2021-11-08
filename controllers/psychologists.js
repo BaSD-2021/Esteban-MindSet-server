@@ -45,12 +45,7 @@ const updatePsychologist = (req, res) => {
   const filteredPsychologists = Psychologists.filter(psychologist => psychologist.id !== params.id)
   let updatedPsychologist
 
-// el metodo map retorna el array actualizado, en este caso el nuevo array actualizado
-  // se guarda en la variable updatedPsychologists
   const updatedPsychologists = Psychologists.map((psychologist) => {
-
-    // en cada iteracion se debe devolver un valor, este valor va a ser el nuevo
-    // valor que va a tener el item en el nuevo array
     if(psychologist.id === params.id) {
       updatedPsychologist = {
         id: params.id,
@@ -63,7 +58,6 @@ const updatePsychologist = (req, res) => {
       }
       return updatedPsychologist
     }
-    // si no quieren modificar el item, lo retornan sin cambiar nada
     return psychologist
   })
 
