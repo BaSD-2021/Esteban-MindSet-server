@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "name": "Administrative",
+    "created": {
+      "idAdmin": 45,
+      "timestamp": "2021-03-01T17:56:10Z"
+    },
+    "modified": {
+      "idAdmin": 57,
+      "timestamp": "2021-02-21T19:42:08Z"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Experienced Administrative",
+    "created": {
+      "idAdmin": 14,
+      "timestamp": "2020-12-15T08:03:09Z"
+    },
+    "modified": {
+      "idAdmin": 40,
+      "timestamp": "2021-06-06T15:48:30Z"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Construction",
+    "created": {
+      "idAdmin": 9,
+      "timestamp": "2021-09-09T09:16:41Z"
+    },
+    "modified": {
+      "idAdmin": 49,
+      "timestamp": "2021-03-24T18:55:13Z"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Experienced Construction",
+    "created": {
+      "idAdmin": 17,
+      "timestamp": "2021-08-28T02:41:25Z"
+    },
+    "modified": {
+      "idAdmin": 29,
+      "timestamp": "2021-05-29T20:41:50Z"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Logistics",
+    "created": {
+      "idAdmin": 63,
+      "timestamp": "2021-10-18T05:39:50Z"
+    },
+    "modified": {
+      "idAdmin": 85,
+      "timestamp": "2021-10-12T21:21:16Z"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Experienced Logistics",
+    "created": {
+      "idAdmin": 57,
+      "timestamp": "2021-10-03T06:25:54Z"
+    },
+    "modified": {
+      "idAdmin": 62,
+      "timestamp": "2021-09-07T04:57:31Z"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Industrial Assembly",
+    "created": {
+      "idAdmin": 31,
+      "timestamp": "2021-10-06T07:10:49Z"
+    },
+    "modified": {
+      "idAdmin": 81,
+      "timestamp": "2021-01-07T03:12:15Z"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Experienced Industrial Assembly",
+    "created": {
+      "idAdmin": 29,
+      "timestamp": "2021-08-09T02:05:16Z"
+    },
+    "modified": {
+      "idAdmin": 24,
+      "timestamp": "2021-01-17T17:48:24Z"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Cash and Treasury",
+    "created": {
+      "idAdmin": 94,
+      "timestamp": "2021-06-08T13:38:41Z"
+    },
+    "modified": {
+      "idAdmin": 33,
+      "timestamp": "2020-12-10T07:37:51Z"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Cash and Treasury Experienced",
+    "created": {
+      "idAdmin": 97,
+      "timestamp": "2021-04-28T01:02:21Z"
+    },
+    "modified": {
+      "idAdmin": 96,
+      "timestamp": "2021-07-13T21:58:39Z"
+    }
+  },
+  {
+    "id": 11,
+    "name": "Customer Service",
+    "created": {
+      "idAdmin": 56,
+      "timestamp": "2021-08-01T17:48:35Z"
+    },
+    "modified": {
+      "idAdmin": 10,
+      "timestamp": "2021-04-28T15:39:34Z"
+    }
+  },
+  {
+    "id": 12,
+    "name": "Customer Service Experienced",
+    "created": {
+      "idAdmin": 28,
+      "timestamp": "2021-05-06T14:15:21Z"
+    },
+    "modified": {
+      "idAdmin": 62,
+      "timestamp": "2021-01-31T15:00:02Z"
+    }
+  }
+]
