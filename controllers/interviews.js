@@ -42,27 +42,27 @@ const updateInterview = (req, res) => {
         if (error) {
             return res.status(400).send(error)
         }
-        return res.status(201).send(updatedInterview)
+        return res.status(200).send(updatedInterview)
     })
 }
 
 const deleteInterview = (req, res) => {
-    let removeInterview
+    let deletedInterview
     const filteredInterview = Interviews.filter((interview) => {
         if (interview.id === req.query.id) {
-            removeInterview = interview
+            deletedInterview = interview
             return false
         }
         return true
     })
-    if (!removeInterview) {
+    if (!deletedInterview) {
         return res.status(404).send('Interview NOT found')
     }
     fs.writeFile('./data/interviews.json', JSON.stringify(filteredInterview), {}, (error) => {
         if (error) {
             return res.status(400).send(error)
         }
-        return res.status(201).send(removeInterview)
+        return res.status(204).send(deletedInterview)
     })
 }
 
