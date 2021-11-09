@@ -42,7 +42,7 @@ const updateSession = (req, res) => {
         if (error) {
             return res.status(400).send(error)
         }
-        return res.status(201).json(updatedSession)
+        return res.status(200).json(updatedSession)
     })
 }
 
