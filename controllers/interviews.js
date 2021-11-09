@@ -47,14 +47,22 @@ const updateInterview = (req, res) => {
 }
 
 const deleteInterview = (req, res) => {
-    const filteredInterview = Interviews.filter(interview => interview.id != req.query.id)
-    const deleteInterview = Interviews.filter(interview => interview.id == req.query.id)
-    if (!deleteInterview.length) res.status(404).send('Interview NOT found')
+    let removeInterview
+    const filteredInterview = Interviews.filter((interview) => {
+        if (interview.id === req.query.id) {
+            removeInterview = interview
+            return false
+        }
+        return true
+    })
+    if (!removeInterview) {
+        return res.status(404).send('Interview NOT found')
+    }
     fs.writeFile('./data/interviews.json', JSON.stringify(filteredInterview), {}, (error) => {
         if (error) {
             return res.status(400).send(error)
         }
-        return res.status(201).send(deleteInterview)
+        return res.status(201).send(removeInterview)
     })
 }
 
