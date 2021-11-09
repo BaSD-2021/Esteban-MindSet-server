@@ -9,15 +9,15 @@ MindSet is a system that provides Human Resources services to companies.
 It helps the users to find their perfect job according their professional profile.
 It only takes 3 step to accomplish.
 
-### First step: 
+### <u>First step:</u> 
 
 Make an account by complete all the personal information required.
 
-### <u>Second step:<u> 
+### <u>Second step:</u> 
 
 The app will Schedule an interview with our psychologist, this will help you to find you professional profile. Once the interview is done,the app will match your professional profile with the companie's search.
 
-### Third step:
+### <u>Third step:</u>
 
 ¡Be ready for you interview!
 
