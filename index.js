@@ -1,4 +1,5 @@
 const express = require("express")
+const sessions = require('./controllers/sessions')
 const interviews = require('./controllers/interviews')
 const profiles = require("./controllers/profiles")
 const clients = require("./controllers/clients")
@@ -11,8 +12,13 @@ const app = express()
 const PORT = 4000
 
 app.get("/", (req, res) => {
-  res.send("La Bestia does the best readmes ever")
+    res.send("La Bestia does the best readmes ever")
 })
+
+app.get('/sessions', sessions.listSession)
+app.get('/sessions/create', sessions.createSession)
+app.get('/sessions/update', sessions.updateSession)
+app.get('/sessions/delete', sessions.deleteSession)
 
 app.get('/interviews', interviews.listInterviews)
 app.get('/interviews/create', interviews.createInterview)
