@@ -1,4 +1,7 @@
 const express = require("express")
+const mongoose = require('mongoose')
+const cors = require('cors')
+
 const sessions = require('./controllers/sessions')
 const interviews = require('./controllers/interviews')
 const profiles = require("./controllers/profiles")
@@ -11,9 +14,18 @@ const admins = require('./controllers/admins');
 const app = express()
 const PORT = 4000
 
-app.get("/", (req, res) => {
-    res.send("La Bestia does the best readmes ever")
-})
+mongoose.connect(
+  'mongodb+srv://BaSD:BaSD2021@cluster0.5vk6q.mongodb.net/mindSet?retryWrites=true&w=majority',
+  (error) => {
+    if (error) {
+      console.log("Error: ", error)
+    } else {
+      console.log("Database connected")
+    }
+  }
+)
+
+app.use(cors())
 
 app.get('/sessions', sessions.listSession)
 app.get('/sessions/create', sessions.createSession)
