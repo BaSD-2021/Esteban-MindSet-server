@@ -1,18 +1,18 @@
-const express = require('express')
-const controller = require('../controllers/positions')
+const express = require('express');
+const controller = require('../controllers/positions');
 
-const router = express.Router()
+const router = express.Router();
 
 const {
   createPosition,
   updatePosition,
   deletePosition,
-  listPositions
-} = controller
+  listPositions,
+} = controller;
 
-router.post('/', createPosition)
-router.put('/', updatePosition)
-router.delete('/', deletePosition)
-router.get('/', listPositions)
+router.post('/', createPosition);
+router.put('/', updatePosition);
+router.delete('/', deletePosition);
+router.get('/', listPositions);
 
-module.exports = router
+module.exports = router;
