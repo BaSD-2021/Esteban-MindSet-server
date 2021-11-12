@@ -18,9 +18,11 @@ mongoose.connect(
   'mongodb+srv://BaSD:BaSD2021@cluster0.5vk6q.mongodb.net/mindSet?retryWrites=true&w=majority',
   (error) => {
     if (error) {
-      console.log('Error: ', error);
+      // eslint-disable-next-line no-console
+      console.log('🔴 Database error: ', error);
     } else {
-      console.log('Database connected');
+      // eslint-disable-next-line no-console
+      console.log('🟢 Database connected');
     }
   },
 );
@@ -64,4 +66,7 @@ app.get('/psychologists/update', psychologists.updatePsychologist);
 app.get('/admins', admins.getAdmins);
 app.get('/admins/update/:id', admins.updateAdmin);
 
-app.listen(PORT, () => console.log(`Server runing on port ${PORT}`));
+app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
+  console.log(`Server runing on port ${PORT}`);
+});
