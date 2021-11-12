@@ -10,9 +10,9 @@ mongoose.connect(
   'mongodb+srv://BaSD:BaSD2021@cluster0.5vk6q.mongodb.net/mindSet?retryWrites=true&w=majority',
   (error) => {
     if (error) {
-      console.log('Error: ', error);
+      console.log('🔴 Database error: ', error);
     } else {
-      console.log('Database connected');
+      console.log('🟢 Database connected');
     }
   },
 );
