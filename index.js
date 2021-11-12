@@ -10,8 +10,10 @@ mongoose.connect(
   'mongodb+srv://BaSD:BaSD2021@cluster0.5vk6q.mongodb.net/mindSet?retryWrites=true&w=majority',
   (error) => {
     if (error) {
+      // eslint-disable-next-line no-console
       console.log('🔴 Database error: ', error);
     } else {
+      // eslint-disable-next-line no-console
       console.log('🟢 Database connected');
     }
   },
