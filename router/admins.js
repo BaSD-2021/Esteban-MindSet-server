@@ -1,14 +1,14 @@
-const express = require('express')
-const controller = require('../controllers/admins')
+const express = require('express');
+const controller = require('../controllers/admins');
 
-const router = express.Router()
+const router = express.Router();
 
 const {
   getAdmins,
-	updateAdmin
-} = controller
+  updateAdmin,
+} = controller;
 
-router.get('/', getAdmins)
-router.put('/:id', updateAdmin)
+router.get('/', getAdmins);
+router.put('/:id', updateAdmin);
 
-module.exports = router
+module.exports = router;
