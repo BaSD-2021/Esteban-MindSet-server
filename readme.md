@@ -28,9 +28,21 @@ The app will schedule interviews with companies that the search match with your 
 # Steps to see the app
 
 - Clone this repository: https://github.com/estefrare/BaSD-MindSet.git
-- Install the dependecies: npm install
-- Run the app: npm run start
+- Install the dependecies: 
+
+      npm install
+- Run the app: 
+
+      npm run start
+  
+  -  Server running on http://localhost:4000/api
+
+<br>
+
 - Use Postman (or your preferred browser) and use the GET request in the routes described in the index.js.
+- Use ESlint to check the code styles, syntax and find problems. 
+
+      npm run lint
 
 
 <br>
