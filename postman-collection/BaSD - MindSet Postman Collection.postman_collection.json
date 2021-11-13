@@ -67,11 +67,31 @@
 			"item": [
 				{
 					"name": "CreateInterview",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPostulant\": \"testIdPostulant\",\r\n    \"idClient\": \"testIdClient\",\r\n    \"idApplication\": \"testIdApplication\",\r\n    \"status\": \"assigned\",\r\n    \"date\": \"2021-11-13\",\r\n    \"notes\": \"good guy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{url}}/api/interviews?idPostulant=testIdPostulant&idClient=testIdClient&idApplication=testIdApplication&status=failed&date=2022-06-11&notes",
+							"raw": "{{url}}/api/interviews",
 							"host": [
 								"{{url}}"
 							],
@@ -83,31 +103,37 @@
 								{
 									"key": "idPostulant",
 									"value": "testIdPostulant",
-									"description": "required"
+									"description": "required",
+									"disabled": true
 								},
 								{
 									"key": "idClient",
 									"value": "testIdClient",
-									"description": "required"
+									"description": "required",
+									"disabled": true
 								},
 								{
 									"key": "idApplication",
 									"value": "testIdApplication",
-									"description": "required"
+									"description": "required",
+									"disabled": true
 								},
 								{
 									"key": "status",
 									"value": "failed",
-									"description": "required"
+									"description": "required",
+									"disabled": true
 								},
 								{
 									"key": "date",
 									"value": "2022-06-11",
-									"description": "required"
+									"description": "required",
+									"disabled": true
 								},
 								{
 									"key": "notes",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -119,8 +145,17 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPostulant\": \"618fe874e62c3e9b42ede1233\",\r\n    \"idClient\": \"618fe874e62c3e9b42ede1233\",\r\n    \"idApplication\": \"618fe874e62c3e9b42ede1233\",\r\n    \"status\": \"assigned\",\r\n    \"date\": \"2021-11-13\",\r\n    \"notes\": \"bad haircut\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{url}}/api/interviews/:id?idClient=clientId&date=2022-06-11&idPostulant=testIdPostulant4&idApplication=testIdApplication",
+							"raw": "{{url}}/api/interviews/:id",
 							"host": [
 								"{{url}}"
 							],
@@ -129,38 +164,10 @@
 								"interviews",
 								":id"
 							],
-							"query": [
-								{
-									"key": "idClient",
-									"value": "clientId"
-								},
-								{
-									"key": "status",
-									"value": "assigned",
-									"disabled": true
-								},
-								{
-									"key": "date",
-									"value": "2022-06-11"
-								},
-								{
-									"key": "notes",
-									"value": "good guy",
-									"disabled": true
-								},
-								{
-									"key": "idPostulant",
-									"value": "testIdPostulant4"
-								},
-								{
-									"key": "idApplication",
-									"value": "testIdApplication"
-								}
-							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "618f54d5c38b14d43e33686b",
+									"value": "618fe874e62c3e9b42ede02a",
 									"description": "required"
 								}
 							]
@@ -170,9 +177,16 @@
 				},
 				{
 					"name": "ListInterviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{url}}/api/interviews",
 							"host": [
@@ -204,7 +218,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "618f54d5c38b14d43e33686b",
+									"value": "618fe8fde62c3e9b42ede034",
 									"description": "required"
 								}
 							]
