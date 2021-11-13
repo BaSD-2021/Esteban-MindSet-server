@@ -2,13 +2,9 @@ const Clients = require('../models/Clients');
 
 const listClients = (req, res) => {
   Clients.find()
-  .then((clients) => {
-    return res.status(200).json(clients)
-  })
-  .catch((error) => {
-    return res.status(400).json(error)
-  })
-}
+    .then((clients) => res.status(200).json(clients))
+    .catch((error) => res.status(400).json(error));
+};
 
 const createClient = (req, res) => {
   const client = new Clients({
@@ -28,30 +24,30 @@ const createClient = (req, res) => {
     },
     modified: {
       admin: req.body.modified.admin,
-      timestamp: new Date().getTime().toString()
-    }
-  })
+      timestamp: new Date().getTime().toString(),
+    },
+  });
 
   client.save((error, client) => {
-    if(error){
-      return res.status(400).json(error)
+    if (error) {
+      return res.status(400).json(error);
     }
-    return res.status(201).json(client)
-  })
-
-}
+    return res.status(201).json(client);
+  });
+};
 
 const deleteClient = (req, res) => {
   Clients.findByIdAndDelete(req.params.id, (error) => {
-    if(error){
-      return res.status(400).json(error)
+    if (error) {
+      return res.status(400).json(error);
     }
-    return res.status(200).json(`Client with id ${req.params.id} was removed`)
-  })
-}
+    return res.status(200).json(`Client with id ${req.params.id} was removed`);
+  });
+};
 
 const updateClient = (req, res) => {
-  Clients.findByIdAndUpdate(req.params.id,
+  Clients.findByIdAndUpdate(
+    req.params.id,
     {
       name: req.body.name,
       phone: req.body.phone,
@@ -65,21 +61,21 @@ const updateClient = (req, res) => {
       description: req.body.description,
       modified: {
         admin: req.body.modified.admin,
-        timestamp: new Date().getTime().toString()
-      }
+        timestamp: new Date().getTime().toString(),
+      },
     },
-    {new: true},
+    { new: true },
     (error, newClient) => {
       if (!newClient) {
-        return res.status(400).json({ msg: `Client with id: ${req.params.id} was not found` })
+        return res.status(400).json({ msg: `Client with id: ${req.params.id} was not found` });
       }
-      if(error){
-        return res.status(400).json(error)
+      if (error) {
+        return res.status(400).json(error);
       }
-      return res.status(200).json({msg: 'Client updated', newClient})
-    }
-  )
-}
+      return res.status(200).json({ msg: 'Client updated', newClient });
+    },
+  );
+};
 
 module.exports = {
   createClient,
