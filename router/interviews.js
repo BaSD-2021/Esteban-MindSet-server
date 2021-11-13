@@ -12,7 +12,7 @@ const {
 
 router.post('/', createInterview);
 router.put('/:id', updateInterview);
-router.delete('/', deleteInterview);
+router.delete('/:id', deleteInterview);
 router.get('/', listInterviews);
 
 module.exports = router;

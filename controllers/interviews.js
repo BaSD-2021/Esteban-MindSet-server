@@ -51,25 +51,17 @@ const updateInterview = (req, res) => {
 };
 
 const deleteInterview = (req, res) => {
-  let deletedInterview;
-  const filteredInterview = Interviews.filter((interview) => {
-    if (interview.id === req.query.id) {
-      deletedInterview = interview;
-      return false;
-    }
-    return true;
-  });
-  if (!deletedInterview) {
-    return res.status(404).send('Interview NOT found');
-  }
-  fs.writeFile('./data/interviews.json', JSON.stringify(filteredInterview), {}, (error) => {
+  Interviews.findByIdAndDelete(req.params.id, (error) => {
     if (error) {
-      return res.status(400).send(error);
+      return res.status(400).json(error);
     }
+    return res.status(200).json('interview deleted successfully');
   });
-  return res.status(204).send(deletedInterview);
 };
 
 module.exports = {
-  listInterviews, createInterview, updateInterview, deleteInterview,
+  listInterviews,
+  createInterview,
+  updateInterview,
+  deleteInterview,
 };
