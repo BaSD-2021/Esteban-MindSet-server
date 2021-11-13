@@ -2,37 +2,37 @@ const fs = require('fs');
 const admins = require('../data/admins.json');
 
 const getAdmins = (req, res) => {
-	res.status(200).json(admins)
-}
+  res.status(200).json(admins);
+};
 
 const updateAdmin = (req, res) => {
-  let updatedAdmin
-  const updatedAdmins = admins.map(admin => {
+  let updatedAdmin;
+  const updatedAdmins = admins.map((admin) => {
     if (admin.id === parseInt(req.params.id)) {
       updatedAdmin = {
-				id: parseInt(req.params.id),
+        id: parseInt(req.params.id),
         email: req.query.email || admin.email,
         password: req.query.password || admin.password,
         name: req.query.name || admin.name,
-      }
-			return updatedAdmin
+      };
+      return updatedAdmin;
     }
-		return admin
-  })
+    return admin;
+  });
 
   if (!updatedAdmin) {
-    return res.status(400).json({ msg: `Admin with id: ${req.params.id} was not found` })
+    return res.status(400).json({ msg: `Admin with id: ${req.params.id} was not found` });
   }
 
   fs.writeFile('./data/admins.json', JSON.stringify(updatedAdmins), {}, (error) => {
     if (error) {
-      return res.status(400).send(error)
+      return res.status(400).send(error);
     }
-    return res.status(200).json({ msg: 'Admin updated', updatedAdmins })
-  })
-}
+    return res.status(200).json({ msg: 'Admin updated', updatedAdmins });
+  });
+};
 
 module.exports = {
-	getAdmins,
-	updateAdmin,
+  getAdmins,
+  updateAdmin,
 };
