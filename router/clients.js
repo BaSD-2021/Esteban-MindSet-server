@@ -4,13 +4,13 @@ const controller = require('../controllers/clients');
 const router = express.Router();
 
 const {
-  // createClient,
+  createClient,
   // updateClient,
   // deleteClient,
   listClients,
 } = controller;
 
-// router.post('/', createClient);
+router.post('/', createClient);
 // router.put('/:id', updateClient);
 // router.delete('/:id', deleteClient);
 router.get('/', listClients);
