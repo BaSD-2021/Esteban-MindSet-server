@@ -33,7 +33,7 @@ const updatePosition = (req, res) => {
 
 const createPosition = (req, res) => {
   const position = new Positions({
-    idClient: req.body.idClient,
+    client: req.body.client,
     jobDescription: req.body.jobDescription,
     vacancy: req.body.vacancy,
     professionalProfiles: req.body.professionalProfiles,

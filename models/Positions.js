@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const PositionsSchema = new Schema({
-    idClient: {
+    client: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Clients',
         required: true
