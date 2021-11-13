@@ -1,6 +1,8 @@
 const express = require('express');
 const controller = require('../controllers/positions');
 const router = express.Router();
+const positionsValidations = require('../validations/positions');
+
 
 const {
   createPosition,
@@ -10,8 +12,8 @@ const {
 } = controller;
 
 router.get('/', listPositions);
-router.post('/', createPosition);
-router.put('/:id', updatePosition);
+router.post('/', positionsValidations.require, createPosition);
+router.put('/:id', positionsValidations.require, updatePosition);
 router.delete('/:id', deletePosition);
 
 module.exports = router;
