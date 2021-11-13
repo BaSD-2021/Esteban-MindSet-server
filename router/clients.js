@@ -6,13 +6,13 @@ const router = express.Router();
 const {
   createClient,
   // updateClient,
-  // deleteClient,
+  deleteClient,
   listClients,
 } = controller;
 
 router.post('/', createClient);
 // router.put('/:id', updateClient);
-// router.delete('/:id', deleteClient);
+router.delete('/:id', deleteClient);
 router.get('/', listClients);
 
 module.exports = router;

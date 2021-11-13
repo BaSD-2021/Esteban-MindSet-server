@@ -41,17 +41,22 @@ const createClient = (req, res) => {
 
 }
 
-// const updateClient = (req, res) => {
-  
-// }
+const deleteClient = (req, res) => {
+  Clients.findByIdAndDelete(req.params.id, (error) => {
+    if(error){
+      return res.status(400).json(error)
+    }
+    return res.status(200).json(`Client with id ${req.params.id} was removed`)
+  })
+}
 
-// const deleteClient = (req, res) => {
+// const updateClient = (req, res) => {
   
 // }
 
 module.exports = {
   createClient,
   // updateClient,
-  // deleteClient,
+  deleteClient,
   listClients,
 }
