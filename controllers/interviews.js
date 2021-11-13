@@ -11,13 +11,14 @@ const listInterviews = (req, res) => {
 };
 
 const createInterview = (req, res) => {
+  const queries = req.query;
   const interview = new Interviews({
-    idPostulant: req.query.idPostulant,
-    idClient: req.query.idClient,
-    idApplication: req.query.idApplication,
-    status: req.query.status,
-    date: req.query.date,
-    notes: req.query.notes,
+    idPostulant: queries.idPostulant,
+    idClient: queries.idClient,
+    idApplication: queries.idApplication,
+    status: queries.status,
+    date: queries.date,
+    notes: queries.notes,
   });
 
   interview.save((error) => {
@@ -29,15 +30,16 @@ const createInterview = (req, res) => {
 };
 
 const updateInterview = (req, res) => {
+  const queries = req.query;
   Interviews.findByIdAndUpdate(
     req.params.id,
     {
-      idPostulant: req.query.idPostulant,
-      idClient: req.query.idClient,
-      idApplication: req.query.idApplication,
-      status: req.query.status,
-      date: req.query.date,
-      notes: req.query.notes,
+      idPostulant: queries.idPostulant,
+      idClient: queries.idClient,
+      idApplication: queries.idApplication,
+      status: queries.status,
+      date: queries.date,
+      notes: queries.notes,
     },
     { new: true },
     (error, newInterview) => {

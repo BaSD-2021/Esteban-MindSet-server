@@ -1,4 +1,4 @@
-const Interviews = require("../models/Interviews");
+const Interviews = require('../models/Interviews');
 
 const validateInterview = (req, res, next) => {
   const queries = req.query;
@@ -18,6 +18,7 @@ const validateInterview = (req, res, next) => {
     return res.status(400).send('Date is required');
   }
   next();
+  return res.status(200);
 };
 
 const validateInterviewId = (req, res, next) => {

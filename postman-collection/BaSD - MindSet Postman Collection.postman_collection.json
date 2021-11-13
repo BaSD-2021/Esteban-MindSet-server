@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d0a6fe1e-894d-47a8-b818-1813ac3ffbb5",
+		"_postman_id": "bb1ec44d-cfa3-4d8b-b433-042fb2a8ffed",
 		"name": "BaSD - MindSet Postman Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -13,7 +13,9 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -62,11 +64,189 @@
 		},
 		{
 			"name": "Interviews",
-			"item": []
+			"item": [
+				{
+					"name": "CreateInterview",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/interviews?idPostulant=testIdPostulant&idClient=testIdClient&idApplication=testIdApplication&status=failed&date=2022-06-11&notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"interviews"
+							],
+							"query": [
+								{
+									"key": "idPostulant",
+									"value": "testIdPostulant",
+									"description": "required"
+								},
+								{
+									"key": "idClient",
+									"value": "testIdClient",
+									"description": "required"
+								},
+								{
+									"key": "idApplication",
+									"value": "testIdApplication",
+									"description": "required"
+								},
+								{
+									"key": "status",
+									"value": "failed",
+									"description": "required"
+								},
+								{
+									"key": "date",
+									"value": "2022-06-11",
+									"description": "required"
+								},
+								{
+									"key": "notes",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateInterview",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/interviews/:id?idClient=clientId&date=2022-06-11&idPostulant=testIdPostulant4&idApplication=testIdApplication",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"interviews",
+								":id"
+							],
+							"query": [
+								{
+									"key": "idClient",
+									"value": "clientId"
+								},
+								{
+									"key": "status",
+									"value": "assigned",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2022-06-11"
+								},
+								{
+									"key": "notes",
+									"value": "good guy",
+									"disabled": true
+								},
+								{
+									"key": "idPostulant",
+									"value": "testIdPostulant4"
+								},
+								{
+									"key": "idApplication",
+									"value": "testIdApplication"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "618f54d5c38b14d43e33686b",
+									"description": "required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListInterviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/interviews",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"interviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteInterview",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/interviews/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"interviews",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "618f54d5c38b14d43e33686b",
+									"description": "required"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Psichologists",
 			"item": []
+		},
+		{
+			"name": "Postulants",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:4000/api/"
 		}
 	]
 }
