@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "start": "nodemon index.js"
   },
   "repository": {

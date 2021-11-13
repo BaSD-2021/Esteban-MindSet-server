@@ -1,5 +1,5 @@
-const fs = require('fs')
-const Applications = require('../data/applications.json')
+const fs = require('fs');
+const Applications = require('../data/applications.json');
 
 const createApplication = (req, res) => {
   const newApplication = {
@@ -7,40 +7,40 @@ const createApplication = (req, res) => {
     idPosition: req.query.idPosition,
     idPostulant: req.query.idPostulant,
     date: req.query.date,
-    profile: req.query.profile
-  }
-  Applications.push(newApplication)
-  fs.writeFile('./data/applications.json', JSON.stringify(Applications), {}, err => {
+    profile: req.query.profile,
+  };
+  Applications.push(newApplication);
+  fs.writeFile('./data/applications.json', JSON.stringify(Applications), {}, (err) => {
     if (err) {
-      return res.status(400).send(err)
-    } 
-    return res.status(201).send(newApplication)
-  })
-}
+      return res.status(400).send(err);
+    }
+    return res.status(201).send(newApplication);
+  });
+};
 
 const deleteApplication = (req, res) => {
-  let removedApplication
-  const filteredApplications = Applications.filter(app => {
-    if(app.id === req.query.id) {
-      removedApplication = app
-      return false
+  let removedApplication;
+  const filteredApplications = Applications.filter((app) => {
+    if (app.id === req.query.id) {
+      removedApplication = app;
+      return false;
     }
-    return true
-  })
+    return true;
+  });
 
-  if(!removedApplication.length) res.status(404).send('application not found')
-  fs.writeFile('./data/applications.json', JSON.stringify(filteredApplications), {}, err => {
+  if (!removedApplication.length) res.status(404).send('application not found');
+  fs.writeFile('./data/applications.json', JSON.stringify(filteredApplications), {}, (err) => {
     if (err) {
-      return res.status(400).send(err)
+      return res.status(400).send(err);
     }
-    return res.status(204).send(removedApplication)
-  }) 
-}
+    return res.status(204).send(removedApplication);
+  });
+};
 
-const listApplication = (req, res) => res.status(200).json(Applications)
+const listApplication = (req, res) => res.status(200).json(Applications);
 
 module.exports = {
   createApplication,
   deleteApplication,
   listApplication,
-}
+};
