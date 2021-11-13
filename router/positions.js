@@ -1,6 +1,5 @@
 const express = require('express');
 const controller = require('../controllers/positions');
-
 const router = express.Router();
 
 const {
@@ -10,9 +9,9 @@ const {
   listPositions,
 } = controller;
 
-router.post('/', createPosition);
-router.put('/', updatePosition);
-router.delete('/', deletePosition);
 router.get('/', listPositions);
+router.post('/', createPosition);
+router.put('/:id', updatePosition);
+router.delete('/:id', deletePosition);
 
 module.exports = router;
