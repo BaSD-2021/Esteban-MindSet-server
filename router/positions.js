@@ -12,8 +12,8 @@ const {
 } = controller;
 
 router.get('/', listPositions);
-router.post('/', positionsValidations.require, createPosition);
-router.put('/:id', positionsValidations.require, updatePosition);
+router.post('/', positionsValidations.required, createPosition);
+router.put('/:id', positionsValidations.required, updatePosition);
 router.delete('/:id', deletePosition);
 
 module.exports = router;

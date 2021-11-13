@@ -1,4 +1,4 @@
-const require = (req, res, next) => {
+const required = (req, res, next) => {
     if(!req.body.idClient){
         return res.status(400).send('You must complete the idClient');
     }
@@ -12,5 +12,5 @@ const require = (req, res, next) => {
 }
 
 module.exports = {
-    require, 
+    required, 
 };
