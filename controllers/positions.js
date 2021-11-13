@@ -31,8 +31,25 @@ const updatePosition = (req, res) => {
   )
 }
 
+const createPosition = (req, res) => {
+  const position = new Positions({
+    idClient: req.body.idClient,
+    jobDescription: req.body.jobDescription,
+    vacancy: req.body.vacancy,
+    professionalProfiles: req.body.professionalProfiles,
+    isOpen: req.body.isOpen
+  })
+
+  position.save((error, position) => {
+    if(error){
+      return res.status(400).json(error)
+    }
+    return res.status(201).json(position)
+  })
+}
+
 module.exports = {
-  // createPosition,
+  createPosition,
   updatePosition,
   // deletePosition,
   listPositions

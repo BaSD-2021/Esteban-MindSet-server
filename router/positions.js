@@ -10,7 +10,7 @@ const {
 } = controller;
 
 router.get('/', listPositions);
-// router.post('/', createPosition);
+router.post('/', createPosition);
 router.put('/:id', updatePosition);
 // router.delete('/:id', deletePosition);
 
