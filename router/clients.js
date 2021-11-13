@@ -5,13 +5,13 @@ const router = express.Router();
 
 const {
   createClient,
-  // updateClient,
+  updateClient,
   deleteClient,
   listClients,
 } = controller;
 
 router.post('/', createClient);
-// router.put('/:id', updateClient);
+router.put('/:id', updateClient);
 router.delete('/:id', deleteClient);
 router.get('/', listClients);
 
