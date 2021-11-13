@@ -13,8 +13,8 @@ const listInterviews = (req, res) => {
 const createInterview = (req, res) => {
   const bodyReq = req.body;
   const interview = new Interviews({
-    postulant: req.body.postulant,
-    client: req.body.client,
+    postulant: bodyReq.postulant,
+    client: bodyReq.client,
     application: bodyReq.application,
     status: bodyReq.status,
     date: bodyReq.date,

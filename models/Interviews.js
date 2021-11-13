@@ -22,7 +22,13 @@ const InterviewSchema = new Schema({
   //   required: true,
   //   ref: 'Applications',
   // },
-  status: { type: String, required: true },
+  status:
+  {
+    type: String,
+    enum: ['succesful', 'failed', 'cancelled', 'assigned', 'confirmed'],
+    default: 'assigned',
+    required: true,
+  },
   date: { type: Date, required: true },
   notes: { type: String },
 });
