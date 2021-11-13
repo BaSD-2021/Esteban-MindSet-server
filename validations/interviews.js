@@ -1,20 +1,20 @@
 const Interviews = require('../models/Interviews');
 
 const validateInterview = (req, res, next) => {
-  const queries = req.query;
-  if (!queries.idPostulant) {
+  const bodyReq = req.body;
+  if (!bodyReq.idPostulant) {
     return res.status(400).send('Postulant id is required');
   }
-  if (!queries.idClient) {
+  if (!bodyReq.idClient) {
     return res.status(400).send('Client id is required');
   }
-  if (!queries.idApplication) {
+  if (!bodyReq.idApplication) {
     return res.status(400).send('Application id is required');
   }
-  if (!queries.status) {
+  if (!bodyReq.status) {
     return res.status(400).send('Status is required');
   }
-  if (!queries.date) {
+  if (!bodyReq.date) {
     return res.status(400).send('Date is required');
   }
   next();
