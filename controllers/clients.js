@@ -86,4 +86,4 @@ module.exports = {
   updateClient,
   deleteClient,
   listClients,
-}
+};
