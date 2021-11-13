@@ -48,9 +48,18 @@ const createPosition = (req, res) => {
   })
 }
 
+const deletePosition = (req, res) => {
+  Positions.findByIdAndDelete(req.params.id, (error) => {
+    if(error){
+      res.status(400).json(error)
+    }
+    res.status(200).json(`Position with id ${req.params.id} was removed`)
+  })
+}
+
 module.exports = {
   createPosition,
   updatePosition,
-  // deletePosition,
+  deletePosition,
   listPositions
 }

@@ -12,6 +12,6 @@ const {
 router.get('/', listPositions);
 router.post('/', createPosition);
 router.put('/:id', updatePosition);
-// router.delete('/:id', deletePosition);
+router.delete('/:id', deletePosition);
 
 module.exports = router;
