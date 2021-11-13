@@ -27,44 +27,27 @@ const createInterview = (req, res) => {
     }
     return res.status(201).json(interview);
   });
-  // const newInterview = {
-  //   id: req.query.id,
-  //   idClient: req.query.idClient,
-  //   idPostulant: req.query.idPostulant,
-  //   idApplication: req.query.idApplication,
-  //   date: req.query.date,
-  // };
-  // Interviews.push(newInterview);
-  // fs.writeFile('./data/interviews.json', JSON.stringify(Interviews), {}, (error) => {
-  //   if (error) {
-  //     return res.status(400).send(error);
-  //   }
-  //   return res.status(201).send(newInterview);
-  // });
 };
 
 const updateInterview = (req, res) => {
-  let updatedInterview;
-  const updatedInterviews = Interviews.map((interview) => {
-    if (interview.id === req.query.id) {
-      updatedInterview = {
-        id: req.query.id,
-        idClient: req.query.idClient || interview.idClient,
-        idPostulant: req.query.idPostulant || interview.idPostulant,
-        idApplication: req.query.idApplication || interview.idApplication,
-        date: req.query.date || interview.date,
-      };
-      return updatedInterview;
-    }
-    return interview;
-  });
-  if (!updateInterview) res.status(404).send('Interview NOT found');
-  fs.writeFile('./data/interviews.json', JSON.stringify(updatedInterviews), {}, (error) => {
-    if (error) {
-      return res.status(400).send(error);
-    }
-    return res.status(200).send(updatedInterview);
-  });
+  Interviews.findByIdAndUpdate(
+    req.params.id,
+    {
+      idPostulant: req.query.idPostulant,
+      idClient: req.query.idClient,
+      idApplication: req.query.idApplication,
+      status: req.query.status,
+      date: req.query.date,
+      notes: req.query.notes,
+    },
+    { new: true },
+    (error, newInterview) => {
+      if (error) {
+        return res.status(400).json(error);
+      }
+      return res.status(201).json(newInterview);
+    },
+  );
 };
 
 const deleteInterview = (req, res) => {

@@ -11,7 +11,7 @@ const {
 } = controller;
 
 router.post('/', createInterview);
-router.put('/', updateInterview);
+router.put('/:id', updateInterview);
 router.delete('/', deleteInterview);
 router.get('/', listInterviews);
 
