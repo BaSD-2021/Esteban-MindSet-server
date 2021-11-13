@@ -1,0 +1,396 @@
+[
+  {
+    "id": 1,
+    "first_name": "Bowie",
+    "last_name": "Hucknall",
+    "email": "bhucknall0@slate.com",
+    "phone": "102-153-7274",
+    "address": "97508 Superior Plaza",
+    "birthday": "12/12/2020",
+    "password": "3gcA2GHKx",
+    "primary_studies": {
+      "date": {
+        "start_date": "2021-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "University of Bohol"
+    },
+    "secondary_studies": {
+      "date": {
+        "start_date": "2021-09-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "University of Hydraulic Electric Engineering"
+    },
+    "tertiary_studies": {
+      "date": {
+        "start_date": "2020-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "institute": "Rasmussen College, Florida Campuses"
+    },
+    "university_studies": {
+      "date": {
+        "start_date": "2019-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "university": "The College of Wooster"
+    },
+    "work_experience": [
+      {
+        "company": "Voomm",
+        "date": {
+          "start_date": "2018-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit."
+      }
+    ],
+    "course": [
+      {
+        "institute": "NHTV Breda University of Professional Education",
+        "date": {
+          "start_date": "2017-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "7/14/2020"
+      }
+    ],
+    "about": {
+      "date": {
+        "start_date": "2015-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+    },
+    "available": true
+  },
+  {
+    "id": 2,
+    "first_name": "Cherri",
+    "last_name": "Theuss",
+    "email": "ctheuss1@hao123.com",
+    "phone": "241-251-8511",
+    "address": "89 Larry Terrace",
+    "birthday": "6/23/2021",
+    "password": "HoOT2b6m3kzi",
+    "primary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "Universidad Agraria del Ecuador"
+    },
+    "secondary_studies": {
+      "date": {
+        "start_date": "2012-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "University of New England"
+    },
+    "tertiary_studies": {
+      "date": {
+        "start_date": "2014-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "institute": "University of Gadarif"
+    },
+    "university_studies": {
+      "date": {
+        "start_date": "2014-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "university": "Hanover College"
+    },
+    "work_experience": [
+      {
+        "company": "Voolith",
+        "date": {
+          "start_date": "2014-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus."
+      }
+    ],
+    "course": [
+      {
+        "institute": "Universidad ICESI",
+        "date": {
+          "start_date": "2014-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "6/2/2021"
+      }
+    ],
+    "about": {
+      "date": {
+        "start_date": "2014-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "description": "Nunc nisl."
+    },
+    "available": false
+  },
+  {
+    "id": 3,
+    "first_name": "Ashlee",
+    "last_name": "Porrett",
+    "email": "aporrett2@histats.com",
+    "phone": "950-409-2863",
+    "address": "783 Morrow Circle",
+    "birthday": "3/23/2021",
+    "password": "EuRL5wu01",
+    "primary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "Baker College of Flint"
+    },
+    "secondary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "Taraba State University"
+    },
+    "tertiary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "institute": "University of California, Santa Barbara"
+    },
+    "university_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "university": "Nile University"
+    },
+    "work_experience": [
+      {
+        "company": "Feedbug",
+        "date": {
+          "start_date": "2018-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus."
+      }
+    ],
+    "course": {
+      "institute": "University of Lusaka",
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "description": "8/18/2020"
+    },
+    "about": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc."
+    },
+    "available": true
+  },
+  {
+    "id": 4,
+    "first_name": "Carma",
+    "last_name": "Bortolazzi",
+    "email": "cbortolazzi3@newsvine.com",
+    "phone": "493-325-1697",
+    "address": "561 Lawn Park",
+    "birthday": "3/15/2021",
+    "password": "x9HpJLYI",
+    "primary_studies": {
+      "date": {
+        "start_date": "10/13/2021",
+        "end_date": "11/6/2020"
+      },
+      "school": "Centre Universitaire de Tiaret"
+    },
+    "secondary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "Ho Chi Minh City University of Technology"
+    },
+    "tertiary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "institute": "Perm State Medical Academy"
+    },
+    "university_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "university": "Al-Batterjee Medical College"
+    },
+    "work_experience": [
+      {
+        "company": "Yambee",
+        "date": {
+          "start_date": "2018-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "Nulla tellus. In sagittis dui vel nisl."
+      }
+    ],
+    "course": [
+      {
+        "institute": "Australian Defence Force Academy",
+        "date": {
+          "start_date": "2018-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "5/14/2020"
+      }
+    ],
+    "about": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "description": "Phasellus id sapien in sapien iaculis congue."
+    },
+    "available": true
+  },
+  {
+    "id": 5,
+    "first_name": "Killian",
+    "last_name": "Francescone",
+    "email": "kfrancescone4@google.ca",
+    "phone": "430-914-0611",
+    "address": "93920 Del Sol Plaza",
+    "birthday": "5/23/2021",
+    "password": "vXjLtLenlyL6",
+    "primary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "Beijing University of Posts and Telecommunications"
+    },
+    "secondary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "Girne American University"
+    },
+    "tertiary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "institute": "Queen Arwa University"
+    },
+    "university_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "university": "Nakhchivan State University"
+    },
+    "work_experience": [
+      {
+        "company": "Youbridge",
+        "date": {
+          "start_date": "2018-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci."
+      }
+    ],
+    "course": [
+      {
+        "institute": "Fachhochschule Potsdam",
+        "date": {
+          "start_date": "2018-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "1/16/2021"
+      }
+    ],
+    "about": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "description": "Aenean lectus."
+    },
+    "available": false
+  },
+  {
+    "id": 6,
+    "first_name": "Mel",
+    "last_name": "Iskower",
+    "email": "miskower5@msu.edu",
+    "phone": "491-367-2560",
+    "address": "27394 Ridgeway Parkway",
+    "birthday": "10/3/2021",
+    "password": "7t9jiOL",
+    "primary_studies": {
+      "date": {
+        "start_date": "9/25/2020",
+        "end_date": "2/18/2021"
+      },
+      "school": "University of Brescia"
+    },
+    "secondary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "school": "Universitas Muhammadiyah Mataram"
+    },
+    "tertiary_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "institute": "Drew University"
+    },
+    "university_studies": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "university": "French University in Armenia (UFAR)"
+    },
+    "work_experience": [
+      {
+        "company": "Realblab",
+        "date": {
+          "start_date": "2018-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "In congue."
+      }
+    ],
+    "course": [
+      {
+        "institute": "BGC Trust University, Bangladesh",
+        "date": {
+          "start_date": "2018-10-21T00:43:52Z",
+          "end_date": "2021-10-29T00:43:52Z"
+        },
+        "description": "8/14/2021"
+      }
+    ],
+    "about": {
+      "date": {
+        "start_date": "2018-10-21T00:43:52Z",
+        "end_date": "2021-10-29T00:43:52Z"
+      },
+      "description": "Curabitur gravida nisi at nibh."
+    },
+    "available": true
+  }
+]
