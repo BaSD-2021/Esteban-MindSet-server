@@ -1,11 +1,13 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const ApplicationsSchema = new Schema({
-    idPositions: { type: String, require: true },
-    idPostulants: { type: String, require: true },
-    idInterview: { type: String, require: false },
-    result: { type: String, require: true }
-})
+  id: Schema.Types.ObjectId,
+  positions: { type: String, required: true },
+  postulants: { type: String, required: true },
+  interview: String,
+  result: { type: String, required: true },
+});
 
-module.exports = mongoose.model("Applications", ApplicationsSchema)
+module.exports = mongoose.model('Applications', ApplicationsSchema);

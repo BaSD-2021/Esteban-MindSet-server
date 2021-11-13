@@ -10,7 +10,7 @@ const {
 } = controller;
 
 router.post('/', createApplication);
-router.delete('/', deleteApplication);
+router.delete('/:id', deleteApplication);
 router.get('/', listApplication);
 
 module.exports = router;
