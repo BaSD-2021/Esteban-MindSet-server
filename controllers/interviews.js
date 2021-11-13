@@ -13,9 +13,9 @@ const listInterviews = (req, res) => {
 const createInterview = (req, res) => {
   const bodyReq = req.body;
   const interview = new Interviews({
-    idPostulant: req.body.idPostulant,
-    idClient: req.body.idClient,
-    idApplication: bodyReq.idApplication,
+    postulant: req.body.postulant,
+    client: req.body.client,
+    application: bodyReq.application,
     status: bodyReq.status,
     date: bodyReq.date,
     notes: bodyReq.notes,
@@ -34,9 +34,9 @@ const updateInterview = (req, res) => {
   Interviews.findByIdAndUpdate(
     req.params.id,
     {
-      idPostulant: bodyReq.idPostulant,
-      idClient: bodyReq.idClient,
-      idApplication: bodyReq.idApplication,
+      postulant: bodyReq.postulant,
+      client: bodyReq.client,
+      application: bodyReq.application,
       status: bodyReq.status,
       date: bodyReq.date,
       notes: bodyReq.notes,
