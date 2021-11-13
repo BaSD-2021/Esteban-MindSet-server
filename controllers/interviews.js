@@ -1,4 +1,3 @@
-const fs = require('fs');
 const Interviews = require('../models/Interviews');
 
 const listInterviews = (req, res) => {
