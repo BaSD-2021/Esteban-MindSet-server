@@ -5,8 +5,8 @@ const { Schema } = mongoose;
 const ApplicationsSchema = new Schema(
   {
     id: { type: mongoose.Schema.Types.ObjectId },
-    positions: { type: String, required: true },
-    postulants: { type: String, required: true },
+    positions: { type: String, required: true, ref: 'Id Positions' },
+    postulants: { type: String, required: true, ref: 'Id Postulants' },
     interview: { type: String },
     result: { type: String, required: true },
   },

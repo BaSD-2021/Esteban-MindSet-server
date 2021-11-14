@@ -14,21 +14,22 @@ const createApplication = (req, res) => {
     result: req.body.result,
   });
 
-  // eslint-disable-next-line no-shadow
-  application.save((error, application) => {
+  application.save((error, app) => {
     if (error) {
       return res.status(400).json(error);
     }
-    return res.status(201).json(application);
+    return res.status(201).json(app);
   });
 };
 
 const deleteApplication = (req, res) => {
-  Applications.findOneAndDelete(req.params.id, (error) => {
-    if (error) {
-      return res.status(400).json(`Id ${req.params.id} not found`);
+  Applications.findByIdAndDelete(req.params.id, (error, chosenApplication) => {
+    if (!chosenApplication) {
+      return res.status(404).json(`Id ${req.params.id} not found`);
+    } if (error) {
+      return res.status(400).json(error);
     }
-    return res.status(201).json(`Id ${req.params.id} was remove successfully`);
+    return res.status(204).send(`Id ${req.params.id} was remove successfully`);
   });
 };
 
