@@ -43,8 +43,8 @@ const updateInterview = (req, res) => {
     },
     { new: true },
     (error, newInterview) => {
-      if (newInterview === null) {
-        return res.status(400).json('Interview id does not exist');
+      if (!newInterview) {
+        return res.status(404).json('Interview id does not exist');
       }
 
       if (error) {
@@ -57,13 +57,13 @@ const updateInterview = (req, res) => {
 
 const deleteInterview = (req, res) => {
   Interviews.findByIdAndDelete(req.params.id, (error, pointedInterview) => {
-    if (pointedInterview === null) {
-      return res.status(400).json('Interview id does not exist');
+    if (!pointedInterview) {
+      return res.status(404).json('Interview id does not exist');
     }
     if (error) {
       return res.status(400).json(error);
     }
-    return res.status(200).json('interview deleted successfully');
+    return res.status(204).send();
   });
 };
 
