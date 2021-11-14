@@ -1,8 +1,8 @@
 const express = require('express');
 const controller = require('../controllers/positions');
+
 const router = express.Router();
 const positionsValidations = require('../validations/positions');
-
 
 const {
   createPosition,

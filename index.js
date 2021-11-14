@@ -25,7 +25,6 @@ app.use(cors());
 
 app.use('/api', router);
 
-
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Server runing on port ${PORT}`);
