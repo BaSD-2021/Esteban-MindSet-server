@@ -14,10 +14,11 @@ const {
 const {
   validateInterview,
   validateInterviewId,
+  validateUpdatedInterview,
 } = validations;
 
 router.post('/', validateInterview, createInterview);
-router.put('/:id', validateInterviewId, updateInterview);
+router.put('/:id', validateInterviewId, validateUpdatedInterview, updateInterview);
 router.delete('/:id', validateInterviewId, deleteInterview);
 router.get('/', listInterviews);
 
