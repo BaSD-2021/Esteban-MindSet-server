@@ -30,17 +30,24 @@ const createPsychologist = (req, res) => {
 
 const deletePsychologist = (req, res) => {
   const params = req.query;
-  const filteredPsychologists = Psychologists.filter((psychologist) => psychologist.id !== params.id);
+  let psychologistDeleted;
+  const filteredPsychologists = Psychologists.filter((psychologist) => {
+    if (psychologist.id !== params.id) {
+      psychologistDeleted = psychologist;
+      return false;
+    }
+    return true;
+  });
 
-  if (JSON.stringify(filteredPsychologists) === JSON.stringify(Psychologists)) {
+  if (!psychologistDeleted) {
     return res.status(404).send('psychologist not found');
   }
 
-  fs.writeFile('./data/psychologists.json', JSON.stringify(filteredPsychologists), {}, (error) => {
+  return fs.writeFile('./data/psychologists.json', JSON.stringify(filteredPsychologists), {}, (error) => {
     if (error) {
       res.status(400).send(error);
     }
-    return res.status(204).json(filteredPsychologists);
+    return res.status(204).json(psychologistDeleted);
   });
 };
 
@@ -71,13 +78,12 @@ const updatePsychologist = (req, res) => {
     return res.status(200).send('psychologist found, but there was nothing to change');
   }
 
-  fs.writeFile('./data/psychologists.json', JSON.stringify(updatedPsychologists), {}, (err) => {
+  return fs.writeFile('./data/psychologists.json', JSON.stringify(updatedPsychologists), {}, (error) => {
     if (error) {
       res.status(400).send(error);
     }
     return res.status(200).json(updatedPsychologists);
   });
-  res.send(updatedPsychologist);
 };
 
 module.exports = {

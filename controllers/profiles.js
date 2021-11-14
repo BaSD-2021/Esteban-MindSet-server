@@ -34,7 +34,7 @@ const createProfile = (req, res) => {
 
   profiles.push(newProfile);
 
-  fs.writeFile('./data/profiles.json', JSON.stringify(profiles), (err) => {
+  return fs.writeFile('./data/profiles.json', JSON.stringify(profiles), (err) => {
     if (err) {
       return errorResHelper(err, res);
     }
@@ -45,20 +45,23 @@ const createProfile = (req, res) => {
 const updateProfile = (req, res) => {
   const now2ISO = new Date().toISOString();
   const missing = [];
-  let profileFoundPosition;
+  let profileUpdated;
 
-  profiles.forEach((profile, id) => {
-    if (profile.id === parseInt(req.params.id)) {
-      profile.name = req.query.name ?? profile.name;
-      profile.modified = {
-        idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'")),
-        timestamp: now2ISO,
+  const profilesUpdated = profiles.map((profile) => {
+    if (profile.id === parseInt(req.params.id, 10)) {
+      profileUpdated = {
+        name: req.query.name ?? profile.name,
+        modified: {
+          idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'"), 10),
+          timestamp: now2ISO,
+        },
       };
-      profileFoundPosition = id + 1;
+      return profileUpdated;
     }
+    return profile;
   });
 
-  if (!profileFoundPosition) {
+  if (!profileUpdated) {
     return errorResHelper(
       `The profile 'id' (${req.params.id}) given does not exist.`,
       res,
@@ -73,21 +76,22 @@ const updateProfile = (req, res) => {
     );
   }
 
-  fs.writeFile('./data/profiles.json', JSON.stringify(profiles), (err) => {
+  return fs.writeFile('./data/profiles.json', JSON.stringify(profilesUpdated), (err) => {
     if (err) {
       return errorResHelper(err, res);
     }
-    return res.status(200).json(profiles[profileFoundPosition - 1]);
+    return res.status(200).json(profilesUpdated);
   });
 };
 
 const deleteProfile = (req, res) => {
   let removedProfile;
-  profiles.forEach((profile, id) => {
-    if (profile.id === parseInt(req.params.id)) {
+  const profilesUpdated = profiles.filter((profile) => {
+    if (profile.id === parseInt(req.params.id, 10)) {
       removedProfile = profile;
-      profiles.splice(id, 1);
+      return false;
     }
+    return true;
   });
 
   if (!removedProfile) {
@@ -98,7 +102,7 @@ const deleteProfile = (req, res) => {
     );
   }
 
-  fs.writeFile('./data/profiles.json', JSON.stringify(profiles), (err) => {
+  return fs.writeFile('./data/profiles.json', JSON.stringify(profilesUpdated), (err) => {
     if (err) {
       return errorResHelper(err, res);
     }

@@ -8,9 +8,9 @@ const getAdmins = (req, res) => {
 const updateAdmin = (req, res) => {
   let updatedAdmin;
   const updatedAdmins = admins.map((admin) => {
-    if (admin.id === parseInt(req.params.id)) {
+    if (admin.id === parseInt(req.params.id, 10)) {
       updatedAdmin = {
-        id: parseInt(req.params.id),
+        id: parseInt(req.params.id, 10),
         email: req.query.email || admin.email,
         password: req.query.password || admin.password,
         name: req.query.name || admin.name,
@@ -24,7 +24,7 @@ const updateAdmin = (req, res) => {
     return res.status(400).json({ msg: `Admin with id: ${req.params.id} was not found` });
   }
 
-  fs.writeFile('./data/admins.json', JSON.stringify(updatedAdmins), {}, (error) => {
+  return fs.writeFile('./data/admins.json', JSON.stringify(updatedAdmins), {}, (error) => {
     if (error) {
       return res.status(400).send(error);
     }

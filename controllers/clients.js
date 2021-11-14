@@ -38,14 +38,14 @@ const createClient = (req, res) => {
     return errorResHelper(
       `queryParam ${missing
         .join(', ')
-        .replace(/,([^,]*)$/, ' and' + '$1')} is missing.`,
+        .replace(/,([^,]*)$/, ' and $1')} is missing.`,
       res,
     );
   }
 
   clients.push(newClient);
 
-  fs.writeFile('./data/clients.json', JSON.stringify(clients), (err) => {
+  return fs.writeFile('./data/clients.json', JSON.stringify(clients), (err) => {
     if (err) {
       return errorResHelper(err, res);
     }
@@ -55,27 +55,30 @@ const createClient = (req, res) => {
 const updateClient = (req, res) => {
   const now2ISO = new Date().toISOString();
   const missing = [];
-  let clientFoundPosition;
+  let clientUpdated;
 
-  clients.forEach((client, id) => {
-    if (client.id === parseInt(req.params.id)) {
-      client.name = req.query.name ?? client.name;
-      client.phone = req.query.phone ?? client.phone;
-      client.location.country = req.query.country ?? client.location.country;
-      client.location.state = req.query.state ?? client.state;
-      client.location.city = req.query.city ?? client.city;
-      client.location.address = req.query.address ?? client.address;
-      client.description = req.query.description ?? client.description;
-      client.logo = req.query.logo ?? client.logo;
-      client.modified = {
-        idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'")),
-        timestamp: now2ISO,
+  const clientsUpdated = clients.map((client) => {
+    if (client.id === parseInt(req.params.id, 10)) {
+      clientUpdated = {
+        name: req.query.name ?? client.name,
+        phone: req.query.phone ?? client.phone,
+        country: req.query.country ?? client.location.country,
+        state: req.query.state ?? client.state,
+        city: req.query.city ?? client.city,
+        address: req.query.address ?? client.address,
+        description: req.query.description ?? client.description,
+        logo: req.query.logo ?? client.logo,
+        modified: {
+          idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'"), 10),
+          timestamp: now2ISO,
+        },
       };
-      clientFoundPosition = id + 1;
+      return clientUpdated;
     }
+    return client;
   });
 
-  if (!clientFoundPosition) {
+  if (!clientUpdated) {
     return errorResHelper(
       `The client 'id' (${req.params.id}) given does not exist.`,
       res,
@@ -90,17 +93,18 @@ const updateClient = (req, res) => {
     );
   }
 
-  fs.writeFile('./data/clients.json', JSON.stringify(clients), (err) => {
+  return fs.writeFile('./data/clients.json', JSON.stringify(clientsUpdated), (err) => {
     if (err) {
       return errorResHelper(err, res);
     }
-    return res.status(200).json(clients[clientFoundPosition - 1]);
+    return res.status(200).json(clientUpdated);
   });
 };
+
 const deleteClient = (req, res) => {
   let removedClient;
   clients.forEach((client, id) => {
-    if (client.id === parseInt(req.params.id)) {
+    if (client.id === parseInt(req.params.id, 10)) {
       removedClient = client;
       clients.splice(id, 1);
     }
@@ -114,7 +118,7 @@ const deleteClient = (req, res) => {
     );
   }
 
-  fs.writeFile('./data/clients.json', JSON.stringify(clients), (err) => {
+  return fs.writeFile('./data/clients.json', JSON.stringify(clients), (err) => {
     if (err) {
       return errorResHelper(err, res);
     }

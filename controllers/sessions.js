@@ -25,7 +25,7 @@ const createSession = (req, res) => {
 const updateSession = (req, res) => {
   let updatedSession;
   const updatedSessions = Sessions.map((session) => {
-    if (session.idSession == req.query.idSession) {
+    if (session.idSession === req.query.idSession) {
       updatedSession = {
         idSession: req.query.idSession,
         idPsicologist: req.query.idPsicologist,
@@ -58,7 +58,7 @@ const deleteSession = (req, res) => {
   if (!removedSession) {
     return res.status(404).send('Session NOT found');
   }
-  fs.writeFile('./data/Sessions.json', JSON.stringify(filteredSession), {}, (error) => {
+  return fs.writeFile('./data/Sessions.json', JSON.stringify(filteredSession), {}, (error) => {
     if (error) {
       return res.status(400).send(error);
     }
