@@ -18,8 +18,7 @@ const InterviewSchema = new Schema({
     required: true,
     ref: 'Applications',
   },
-  status:
-  {
+  status: {
     type: String,
     enum: ['succesful', 'failed', 'cancelled', 'assigned', 'confirmed'],
     default: 'assigned',
