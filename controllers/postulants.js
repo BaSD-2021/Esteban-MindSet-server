@@ -1,7 +1,7 @@
 const fs = require('fs')
 const Postulants = require("../data/postulants.json")
 
-const getPostulants = (req, res) => {
+const listPostulants = (req, res) => {
   res.status(200).json(Postulants)
 }
 
@@ -185,7 +185,7 @@ const updatePostulants = (req, res) => {
 }
 
 module.exports = {
-  getPostulants,
+  listPostulants,
   createPostulant,
   deletePostulant,
   updatePostulants

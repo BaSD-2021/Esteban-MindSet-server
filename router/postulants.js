@@ -7,12 +7,12 @@ const {
   createPostulant,
   updatePostulants,
   deletePostulant,
-  getPostulants,
+  listPostulants,
 } = controller;
 
 router.post('/', createPostulant);
 router.put('/', updatePostulants);
 router.delete('/', deletePostulant);
-router.get('/', getPostulants);
+router.get('/', listPostulants);
 
 module.exports = router;
