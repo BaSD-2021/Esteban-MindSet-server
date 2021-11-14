@@ -83,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPostulant\": \"testIdPostulant\",\r\n    \"idClient\": \"testIdClient\",\r\n    \"idApplication\": \"testIdApplication\",\r\n    \"status\": \"assigned\",\r\n    \"date\": \"2021-11-13\",\r\n    \"notes\": \"good guy\"\r\n}",
+							"raw": "{\r\n    \"postulant\": \"61903bb97d023460f260f849\",\r\n    \"client\": \"61903bb97d023460f260f849\",\r\n    \"application\": \"61903bb97d023460f260f849\",\r\n    \"status\": \"succesful\",\r\n    \"date\": \"2023-11-23\",\r\n    \"notes\": \"good guy\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -147,7 +147,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPostulant\": \"618fe874e62c3e9b42ede1233\",\r\n    \"idClient\": \"618fe874e62c3e9b42ede1233\",\r\n    \"idApplication\": \"618fe874e62c3e9b42ede1233\",\r\n    \"status\": \"assigned\",\r\n    \"date\": \"2021-11-13\",\r\n    \"notes\": \"bad haircut\"\r\n}",
+							"raw": "{\r\n    \"postulant\": \"61903bb97d023460f260f849\",\r\n    \"client\": \"61903bb97d023460f260f849\",\r\n    \"application\": \"61903bb97d023460f260f849\",\r\n    \"status\": \"assigned\",\r\n    \"date\": \"2021-11-13\",\r\n    \"notes\": \"bad haircut\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -167,7 +167,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "618fe874e62c3e9b42ede02a",
+									"value": "61903d447ad9dab1a9d8f02e",
 									"description": "required"
 								}
 							]
@@ -218,7 +218,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "618fe8fde62c3e9b42ede034",
+									"value": "619070d6d43205695a7ac280",
 									"description": "required"
 								}
 							]
