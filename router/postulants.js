@@ -11,8 +11,8 @@ const {
 } = controller;
 
 router.post('/', createPostulant);
-router.put('/', updatePostulants);
-router.delete('/', deletePostulant);
+router.put('/:id', updatePostulants);
+router.delete('/:id', deletePostulant);
 router.get('/', listPostulants);
 
 module.exports = router;
