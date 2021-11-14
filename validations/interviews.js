@@ -1,8 +1,8 @@
+const { ObjectId } = require('mongoose').Types;
 const Interviews = require('../models/Interviews');
 
 const validateInterview = (req, res, next) => {
   const bodyReq = req.body;
-  const { ObjectId } = require('mongoose').Types;
   const enu = {
     values: ['succesful', 'failed', 'cancelled', 'assigned', 'confirmed'],
   };
@@ -29,14 +29,8 @@ const validateInterview = (req, res, next) => {
 const validateInterviewId = (req, res, next) => {
   const paramsId = req.params.id;
 
-  const { ObjectId } = require('mongoose').Types;
-
-  if (!ObjectId.isValid(paramsId)) {
-    return res.status(400).send('Interview id is not valid');
-  }
-
-  Interviews.findById(paramsId, (error) => {
-    if (error) {
+  Interviews.findById(paramsId, (error, interview) => {
+    if (error || interview === null) {
       return res.status(400).send('Interview id does not exist');
     }
     return res.status(200);
