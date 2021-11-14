@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "491f1aaf-a818-4b33-9cae-f27103fa9eac",
+		"name": "Clients",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Para deletear\",\r\n    \"phone\": 3413584874,\r\n    \"location\": {\r\n        \"country\": \"Argentina\",\r\n        \"state\": \"Bs. As.\",\r\n        \"city\": \"La Plata\",\r\n        \"address\": \"Calle Random 12348\"\r\n    },\r\n    \"logo\": \"Your Logo\",\r\n    \"description\": \"Food Companie\",\r\n    \"created\": {\r\n        \"admin\": \"618da81194e960fa7332609c\"\r\n    },\r\n    \"modified\": {\r\n        \"admin\": \"618da81194e960fa7332609c\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/api/clients",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the Clients",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:4000/api/clients",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Client",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/api/clients/s213sd",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"clients",
+						"s213sd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Radium Rocket\",\r\n    \"phone\": 111222333,\r\n    \"location\": {\r\n        \"country\": \"Argentina\",\r\n        \"state\": \"Santa Fe\",\r\n        \"city\": \"Rosario\",\r\n        \"address\": \"Av Radium 578\"\r\n    },\r\n    \"logo\": \"RR LOGO\",\r\n    \"description\": \"Software Company\",\r\n    \"modified\": {\r\n        \"admin\": \"618da81194e960fa7332609c\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/api/clients/61903d694263bfd594a3ae09",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"clients",
+						"61903d694263bfd594a3ae09"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
