@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ApplicationsSchema = new Schema({
-  // id: Schema.Types.ObjectId,
+  id: { type: mongoose.Schema.Types.ObjectId },
   positions: { type: String, required: true },
   postulants: { type: String, required: true },
-  interview: String,
+  interview: { type: String },
   result: { type: String, required: true },
 });
 

@@ -26,9 +26,12 @@ const createApplication = (req, res) => {
 };
 
 const deleteApplication = (req, res) => {
-  Applications.findOneAndDelete()
-    .then((application) => res.status(200).json(application))
-    .catch((error) => res.status(400).json(error));
+  Applications.findOneAndDelete(req.params.id, (error) => {
+    if (error) {
+      return res.status(400).json(`Id ${req.params.id} not found`);
+    }
+    return res.status(201).json(`Id ${req.params.id} was remove successfully`);
+  });
 };
 
 module.exports = {
