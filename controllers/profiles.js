@@ -1,120 +1,57 @@
-const fs = require('fs');
-const profiles = require('../data/profiles.json');
-
-const errorResHelper = (errorDescription, res, errCode = 400) => {
-  res.status(errCode).json({ error: errorDescription });
-};
+const Profiles = require('../models/Profiles');
 
 const createProfile = (req, res) => {
-  const now2ISO = new Date().toISOString();
-  const missing = [];
-  const newProfile = {
-    id: new Date().getTime().toString(),
-    name: req.query.name ?? missing.push("'name'"),
-    created: {
-      idAdmin: req.query.idAdmin ?? missing.push("'idAdmin'"),
-      timestamp: now2ISO,
-    },
-    modified: {},
-  };
+  const profile = new Profiles({
+    name: req.body.name,
+  });
 
-  if (profiles.filter((el) => el.name === req.query.name).length > 0) {
-    return errorResHelper(
-      `Profile name '${req.query.name}' already exists.`,
-      res,
-    );
-  }
-
-  if (missing.length) {
-    return errorResHelper(
-      `queryParam ${missing.join(' and ')} is missing.`,
-      res,
-    );
-  }
-
-  profiles.push(newProfile);
-
-  return fs.writeFile('./data/profiles.json', JSON.stringify(profiles), (err) => {
-    if (err) {
-      return errorResHelper(err, res);
+  profile.save((error) => {
+    if (error) {
+      return res.status(400).json(error);
     }
-    return res.status(201).json(newProfile);
+    return res.status(201).json(profile);
   });
 };
 
 const updateProfile = (req, res) => {
-  const now2ISO = new Date().toISOString();
-  const missing = [];
-  let profileUpdated;
-
-  const profilesUpdated = profiles.map((profile) => {
-    if (profile.id === parseInt(req.params.id, 10)) {
-      profileUpdated = {
-        name: req.query.name ?? profile.name,
-        modified: {
-          idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'"), 10),
-          timestamp: now2ISO,
-        },
-      };
-      return profileUpdated;
-    }
-    return profile;
-  });
-
-  if (!profileUpdated) {
-    return errorResHelper(
-      `The profile 'id' (${req.params.id}) given does not exist.`,
-      res,
-      404,
-    );
-  }
-
-  if (missing.length) {
-    return errorResHelper(
-      `queryParam ${missing.join(' and ')} is missing.`,
-      res,
-    );
-  }
-
-  return fs.writeFile('./data/profiles.json', JSON.stringify(profilesUpdated), (err) => {
-    if (err) {
-      return errorResHelper(err, res);
-    }
-    return res.status(200).json(profilesUpdated);
-  });
+  Profiles.findByIdAndUpdate(
+    req.params.id,
+    {
+      name: req.body.name,
+    },
+    { new: true },
+    (error, newProfile) => {
+      if (!newProfile) {
+        return res.status(404).json('Profile id does not exist');
+      }
+      if (error) {
+        return res.status(400).json(error);
+      }
+      return res.status(201).json(newProfile);
+    },
+  );
 };
 
 const deleteProfile = (req, res) => {
-  let removedProfile;
-  const profilesUpdated = profiles.filter((profile) => {
-    if (profile.id === parseInt(req.params.id, 10)) {
-      removedProfile = profile;
-      return false;
+  Profiles.findByIdAndDelete(req.params.id, (error, pointedProfile) => {
+    if (!pointedProfile) {
+      return res.status(404).json('Profile id does not exist');
     }
-    return true;
-  });
-
-  if (!removedProfile) {
-    return errorResHelper(
-      `The profile 'id' (${req.params.id}) given does not exist.`,
-      res,
-      404,
-    );
-  }
-
-  return fs.writeFile('./data/profiles.json', JSON.stringify(profilesUpdated), (err) => {
-    if (err) {
-      return errorResHelper(err, res);
+    if (error) {
+      return res.status(400).json(error);
     }
-    return res.status(204).json(removedProfile);
+    return res.status(204).send();
   });
 };
 
 const listProfiles = (req, res) => {
-  if (!profiles.length) {
-    return errorResHelper('The Profiles List seems to be empty.', res, 404);
-  }
-  return res.status(200).json(profiles);
+  Profiles.find()
+    .then((profiles) => {
+      res.status(200).json(profiles);
+    })
+    .catch((error) => {
+      res.status(400).json(error);
+    });
 };
 
 module.exports = {
