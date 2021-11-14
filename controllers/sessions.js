@@ -60,10 +60,16 @@ const deleteSession = (req, res) => {
 //   });
 };
 
-const listSession = (req, res) => {
-  // res.status(200).json(Sessions);
+const listSessions = (req, res) => {
+  Sessions.find()
+    .then((sessions) => {
+      res.status(200).json(sessions);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
 };
 
 module.exports = {
-  createSession, listSession, updateSession, deleteSession,
+  createSession, listSessions, updateSession, deleteSession,
 };
