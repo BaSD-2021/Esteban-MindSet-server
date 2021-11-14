@@ -29,7 +29,7 @@ const updatePosition = (req, res) => {
 };
 
 const createPosition = (req, res) => {
-  const position = new Positions({
+  const positionCreated = new Positions({
     client: req.body.client,
     jobDescription: req.body.jobDescription,
     vacancy: req.body.vacancy,
@@ -37,7 +37,7 @@ const createPosition = (req, res) => {
     isOpen: req.body.isOpen,
   });
 
-  position.save((error, position) => {
+  positionCreated.save((error, position) => {
     if (error) {
       return res.status(400).json(error);
     }
@@ -50,7 +50,7 @@ const deletePosition = (req, res) => {
     if (error) {
       return res.status(400).json(`Position with id ${req.params.id} does not extis`);
     }
-    return res.status(200).json(`Position with id ${req.params.id} was removed`);
+    return res.status(204).json(`Position with id ${req.params.id} was deleted`);
   });
 };
 module.exports = {
