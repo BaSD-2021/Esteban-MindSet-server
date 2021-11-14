@@ -34,18 +34,18 @@ const PostulantSchema = new Schema(
         endDate: { type: Date },
         school: { type: String, required: true },
       },
-      tertiaryStudies: {
+      tertiaryStudies: [{
         startDate: { type: Date, required: true },
         endDate: { type: Date },
         description: { type: String, required: true },
         institute: { type: String, required: true },
-      },
-      universityStudies: {
+      }],
+      universityStudies: [{
         startDate: { type: Date, required: true },
         endDate: { type: Date },
         description: { type: String, required: true },
         institute: { type: String, required: true },
-      },
+      }],
       informalStudies: [{
         startDate: { type: Date, required: true },
         endDate: { type: Date },
