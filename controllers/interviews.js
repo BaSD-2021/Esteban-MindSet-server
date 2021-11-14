@@ -43,6 +43,10 @@ const updateInterview = (req, res) => {
     },
     { new: true },
     (error, newInterview) => {
+      if (newInterview === null) {
+        return res.status(400).json('Interview id does not exist');
+      }
+
       if (error) {
         return res.status(400).json(error);
       }
@@ -52,7 +56,10 @@ const updateInterview = (req, res) => {
 };
 
 const deleteInterview = (req, res) => {
-  Interviews.findByIdAndDelete(req.params.id, (error) => {
+  Interviews.findByIdAndDelete(req.params.id, (error, pointedInterview) => {
+    if (pointedInterview === null) {
+      return res.status(400).json('Interview id does not exist');
+    }
     if (error) {
       return res.status(400).json(error);
     }
