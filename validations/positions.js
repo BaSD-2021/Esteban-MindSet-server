@@ -1,5 +1,5 @@
 const required = (req, res, next) => {
-  if (!req.body.idClient) {
+  if (!req.body.client) {
     return res.status(400).send('You must complete the idClient');
   }
   if (!req.body.professionalProfiles) {
