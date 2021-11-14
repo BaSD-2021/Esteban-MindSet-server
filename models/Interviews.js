@@ -26,6 +26,10 @@ const InterviewSchema = new Schema({
   },
   date: { type: Date, required: true },
   notes: { type: String },
-});
+},
+{
+  timestamps: true,
+},
+);
 
 module.exports = mongoose.model('Interviews', InterviewSchema);
