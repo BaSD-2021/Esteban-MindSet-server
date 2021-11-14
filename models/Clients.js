@@ -21,6 +21,7 @@ const ClientsSchema = new Schema({
     admin: { type: mongoose.Schema.Types.ObjectId, ref: 'Admins' },
     timestamp: Date,
   },
+  timestamp: true
 });
 
 module.exports = mongoose.model('Clients', ClientsSchema);
