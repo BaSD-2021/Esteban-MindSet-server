@@ -7,28 +7,23 @@ const listClients = (req, res) => {
 };
 
 const createClient = (req, res) => {
-  const client = new Clients({
+  const clientCreated = new Clients({
     name: req.body.name,
     phone: req.body.phone,
-    location: {
-      country: req.body.location.country,
-      state: req.body.location.state,
-      city: req.body.location.city,
-      address: req.body.location.address,
-    },
+    location: req.body.location,
     logo: req.body.logo,
     description: req.body.description,
     created: {
       admin: req.body.created.admin,
-      timestamp: new Date().getTime().toString(),
+      timestamp: new Date().toISOString(),
     },
     modified: {
       admin: req.body.modified.admin,
-      timestamp: new Date().getTime().toString(),
+      timestamp: new Date().toISOString(),
     },
   });
 
-  client.save((error, client) => {
+  clientCreated.save((error, client) => {
     if (error) {
       return res.status(400).json(error);
     }
@@ -39,9 +34,9 @@ const createClient = (req, res) => {
 const deleteClient = (req, res) => {
   Clients.findByIdAndDelete(req.params.id, (error) => {
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json(`Client with id ${req.params.id} does not exist.`);
     }
-    return res.status(200).json(`Client with id ${req.params.id} was removed`);
+    return res.status(204).json(`Client with id ${req.params.id} was deleted`);
   });
 };
 

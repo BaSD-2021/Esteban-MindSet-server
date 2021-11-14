@@ -15,13 +15,12 @@ const ClientsSchema = new Schema({
   description: String,
   created: {
     admin: { type: mongoose.Schema.Types.ObjectId, ref: 'Admins' },
-    timestamp: Date,
   },
   modified: {
     admin: { type: mongoose.Schema.Types.ObjectId, ref: 'Admins' },
-    timestamp: Date,
   },
-  timestamp: true
+}, {
+  timestamps: true,
 });
 
 module.exports = mongoose.model('Clients', ClientsSchema);
