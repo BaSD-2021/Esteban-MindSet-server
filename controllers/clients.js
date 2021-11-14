@@ -125,7 +125,6 @@ const deleteClient = (req, res) => {
     return res.status(204).json(removedClient);
   });
 };
-
 const listClients = (req, res) => {
   if (!clients.length) {
     return errorResHelper('The Clients List seems to be empty.', res, 404);
