@@ -13,7 +13,7 @@ const {
 
 router.post('/', clientValidations.required, createClient);
 router.put('/:id', clientValidations.required, updateClient);
-router.delete('/:id', clientValidations.deleteValidation, deleteClient);
+router.delete('/:id', deleteClient);
 router.get('/', listClients);
 
 module.exports = router;

@@ -1,11 +1,9 @@
-const Clients = require('../models/Clients');
-
 const required = (req, res, next) => {
-  if (!req.body.name) {
+  if (!req.body.name || req.body.name !== String) {
     return res.status(400).send('You must complete the Name');
   }
-  if (!req.body.phone) {
-    return res.status(400).send('You must complete the phone number');
+  if (!req.body.phone || req.body.phone !== Number) {
+    return res.status(400).send('You must complete the phone number, make sure you digits numbers');
   }
   if (!req.body.location.country
       || !req.body.location.state
@@ -16,16 +14,6 @@ const required = (req, res, next) => {
   return next();
 };
 
-const deleteValidation = (req, res, next) => {
-  Clients.findById(req.params.id, (error) => {
-    if (error) {
-      return res.status(400).end(`Client with id ${req.params.id} was not found`);
-    }
-    return next();
-  });
-};
-
 module.exports = {
   required,
-  deleteValidation,
 };
