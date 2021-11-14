@@ -12,11 +12,10 @@ const {
 
 const {
   requireValidation,
-  idValidation,
 } = validation;
 
 router.post('/', requireValidation, createApplication);
-router.delete('/:id', idValidation, deleteApplication);
+router.delete('/:id', deleteApplication);
 router.get('/', listApplication);
 
 module.exports = router;

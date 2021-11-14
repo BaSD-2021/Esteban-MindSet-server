@@ -1,5 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-const fs = require('fs');
 const Applications = require('../models/Applications');
 
 const listApplication = (req, res) => {
