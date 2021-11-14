@@ -18,53 +18,14 @@ const createPostulant = (req, res) => {
     last_name: bodyReq.last_name,
     email: bodyReq.email,
     password: bodyReq.password,
-    // contactRange: {
-    //   from: bodyReq.from,
-    //   to: bodyReq.to,
-    // },
-    // address: bodyReq.address,
-    // birthday: bodyReq.birthday,
-    // available: bodyReq.available,
-    // phone: bodyReq.phone,
-    // profiles: {
-    //   profileId: bodyReq.profileId,
-    // },
-    // studies: {
-    //   primaryStudies: {
-    //     startDate: bodyReq.startDate,
-    //     endDate: bodyReq.endDate,
-    //     school: bodyReq.school,
-    //   },
-    //   secondaryStudies: {
-    //     startDate: bodyReq.startDate,
-    //     endDate: bodyReq.endDate,
-    //     school: bodyReq.school,
-    //   },
-    //   tertiaryStudies: {
-    //     startDate: bodyReq.startDate,
-    //     endDate: bodyReq.endDate,
-    //     institute: bodyReq.institute,
-    //     description: bodyReq.description,
-    //   },
-    //   universityStudies: {
-    //     startDate: bodyReq.startDate,
-    //     endDate: bodyReq.endDate,
-    //     description: bodyReq.description,
-    //     institute: bodyReq.institute,
-    //   },
-    //   informalStudies: [{
-    //     startDate: bodyReq.startDate,
-    //     endDate: bodyReq.endDate,
-    //     institute: bodyReq.institute,
-    //     description: bodyReq.description,
-    //   }],
-    // },
-    // workExperience: {
-    //   company: bodyReq.company,
-    //   startDate: bodyReq.startDate,
-    //   endDate: bodyReq.endDate,
-    //   description: bodyReq.description,
-    // },
+    contactRange: bodyReq.contactRange,
+    address: bodyReq.address,
+    birthday: bodyReq.birthday,
+    available: bodyReq.available,
+    phone: bodyReq.phone,
+    profiles: bodyReq.profiles,
+    studies: bodyReq.studies,
+    workExperience: bodyReq.workExperience,
   });
 
   postulant.save(((error) => {
