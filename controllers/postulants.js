@@ -1,7 +1,7 @@
 const Postulants = require('../models/Postulants');
 
 const listPostulants = (req, res) => {
-  Postulants.find()
+  Postulants.find(req.query)
     .then((postulants) => {
       res.status(200).json(postulants);
     })
@@ -13,8 +13,8 @@ const listPostulants = (req, res) => {
 const createPostulant = (req, res) => {
   const bodyReq = req.body;
   const postulant = new Postulants({
-    first_name: bodyReq.first_name,
-    last_name: bodyReq.last_name,
+    firstName: bodyReq.firstName,
+    lastName: bodyReq.lastName,
     email: bodyReq.email,
     password: bodyReq.password,
     contactRange: bodyReq.contactRange,
@@ -38,7 +38,7 @@ const createPostulant = (req, res) => {
 const deletePostulant = (req, res) => {
   Postulants.findByIdAndDelete(req.params.id, (error, pointedPostulant) => {
     if (!pointedPostulant) {
-      return res.status(404).json('Postulant id does not exist');
+      return res.status(404).json({ message: 'Postulant id does not exist' });
     }
     if (error) {
       return res.status(400).json(error);
@@ -52,8 +52,8 @@ const updatePostulants = (req, res) => {
   Postulants.findByIdAndUpdate(
     req.params.id,
     {
-      first_name: bodyReq.first_name,
-      last_name: bodyReq.last_name,
+      firstName: bodyReq.firstName,
+      lastName: bodyReq.lastName,
       email: bodyReq.email,
       password: bodyReq.password,
       contactRange: bodyReq.contactRange,
@@ -74,7 +74,7 @@ const updatePostulants = (req, res) => {
     { new: true },
     (error, newPostulant) => {
       if (!newPostulant) {
-        return res.status(404).json('Interview id does not exist');
+        return res.status(404).json({ message: 'Interview id does not exist' });
       }
 
       if (error) {
