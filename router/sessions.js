@@ -12,8 +12,8 @@ const {
 } = controller;
 
 router.post('/', validations.validateSessions, createSession);
-router.put('/', updateSession);
-router.delete('/', deleteSession);
+router.put('/:id', validations.validateSessionsUsedAttr, updateSession);
+router.delete('/:id', deleteSession);
 router.get('/', listSessions);
 
 module.exports = router;
