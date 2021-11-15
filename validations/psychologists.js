@@ -42,8 +42,9 @@ const availabilityObjectModel = {
   },
 };
 
-const availabiltyObjectValidator = (object) => {
-  Object.keys(availabilityObjectModel).reduce((isValid, el) => {
+const availabilityObjectValidator = (object) => {
+  const keys = Object.keys(availabilityObjectModel);
+  return keys.reduce((isValid, el) => {
     if (el in object
       && typeof object[el].availability === 'boolean'
       && typeof object[el].from === 'number'
@@ -72,7 +73,7 @@ const validatePsychologists = (req, res, next) => {
   if (typeof req.body.last_name !== 'string') {
     invalidParams.push("'last_name'");
   }
-  if (!availabiltyObjectValidator(req.body.availability)) {
+  if (!availabilityObjectValidator(req.body.availability)) {
     invalidParams.push("'availability'");
   }
   if (typeof req.body.username !== 'string') {
@@ -87,7 +88,7 @@ const validatePsychologists = (req, res, next) => {
   if (req.body.phone && typeof req.body.phone !== 'number') {
     invalidParams.push("'phone'");
   }
-  if (req.body.address && typeof req.body.phone !== 'string') {
+  if (req.body.address && typeof req.body.address !== 'string') {
     invalidParams.push("'address'");
   }
   if (invalidParams.length === 1) {
