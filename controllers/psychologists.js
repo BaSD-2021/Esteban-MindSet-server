@@ -68,19 +68,11 @@ const createPsychologist = (req, res) => {
 };
 
 const updatePsychologist = (req, res) => {
-  // console.log(availabilityObjectAttrConstructor(availabilityObjectModel, req));
   Psychologists.findByIdAndUpdate(
     req.params.id,
     {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      // 'availability.monday': req.body.availability.monday,
-      // 'availability.tuesday': req.body.availability.tuesday,
-      // 'availability.wednesday': req.body.availability.wednesday,
-      // 'availability.thursday': req.body.availability.thursday,
-      // 'availability.friday': req.body.availability.friday,
-      // 'availability.saturday': req.body.availability.saturday,
-      // 'availability.sunday': req.body.availability.sunday,
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
