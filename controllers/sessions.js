@@ -28,11 +28,11 @@ const updateSession = (req, res) => {
     },
     { new: true },
     (err, newSession) => {
-      if (!newSession && err.kind === 'ObjectId' && err.path === '_id') {
-        return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
-      }
       if (err) {
         return res.status(400).json(err);
+      }
+      if (!newSession) {
+        return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
       }
       return res.status(200).json(newSession);
     },
@@ -41,17 +41,17 @@ const updateSession = (req, res) => {
 
 const deleteSession = (req, res) => {
   Sessions.findByIdAndDelete(req.params.id, (err, deletedSession) => {
-    if (!deletedSession && err.kind === 'ObjectId' && err.path === '_id') {
-      return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
-    }
     if (err) {
       return res.status(400).json(err);
     }
-    return res.status(204).send();
+    if (!deletedSession) {
+      return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
+    }
+    return res.status(204).send(deletedSession);
   });
 };
 
-const listSessions = (req, res) => {
+const listAllSessions = (req, res) => {
   Sessions.find()
     .then((sessions) => {
       res.status(200).json(sessions);
@@ -61,6 +61,18 @@ const listSessions = (req, res) => {
     });
 };
 
+const listSession = (req, res) => {
+  Sessions.findById(req.params.id, (err, foundSession) => {
+    if (err) {
+      return res.status(400).json(err);
+    }
+    if (!foundSession) {
+      return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
+    }
+    return res.status(200).send(foundSession);
+  });
+};
+
 module.exports = {
-  createSession, listSessions, updateSession, deleteSession,
+  createSession, listAllSessions, updateSession, deleteSession, listSession,
 };

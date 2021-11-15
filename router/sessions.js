@@ -6,14 +6,16 @@ const router = express.Router();
 
 const {
   createSession,
-  listSessions,
+  listAllSessions,
+  listSession,
   updateSession,
   deleteSession,
 } = controller;
 
 router.post('/', validations.validateSessions, createSession);
-router.put('/:id', validations.validateSessionsUsedAttr, updateSession);
-router.delete('/:id', deleteSession);
-router.get('/', listSessions);
+router.put('/:id', validations.validateIdFormat, validations.validateSessionsUsedAttr, updateSession);
+router.delete('/:id', validations.validateIdFormat, deleteSession);
+router.get('/', listAllSessions);
+router.get('/:id', validations.validateIdFormat, listSession);
 
 module.exports = router;

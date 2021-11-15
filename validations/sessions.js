@@ -10,6 +10,16 @@ const errorResHelper = (errorDescription, res, errCode = 400) => {
   res.status(errCode).json({ msg: errorDescription });
 };
 
+const validateIdFormat = (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    return errorResHelper(
+      `The Session 'Id' (${req.params.id}) given is invalid`,
+      res,
+    );
+  }
+  return next();
+};
+
 const validateSessions = (req, res, next) => {
   const invalidParams = [];
   if (!ObjectId.isValid(req.body.postulant)) {
@@ -87,4 +97,4 @@ const validateSessionsUsedAttr = (req, res, next) => {
   return next();
 };
 
-module.exports = { validateSessions, validateSessionsUsedAttr };
+module.exports = { validateSessions, validateSessionsUsedAttr, validateIdFormat };
