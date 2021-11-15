@@ -18,10 +18,10 @@ const updatePosition = (req, res) => {
     { new: true },
     (error, newPosition) => {
       if (!newPosition) {
-        return res.status(400).json({ msg: `Position with id: ${req.params.id} was not found` });
+        return res.status(404).json({ message: `Position with id: ${req.params.id} was not found` });
       }
       if (error) {
-        return res.status(400).json(error);
+        return res.status(400).json({message: error});
       }
       return res.status(200).json({ msg: 'Position updated', newPosition });
     },
@@ -48,9 +48,9 @@ const createPosition = (req, res) => {
 const deletePosition = (req, res) => {
   Positions.findByIdAndDelete(req.params.id, (error) => {
     if (error) {
-      return res.status(400).json(`Position with id ${req.params.id} does not extis`);
+      return res.status(404).json({message: `Position with id ${req.params.id} does not extis`});
     }
-    return res.status(204).json(`Position with id ${req.params.id} was deleted`);
+    return res.status(204).send();
   });
 };
 module.exports = {
