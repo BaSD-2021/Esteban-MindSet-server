@@ -1,9 +1,9 @@
 const Clients = require('../models/Clients');
 
 const listClients = (req, res) => {
-  Clients.find()
+  Clients.find(req.query)
     .then((clients) => res.status(200).json(clients))
-    .catch((error) => res.status(400).json(error));
+    .catch((error) => res.status(400).json({message: error}));
 };
 
 const createClient = (req, res) => {
@@ -15,28 +15,26 @@ const createClient = (req, res) => {
     description: req.body.description,
     created: {
       admin: req.body.created.admin,
-      timestamp: new Date().toISOString(),
     },
     modified: {
       admin: req.body.modified.admin,
-      timestamp: new Date().toISOString(),
     },
   });
 
   clientCreated.save((error, client) => {
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({message: error});
     }
-    return res.status(201).json(client);
+    return res.status(201).json({message: client});
   });
 };
 
 const deleteClient = (req, res) => {
   Clients.findByIdAndDelete(req.params.id, (error) => {
     if (error) {
-      return res.status(400).json(`Client with id ${req.params.id} does not exist.`);
+      return res.status(400).json({message: `Client with id ${req.params.id} does not exist.`});
     }
-    return res.status(204).json(`Client with id ${req.params.id} was deleted`);
+    return res.status(204).send();
   });
 };
 
@@ -56,18 +54,17 @@ const updateClient = (req, res) => {
       description: req.body.description,
       modified: {
         admin: req.body.modified.admin,
-        timestamp: new Date().getTime().toString(),
       },
     },
     { new: true },
     (error, newClient) => {
       if (!newClient) {
-        return res.status(400).json({ msg: `Client with id: ${req.params.id} was not found` });
+        return res.status(400).json({ message: `Client with id: ${req.params.id} was not found` });
       }
       if (error) {
-        return res.status(400).json(error);
+        return res.status(400).json({message: error});
       }
-      return res.status(200).json({ msg: 'Client updated', newClient });
+      return res.status(200).json({ message: 'Client updated', newClient });
     },
   );
 };
