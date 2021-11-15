@@ -40,15 +40,15 @@ const updateSession = (req, res) => {
 };
 
 const deleteSession = (req, res) => {
-  // Sessions.findByIdAndDelete(req.params.id, (err, deletedSession) => {
-  //   if (!deletedSession && err.kind === 'ObjectId' && err.path === '_id') {
-  //     return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
-  //   }
-  //   if (err) {
-  //     return res.status(400).json(err);
-  //   }
-  //   return res.status(204).send();
-  // });
+  Sessions.findByIdAndDelete(req.params.id, (err, deletedSession) => {
+    if (!deletedSession && err.kind === 'ObjectId' && err.path === '_id') {
+      return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
+    }
+    if (err) {
+      return res.status(400).json(err);
+    }
+    return res.status(204).send();
+  });
 };
 
 const listSessions = (req, res) => {
