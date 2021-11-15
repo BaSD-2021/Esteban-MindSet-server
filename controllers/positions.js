@@ -6,6 +6,23 @@ const listPositions = (req, res) => {
     .catch((error) => res.status(400).json({ message: error }));
 };
 
+const createPosition = (req, res) => {
+  const positionCreated = new Positions({
+    client: req.body.client,
+    jobDescription: req.body.jobDescription,
+    vacancy: req.body.vacancy,
+    professionalProfiles: req.body.professionalProfiles,
+    isOpen: req.body.isOpen,
+  });
+
+  positionCreated.save((error, position) => {
+    if (error) {
+      return res.status(400).json({ message: error });
+    }
+    return res.status(201).json({ message: position });
+  });
+};
+
 const updatePosition = (req, res) => {
   Positions.findByIdAndUpdate(
     req.params.id,
@@ -26,23 +43,6 @@ const updatePosition = (req, res) => {
       return res.status(200).json({ message: 'Position updated', newPosition });
     },
   );
-};
-
-const createPosition = (req, res) => {
-  const positionCreated = new Positions({
-    client: req.body.client,
-    jobDescription: req.body.jobDescription,
-    vacancy: req.body.vacancy,
-    professionalProfiles: req.body.professionalProfiles,
-    isOpen: req.body.isOpen,
-  });
-
-  positionCreated.save((error, position) => {
-    if (error) {
-      return res.status(400).json({ message: error });
-    }
-    return res.status(201).json({ message: position });
-  });
 };
 
 const deletePosition = (req, res) => {
