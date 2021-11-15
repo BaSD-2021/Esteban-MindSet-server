@@ -23,7 +23,7 @@ const updatePosition = (req, res) => {
       if (error) {
         return res.status(400).json({ message: error });
       }
-      return res.status(200).json({ msg: 'Position updated', newPosition });
+      return res.status(200).json({ message: 'Position updated', newPosition });
     },
   );
 };
@@ -39,9 +39,9 @@ const createPosition = (req, res) => {
 
   positionCreated.save((error, position) => {
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ message: error });
     }
-    return res.status(201).json(position);
+    return res.status(201).json({ message: position });
   });
 };
 
