@@ -27,7 +27,7 @@ const updateProfile = (req, res) => {
       if (error) {
         return res.status(400).json(error);
       }
-      return res.status(201).json(newProfile);
+      return res.status(200).json(newProfile);
     },
   );
 };
@@ -46,12 +46,8 @@ const deleteProfile = (req, res) => {
 
 const listProfiles = (req, res) => {
   Profiles.find()
-    .then((profiles) => {
-      res.status(200).json(profiles);
-    })
-    .catch((error) => {
-      res.status(400).json(error);
-    });
+    .then((profiles) => res.status(200).json(profiles))
+    .catch((error) => res.status(400).json(error));
 };
 
 module.exports = {
