@@ -6,7 +6,7 @@ const listPostulants = (req, res) => {
       res.status(200).json(postulants);
     })
     .catch((error) => {
-      res.status(400).json(error);
+      res.status(400).json({ message: error });
     });
 };
 
@@ -29,7 +29,7 @@ const createPostulant = (req, res) => {
 
   postulant.save(((error) => {
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ message: error });
     }
     return res.status(201).json(postulant);
   }));
@@ -41,7 +41,7 @@ const deletePostulant = (req, res) => {
       return res.status(404).json({ message: 'Postulant id does not exist' });
     }
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ message: error });
     }
     return res.status(204).send();
   });
@@ -78,7 +78,7 @@ const updatePostulants = (req, res) => {
       }
 
       if (error) {
-        return res.status(400).json(error);
+        return res.status(400).json({ message: error });
       }
       return res.status(201).json(newPostulant);
     },
