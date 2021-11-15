@@ -24,26 +24,15 @@ const createPsychologist = (req, res) => {
 };
 
 const deletePsychologist = (req, res) => {
-  // const params = req.query;
-  // let psychologistDeleted;
-  // const filteredPsychologists = Psychologists.filter((psychologist) => {
-  //   if (psychologist.id !== params.id) {
-  //     psychologistDeleted = psychologist;
-  //     return false;
-  //   }
-  //   return true;
-  // });
-
-  // if (!psychologistDeleted) {
-  //   return res.status(404).send('psychologist not found');
-  // }
-
-  // return fs.writeFile('./data/psychologists.json', JSON.stringify(filteredPsychologists), {}, (error) => {
-  //   if (error) {
-  //     res.status(400).send(error);
-  //   }
-  //   return res.status(204).json(psychologistDeleted);
-  // });
+  Psychologists.findByIdAndDelete(req.params.id, (err, deletedPsychologist) => {
+    if (err) {
+      return res.status(400).json(err);
+    }
+    if (!deletedPsychologist) {
+      return res.status(404).json({ msg: `The Psychologist 'id' (${req.params.id}) given  does not exist.` });
+    }
+    return res.status(204).send(deletedPsychologist);
+  });
 };
 
 const updatePsychologist = (req, res) => {
