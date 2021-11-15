@@ -1,12 +1,12 @@
-const fs = require('fs')
-const Postulants = require("../data/postulants.json")
+const fs = require('fs');
+const Postulants = require('../data/postulants.json');
 
 const getPostulants = (req, res) => {
-  res.status(200).json(Postulants)
-}
+  res.status(200).json(Postulants);
+};
 
 const createPostulant = (req, res) => {
-  const params = req.query
+  const params = req.query;
   const newPostulant = {
     id: params.id,
     first_name: params.first_name,
@@ -19,86 +19,86 @@ const createPostulant = (req, res) => {
     primary_studies: {
       date: {
         start_date: params.start_date,
-        end_date: params.end_date
+        end_date: params.end_date,
       },
-      school: params.school
+      school: params.school,
     },
     secondary_studies: {
       date: {
         start_date: params.start_date,
-        end_date: params.end_date
+        end_date: params.end_date,
       },
-      school: params.school
+      school: params.school,
     },
     tertiary_studies: {
       date: {
         start_date: params.start_date,
-        end_date: params.end_date
+        end_date: params.end_date,
       },
-      institute: params.institute
+      institute: params.institute,
     },
     university_studies: {
       date: {
         start_date: params.start_date,
-        end_date: params.end_date
+        end_date: params.end_date,
       },
-      university: params.university
+      university: params.university,
     },
     work_experience: [{
       company: params.company,
       date: {
         start_date: params.start_date,
-        end_date: params.end_date
+        end_date: params.end_date,
       },
-      description: params.description
+      description: params.description,
     }],
     course: [{
       institute: params.institute,
       date: {
         start_date: params.start_date,
-        end_date: params.end_date
+        end_date: params.end_date,
       },
-      description: params.description
+      description: params.description,
     }],
     about: {
       date: {
         start_date: params.start_date,
-        end_date: params.end_date
+        end_date: params.end_date,
       },
-      description: params.description
+      description: params.description,
     },
-    available: params.available
-  }
+    available: params.available,
+  };
 
-  Postulants.push(newPostulant)
+  Postulants.push(newPostulant);
 
   fs.writeFile('./data/postulants.json', JSON.stringify(Postulants), {}, (error) => {
     if (error) {
-      res.status(400).send(error)
+      res.status(400).send(error);
     }
-    return res.status(201).json(newPostulant)
-  })
-}
+    return res.status(201).json(newPostulant);
+  });
+};
 
 const deletePostulant = (req, res) => {
-  const params = req.query
-  const filteredPostulants = Postulants.filter(postulant => postulant.id !== params.id)
+  const params = req.query;
+  const filteredPostulants = Postulants.filter((postulant) => postulant.id !== params.id);
 
   if (JSON.stringify(filteredPostulants) === JSON.stringify(Postulants)) {
-    return res.status(404).send('postulant not found')
+    return res.status(404).send('postulant not found');
   }
 
   fs.writeFile('./data/postulants.json', JSON.stringify(filteredPostulants), {}, (error) => {
     if (error) {
-      res.status(400).send(error)
+      res.status(400).send(error);
     }
-    return res.status(204).json(filteredPostulants)
-  })
-}
+    return res.status(204).json(filteredPostulants);
+  });
+};
 
 const updatePostulants = (req, res) => {
-  const params = req.query
-  let updatedPostulant
+  const params = req.query;
+  let updatedPostulant;
 
   const updatedPostulants = Postulants.map((postulant) => {
     if (postulant.id === params.id) {
@@ -114,79 +114,79 @@ const updatePostulants = (req, res) => {
         primary_studies: {
           date: {
             start_date: params.start_date,
-            end_date: params.end_date
+            end_date: params.end_date,
           },
-          school: params.school
+          school: params.school,
         },
         secondary_studies: {
           date: {
             start_date: params.start_date,
-            end_date: params.end_date
+            end_date: params.end_date,
           },
-          school: params.school
+          school: params.school,
         },
         tertiary_studies: {
           date: {
             start_date: params.start_date,
-            end_date: params.end_date
+            end_date: params.end_date,
           },
-          institute: params.institute
+          institute: params.institute,
         },
         university_studies: {
           date: {
             start_date: params.start_date,
-            end_date: params.end_date
+            end_date: params.end_date,
           },
-          university: params.university
+          university: params.university,
         },
         work_experience: [{
           company: params.company,
           date: {
             start_date: params.start_date,
-            end_date: params.end_date
+            end_date: params.end_date,
           },
-          description: params.description
+          description: params.description,
         }],
         course: [{
           institute: params.institute,
           date: {
             start_date: params.start_date,
-            end_date: params.end_date
+            end_date: params.end_date,
           },
-          description: params.description
+          description: params.description,
         }],
         about: {
           date: {
             start_date: params.start_date,
-            end_date: params.end_date
+            end_date: params.end_date,
           },
-          description: params.description
+          description: params.description,
         },
-        available: params.available
-      }
-      return updatedPostulant
+        available: params.available,
+      };
+      return updatedPostulant;
     }
-    return postulant
-  })
+    return postulant;
+  });
 
   if (!updatedPostulant) {
-    return res.status(404).send('postulant not found')
+    return res.status(404).send('postulant not found');
   }
   if (JSON.stringify(updatedPostulants) === JSON.stringify(Psychologists)) {
-    return res.status(200).send('postulant found, but no changes made')
+    return res.status(200).send('postulant found, but no changes made');
   }
 
-  fs.writeFile('./data/postulants.json', JSON.stringify(updatedPostulants), {}, err => {
+  fs.writeFile('./data/postulants.json', JSON.stringify(updatedPostulants), {}, (err) => {
     if (error) {
-      res.status(400).send(error)
+      res.status(400).send(error);
     }
-  })
-  res.send(updatedPostulants)
-}
+  });
+  res.send(updatedPostulants);
+};
 
 module.exports = {
   getPostulants,
   createPostulant,
   deletePostulant,
-  updatePostulants
-}
+  updatePostulants,
+};

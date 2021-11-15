@@ -3,7 +3,7 @@ const Clients = require('../models/Clients');
 const listClients = (req, res) => {
   Clients.find(req.query)
     .then((clients) => res.status(200).json(clients))
-    .catch((error) => res.status(400).json({message: error}));
+    .catch((error) => res.status(400).json({ message: error }));
 };
 
 const createClient = (req, res) => {
@@ -23,16 +23,16 @@ const createClient = (req, res) => {
 
   clientCreated.save((error, client) => {
     if (error) {
-      return res.status(400).json({message: error});
+      return res.status(400).json({ message: error });
     }
-    return res.status(201).json({message: client});
+    return res.status(201).json({ message: client });
   });
 };
 
 const deleteClient = (req, res) => {
   Clients.findByIdAndDelete(req.params.id, (error) => {
     if (error) {
-      return res.status(400).json({message: `Client with id ${req.params.id} does not exist.`});
+      return res.status(400).json({ message: `Client with id ${req.params.id} does not exist.` });
     }
     return res.status(204).send();
   });
@@ -62,7 +62,7 @@ const updateClient = (req, res) => {
         return res.status(400).json({ message: `Client with id: ${req.params.id} was not found` });
       }
       if (error) {
-        return res.status(400).json({message: error});
+        return res.status(400).json({ message: error });
       }
       return res.status(200).json({ message: 'Client updated', newClient });
     },
