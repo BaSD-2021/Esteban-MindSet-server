@@ -22,7 +22,7 @@ const updateProfile = (req, res) => {
     { new: true },
     (error, newProfile) => {
       if (!newProfile) {
-        return res.status(404).json('Profile id does not exist');
+        return res.status(404).send({ Message: 'Profile id does not exist' });
       }
       if (error) {
         return res.status(400).json(error);
@@ -35,7 +35,7 @@ const updateProfile = (req, res) => {
 const deleteProfile = (req, res) => {
   Profiles.findByIdAndDelete(req.params.id, (error, pointedProfile) => {
     if (!pointedProfile) {
-      return res.status(404).json('Profile id does not exist');
+      return res.status(404).send({ Message: 'Profile id does not exist' });
     }
     if (error) {
       return res.status(400).json(error);
@@ -45,7 +45,7 @@ const deleteProfile = (req, res) => {
 };
 
 const listProfiles = (req, res) => {
-  Profiles.find()
+  Profiles.find(req.query)
     .then((profiles) => res.status(200).json(profiles))
     .catch((error) => res.status(400).json(error));
 };

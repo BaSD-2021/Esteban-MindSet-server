@@ -2,7 +2,9 @@ const { ObjectId } = require('mongoose').Types;
 
 const validateRequiredProfile = (req, res, next) => {
   if (!req.body.name) {
-    return res.status(400).send('name required');
+    return res.status(400).send({ message: 'name required' });
+  } if (typeof req.body.name !== 'string') {
+    return res.status(400).send({ message: 'invalid type' });
   }
   return next();
 };
