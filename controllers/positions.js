@@ -1,9 +1,9 @@
 const Positions = require('../models/Positions');
 
 const listPositions = (req, res) => {
-  Positions.find()
+  Positions.find(req.query)
     .then((positions) => res.status(200).json(positions))
-    .catch((error) => res.status(400).json(error));
+    .catch((error) => res.status(400).json({message: error}));
 };
 
 const updatePosition = (req, res) => {
