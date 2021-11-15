@@ -3,7 +3,7 @@ const Positions = require('../models/Positions');
 const listPositions = (req, res) => {
   Positions.find(req.query)
     .then((positions) => res.status(200).json(positions))
-    .catch((error) => res.status(400).json({message: error}));
+    .catch((error) => res.status(400).json({ message: error }));
 };
 
 const updatePosition = (req, res) => {
@@ -21,7 +21,7 @@ const updatePosition = (req, res) => {
         return res.status(404).json({ message: `Position with id: ${req.params.id} was not found` });
       }
       if (error) {
-        return res.status(400).json({message: error});
+        return res.status(400).json({ message: error });
       }
       return res.status(200).json({ msg: 'Position updated', newPosition });
     },
@@ -48,7 +48,7 @@ const createPosition = (req, res) => {
 const deletePosition = (req, res) => {
   Positions.findByIdAndDelete(req.params.id, (error) => {
     if (error) {
-      return res.status(404).json({message: `Position with id ${req.params.id} does not extis`});
+      return res.status(404).json({ message: `Position with id ${req.params.id} does not extis` });
     }
     return res.status(204).send();
   });
