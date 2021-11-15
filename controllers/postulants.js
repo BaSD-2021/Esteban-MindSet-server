@@ -49,6 +49,7 @@ const deletePostulant = (req, res) => {
 
 const updatePostulants = (req, res) => {
   const bodyReq = req.body;
+  console.log(bodyReq.studies.informalStudies);
   Postulants.findByIdAndUpdate(
     req.params.id,
     {
@@ -62,13 +63,11 @@ const updatePostulants = (req, res) => {
       available: bodyReq.available,
       phone: bodyReq.phone,
       profiles: bodyReq.profiles,
-      studies: {
-        primaryStudies: bodyReq.studies.primaryStudies,
-        secondaryStudies: bodyReq.studies.secondaryStudies,
-        tertiaryStudies: bodyReq.studies.tertiaryStudies,
-        universityStudies: bodyReq.studies.universityStudies,
-        informalStudies: bodyReq.studies.informalStudies,
-      },
+      'studies.primaryStudies': bodyReq.studies.primaryStudies,
+      'studies.secondaryStudies': bodyReq.studies.secondaryStudies,
+      'studies.tertiaryStudies': bodyReq.studies.tertiaryStudies,
+      'studies.universityStudies': bodyReq.studies.universityStudies,
+      'studies.informalStudies': bodyReq.studies.informalStudies,
       workExperience: bodyReq.workExperience,
     },
     { new: true },
