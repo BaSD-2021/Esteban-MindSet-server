@@ -1,9 +1,5 @@
 const Psychologists = require('../models/Psychologists');
 
-const getPsychologists = (req, res) => {
-  // res.status(200).json(Psychologists);
-};
-
 const createPsychologist = (req, res) => {
   const psychologist = new Psychologists({
     first_name: req.body.first_name,
@@ -29,7 +25,7 @@ const deletePsychologist = (req, res) => {
       return res.status(400).json(err);
     }
     if (!deletedPsychologist) {
-      return res.status(404).json({ msg: `The Psychologist 'id' (${req.params.id}) given  does not exist.` });
+      return res.status(404).json({ msg: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
     }
     return res.status(204).send(deletedPsychologist);
   });
@@ -70,8 +66,31 @@ const updatePsychologist = (req, res) => {
   // });
 };
 
+const listAllPsychologists = (req, res) => {
+  Psychologists.find()
+    .then((psychologists) => {
+      res.status(200).json(psychologists);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+};
+
+const listPsychologist = (req, res) => {
+  Psychologists.findById(req.params.id, (err, foundPsychologist) => {
+    if (err) {
+      return res.status(400).json(err);
+    }
+    if (!foundPsychologist) {
+      return res.status(404).json({ msg: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
+    }
+    return res.status(200).send(foundPsychologist);
+  });
+};
+
 module.exports = {
-  getPsychologists,
+  listPsychologist,
+  listAllPsychologists,
   createPsychologist,
   deletePsychologist,
   updatePsychologist,

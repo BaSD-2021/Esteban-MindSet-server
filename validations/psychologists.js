@@ -58,7 +58,7 @@ const availabilityObjectValidator = (object) => {
 const validateIdFormat = (req, res, next) => {
   if (!ObjectId.isValid(req.params.id)) {
     return errorResHelper(
-      `The Psychologist 'Id' (${req.params.id}) given is invalid`,
+      `The psychologist 'Id' (${req.params.id}) given is invalid`,
       res,
     );
   }
