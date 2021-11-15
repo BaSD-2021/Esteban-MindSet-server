@@ -1,5 +1,11 @@
 const Profiles = require('../models/Profiles');
 
+const listProfiles = (req, res) => {
+  Profiles.find(req.query)
+    .then((profiles) => res.status(200).json(profiles))
+    .catch((error) => res.status(400).json(error));
+};
+
 const createProfile = (req, res) => {
   const profile = new Profiles({
     name: req.body.name,
@@ -42,12 +48,6 @@ const deleteProfile = (req, res) => {
     }
     return res.status(204).send();
   });
-};
-
-const listProfiles = (req, res) => {
-  Profiles.find(req.query)
-    .then((profiles) => res.status(200).json(profiles))
-    .catch((error) => res.status(400).json(error));
 };
 
 module.exports = {

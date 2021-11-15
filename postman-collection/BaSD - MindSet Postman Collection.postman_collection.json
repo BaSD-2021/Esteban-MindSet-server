@@ -169,6 +169,30 @@
 			"name": "Interviews",
 			"item": [
 				{
+					"name": "ListInterviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/interviews",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"interviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "CreateInterview",
 					"event": [
 						{
@@ -271,30 +295,6 @@
 									"value": "61903d447ad9dab1a9d8f02e",
 									"description": "required"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ListInterviews",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/interviews",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"interviews"
 							]
 						}
 					},

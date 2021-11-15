@@ -5,10 +5,10 @@ const validations = require('../validations/profiles');
 const router = express.Router();
 
 const {
+  listProfiles,
   createProfile,
   updateProfile,
   deleteProfile,
-  listProfiles,
 } = controller;
 
 const {
