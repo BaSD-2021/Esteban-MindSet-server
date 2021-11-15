@@ -6,7 +6,7 @@ const listInterviews = (req, res) => {
       res.status(200).json(interviews);
     })
     .catch((error) => {
-      res.status(400).json(error);
+      res.status(400).json({ message: error });
     });
 };
 
@@ -23,7 +23,7 @@ const createInterview = (req, res) => {
 
   interview.save((error) => {
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ message: error });
     }
     return res.status(201).json(interview);
   });
@@ -44,11 +44,11 @@ const updateInterview = (req, res) => {
     { new: true },
     (error, newInterview) => {
       if (!newInterview) {
-        return res.status(404).json('Interview id does not exist');
+        return res.status(404).json({ message: 'Interview id does not exist' });
       }
 
       if (error) {
-        return res.status(400).json(error);
+        return res.status(400).json({ message: error });
       }
       return res.status(201).json(newInterview);
     },
@@ -58,10 +58,10 @@ const updateInterview = (req, res) => {
 const deleteInterview = (req, res) => {
   Interviews.findByIdAndDelete(req.params.id, (error, pointedInterview) => {
     if (!pointedInterview) {
-      return res.status(404).json('Interview id does not exist');
+      return res.status(404).json({ message: 'Interview id does not exist' });
     }
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ message: error });
     }
     return res.status(204).send();
   });
