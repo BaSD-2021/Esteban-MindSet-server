@@ -1,5 +1,53 @@
 const Psychologists = require('../models/Psychologists');
 
+const availabilityObjectModel = {
+  monday: {
+    availability: '',
+    from: '',
+    to: '',
+  },
+  tuesday: {
+    availability: '',
+    from: '',
+    to: '',
+  },
+  wednesday: {
+    availability: '',
+    from: '',
+    to: '',
+  },
+  thursday: {
+    availability: '',
+    from: '',
+    to: '',
+  },
+  friday: {
+    availability: '',
+    from: '',
+    to: '',
+  },
+  saturday: {
+    availability: '',
+    from: '',
+    to: '',
+  },
+  sunday: {
+    availability: '',
+    from: '',
+    to: '',
+  },
+};
+
+const availabilityObjectAttrConstructor = (req) => {
+  const keys = Object.keys(availabilityObjectModel);
+  return keys.reduce((resultObj, el) => ({
+    ...resultObj,
+    [`availability.${el}.availability`]: req.body.availability[el]?.availability,
+    [`availability.${el}.from`]: req.body.availability[el]?.from,
+    [`availability.${el}.to`]: req.body.availability[el]?.to,
+  }), {});
+};
+
 const createPsychologist = (req, res) => {
   const psychologist = new Psychologists({
     first_name: req.body.first_name,
@@ -19,6 +67,40 @@ const createPsychologist = (req, res) => {
   });
 };
 
+const updatePsychologist = (req, res) => {
+  // console.log(availabilityObjectAttrConstructor(availabilityObjectModel, req));
+  Psychologists.findByIdAndUpdate(
+    req.params.id,
+    {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      // 'availability.monday': req.body.availability.monday,
+      // 'availability.tuesday': req.body.availability.tuesday,
+      // 'availability.wednesday': req.body.availability.wednesday,
+      // 'availability.thursday': req.body.availability.thursday,
+      // 'availability.friday': req.body.availability.friday,
+      // 'availability.saturday': req.body.availability.saturday,
+      // 'availability.sunday': req.body.availability.sunday,
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      phone: req.body.phone,
+      address: req.body.address,
+      ...availabilityObjectAttrConstructor(req),
+    },
+    { new: true },
+    (err, newPsychologist) => {
+      if (err) {
+        return res.status(400).json(err);
+      }
+      if (!newPsychologist) {
+        return res.status(404).json({ msg: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
+      }
+      return res.status(200).json(newPsychologist);
+    },
+  );
+};
+
 const deletePsychologist = (req, res) => {
   Psychologists.findByIdAndDelete(req.params.id, (err, deletedPsychologist) => {
     if (err) {
@@ -29,41 +111,6 @@ const deletePsychologist = (req, res) => {
     }
     return res.status(204).send(deletedPsychologist);
   });
-};
-
-const updatePsychologist = (req, res) => {
-  // const params = req.query;
-  // let updatedPsychologist;
-
-  // const updatedPsychologists = Psychologists.map((psychologist) => {
-  //   if (psychologist.id === params.id) {
-  //     updatedPsychologist = {
-  //       id: params.id,
-  //       first_name: params.first_name || psychologist.first_name,
-  //       last_name: params.last_name || psychologist.last_name,
-  //       phone: params.phone || psychologist.phone,
-  //       email: params.email || psychologist.email,
-  //       availability: JSON.parse(req.query.availability) || psychologist.availability,
-  //       address: params.address || psychologist.address,
-  //     };
-  //     return updatedPsychologist;
-  //   }
-  //   return psychologist;
-  // });
-
-  // if (!updatedPsychologist) {
-  //   return res.status(404).send('psychologist not found');
-  // }
-  // if (JSON.stringify(updatedPsychologists) === JSON.stringify(Psychologists)) {
-  //   return res.status(200).send('psychologist found, but there was nothing to change');
-  // }
-
-  // return fs.writeFile('./data/psychologists.json', JSON.stringify(updatedPsychologists), {}, (error) => {
-  //   if (error) {
-  //     res.status(400).send(error);
-  //   }
-  //   return res.status(200).json(updatedPsychologists);
-  // });
 };
 
 const listAllPsychologists = (req, res) => {
