@@ -4,10 +4,10 @@ const cors = require('cors');
 const router = require('./router');
 
 const app = express();
-const PORT = 4000;
-app.use(express.json());
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect(
   'mongodb+srv://BaSD:BaSD2021@cluster0.5vk6q.mongodb.net/mindSet?retryWrites=true&w=majority',
@@ -21,8 +21,6 @@ mongoose.connect(
     }
   },
 );
-
-app.use(cors());
 
 app.use('/api', router);
 
