@@ -5,7 +5,7 @@ const listSessions = (req, res) => {
     .then((sessions) => {
       res.status(200).json(sessions);
     })
-    .catch((err) => res.status(400).json({ message: err.message }));
+    .catch((err) => res.status(400).json({ message: err }));
 };
 
 const createSession = (req, res) => {
@@ -18,7 +18,7 @@ const createSession = (req, res) => {
   });
   session.save((err, cbSession) => {
     if (err) {
-      return res.status(400).json({ message: err.message });
+      return res.status(400).json({ message: err });
     }
     return res.status(201).json(cbSession);
   });
@@ -37,7 +37,7 @@ const updateSession = (req, res) => {
     { new: true },
     (err, newSession) => {
       if (err) {
-        return res.status(400).json({ message: err.message });
+        return res.status(400).json({ message: err });
       }
       if (!newSession) {
         return res.status(404).json({ message: `The session 'id' (${req.params.id}) given  does not exist.` });
@@ -50,7 +50,7 @@ const updateSession = (req, res) => {
 const deleteSession = (req, res) => {
   Sessions.findByIdAndDelete(req.params.id, (err, deletedSession) => {
     if (err) {
-      return res.status(400).json({ message: err.message });
+      return res.status(400).json({ message: err });
     }
     if (!deletedSession) {
       return res.status(404).json({ message: `The session 'id' (${req.params.id}) given  does not exist.` });
