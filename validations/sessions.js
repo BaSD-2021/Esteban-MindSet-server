@@ -21,18 +21,18 @@ const validateIdFormat = (req, res, next) => {
 };
 
 const validateSessions = (req, res, next) => {
-  const invalidParams = [];
+  const invalidBodyAttrs = [];
   if (!ObjectId.isValid(req.body.postulant)) {
-    invalidParams.push("'Postulant ID'");
+    invalidBodyAttrs.push("'Postulant ID'");
   }
   if (!ObjectId.isValid(req.body.psychologist)) {
-    invalidParams.push("'Psychologist ID'");
+    invalidBodyAttrs.push("'Psychologist ID'");
   }
   if (!Object.values(statusEnum).includes(req.body.status)) {
-    invalidParams.push("'Status'");
+    invalidBodyAttrs.push("'Status'");
   }
   if (!req.body.date) {
-    invalidParams.push("'Date'");
+    invalidBodyAttrs.push("'Date'");
   }
   if (req.body.date) {
     try {
@@ -40,18 +40,18 @@ const validateSessions = (req, res, next) => {
         throw new Error('Wrong Date Format');
       }
     } catch {
-      invalidParams.push("'Date'");
+      invalidBodyAttrs.push("'Date'");
     }
   }
-  if (invalidParams.length === 1) {
+  if (invalidBodyAttrs.length === 1) {
     return errorResHelper(
-      `Param ${invalidParams[0]} is missing or invalid`,
+      `Param ${invalidBodyAttrs[0]} is missing or invalid`,
       res,
     );
   }
-  if (invalidParams.length > 1) {
+  if (invalidBodyAttrs.length > 1) {
     return errorResHelper(
-      `Params ${invalidParams
+      `Params ${invalidBodyAttrs
         .join(', ')
         .replace(/,([^,]*)$/, ' and $1')} are missing or invalid.`,
       res,
@@ -61,15 +61,15 @@ const validateSessions = (req, res, next) => {
 };
 
 const validateSessionsUsedAttr = (req, res, next) => {
-  const invalidParams = [];
+  const invalidBodyAttrs = [];
   if (req.body.postulant && !ObjectId.isValid(req.body.postulant)) {
-    invalidParams.push("'Postulant ID'");
+    invalidBodyAttrs.push("'Postulant ID'");
   }
   if (req.body.psychologist && !ObjectId.isValid(req.body.psychologist)) {
-    invalidParams.push("'Psychologist ID'");
+    invalidBodyAttrs.push("'Psychologist ID'");
   }
   if (req.body.status && !Object.values(statusEnum).includes(req.body.status)) {
-    invalidParams.push("'Status'");
+    invalidBodyAttrs.push("'Status'");
   }
   if (req.body.date) {
     try {
@@ -77,18 +77,18 @@ const validateSessionsUsedAttr = (req, res, next) => {
         throw new Error('Wrong Date Format');
       }
     } catch {
-      invalidParams.push("'Date'");
+      invalidBodyAttrs.push("'Date'");
     }
   }
-  if (invalidParams.length === 1) {
+  if (invalidBodyAttrs.length === 1) {
     return errorResHelper(
-      `Param ${invalidParams[0]} is invalid`,
+      `Param ${invalidBodyAttrs[0]} is invalid`,
       res,
     );
   }
-  if (invalidParams.length > 1) {
+  if (invalidBodyAttrs.length > 1) {
     return errorResHelper(
-      `Params ${invalidParams
+      `Params ${invalidBodyAttrs
         .join(', ')
         .replace(/,([^,]*)$/, ' and $1')} are invalid.`,
       res,
