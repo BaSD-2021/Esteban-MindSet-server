@@ -13,12 +13,6 @@ const ClientsSchema = new Schema({
   },
   logo: String,
   description: String,
-  created: {
-    admin: { type: mongoose.Schema.Types.ObjectId, ref: 'Admins' },
-  },
-  modified: {
-    admin: { type: mongoose.Schema.Types.ObjectId, ref: 'Admins' },
-  },
 }, {
   timestamps: true,
 });

@@ -13,12 +13,6 @@ const createClient = (req, res) => {
     location: req.body.location,
     logo: req.body.logo,
     description: req.body.description,
-    created: {
-      admin: req.body.created.admin,
-    },
-    modified: {
-      admin: req.body.modified.admin,
-    },
   });
 
   clientCreated.save((error, client) => {
@@ -52,9 +46,6 @@ const updateClient = (req, res) => {
       },
       logo: req.body.logo,
       description: req.body.description,
-      modified: {
-        admin: req.body.modified.admin,
-      },
     },
     { new: true },
     (error, newClient) => {
