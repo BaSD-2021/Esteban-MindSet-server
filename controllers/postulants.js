@@ -79,7 +79,7 @@ const updatePostulants = (req, res) => {
       if (error) {
         return res.status(400).json({ message: error });
       }
-      return res.status(201).json(newPostulant);
+      return res.status(200).json(newPostulant);
     },
   );
 };
