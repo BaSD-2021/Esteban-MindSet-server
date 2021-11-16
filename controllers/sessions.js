@@ -1,5 +1,13 @@
 const Sessions = require('../models/Sessions');
 
+const listSessions = (req, res) => {
+  Sessions.find(req.query)
+    .then((sessions) => {
+      res.status(200).json(sessions);
+    })
+    .catch((err) => res.status(400).json({ message: err.message }));
+};
+
 const createSession = (req, res) => {
   const session = new Sessions({
     postulant: req.body.postulant,
@@ -10,7 +18,7 @@ const createSession = (req, res) => {
   });
   session.save((err, cbSession) => {
     if (err) {
-      return res.status(400).json(err);
+      return res.status(400).json({ message: err.message });
     }
     return res.status(201).json(cbSession);
   });
@@ -29,7 +37,7 @@ const updateSession = (req, res) => {
     { new: true },
     (err, newSession) => {
       if (err) {
-        return res.status(400).json(err);
+        return res.status(400).json({ message: err.message });
       }
       if (!newSession) {
         return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
@@ -42,7 +50,7 @@ const updateSession = (req, res) => {
 const deleteSession = (req, res) => {
   Sessions.findByIdAndDelete(req.params.id, (err, deletedSession) => {
     if (err) {
-      return res.status(400).json(err);
+      return res.status(400).json({ message: err.message });
     }
     if (!deletedSession) {
       return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
@@ -51,28 +59,6 @@ const deleteSession = (req, res) => {
   });
 };
 
-const listAllSessions = (req, res) => {
-  Sessions.find()
-    .then((sessions) => {
-      res.status(200).json(sessions);
-    })
-    .catch((err) => {
-      res.status(400).json(err);
-    });
-};
-
-const listSession = (req, res) => {
-  Sessions.findById(req.params.id, (err, foundSession) => {
-    if (err) {
-      return res.status(400).json(err);
-    }
-    if (!foundSession) {
-      return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
-    }
-    return res.status(200).send(foundSession);
-  });
-};
-
 module.exports = {
-  createSession, listAllSessions, updateSession, deleteSession, listSession,
+  createSession, listSessions, updateSession, deleteSession,
 };
