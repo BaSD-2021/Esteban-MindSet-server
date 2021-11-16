@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4a625679-3499-4ce1-9dce-378b0a269d86",
+		"_postman_id": "bb1ec44d-cfa3-4d8b-b433-042fb2a8ffed",
 		"name": "BaSD - MindSet Postman Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -176,15 +176,304 @@
 		},
 		{
 			"name": "Positions",
-			"item": []
+			"item": [
+				{
+					"name": "Update a Position By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": 2,\r\n    \"jobDescription\": \"Lorem ipsum dolor sit amet.\",\r\n    \"vacancy\": 2,\r\n    \"professionalProfiles\": [\"Sales\",\"Tresury\"],\r\n    \"isOpen\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/positions/618fc548e2051aa8266f3117",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions",
+								"618fc548e2051aa8266f3117"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all the Positions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Position",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": \"asd584d484\",\r\n    \"jobDescription\": \"Logistics\",\r\n    \"vacancy\": 3,\r\n    \"professionalProfiles\": [\"Experienced Logistics\", \"Experienced Logistics\"],\r\n    \"isOpen\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Position",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/positions/618fee159b3bc425367718fc",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions",
+								"618fee159b3bc425367718fc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Interviews",
-			"item": []
+			"item": [
+				{
+					"name": "CreateInterview",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postulant\": \"61903bb97d023460f260f849\",\r\n    \"client\": \"61903bb97d023460f260f849\",\r\n    \"application\": \"61903bb97d023460f260f849\",\r\n    \"status\": \"succesful\",\r\n    \"date\": \"2023-11-23\",\r\n    \"notes\": \"good guy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/interviews",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"interviews"
+							],
+							"query": [
+								{
+									"key": "idPostulant",
+									"value": "testIdPostulant",
+									"description": "required",
+									"disabled": true
+								},
+								{
+									"key": "idClient",
+									"value": "testIdClient",
+									"description": "required",
+									"disabled": true
+								},
+								{
+									"key": "idApplication",
+									"value": "testIdApplication",
+									"description": "required",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "failed",
+									"description": "required",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2022-06-11",
+									"description": "required",
+									"disabled": true
+								},
+								{
+									"key": "notes",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateInterview",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postulant\": \"61903bb97d023460f260f849\",\r\n    \"client\": \"61903bb97d023460f260f849\",\r\n    \"application\": \"61903bb97d023460f260f849\",\r\n    \"status\": \"assigned\",\r\n    \"date\": \"2021-11-13\",\r\n    \"notes\": \"bad haircut\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/interviews/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"interviews",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61903d447ad9dab1a9d8f02e",
+									"description": "required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListInterviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/interviews",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"interviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteInterview",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/interviews/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"interviews",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "619070d6d43205695a7ac280",
+									"description": "required"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Psichologists",
 			"item": []
+		},
+		{
+			"name": "Postulants",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:4000/api/"
 		}
 	]
 }
