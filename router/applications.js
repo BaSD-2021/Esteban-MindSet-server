@@ -12,9 +12,10 @@ const {
 
 const {
   requireValidation,
+  validateApplicantFormat,
 } = validation;
 
-router.post('/', requireValidation, createApplication);
+router.post('/', requireValidation, validateApplicantFormat, createApplication);
 router.delete('/:id', deleteApplication);
 router.get('/', listApplication);
 

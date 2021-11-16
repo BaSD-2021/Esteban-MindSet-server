@@ -1,9 +1,9 @@
 const Applications = require('../models/Applications');
 
 const listApplication = (req, res) => {
-  Applications.find()
+  Applications.find(req.query)
     .then((application) => res.status(200).json(application))
-    .catch((error) => res.status(400).json(error));
+    .catch((error) => res.status(404).json({ message: error }));
 };
 
 const createApplication = (req, res) => {
@@ -25,11 +25,12 @@ const createApplication = (req, res) => {
 const deleteApplication = (req, res) => {
   Applications.findByIdAndDelete(req.params.id, (error, chosenApplication) => {
     if (!chosenApplication) {
-      return res.status(404).json(`Id ${req.params.id} not found`);
-    } if (error) {
+      return res.status(404).json({ message: `Id ${req.params.id} does not exist` });
+    }
+    if (error) {
       return res.status(400).json(error);
     }
-    return res.status(204).send(`Id ${req.params.id} was remove successfully`);
+    return res.status(204).send({ message: `Id ${req.params.id} was remove successfully` });
   });
 };
 
