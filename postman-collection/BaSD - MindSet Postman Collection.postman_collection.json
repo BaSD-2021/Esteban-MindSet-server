@@ -158,11 +158,224 @@
 		},
 		{
 			"name": "Sessions",
-			"item": []
+			"item": [
+				{
+					"name": "createSession",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postulant\": \"5e1a0651741b255ddda996c4\",\r\n    \"psychologist\": \"5e1a0651741b255ddda996c3\",\r\n    \"status\": \"succesful\",\r\n    \"date\": \"2021-11-14T21:00:00.000Z\",\r\n    \"notes\": \"notas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sessions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sessions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listSessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/sessions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sessions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSession",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postulant\": \"5e1a0651741b255ddda996c4\",\r\n    \"psychologist\": \"5e1a0651741b255ddda996c3\",\r\n    \"status\": \"cancelled\",\r\n    \"date\":\"2021-10-15T00:00:17.376Z\",\r\n    \"notes\": \"notas modificadas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sessions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6191a2fa365fbfc45d4d139f"
+								}
+							]
+						},
+						"description": "## Important\nIn the body you can find all the attributes that might be updated. Anyway, there is no need \"to\" send everyone of those. Sending just the ones that are in need of being updated will suffice.\n\n### Example\n\nSending this body content is allowed.\n```\n{\n    \"status\": \"cancelled\",\n    \"notes\": \"notas modificadas\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSession",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/sessions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6191bac85808fdbab2417706"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Positions",
-			"item": []
+			"item": [
+				{
+					"name": "Update a Position By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": 2,\r\n    \"jobDescription\": \"Lorem ipsum dolor sit amet.\",\r\n    \"vacancy\": 2,\r\n    \"professionalProfiles\": [\"Sales\",\"Tresury\"],\r\n    \"isOpen\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/positions/618fc548e2051aa8266f3117",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions",
+								"618fc548e2051aa8266f3117"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all the Positions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Position",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": \"asd584d484\",\r\n    \"jobDescription\": \"Logistics\",\r\n    \"vacancy\": 3,\r\n    \"professionalProfiles\": [\"Experienced Logistics\", \"Experienced Logistics\"],\r\n    \"isOpen\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Position",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/positions/618fee159b3bc425367718fc",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions",
+								"618fee159b3bc425367718fc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Interviews",
