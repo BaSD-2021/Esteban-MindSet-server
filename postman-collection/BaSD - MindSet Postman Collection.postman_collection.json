@@ -60,7 +60,104 @@
 		},
 		{
 			"name": "Positions",
-			"item": []
+			"item": [
+				{
+					"name": "Update a Position By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": 2,\r\n    \"jobDescription\": \"Lorem ipsum dolor sit amet.\",\r\n    \"vacancy\": 2,\r\n    \"professionalProfiles\": [\"Sales\",\"Tresury\"],\r\n    \"isOpen\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/positions/618fc548e2051aa8266f3117",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions",
+								"618fc548e2051aa8266f3117"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all the Positions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Position",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": \"asd584d484\",\r\n    \"jobDescription\": \"Logistics\",\r\n    \"vacancy\": 3,\r\n    \"professionalProfiles\": [\"Experienced Logistics\", \"Experienced Logistics\"],\r\n    \"isOpen\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Position",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/positions/618fee159b3bc425367718fc",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions",
+								"618fee159b3bc425367718fc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Interviews",
