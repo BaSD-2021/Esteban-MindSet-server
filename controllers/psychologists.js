@@ -10,6 +10,14 @@ const availabilityObjectAttrConstructor = (req) => {
   }), {});
 };
 
+const listPsychologists = (req, res) => {
+  Psychologists.find(req.query)
+    .then((psychologists) => {
+      res.status(200).json(psychologists);
+    })
+    .catch((err) => res.status(400).json({ message: err.message }));
+};
+
 const createPsychologist = (req, res) => {
   const psychologist = new Psychologists({
     firstName: req.body.firstName,
@@ -63,16 +71,8 @@ const deletePsychologist = (req, res) => {
     if (!deletedPsychologist) {
       return res.status(404).json({ message: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
     }
-    return res.status(204).send(deletedPsychologist);
+    return res.status(204).send();
   });
-};
-
-const listPsychologists = (req, res) => {
-  Psychologists.find(req.query)
-    .then((psychologists) => {
-      res.status(200).json(psychologists);
-    })
-    .catch((err) => res.status(400).json({ message: err.message }));
 };
 
 module.exports = {
