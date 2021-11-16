@@ -73,7 +73,7 @@ const updatePostulants = (req, res) => {
     { new: true },
     (error, newPostulant) => {
       if (!newPostulant) {
-        return res.status(404).json({ message: 'Interview id does not exist' });
+        return res.status(404).json({ message: 'Postulant id does not exist' });
       }
 
       if (error) {
