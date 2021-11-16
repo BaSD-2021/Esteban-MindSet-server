@@ -94,6 +94,7 @@ const deletePostulant = (req, res) => {
     }
     return res.status(204).json(filteredPostulants);
   });
+  return Postulants;
 };
 
 const updatePostulants = (req, res) => {
@@ -172,16 +173,16 @@ const updatePostulants = (req, res) => {
   if (!updatedPostulant) {
     return res.status(404).send('postulant not found');
   }
-  if (JSON.stringify(updatedPostulants) === JSON.stringify(Psychologists)) {
+  if (JSON.stringify(updatedPostulants) === JSON.stringify(Postulants)) {
     return res.status(200).send('postulant found, but no changes made');
   }
 
   fs.writeFile('./data/postulants.json', JSON.stringify(updatedPostulants), {}, (err) => {
-    if (error) {
-      res.status(400).send(error);
+    if (err) {
+      res.status(400).send(err);
     }
   });
-  res.send(updatedPostulants);
+  return res.send(updatedPostulants);
 };
 
 module.exports = {
