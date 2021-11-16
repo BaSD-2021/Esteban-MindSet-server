@@ -3,8 +3,9 @@ const Clients = require('../models/Clients');
 const listClients = (req, res) => {
   Clients.find(req.query)
     .then((clients) => res.status(200).json({
-      message: "List of clients:",
-      data:clients}))
+      message: 'List of clients:',
+      data: clients,
+    }))
     .catch((error) => res.status(400).json({ message: error }));
 };
 
@@ -22,8 +23,9 @@ const createClient = (req, res) => {
       return res.status(400).json({ message: error });
     }
     return res.status(201).json({
-      message: "Client created",
-      data: client });
+      message: 'Client created',
+      data: client,
+    });
   });
 };
 
@@ -61,7 +63,8 @@ const updateClient = (req, res) => {
       }
       return res.status(200).json({
         message: 'Client updated',
-        data: newClient });
+        data: newClient,
+      });
     },
   );
 };
