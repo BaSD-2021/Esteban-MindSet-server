@@ -132,7 +132,7 @@
 								},
 								{
 									"key": "notes",
-									"value": null,
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -294,27 +294,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/api/psychologists",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"psychologists"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "listPsychologistsById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:4000/api/psychologists/:id",
+							"raw": "http://localhost:4000/api/psychologists/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -323,12 +303,53 @@
 							"path": [
 								"api",
 								"psychologists",
-								":id"
+								""
 							],
-							"variable": [
+							"query": [
 								{
-									"key": "id",
-									"value": "6191dd7fc0e7c116c86a505a"
+									"key": "firstName",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "lastName",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "createdAt",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updatedAt",
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -342,7 +363,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\": \"Joe\",\r\n    \"last_name\": \"Doe\",\r\n    \"availability\": {\r\n        \"monday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"tuesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"wednesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"thursday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"friday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"saturday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"sunday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        }\r\n    },\r\n    \"username\": \"username\",\r\n    \"password\": \"password\",\r\n    \"email\": \"email@gmail.com\",\r\n    \"phone\": 4242654,\r\n    \"address\": \"address 123\"\r\n}",
+							"raw": "{\r\n\"availability\": {\r\n        \"monday\": {\r\n            \"availability\": true,\r\n        }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -364,7 +385,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6191dd7fc0e7c116c86a505a"
+									"value": "619307ee81a976a00ace99b7"
 								}
 							]
 						},
