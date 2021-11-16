@@ -37,11 +37,11 @@ const createPostulant = (req, res) => {
 
 const deletePostulant = (req, res) => {
   Postulants.findByIdAndDelete(req.params.id, (error, pointedPostulant) => {
-    if (!pointedPostulant) {
-      return res.status(404).json({ message: 'Postulant id does not exist' });
-    }
     if (error) {
       return res.status(400).json({ message: error });
+    }
+    if (!pointedPostulant) {
+      return res.status(404).json({ message: 'Postulant id does not exist' });
     }
     return res.status(204).send();
   });
@@ -72,12 +72,11 @@ const updatePostulants = (req, res) => {
     },
     { new: true },
     (error, newPostulant) => {
-      if (!newPostulant) {
-        return res.status(404).json({ message: 'Postulant id does not exist' });
-      }
-
       if (error) {
         return res.status(400).json({ message: error });
+      }
+      if (!newPostulant) {
+        return res.status(404).json({ message: 'Postulant id does not exist' });
       }
       return res.status(200).json(newPostulant);
     },

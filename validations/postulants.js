@@ -28,7 +28,7 @@ const validatePostulant = (req, res, next) => {
   if (!bodyReq.birthday || !bodyReq.birthday.match(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/)) {
     return res.status(400).json({ message: 'birthday is wrong or missing' });
   }
-  if (!bodyReq.available) {
+  if (!bodyReq.available || typeof bodyReq.available !== 'boolean') {
     return res.status(400).json({ message: 'available is wrong or missing' });
   }
   if (!bodyReq.phone) {
@@ -40,25 +40,28 @@ const validatePostulant = (req, res, next) => {
 const validateUpdatedPostulant = (req, res, next) => {
   const bodyReq = req.body;
 
-  if (bodyReq.firstName === '') {
+  if (bodyReq.firstName && typeof bodyReq.firstName !== 'string') {
     return res.status(400).json({ message: 'firstName is wrong or missing' });
   }
-  if (bodyReq.lastName === '') {
+  if (bodyReq.lastName && typeof bodyReq.lastName !== 'string') {
     return res.status(400).json({ message: 'lastName is wrong or missing' });
   }
   if (bodyReq.email && !bodyReq.email.match(emailRegex)) {
     return res.status(400).json({ message: 'email is wrong or missing' });
   }
-  if (bodyReq.password === '') {
+  if (bodyReq.password && typeof bodyReq.password !== 'string') {
     return res.status(400).json({ message: 'password is wrong or missing' });
   }
-  if (bodyReq.address === '') {
+  if (bodyReq.address && typeof bodyReq.address !== 'string') {
     return res.status(400).json({ message: 'address is wrong or missing' });
   }
   if (bodyReq.birthday && !bodyReq.birthday.match(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/)) {
     return res.status(400).json({ message: 'birthday is wrong or missing' });
   }
-  if (bodyReq.phone === '' || Number.isNaN(bodyReq.phone)) {
+  if (bodyReq.available && typeof bodyReq.available !== 'boolean') {
+    return res.status(400).json({ message: 'available is wrong or missing' });
+  }
+  if (bodyReq.phone && Number.isNaN(bodyReq.phone)) {
     return res.status(400).json({ message: 'phone is wrong or missing' });
   }
 
@@ -68,7 +71,7 @@ const validateUpdatedPostulant = (req, res, next) => {
 const validatePostulantId = (req, res, next) => {
   const paramsId = req.params.id;
 
-  if (!paramsId || !ObjectId.isValid(paramsId)) {
+  if (!ObjectId.isValid(paramsId)) {
     return res.status(400).json({ message: 'postulant id is wrong or missing' });
   }
 
