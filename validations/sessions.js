@@ -7,7 +7,7 @@ const statusEnum = {
 };
 
 const errorResHelper = (errorDescription, res, errCode = 400) => {
-  res.status(errCode).json({ msg: errorDescription });
+  res.status(errCode).json({ message: errorDescription });
 };
 
 const validateIdFormat = (req, res, next) => {

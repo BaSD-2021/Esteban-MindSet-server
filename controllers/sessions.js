@@ -40,7 +40,7 @@ const updateSession = (req, res) => {
         return res.status(400).json({ message: err.message });
       }
       if (!newSession) {
-        return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
+        return res.status(404).json({ message: `The session 'id' (${req.params.id}) given  does not exist.` });
       }
       return res.status(200).json(newSession);
     },
@@ -53,9 +53,9 @@ const deleteSession = (req, res) => {
       return res.status(400).json({ message: err.message });
     }
     if (!deletedSession) {
-      return res.status(404).json({ msg: `The session 'id' (${req.params.id}) given  does not exist.` });
+      return res.status(404).json({ message: `The session 'id' (${req.params.id}) given  does not exist.` });
     }
-    return res.status(204).send(deletedSession);
+    return res.status(204).send();
   });
 };
 
