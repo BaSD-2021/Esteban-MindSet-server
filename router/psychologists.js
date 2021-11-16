@@ -11,7 +11,7 @@ const {
   updatePsychologist,
 } = controller;
 
-router.post('/', validations.validatePsychologists, createPsychologist);
+router.post('/', createPsychologist);
 router.put('/:id', validations.validateIdFormat, validations.validatePsychologistsUsedAttr, updatePsychologist);
 router.delete('/:id', validations.validateIdFormat, deletePsychologist);
 router.get('/', listPsychologists);

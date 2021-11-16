@@ -9,11 +9,11 @@ const availabilityDaySchema = new Schema({
   },
   from: {
     type: Number,
-    required: true,
+    default: 0800,
   },
   to: {
     type: Number,
-    required: true,
+    default: 1800,
   },
 }, { _id: false });
 
