@@ -12,8 +12,8 @@ const availabilityObjectAttrConstructor = (req) => {
 
 const createPsychologist = (req, res) => {
   const psychologist = new Psychologists({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     availability: req.body.availability,
     username: req.body.username,
     password: req.body.password,
@@ -21,11 +21,11 @@ const createPsychologist = (req, res) => {
     phone: req.body.phone,
     address: req.body.address,
   });
-  psychologist.save((err, cbPsychologist) => {
+  psychologist.save((err, newPsychologist) => {
     if (err) {
       return res.status(400).json(err);
     }
-    return res.status(201).json(cbPsychologist);
+    return res.status(201).json(newPsychologist);
   });
 };
 
@@ -33,8 +33,8 @@ const updatePsychologist = (req, res) => {
   Psychologists.findByIdAndUpdate(
     req.params.id,
     {
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
@@ -43,14 +43,14 @@ const updatePsychologist = (req, res) => {
       ...availabilityObjectAttrConstructor(req),
     },
     { new: true },
-    (err, newPsychologist) => {
+    (err, updatedPsychologist) => {
       if (err) {
         return res.status(400).json(err);
       }
-      if (!newPsychologist) {
+      if (!updatedPsychologist) {
         return res.status(404).json({ msg: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
       }
-      return res.status(200).json(newPsychologist);
+      return res.status(200).json(updatedPsychologist);
     },
   );
 };
@@ -67,8 +67,8 @@ const deletePsychologist = (req, res) => {
   });
 };
 
-const listAllPsychologists = (req, res) => {
-  Psychologists.find()
+const listPsychologists = (req, res) => {
+  Psychologists.find(req.query)
     .then((psychologists) => {
       res.status(200).json(psychologists);
     })
@@ -77,21 +77,8 @@ const listAllPsychologists = (req, res) => {
     });
 };
 
-const listPsychologist = (req, res) => {
-  Psychologists.findById(req.params.id, (err, foundPsychologist) => {
-    if (err) {
-      return res.status(400).json(err);
-    }
-    if (!foundPsychologist) {
-      return res.status(404).json({ msg: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
-    }
-    return res.status(200).send(foundPsychologist);
-  });
-};
-
 module.exports = {
-  listPsychologist,
-  listAllPsychologists,
+  listPsychologists,
   createPsychologist,
   deletePsychologist,
   updatePsychologist,
