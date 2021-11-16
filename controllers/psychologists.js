@@ -1,45 +1,7 @@
 const Psychologists = require('../models/Psychologists');
 
-const availabilityObjectModel = {
-  monday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  tuesday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  wednesday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  thursday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  friday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  saturday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  sunday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-};
-
 const availabilityObjectAttrConstructor = (req) => {
-  const keys = Object.keys(availabilityObjectModel);
+  const keys = Object.keys(req.body.availability || {});
   return keys.reduce((resultObj, el) => ({
     ...resultObj,
     [`availability.${el}.availability`]: req.body.availability[el]?.availability,
