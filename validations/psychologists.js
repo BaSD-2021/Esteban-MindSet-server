@@ -82,40 +82,40 @@ const validateIdFormat = (req, res, next) => {
 };
 
 const validatePsychologists = (req, res, next) => {
-  const invalidParams = [];
+  const invalidBodyAttrs = [];
   if (typeof req.body.firstName !== 'string') {
-    invalidParams.push("'firstName'");
+    invalidBodyAttrs.push("'firstName'");
   }
   if (typeof req.body.lastName !== 'string') {
-    invalidParams.push("'lastName'");
+    invalidBodyAttrs.push("'lastName'");
   }
   if (!availabilityObjectUpdateValidator(req.body.availability)) {
-    invalidParams.push("'availability'");
+    invalidBodyAttrs.push("'availability'");
   }
   if (typeof req.body.username !== 'string') {
-    invalidParams.push("'username'");
+    invalidBodyAttrs.push("'username'");
   }
   if (typeof req.body.password !== 'string') {
-    invalidParams.push("'password'");
+    invalidBodyAttrs.push("'password'");
   }
   if (typeof req.body.email !== 'string') {
-    invalidParams.push("'email'");
+    invalidBodyAttrs.push("'email'");
   }
   if (req.body.phone && typeof req.body.phone !== 'number') {
-    invalidParams.push("'phone'");
+    invalidBodyAttrs.push("'phone'");
   }
   if (req.body.address && typeof req.body.address !== 'string') {
-    invalidParams.push("'address'");
+    invalidBodyAttrs.push("'address'");
   }
-  if (invalidParams.length === 1) {
+  if (invalidBodyAttrs.length === 1) {
     return errorResHelper(
-      `Param ${invalidParams[0]} is missing or invalid`,
+      `Param ${invalidBodyAttrs[0]} is missing or invalid`,
       res,
     );
   }
-  if (invalidParams.length > 1) {
+  if (invalidBodyAttrs.length > 1) {
     return errorResHelper(
-      `Params ${invalidParams
+      `Params ${invalidBodyAttrs
         .join(', ')
         .replace(/,([^,]*)$/, ' and $1')} are missing or invalid.`,
       res,
@@ -125,40 +125,40 @@ const validatePsychologists = (req, res, next) => {
 };
 
 const validatePsychologistsUsedAttr = (req, res, next) => {
-  const invalidParams = [];
+  const invalidBodyAttrs = [];
   if (req.body.firstName && typeof req.body.firstName !== 'string') {
-    invalidParams.push("'firstName'");
+    invalidBodyAttrs.push("'firstName'");
   }
   if (req.body.lastName && typeof req.body.lastName !== 'string') {
-    invalidParams.push("'lastName'");
+    invalidBodyAttrs.push("'lastName'");
   }
   if (req.body.availability && !availabilityObjectValidator(req.body.availability)) {
-    invalidParams.push("'availability'");
+    invalidBodyAttrs.push("'availability'");
   }
   if (req.body.username && typeof req.body.username !== 'string') {
-    invalidParams.push("'username'");
+    invalidBodyAttrs.push("'username'");
   }
   if (req.body.password && typeof req.body.password !== 'string') {
-    invalidParams.push("'password'");
+    invalidBodyAttrs.push("'password'");
   }
   if (req.body.email && typeof req.body.email !== 'string') {
-    invalidParams.push("'email'");
+    invalidBodyAttrs.push("'email'");
   }
   if (req.body.phone && typeof req.body.phone !== 'number') {
-    invalidParams.push("'phone'");
+    invalidBodyAttrs.push("'phone'");
   }
   if (req.body.address && typeof req.body.address !== 'string') {
-    invalidParams.push("'address'");
+    invalidBodyAttrs.push("'address'");
   }
-  if (invalidParams.length === 1) {
+  if (invalidBodyAttrs.length === 1) {
     return errorResHelper(
-      `Param ${invalidParams[0]} is missing or invalid`,
+      `Param ${invalidBodyAttrs[0]} is missing or invalid`,
       res,
     );
   }
-  if (invalidParams.length > 1) {
+  if (invalidBodyAttrs.length > 1) {
     return errorResHelper(
-      `Params ${invalidParams
+      `Params ${invalidBodyAttrs
         .join(', ')
         .replace(/,([^,]*)$/, ' and $1')} are missing or invalid.`,
       res,
