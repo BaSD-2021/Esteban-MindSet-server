@@ -15,40 +15,38 @@ const availabilityDaySchema = new Schema({
     type: Number,
     required: true,
   },
-});
+}, { _id: false });
 
-const availabilitySchema = new Schema(
-  {
-    monday: {
-      type: availabilityDaySchema,
-      required: true,
-    },
-    tuesday: {
-      type: availabilityDaySchema,
-      required: true,
-    },
-    wednesday: {
-      type: availabilityDaySchema,
-      required: true,
-    },
-    thursday: {
-      type: availabilityDaySchema,
-      required: true,
-    },
-    friday: {
-      type: availabilityDaySchema,
-      required: true,
-    },
-    saturday: {
-      type: availabilityDaySchema,
-      required: true,
-    },
-    sunday: {
-      type: availabilityDaySchema,
-      required: true,
-    },
+const availabilitySchema = new Schema({
+  monday: {
+    type: availabilityDaySchema,
+    required: true,
   },
-);
+  tuesday: {
+    type: availabilityDaySchema,
+    required: true,
+  },
+  wednesday: {
+    type: availabilityDaySchema,
+    required: true,
+  },
+  thursday: {
+    type: availabilityDaySchema,
+    required: true,
+  },
+  friday: {
+    type: availabilityDaySchema,
+    required: true,
+  },
+  saturday: {
+    type: availabilityDaySchema,
+    required: true,
+  },
+  sunday: {
+    type: availabilityDaySchema,
+    required: true,
+  },
+}, { _id: false });
 
 const PsychologistSchema = new Schema(
   {

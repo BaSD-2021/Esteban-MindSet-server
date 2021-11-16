@@ -12,7 +12,7 @@ const {
 } = controller;
 
 router.post('/', validations.validatePsychologists, createPsychologist);
-router.put('/:id', validations.validatePsychologistsUsedAttr, updatePsychologist);
+router.put('/:id', validations.validateIdFormat, validations.validatePsychologistsUsedAttr, updatePsychologist);
 router.delete('/:id', validations.validateIdFormat, deletePsychologist);
 router.get('/', listPsychologists);
 
