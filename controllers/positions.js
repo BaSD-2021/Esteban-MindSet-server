@@ -2,7 +2,9 @@ const Positions = require('../models/Positions');
 
 const listPositions = (req, res) => {
   Positions.find(req.query)
-    .then((positions) => res.status(200).json(positions))
+    .then((positions) => res.status(200).json({
+      message: "List of positions:",
+      data:positions}))
     .catch((error) => res.status(400).json({ message: error }));
 };
 
@@ -19,7 +21,9 @@ const createPosition = (req, res) => {
     if (error) {
       return res.status(400).json({ message: error });
     }
-    return res.status(201).json({ message: position });
+    return res.status(201).json({
+      message: "Position created",
+      data: position });
   });
 };
 
@@ -40,7 +44,9 @@ const updatePosition = (req, res) => {
       if (error) {
         return res.status(400).json({ message: error });
       }
-      return res.status(200).json({ message: 'Position updated', newPosition });
+      return res.status(200).json({
+        message: 'Position updated',
+        data: newPosition });
     },
   );
 };
