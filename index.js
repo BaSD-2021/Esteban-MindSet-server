@@ -9,6 +9,8 @@ app.use(express.json());
 
 app.use(express.json());
 
+app.use(express.json());
+
 mongoose.connect(
   'mongodb+srv://BaSD:BaSD2021@cluster0.5vk6q.mongodb.net/mindSet?retryWrites=true&w=majority',
   (error) => {
