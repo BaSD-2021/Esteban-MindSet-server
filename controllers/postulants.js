@@ -49,7 +49,7 @@ const deletePostulant = (req, res) => {
 
 const updatePostulants = (req, res) => {
   const bodyReq = req.body;
-  console.log(bodyReq.studies.informalStudies);
+
   Postulants.findByIdAndUpdate(
     req.params.id,
     {

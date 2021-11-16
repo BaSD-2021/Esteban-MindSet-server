@@ -40,20 +40,26 @@ const validatePostulant = (req, res, next) => {
 const validateUpdatedPostulant = (req, res, next) => {
   const bodyReq = req.body;
 
-  if (!bodyReq.firstName || bodyReq.firstName === '') {
+  if (bodyReq.firstName === '') {
     return res.status(400).json({ message: 'firstName is wrong or missing' });
   }
-  if (!bodyReq.lastName || !bodyReq.lastName === '') {
+  if (bodyReq.lastName === '') {
     return res.status(400).json({ message: 'lastName is wrong or missing' });
   }
   if (bodyReq.email && !bodyReq.email.match(emailRegex)) {
     return res.status(400).json({ message: 'email is wrong or missing' });
   }
-  if (!bodyReq.password || !bodyReq.password === '') {
+  if (bodyReq.password === '') {
     return res.status(400).json({ message: 'password is wrong or missing' });
+  }
+  if (bodyReq.address === '') {
+    return res.status(400).json({ message: 'address is wrong or missing' });
   }
   if (bodyReq.birthday && !bodyReq.birthday.match(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/)) {
     return res.status(400).json({ message: 'birthday is wrong or missing' });
+  }
+  if (bodyReq.phone === '' || Number.isNaN(bodyReq.phone)) {
+    return res.status(400).json({ message: 'phone is wrong or missing' });
   }
 
   return next();
