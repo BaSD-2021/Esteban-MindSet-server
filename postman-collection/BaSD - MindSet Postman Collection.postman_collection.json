@@ -14,7 +14,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "localhost:4000/api/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admins",
+								""
+							]
 						}
 					},
 					"response": []
@@ -25,8 +34,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/api/admins/",
-							"protocol": "http",
+							"raw": "localhost:4000/api/admins/",
 							"host": [
 								"localhost"
 							],
@@ -59,11 +67,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/profiles/",
+							"raw": "localhost:4000/api/profiles/",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
+								"api",
 								"profiles",
 								""
 							]
@@ -86,11 +96,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/profiles/",
+							"raw": "localhost:4000/api/profiles/",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
+								"api",
 								"profiles",
 								""
 							]
@@ -113,18 +125,20 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/profiles/:id",
+							"raw": "localhost:4000/api/profiles/:id",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
+								"api",
 								"profiles",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "6191c69a2b81030fe3698b79"
+									"value": "6191c69a2b81030fe3698b7"
 								}
 							]
 						}
@@ -137,11 +151,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/profiles/:id",
+							"raw": "localhost:4000/api/profiles/:id",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
+								"api",
 								"profiles",
 								":id"
 							],
@@ -181,11 +197,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/interviews",
+							"raw": "localhost:4000/api/interviews",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
+								"api",
 								"interviews"
 							]
 						}
@@ -218,11 +236,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/interviews",
+							"raw": "localhost:4000/api/interviews",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
+								"api",
 								"interviews"
 							],
 							"query": [
@@ -281,11 +301,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/interviews/:id",
+							"raw": "localhost:4000/api/interviews/:id",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
+								"api",
 								"interviews",
 								":id"
 							],
@@ -306,11 +328,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/interviews/:id",
+							"raw": "localhost:4000/api/interviews/:id",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
+								"api",
 								"interviews",
 								":id"
 							],
