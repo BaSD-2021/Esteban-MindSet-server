@@ -13,7 +13,10 @@ const availabilityObjectAttrConstructor = (req) => {
 const listPsychologists = (req, res) => {
   Psychologists.find(req.query)
     .then((psychologists) => {
-      res.status(200).json(psychologists);
+      res.status(200).json({
+        message: 'List of Psychologists',
+        data: psychologists,
+      });
     })
     .catch((err) => res.status(400).json({ message: err }));
 };
@@ -33,7 +36,10 @@ const createPsychologist = (req, res) => {
     if (err) {
       return res.status(400).json({ message: err });
     }
-    return res.status(201).json(newPsychologist);
+    return res.status(201).json({
+      message: 'Psychologist Created',
+      data: newPsychologist,
+    });
   });
 };
 
@@ -58,7 +64,10 @@ const updatePsychologist = (req, res) => {
       if (!updatedPsychologist) {
         return res.status(404).json({ message: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
       }
-      return res.status(200).json(updatedPsychologist);
+      return res.status(200).json({
+        message: 'Psychologist Updated',
+        data: updatedPsychologist,
+      });
     },
   );
 };
