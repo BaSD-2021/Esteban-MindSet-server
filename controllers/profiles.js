@@ -27,11 +27,11 @@ const updateProfile = (req, res) => {
     },
     { new: true },
     (error, newProfile) => {
-      if (!newProfile) {
-        return res.status(404).send({ message: 'Profile id does not exist' });
-      }
       if (error) {
         return res.status(400).json({ message: error });
+      }
+      if (!newProfile) {
+        return res.status(404).send({ message: 'Profile id does not exist' });
       }
       return res.status(200).json(newProfile);
     },
