@@ -40,11 +40,11 @@ const updateProfile = (req, res) => {
 
 const deleteProfile = (req, res) => {
   Profiles.findByIdAndDelete(req.params.id, (error, pointedProfile) => {
-    if (!pointedProfile) {
-      return res.status(404).send({ message: 'Profile id does not exist' });
-    }
     if (error) {
       return res.status(400).json({ message: error });
+    }
+    if (!pointedProfile) {
+      return res.status(404).send({ message: 'Profile id does not exist' });
     }
     return res.status(204).send();
   });
