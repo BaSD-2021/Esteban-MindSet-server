@@ -23,7 +23,7 @@ const createPsychologist = (req, res) => {
   });
   psychologist.save((err, newPsychologist) => {
     if (err) {
-      return res.status(400).json(err);
+      return res.status(400).json({ message: err.message });
     }
     return res.status(201).json(newPsychologist);
   });
@@ -45,10 +45,10 @@ const updatePsychologist = (req, res) => {
     { new: true },
     (err, updatedPsychologist) => {
       if (err) {
-        return res.status(400).json(err);
+        return res.status(400).json({ message: err.message });
       }
       if (!updatedPsychologist) {
-        return res.status(404).json({ msg: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
+        return res.status(404).json({ message: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
       }
       return res.status(200).json(updatedPsychologist);
     },
@@ -58,10 +58,10 @@ const updatePsychologist = (req, res) => {
 const deletePsychologist = (req, res) => {
   Psychologists.findByIdAndDelete(req.params.id, (err, deletedPsychologist) => {
     if (err) {
-      return res.status(400).json(err);
+      return res.status(400).json({ message: err.message });
     }
     if (!deletedPsychologist) {
-      return res.status(404).json({ msg: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
+      return res.status(404).json({ message: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
     }
     return res.status(204).send(deletedPsychologist);
   });
@@ -72,9 +72,7 @@ const listPsychologists = (req, res) => {
     .then((psychologists) => {
       res.status(200).json(psychologists);
     })
-    .catch((err) => {
-      res.status(400).json(err);
-    });
+    .catch((err) => res.status(400).json({ message: err.message }));
 };
 
 module.exports = {

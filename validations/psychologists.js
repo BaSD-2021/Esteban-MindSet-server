@@ -1,7 +1,7 @@
 const { ObjectId } = require('mongoose').Types;
 
 const errorResHelper = (errorDescription, res, errCode = 400) => {
-  res.status(errCode).json({ msg: errorDescription });
+  res.status(errCode).json({ message: errorDescription });
 };
 
 const availabilityObjectModel = {
@@ -83,11 +83,11 @@ const validateIdFormat = (req, res, next) => {
 
 const validatePsychologists = (req, res, next) => {
   const invalidParams = [];
-  if (typeof req.body.first_name !== 'string') {
-    invalidParams.push("'first_name'");
+  if (typeof req.body.firstName !== 'string') {
+    invalidParams.push("'firstName'");
   }
-  if (typeof req.body.last_name !== 'string') {
-    invalidParams.push("'last_name'");
+  if (typeof req.body.lastName !== 'string') {
+    invalidParams.push("'lastName'");
   }
   if (!availabilityObjectUpdateValidator(req.body.availability)) {
     invalidParams.push("'availability'");
@@ -126,11 +126,11 @@ const validatePsychologists = (req, res, next) => {
 
 const validatePsychologistsUsedAttr = (req, res, next) => {
   const invalidParams = [];
-  if (req.body.first_name && typeof req.body.first_name !== 'string') {
-    invalidParams.push("'first_name'");
+  if (req.body.firstName && typeof req.body.firstName !== 'string') {
+    invalidParams.push("'firstName'");
   }
-  if (req.body.last_name && typeof req.body.last_name !== 'string') {
-    invalidParams.push("'last_name'");
+  if (req.body.lastName && typeof req.body.lastName !== 'string') {
+    invalidParams.push("'lastName'");
   }
   if (req.body.availability && !availabilityObjectValidator(req.body.availability)) {
     invalidParams.push("'availability'");
