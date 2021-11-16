@@ -482,7 +482,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "61903d447ad9dab1a9d8f02e",
+									"value": "619092d974893612f089e640",
 									"description": "required"
 								}
 							]
@@ -533,7 +533,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "619070d6d43205695a7ac280",
+									"value": "6190914038db7910cd3be324",
 									"description": "required"
 								}
 							]
@@ -712,7 +712,127 @@
 		},
 		{
 			"name": "Postulants",
-			"item": []
+			"item": [
+				{
+					"name": "ListPostulants",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/postulants",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"postulants"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "Jane",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatePostulant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"janedoe@gmail.com\",\r\n    \"password\": \"janedoe123\",\r\n    \"contactRange\": {\r\n        \"from\": \"0900\",\r\n        \"to\": \"1600\"\r\n    },\r\n    \"address\": \"Street 12349\",\r\n    \"birthday\": \"1997-06-10\",\r\n    \"available\": \"true\",\r\n    \"phone\": \"153495837\",\r\n    \"profiles\": [\r\n        {\r\n            \"profileId\": \"6190485b457b8b1fa200a8f4\"\r\n        },\r\n        {\r\n            \"profileId\": \"61903bb97d023460f260f849\"\r\n        },\r\n        {\r\n            \"profileId\": \"61909cbc6a24b277d43dc96f\"\r\n        }\r\n    ],\r\n    \"studies\": {\r\n        \"primaryStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"secondaryStudies\": {\r\n            \"startDate\": \"2007-05-20\",\r\n            \"endDate\": \"2015-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"tertiaryStudies\": [\r\n            {\r\n                \"startDate\": \"2019-05-20\",\r\n                \"endDate\": \"2019-07-20\",\r\n                \"description\": \"SCRUM master\",\r\n                \"institute\": \"UNR\"\r\n            },\r\n            {\r\n                \"startDate\": \"2016-05-20\",\r\n                \"endDate\": \"2020-05-20\",\r\n                \"description\": \"International Laws\",\r\n                \"institute\": \"UNR\"\r\n            }\r\n        ],\r\n        \"universityStudies\": [\r\n            {\r\n                \"startDate\": \"2020-05-20\",\r\n                \"description\": \"Business management\",\r\n                \"institute\": \"UAI\"\r\n            },\r\n            {\r\n                \"startDate\": \"2015-05-20\",\r\n                \"endDate\": \"2018-09-20\",\r\n                \"description\": \"Project management\",\r\n                \"institute\": \"UCA\"\r\n            }\r\n        ],\r\n        \"informalStudies\": [\r\n            {\r\n                \"startDate\": \"2021-03-20\",\r\n                \"description\": \"Business management\",\r\n                \"institute\": \"UAI\"\r\n            }\r\n        ]\r\n    },\r\n    \"workExperience\": [\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"dishwasher\"\r\n        },\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"dishwasher\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/postulants",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"postulants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePostulant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/postulants/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"postulants",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61929ea7015b58983f430efc",
+									"description": "required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePostulant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Monkey\",\r\n    \"lastName\": \"D.Luffy\",\r\n    \"email\": \"luffy@gmail.com\",\r\n    \"password\": \"gomugomu\",\r\n    \"contactRange\": {\r\n        \"from\": \"0900\",\r\n        \"to\": \"1600\"\r\n    },\r\n    \"address\": \"Street 12349\",\r\n    \"birthday\": \"1997-06-10\",\r\n    \"available\": \"true\",\r\n    \"phone\": \"153495837\",\r\n    \"profiles\": [\r\n        {\r\n            \"profileId\": \"6190485b457b8b1fa200a8f4\"\r\n        }\r\n    ],\r\n    \"studies\": {\r\n        \"primaryStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"school\": \"San francisco Solano\"\r\n        },\r\n        \"secondaryStudies\": {\r\n            \"startDate\": \"2007-05-20\",\r\n            \"endDate\": \"2015-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"tertiaryStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"description\": \"International Laws\",\r\n            \"institute\": \"UAI\"\r\n        },\r\n        \"universityStudies\": {\r\n            \"startDate\": \"2007-05-20\",\r\n            \"endDate\": \"2015-05-20\",\r\n            \"description\": \"Business Management\",\r\n            \"institute\": \"UAI\"\r\n        },\r\n        \"informalStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"description\": \"Project Management\",\r\n            \"institute\": \"UCA\"\r\n        }\r\n    },\r\n    \"workExperience\": [\r\n        {\r\n            \"company\": \"Patagonia\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"Barman\"\r\n        },\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"Dishwasher\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/postulants/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"postulants",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61929527b0bd320a40c2af9f"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
