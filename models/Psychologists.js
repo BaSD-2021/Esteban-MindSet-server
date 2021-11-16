@@ -52,11 +52,11 @@ const availabilitySchema = new Schema(
 
 const PsychologistSchema = new Schema(
   {
-    first_name: {
+    firstName: {
       type: String,
       required: true,
     },
-    last_name: {
+    lastName: {
       type: String,
       required: true,
     },
