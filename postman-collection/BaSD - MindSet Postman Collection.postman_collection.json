@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bb1ec44d-cfa3-4d8b-b433-042fb2a8ffed",
+		"_postman_id": "7bcf5340-9968-46ec-92ff-197cff8a11e7",
 		"name": "BaSD - MindSet Postman Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -447,7 +447,7 @@
 								},
 								{
 									"key": "notes",
-									"value": null,
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -545,7 +545,170 @@
 		},
 		{
 			"name": "Psichologists",
-			"item": []
+			"item": [
+				{
+					"name": "createPsychologist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Joe\",\r\n    \"last_name\": \"Rave\",\r\n    \"availability\": {\r\n        \"monday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"tuesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"wednesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"thursday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"friday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"saturday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"sunday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        }\r\n    },\r\n    \"username\": \"username\",\r\n    \"password\": \"password\",\r\n    \"email\": \"email@gmail.com\",\r\n    \"phone\": 4242654,\r\n    \"address\": \"address 123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/psychologists/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"psychologists",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePsychologist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/psychologists/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"psychologists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6191deb39a2f680e696655b3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listPsychologists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/psychologists/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"psychologists",
+								""
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "lastName",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "createdAt",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updatedAt",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePsychologist",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"availability\": {\r\n        \"monday\": {\r\n            \"availability\": true,\r\n        }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/psychologists/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"psychologists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "619307ee81a976a00ace99b7"
+								}
+							]
+						},
+						"description": "## Important\nIn the body you can find all the attributes that might be updated. Anyway, there is no need \"to\" send everyone of those. Sending just the ones that are in need of being updated will suffice.\n\n### Example\n\nSending this body content is allowed.\n```\n{\n    \"last_name\": \"Doe\",\n    \"availability\": {\n        \"tuesday\": {\n            \"to\": 1600\n        },\n}\n```"
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Postulants",
