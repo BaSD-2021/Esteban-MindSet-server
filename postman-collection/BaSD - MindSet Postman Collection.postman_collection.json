@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d0a6fe1e-894d-47a8-b818-1813ac3ffbb5",
+		"_postman_id": "9afae992-3d27-4300-8a9c-5f18cab2d65e",
 		"name": "BaSD - MindSet Postman Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -13,7 +13,9 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -48,12 +50,13 @@
 			"name": "Applications",
 			"item": [
 				{
-					"name": "listApplication",
+					"name": "List",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:4000/api/applications/",
+							"raw": "http://localhost:4000/api/applications/",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -68,12 +71,22 @@
 					"response": []
 				},
 				{
-					"name": "createApplication",
+					"name": "Create",
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"positions\": \"5d6ede6a0ba62570afcedd3a\",\r\n    \"postulants\": \"5d6ede6a0ba62570afcedd3a\",\r\n    \"interview\": \"5d6ede6a0ba62570afcedd3a\",\r\n    \"result\": \"reqeqwe qwrqwrqw qweqweqwe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:4000/api/applications/",
+							"raw": "http://localhost:4000/api/applications/",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -82,18 +95,26 @@
 								"api",
 								"applications",
 								""
+							],
+							"query": [
+								{
+									"key": "interview",
+									"value": "12312",
+									"disabled": true
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "deleteApplication",
+					"name": "Delete",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:4000/api/applications/",
+							"raw": "http://localhost:4000/api/applications/:id",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -101,7 +122,13 @@
 							"path": [
 								"api",
 								"applications",
-								""
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61917dfea62efa21f21236ae"
+								}
 							]
 						}
 					},
