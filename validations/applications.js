@@ -23,7 +23,7 @@ const validateApplicantFormat = (req, res, next) => {
   if (!ObjectId.isValid(req.body.interview)) {
     return res.status(400).send({ message: 'Invalid Id Interview' });
   }
-  if (typeof req.body.result !== 'string' || !req.body.result || !req.body.result === '') {
+  if (typeof req.body.result !== 'string' || !req.body.result) {
     return res.status(400).send({ message: 'Invalid result' });
   }
   return next();

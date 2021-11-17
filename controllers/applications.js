@@ -3,7 +3,7 @@ const Applications = require('../models/Applications');
 const listApplication = (req, res) => {
   Applications.find(req.query)
     .then((application) => res.status(200).json(application))
-    .catch((error) => res.status(404).json({ message: error }));
+    .catch((error) => res.status(400).json({ message: error }));
 };
 
 const createApplication = (req, res) => {
@@ -30,7 +30,7 @@ const deleteApplication = (req, res) => {
     if (error) {
       return res.status(400).json(error);
     }
-    return res.status(204).send({ message: `Id ${req.params.id} was remove successfully` });
+    return res.status(204).send();
   });
 };
 
