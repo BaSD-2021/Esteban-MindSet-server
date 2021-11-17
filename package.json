@@ -17,6 +17,9 @@
   "bugs": {
     "url": "https://github.com/estefrare/BaSD-MindSet/issues"
   },
+  "engines": {
+    "node": "16.8.0"
+  },
   "homepage": "https://github.com/estefrare/BaSD-MindSet#readme",
   "dependencies": {
     "cors": "^2.8.5",

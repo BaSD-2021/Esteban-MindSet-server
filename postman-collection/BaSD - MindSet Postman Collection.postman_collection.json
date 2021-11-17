@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2708f07a-a41f-4a93-ad55-7b7d72da33ef",
+		"_postman_id": "7bcf5340-9968-46ec-92ff-197cff8a11e7",
 		"name": "BaSD - MindSet Postman Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -52,7 +52,109 @@
 		},
 		{
 			"name": "Clients",
-			"item": []
+			"item": [{
+				"name": "Create Client",
+				"request": {
+					"method": "POST",
+					"header": [],
+					"body": {
+						"mode": "raw",
+						"raw": "{\r\n    \"name\": \"Para deletear\",\r\n    \"phone\": 3413584874,\r\n    \"location\": {\r\n        \"country\": \"Argentina\",\r\n        \"state\": \"Bs. As.\",\r\n        \"city\": \"La Plata\",\r\n        \"address\": \"Calle Random 12348\"\r\n    },\r\n    \"logo\": \"Your Logo\",\r\n    \"description\": \"Food Companie\",\r\n    \"created\": {\r\n        \"admin\": \"618da81194e960fa7332609c\"\r\n    },\r\n    \"modified\": {\r\n        \"admin\": \"618da81194e960fa7332609c\"\r\n    }\r\n}",
+						"options": {
+							"raw": {
+								"language": "json"
+							}
+						}
+					},
+					"url": {
+						"raw": "localhost:4000/api/clients",
+						"host": [
+							"localhost"
+						],
+						"port": "4000",
+						"path": [
+							"api",
+							"clients"
+						]
+					}
+				},
+				"response": []
+			},
+			{
+				"name": "Get all the Clients",
+				"protocolProfileBehavior": {
+					"disableBodyPruning": true
+				},
+				"request": {
+					"method": "GET",
+					"header": [],
+					"body": {
+						"mode": "raw",
+						"raw": ""
+					},
+					"url": {
+						"raw": "localhost:4000/api/clients",
+						"host": [
+							"localhost"
+						],
+						"port": "4000",
+						"path": [
+							"api",
+							"clients"
+						]
+					}
+				},
+				"response": []
+			},
+			{
+				"name": "Delete a Client",
+				"request": {
+					"method": "DELETE",
+					"header": [],
+					"url": {
+						"raw": "localhost:4000/api/clients/s213sd",
+						"host": [
+							"localhost"
+						],
+						"port": "4000",
+						"path": [
+							"api",
+							"clients",
+							"s213sd"
+						]
+					}
+				},
+				"response": []
+			},
+			{
+				"name": "Update a Client",
+				"request": {
+					"method": "PUT",
+					"header": [],
+					"body": {
+						"mode": "raw",
+						"raw": "{\r\n    \"name\": \"Radium Rocket\",\r\n    \"phone\": 111222333,\r\n    \"location\": {\r\n        \"country\": \"Argentina\",\r\n        \"state\": \"Santa Fe\",\r\n        \"city\": \"Rosario\",\r\n        \"address\": \"Av Radium 578\"\r\n    },\r\n    \"logo\": \"RR LOGO\",\r\n    \"description\": \"Software Company\",\r\n    \"modified\": {\r\n        \"admin\": \"618da81194e960fa7332609c\"\r\n    }\r\n}",
+						"options": {
+							"raw": {
+								"language": "json"
+							}
+						}
+					},
+					"url": {
+						"raw": "localhost:4000/api/clients/61903d694263bfd594a3ae09",
+						"host": [
+							"localhost"
+						],
+						"port": "4000",
+						"path": [
+							"api",
+							"clients",
+							"61903d694263bfd594a3ae09"
+						]
+					}
+				},
+				"response": []
+			}]
 		},
 		{
 			"name": "Applications",
@@ -175,11 +277,224 @@
 		},
 		{
 			"name": "Sessions",
-			"item": []
+			"item": [
+				{
+					"name": "createSession",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postulant\": \"5e1a0651741b255ddda996c4\",\r\n    \"psychologist\": \"5e1a0651741b255ddda996c3\",\r\n    \"status\": \"succesful\",\r\n    \"date\": \"2021-11-14T21:00:00.000Z\",\r\n    \"notes\": \"notas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sessions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sessions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listSessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/sessions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sessions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSession",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postulant\": \"5e1a0651741b255ddda996c4\",\r\n    \"psychologist\": \"5e1a0651741b255ddda996c3\",\r\n    \"status\": \"cancelled\",\r\n    \"date\":\"2021-10-15T00:00:17.376Z\",\r\n    \"notes\": \"notas modificadas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/sessions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6191a2fa365fbfc45d4d139f"
+								}
+							]
+						},
+						"description": "## Important\nIn the body you can find all the attributes that might be updated. Anyway, there is no need \"to\" send everyone of those. Sending just the ones that are in need of being updated will suffice.\n\n### Example\n\nSending this body content is allowed.\n```\n{\n    \"status\": \"cancelled\",\n    \"notes\": \"notas modificadas\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSession",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/sessions/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6191bac85808fdbab2417706"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Positions",
-			"item": []
+			"item": [
+				{
+					"name": "Update a Position By Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": 2,\r\n    \"jobDescription\": \"Lorem ipsum dolor sit amet.\",\r\n    \"vacancy\": 2,\r\n    \"professionalProfiles\": [\"Sales\",\"Tresury\"],\r\n    \"isOpen\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/positions/618fc548e2051aa8266f3117",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions",
+								"618fc548e2051aa8266f3117"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all the Positions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Position",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idClient\": \"asd584d484\",\r\n    \"jobDescription\": \"Logistics\",\r\n    \"vacancy\": 3,\r\n    \"professionalProfiles\": [\"Experienced Logistics\", \"Experienced Logistics\"],\r\n    \"isOpen\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/positions",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Position",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/positions/618fee159b3bc425367718fc",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"positions",
+								"618fee159b3bc425367718fc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Interviews",
@@ -314,7 +629,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "61903d447ad9dab1a9d8f02e",
+									"value": "619092d974893612f089e640",
 									"description": "required"
 								}
 							]
@@ -341,7 +656,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "619070d6d43205695a7ac280",
+									"value": "6190914038db7910cd3be324",
 									"description": "required"
 								}
 							]
@@ -353,11 +668,294 @@
 		},
 		{
 			"name": "Psichologists",
-			"item": []
+			"item": [
+				{
+					"name": "createPsychologist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Joe\",\r\n    \"last_name\": \"Rave\",\r\n    \"availability\": {\r\n        \"monday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"tuesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"wednesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"thursday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"friday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"saturday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"sunday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        }\r\n    },\r\n    \"username\": \"username\",\r\n    \"password\": \"password\",\r\n    \"email\": \"email@gmail.com\",\r\n    \"phone\": 4242654,\r\n    \"address\": \"address 123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/psychologists/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"psychologists",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePsychologist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/psychologists/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"psychologists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6191deb39a2f680e696655b3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listPsychologists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/psychologists/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"psychologists",
+								""
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "lastName",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "createdAt",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "updatedAt",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePsychologist",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"availability\": {\r\n        \"monday\": {\r\n            \"availability\": true,\r\n        }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/psychologists/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"psychologists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "619307ee81a976a00ace99b7"
+								}
+							]
+						},
+						"description": "## Important\nIn the body you can find all the attributes that might be updated. Anyway, there is no need \"to\" send everyone of those. Sending just the ones that are in need of being updated will suffice.\n\n### Example\n\nSending this body content is allowed.\n```\n{\n    \"last_name\": \"Doe\",\n    \"availability\": {\n        \"tuesday\": {\n            \"to\": 1600\n        },\n}\n```"
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Postulants",
-			"item": []
+			"item": [
+				{
+					"name": "ListPostulants",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/postulants",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"postulants"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "Jane",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatePostulant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"janedoe@gmail.com\",\r\n    \"password\": \"janedoe123\",\r\n    \"contactRange\": {\r\n        \"from\": \"0900\",\r\n        \"to\": \"1600\"\r\n    },\r\n    \"address\": \"Street 12349\",\r\n    \"birthday\": \"1997-06-10\",\r\n    \"available\": \"true\",\r\n    \"phone\": \"153495837\",\r\n    \"profiles\": [\r\n        {\r\n            \"profileId\": \"6190485b457b8b1fa200a8f4\"\r\n        },\r\n        {\r\n            \"profileId\": \"61903bb97d023460f260f849\"\r\n        },\r\n        {\r\n            \"profileId\": \"61909cbc6a24b277d43dc96f\"\r\n        }\r\n    ],\r\n    \"studies\": {\r\n        \"primaryStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"secondaryStudies\": {\r\n            \"startDate\": \"2007-05-20\",\r\n            \"endDate\": \"2015-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"tertiaryStudies\": [\r\n            {\r\n                \"startDate\": \"2019-05-20\",\r\n                \"endDate\": \"2019-07-20\",\r\n                \"description\": \"SCRUM master\",\r\n                \"institute\": \"UNR\"\r\n            },\r\n            {\r\n                \"startDate\": \"2016-05-20\",\r\n                \"endDate\": \"2020-05-20\",\r\n                \"description\": \"International Laws\",\r\n                \"institute\": \"UNR\"\r\n            }\r\n        ],\r\n        \"universityStudies\": [\r\n            {\r\n                \"startDate\": \"2020-05-20\",\r\n                \"description\": \"Business management\",\r\n                \"institute\": \"UAI\"\r\n            },\r\n            {\r\n                \"startDate\": \"2015-05-20\",\r\n                \"endDate\": \"2018-09-20\",\r\n                \"description\": \"Project management\",\r\n                \"institute\": \"UCA\"\r\n            }\r\n        ],\r\n        \"informalStudies\": [\r\n            {\r\n                \"startDate\": \"2021-03-20\",\r\n                \"description\": \"Business management\",\r\n                \"institute\": \"UAI\"\r\n            }\r\n        ]\r\n    },\r\n    \"workExperience\": [\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"dishwasher\"\r\n        },\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"dishwasher\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/postulants",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"postulants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePostulant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/postulants/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"postulants",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61929ea7015b58983f430efc",
+									"description": "required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePostulant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Monkey\",\r\n    \"lastName\": \"D.Luffy\",\r\n    \"email\": \"luffy@gmail.com\",\r\n    \"password\": \"gomugomu\",\r\n    \"contactRange\": {\r\n        \"from\": \"0900\",\r\n        \"to\": \"1600\"\r\n    },\r\n    \"address\": \"Street 12349\",\r\n    \"birthday\": \"1997-06-10\",\r\n    \"available\": \"true\",\r\n    \"phone\": \"153495837\",\r\n    \"profiles\": [\r\n        {\r\n            \"profileId\": \"6190485b457b8b1fa200a8f4\"\r\n        }\r\n    ],\r\n    \"studies\": {\r\n        \"primaryStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"school\": \"San francisco Solano\"\r\n        },\r\n        \"secondaryStudies\": {\r\n            \"startDate\": \"2007-05-20\",\r\n            \"endDate\": \"2015-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"tertiaryStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"description\": \"International Laws\",\r\n            \"institute\": \"UAI\"\r\n        },\r\n        \"universityStudies\": {\r\n            \"startDate\": \"2007-05-20\",\r\n            \"endDate\": \"2015-05-20\",\r\n            \"description\": \"Business Management\",\r\n            \"institute\": \"UAI\"\r\n        },\r\n        \"informalStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"description\": \"Project Management\",\r\n            \"institute\": \"UCA\"\r\n        }\r\n    },\r\n    \"workExperience\": [\r\n        {\r\n            \"company\": \"Patagonia\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"Barman\"\r\n        },\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"Dishwasher\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/postulants/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"postulants",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61929527b0bd320a40c2af9f"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

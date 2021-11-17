@@ -1,18 +1,19 @@
 const express = require('express');
+const validations = require('../validations/sessions');
 const controller = require('../controllers/sessions');
 
 const router = express.Router();
 
 const {
   createSession,
-  listSession,
+  listSessions,
   updateSession,
   deleteSession,
 } = controller;
 
-router.post('/', createSession);
-router.put('/', updateSession);
-router.delete('/', deleteSession);
-router.get('/', listSession);
+router.post('/', validations.validateSessions, createSession);
+router.put('/:id', validations.validateIdFormat, validations.validateSessionsUsedAttr, updateSession);
+router.delete('/:id', validations.validateIdFormat, deleteSession);
+router.get('/', listSessions);
 
 module.exports = router;
