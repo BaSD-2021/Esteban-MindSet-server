@@ -14,7 +14,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "localhost:4000/api/admins/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admins",
+								""
+							]
 						}
 					},
 					"response": []
@@ -25,8 +34,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/api/admins/",
-							"protocol": "http",
+							"raw": "localhost:4000/api/admins/",
 							"host": [
 								"localhost"
 							],
@@ -154,7 +162,118 @@
 		},
 		{
 			"name": "Profiles",
-			"item": []
+			"item": [
+				{
+					"name": "listProfiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/profiles/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"profiles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createProfile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/profiles/",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"profiles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Treasury\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/api/profiles/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"profiles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6191c69a2b81030fe3698b7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProfile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/api/profiles/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"profiles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6191c69a2b81030fe3698b78"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Sessions",
@@ -381,6 +500,32 @@
 			"name": "Interviews",
 			"item": [
 				{
+					"name": "ListInterviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:4000/api/interviews",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"interviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "CreateInterview",
 					"event": [
 						{
@@ -406,10 +551,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/interviews",
+							"raw": "localhost:4000/api/interviews",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
 								"api",
 								"interviews"
@@ -470,10 +616,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/interviews/:id",
+							"raw": "localhost:4000/api/interviews/:id",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
 								"api",
 								"interviews",
@@ -491,40 +638,16 @@
 					"response": []
 				},
 				{
-					"name": "ListInterviews",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/api/interviews",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"interviews"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "DeleteInterview",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/interviews/:id",
+							"raw": "localhost:4000/api/interviews/:id",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
 								"api",
 								"interviews",
