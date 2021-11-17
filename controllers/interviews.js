@@ -1,12 +1,17 @@
 const Interviews = require('../models/Interviews');
 
 const listInterviews = (req, res) => {
-  Interviews.find()
+  Interviews.find(req.query)
     .then((interviews) => {
-      res.status(200).json(interviews);
+      res.status(200).json({
+        message: 'List of Interviews',
+        data: interviews,
+      });
     })
     .catch((error) => {
-      res.status(400).json(error);
+      res.status(400).json({
+        message: error,
+      });
     });
 };
 
@@ -23,9 +28,14 @@ const createInterview = (req, res) => {
 
   interview.save((error) => {
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({
+        message: error,
+      });
     }
-    return res.status(201).json(interview);
+    return res.status(201).json({
+      message: 'Interview created',
+      data: interview,
+    });
   });
 };
 
@@ -43,25 +53,36 @@ const updateInterview = (req, res) => {
     },
     { new: true },
     (error, newInterview) => {
+      if (error) {
+        return res.status(400).json({
+          message: error,
+        });
+      }
       if (!newInterview) {
-        return res.status(404).json('Interview id does not exist');
+        return res.status(404).json({
+          message: 'Interview Id does not exist',
+        });
       }
 
-      if (error) {
-        return res.status(400).json(error);
-      }
-      return res.status(200).json(newInterview);
+      return res.status(200).json({
+        message: 'Interview updated',
+        data: newInterview,
+      });
     },
   );
 };
 
 const deleteInterview = (req, res) => {
   Interviews.findByIdAndDelete(req.params.id, (error, pointedInterview) => {
-    if (!pointedInterview) {
-      return res.status(404).json('Interview id does not exist');
-    }
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({
+        message: error,
+      });
+    }
+    if (!pointedInterview) {
+      return res.status(404).json({
+        message: 'Interview Id does not exist',
+      });
     }
     return res.status(204).send();
   });

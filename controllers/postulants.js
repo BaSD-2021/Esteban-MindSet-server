@@ -3,10 +3,15 @@ const Postulants = require('../models/Postulants');
 const listPostulants = (req, res) => {
   Postulants.find(req.query)
     .then((postulants) => {
-      res.status(200).json(postulants);
+      res.status(200).json({
+        message: 'List of Postulants',
+        data: postulants,
+      });
     })
     .catch((error) => {
-      res.status(400).json({ message: error });
+      res.status(400).json({
+        message: error,
+      });
     });
 };
 
@@ -29,19 +34,28 @@ const createPostulant = (req, res) => {
 
   postulant.save(((error) => {
     if (error) {
-      return res.status(400).json({ message: error });
+      return res.status(400).json({
+        message: error,
+      });
     }
-    return res.status(201).json(postulant);
+    return res.status(201).json({
+      message: 'Postulant created',
+      data: postulant,
+    });
   }));
 };
 
 const deletePostulant = (req, res) => {
   Postulants.findByIdAndDelete(req.params.id, (error, pointedPostulant) => {
     if (error) {
-      return res.status(400).json({ message: error });
+      return res.status(400).json({
+        message: error,
+      });
     }
     if (!pointedPostulant) {
-      return res.status(404).json({ message: 'Postulant id does not exist' });
+      return res.status(404).json({
+        message: 'Postulant Id does not exist',
+      });
     }
     return res.status(204).send();
   });
@@ -73,12 +87,19 @@ const updatePostulants = (req, res) => {
     { new: true },
     (error, newPostulant) => {
       if (error) {
-        return res.status(400).json({ message: error });
+        return res.status(400).json({
+          message: error,
+        });
       }
       if (!newPostulant) {
-        return res.status(404).json({ message: 'Postulant id does not exist' });
+        return res.status(404).json({
+          message: 'Postulant Id does not exist',
+        });
       }
-      return res.status(200).json(newPostulant);
+      return res.status(200).json({
+        message: 'Postulant updated',
+        data: newPostulant,
+      });
     },
   );
 };
