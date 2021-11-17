@@ -1,135 +1,63 @@
-const fs = require('fs');
-const clients = require('../data/clients.json');
+const Clients = require('../models/Clients');
 
-const errorResHelper = (errorDescription, res, errCode = 400) => {
-  res.status(errCode).json({ error: errorDescription });
+const listClients = (req, res) => {
+  Clients.find(req.query)
+    .then((clients) => res.status(200).json(clients))
+    .catch((error) => res.status(400).json({ message: error }));
 };
 
 const createClient = (req, res) => {
-  const now2ISO = new Date().toISOString();
-  const missing = [];
-  const newClient = {
-    id: new Date().getTime().toString(),
-    name: req.query.name ?? missing.push("'name'"),
-    phone: req.query.phone ?? missing.push("'phone'"),
-    location: {
-      country: req.query.country ?? missing.push("'country'"),
-      state: req.query.state ?? missing.push("'state'"),
-      city: req.query.city ?? missing.push("'city'"),
-      address: req.query.address ?? missing.push("'address'"),
-    },
-    description: req.query.description ?? missing.push("'description'"),
-    logo: req.query.logo ?? missing.push("'logo'"),
-    created: {
-      idAdmin: req.query.idAdmin ?? missing.push("'idAdmin'"),
-      timestamp: now2ISO,
-    },
-    modified: {},
-  };
-
-  if (clients.filter((el) => el.name === req.query.name).length > 0) {
-    return errorResHelper(
-      `Client name '${req.query.name}' already exists.`,
-      res,
-    );
-  }
-
-  if (missing.length) {
-    return errorResHelper(
-      `queryParam ${missing
-        .join(', ')
-        .replace(/,([^,]*)$/, ' and $1')} is missing.`,
-      res,
-    );
-  }
-
-  clients.push(newClient);
-
-  return fs.writeFile('./data/clients.json', JSON.stringify(clients), (err) => {
-    if (err) {
-      return errorResHelper(err, res);
-    }
-    return res.status(201).json(newClient);
-  });
-};
-const updateClient = (req, res) => {
-  const now2ISO = new Date().toISOString();
-  const missing = [];
-  let clientUpdated;
-
-  const clientsUpdated = clients.map((client) => {
-    if (client.id === parseInt(req.params.id, 10)) {
-      clientUpdated = {
-        name: req.query.name ?? client.name,
-        phone: req.query.phone ?? client.phone,
-        country: req.query.country ?? client.location.country,
-        state: req.query.state ?? client.state,
-        city: req.query.city ?? client.city,
-        address: req.query.address ?? client.address,
-        description: req.query.description ?? client.description,
-        logo: req.query.logo ?? client.logo,
-        modified: {
-          idAdmin: parseInt(req.query.idAdmin ?? missing.push("'idAdmin'"), 10),
-          timestamp: now2ISO,
-        },
-      };
-      return clientUpdated;
-    }
-    return client;
+  const clientCreated = new Clients({
+    name: req.body.name,
+    phone: req.body.phone,
+    location: req.body.location,
+    logo: req.body.logo,
+    description: req.body.description,
   });
 
-  if (!clientUpdated) {
-    return errorResHelper(
-      `The client 'id' (${req.params.id}) given does not exist.`,
-      res,
-      404,
-    );
-  }
-
-  if (missing.length) {
-    return errorResHelper(
-      `queryParam ${missing.join(' and ')} is missing.`,
-      res,
-    );
-  }
-
-  return fs.writeFile('./data/clients.json', JSON.stringify(clientsUpdated), (err) => {
-    if (err) {
-      return errorResHelper(err, res);
+  clientCreated.save((error, client) => {
+    if (error) {
+      return res.status(400).json({ message: error });
     }
-    return res.status(200).json(clientUpdated);
+    return res.status(201).json({ message: client });
   });
 };
 
 const deleteClient = (req, res) => {
-  let removedClient;
-  clients.forEach((client, id) => {
-    if (client.id === parseInt(req.params.id, 10)) {
-      removedClient = client;
-      clients.splice(id, 1);
+  Clients.findByIdAndDelete(req.params.id, (error) => {
+    if (error) {
+      return res.status(400).json({ message: `Client with id ${req.params.id} does not exist.` });
     }
-  });
-
-  if (!removedClient) {
-    return errorResHelper(
-      `The client 'id' (${req.params.id}) given does not exist.`,
-      res,
-      404,
-    );
-  }
-
-  return fs.writeFile('./data/clients.json', JSON.stringify(clients), (err) => {
-    if (err) {
-      return errorResHelper(err, res);
-    }
-    return res.status(204).json(removedClient);
+    return res.status(204).send();
   });
 };
-const listClients = (req, res) => {
-  if (!clients.length) {
-    return errorResHelper('The Clients List seems to be empty.', res, 404);
-  }
-  return res.status(200).json(clients);
+
+const updateClient = (req, res) => {
+  Clients.findByIdAndUpdate(
+    req.params.id,
+    {
+      name: req.body.name,
+      phone: req.body.phone,
+      location: {
+        country: req.body.location.country,
+        state: req.body.location.state,
+        city: req.body.location.city,
+        address: req.body.location.address,
+      },
+      logo: req.body.logo,
+      description: req.body.description,
+    },
+    { new: true },
+    (error, newClient) => {
+      if (!newClient) {
+        return res.status(400).json({ message: `Client with id: ${req.params.id} was not found` });
+      }
+      if (error) {
+        return res.status(400).json({ message: error });
+      }
+      return res.status(200).json({ message: 'Client updated', newClient });
+    },
+  );
 };
 
 module.exports = {

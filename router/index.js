@@ -9,6 +9,7 @@ const positions = require('./positions');
 const profiles = require('./profiles');
 const psychologists = require('./psychologists');
 const sessions = require('./sessions');
+const postulants = require('./postulants');
 
 router.use('/admins', admins);
 router.use('/applications', applications);
@@ -18,5 +19,6 @@ router.use('/positions', positions);
 router.use('/profiles', profiles);
 router.use('/psychologists', psychologists);
 router.use('/sessions', sessions);
+router.use('/postulants', postulants);
 
 module.exports = router;
