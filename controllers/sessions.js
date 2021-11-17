@@ -3,7 +3,10 @@ const Sessions = require('../models/Sessions');
 const listSessions = (req, res) => {
   Sessions.find(req.query)
     .then((sessions) => {
-      res.status(200).json(sessions);
+      res.status(200).json({
+        message: 'List of Sessions',
+        data: sessions,
+      });
     })
     .catch((err) => res.status(400).json({ message: err }));
 };
@@ -16,11 +19,14 @@ const createSession = (req, res) => {
     date: req.body.date,
     notes: req.body.notes,
   });
-  session.save((err, cbSession) => {
+  session.save((err, newSession) => {
     if (err) {
       return res.status(400).json({ message: err });
     }
-    return res.status(201).json(cbSession);
+    return res.status(201).json({
+      message: 'Session Created',
+      data: newSession,
+    });
   });
 };
 
@@ -35,14 +41,17 @@ const updateSession = (req, res) => {
       notes: req.body.notes,
     },
     { new: true },
-    (err, newSession) => {
+    (err, updatedSession) => {
       if (err) {
         return res.status(400).json({ message: err });
       }
-      if (!newSession) {
+      if (!updatedSession) {
         return res.status(404).json({ message: `The session 'id' (${req.params.id}) given  does not exist.` });
       }
-      return res.status(200).json(newSession);
+      return res.status(200).json({
+        message: 'Session Updated',
+        data: updatedSession,
+      });
     },
   );
 };
