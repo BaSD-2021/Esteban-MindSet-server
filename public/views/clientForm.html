@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSet</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <script src="../js/clientForm.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="header">Client Form</h2>
+      <form id="form">
+        <input id="name" name="name" placeholder="Your Name" type="text" required/>
+        <input id="phone" name="phone" placeholder="Your Phone" type="number" required/>
+        <input id="logo" name="logo" placeholder="Your Logo URL" type="text" />
+        <input id="address" name="address" placeholder="Your address" type="text" required/>
+        <input id="city" name="city" placeholder="Your city" type="text" required/>
+        <input id="country" name="country" placeholder="Your country" type="text" required/>
+        <input id="state" name="state" placeholder="Your state" type="text" required/>
+        <textarea id="description" name="description" placeholder="Type your Message"></textarea>
+        <div id="error_massage"></div>
+        <input id="saveButton" class="button" type="submit" value="Send">
+      </form>
+    </div>
+  </body>
+</html>

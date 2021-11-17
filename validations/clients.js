@@ -1,5 +1,5 @@
 const required = (req, res, next) => {
-  if (typeof (req.body.name) !== 'string') {
+  if (!req.body.name || typeof (req.body.name) !== 'string') {
     return res.status(400).json({ message: 'You must complete the Name' });
   }
   if (typeof (req.body.phone) !== 'number') {

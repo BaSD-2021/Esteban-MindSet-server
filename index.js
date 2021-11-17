@@ -22,6 +22,10 @@ mongoose.connect(
   },
 );
 
+app.use(express.static('public'));
+
+app.get('/', (req, res) => res.redirect('/views/index.html'));
+
 app.use('/api', router);
 
 app.listen(PORT, () => {
