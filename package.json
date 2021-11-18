@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "husky": "^7.0.0"
   }
 }
