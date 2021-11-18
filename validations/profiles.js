@@ -11,7 +11,7 @@ const validateRequiredProfile = (req, res, next) => {
 
 const validateIdFormat = (req, res, next) => {
   if (!ObjectId.isValid(req.params.id)) {
-    return res.status(400).send('Profile id is not valid');
+    return res.status(400).send({ message: 'Profile id is not valid' });
   }
   return next();
 };
