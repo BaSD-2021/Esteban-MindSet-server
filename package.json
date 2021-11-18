@@ -24,6 +24,7 @@
   "homepage": "https://github.com/estefrare/BaSD-MindSet#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.12"
   },
@@ -31,7 +32,7 @@
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
-    "nodemon": "^2.0.14",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "nodemon": "^2.0.14"
   }
 }
