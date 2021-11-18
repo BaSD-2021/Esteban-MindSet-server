@@ -1,4 +1,7 @@
 window.onload = () => {
+  const navButton = document.getElementById('clientsNav');
+  navButton.classList.add('activePage');
+
   const nameInput = document.getElementById('name');
   const phoneInput = document.getElementById('phone');
   const logoInput = document.getElementById('logo');

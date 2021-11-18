@@ -9,6 +9,9 @@ const openNewClientForm = () => {
 };
 
 window.onload = () => {
+  const navButton = document.getElementById('clientsNav');
+  navButton.classList.add('activePage');
+
   const addClientButton = document.getElementById('addClient');
   addClientButton.onclick = openNewClientForm;
 

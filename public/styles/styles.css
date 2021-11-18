@@ -2,6 +2,46 @@
   font-family: Helvetica, sans-serif;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 80px;
+	margin-bottom: 40px;
+	padding: 0 30px;
+	box-shadow: 0px 2px 9px 0px rgba(0,0,0,0.75);
+}
+
+#mindSetLogo {
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000;
+}
+
+#mindSetLogo > span {
+	color: #27AE60;
+}
+
+header > nav > a {
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000;
+	margin-left: 15px;
+}
+
+.activePage {
+	color: #27AE60;
+}
+
 .listContainer {
 	display: flex;
 	flex-direction: column;
@@ -18,7 +58,7 @@
 }
 
 .list thead tr {
-  background-color: #43D1AF;
+  background-color: #27AE60;
   color: #ffffff;
   text-align: left;
 }
@@ -43,7 +83,7 @@
 
 .list tbody tr.active-row {
   font-weight: bold;
-  color: #009879;
+  color: #27AE60;
 }
 
 /* form styles */
@@ -57,7 +97,7 @@
 }
 
 .header {
-	background: #43D1AF;
+	background: #27AE60;
 	padding: 20px 0;
 	font-size: 140%;
 	font-weight: 300;
@@ -82,9 +122,9 @@
 .container input:focus,
 .container textarea:focus,
 .container select:focus {
-	box-shadow: 0 0 5px #43D1AF;
+	box-shadow: 0 0 5px #27AE60;
 	padding: 15px;
-	border: 1px solid #43D1AF;
+	border: 1px solid #27AE60;
 }
 
 .button, .container input[type="submit"] {
@@ -92,7 +132,7 @@
 	width: 100%;
 	max-width: 400px;
 	padding: 15px;
-	background: #43D1AF;
+	background: #27AE60;
 	border-bottom: 2px solid #30C29E;
 	border-top-style: none;
 	border-right-style: none;
@@ -108,4 +148,19 @@
 	background: #555;
 	border-bottom: 2px solid #555;
 	cursor: not-allowed;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
+	margin-top: 40px;
+	background-color: #555;
+}
+
+footer > div {
+	font-style: italic;
+	font-size: 12px;
+	color: #989797;
 }
