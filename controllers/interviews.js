@@ -1,68 +1,90 @@
-const fs = require('fs');
-const Interviews = require('../data/interviews.json');
+const Interviews = require('../models/Interviews');
 
 const listInterviews = (req, res) => {
-  res.status(200).json(Interviews);
+  Interviews.find(req.query)
+    .then((interviews) => {
+      res.status(200).json({
+        message: 'List of Interviews',
+        data: interviews,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        message: error,
+      });
+    });
 };
 
 const createInterview = (req, res) => {
-  const newInterview = {
-    id: req.query.id,
-    idClient: req.query.idClient,
-    idPostulant: req.query.idPostulant,
-    idApplication: req.query.idApplication,
-    date: req.query.date,
-  };
-  Interviews.push(newInterview);
-  fs.writeFile('./data/interviews.json', JSON.stringify(Interviews), {}, (error) => {
+  const bodyReq = req.body;
+  const interview = new Interviews({
+    postulant: bodyReq.postulant,
+    client: bodyReq.client,
+    application: bodyReq.application,
+    status: bodyReq.status,
+    date: bodyReq.date,
+    notes: bodyReq.notes,
+  });
+
+  interview.save((error) => {
     if (error) {
-      return res.status(400).send(error);
+      return res.status(400).json({
+        message: error,
+      });
     }
-    return res.status(201).send(newInterview);
+    return res.status(201).json({
+      message: 'Interview created',
+      data: interview,
+    });
   });
 };
 
 const updateInterview = (req, res) => {
-  let updatedInterview;
-  const updatedInterviews = Interviews.map((interview) => {
-    if (interview.id === req.query.id) {
-      updatedInterview = {
-        id: req.query.id,
-        idClient: req.query.idClient || interview.idClient,
-        idPostulant: req.query.idPostulant || interview.idPostulant,
-        idApplication: req.query.idApplication || interview.idApplication,
-        date: req.query.date || interview.date,
-      };
-      return updatedInterview;
-    }
-    return interview;
-  });
-  if (!updateInterview) res.status(404).send('Interview NOT found');
-  fs.writeFile('./data/interviews.json', JSON.stringify(updatedInterviews), {}, (error) => {
-    if (error) {
-      return res.status(400).send(error);
-    }
-    return res.status(200).send(updatedInterview);
-  });
+  const bodyReq = req.body;
+  Interviews.findByIdAndUpdate(
+    req.params.id,
+    {
+      postulant: bodyReq.postulant,
+      client: bodyReq.client,
+      application: bodyReq.application,
+      status: bodyReq.status,
+      date: bodyReq.date,
+      notes: bodyReq.notes,
+    },
+    { new: true },
+    (error, newInterview) => {
+      if (error) {
+        return res.status(400).json({
+          message: error,
+        });
+      }
+      if (!newInterview) {
+        return res.status(404).json({
+          message: 'Interview Id does not exist',
+        });
+      }
+
+      return res.status(200).json({
+        message: 'Interview updated',
+        data: newInterview,
+      });
+    },
+  );
 };
 
 const deleteInterview = (req, res) => {
-  let deletedInterview;
-  const filteredInterview = Interviews.filter((interview) => {
-    if (interview.id === req.query.id) {
-      deletedInterview = interview;
-      return false;
-    }
-    return true;
-  });
-  if (!deletedInterview) {
-    return res.status(404).send('Interview NOT found');
-  }
-  return fs.writeFile('./data/interviews.json', JSON.stringify(filteredInterview), {}, (error) => {
+  Interviews.findByIdAndDelete(req.params.id, (error, pointedInterview) => {
     if (error) {
-      return res.status(400).send(error);
+      return res.status(400).json({
+        message: error,
+      });
     }
-    return res.status(204).send(deletedInterview);
+    if (!pointedInterview) {
+      return res.status(404).json({
+        message: 'Interview Id does not exist',
+      });
+    }
+    return res.status(204).send();
   });
 };
 

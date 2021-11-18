@@ -1,15 +1,18 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const router = require('./router');
 
 const app = express();
-const PORT = 4000;
+
+app.use(express.json());
+app.use(cors());
 
 app.use(express.json());
 
 mongoose.connect(
-  'mongodb+srv://BaSD:BaSD2021@cluster0.5vk6q.mongodb.net/mindSet?retryWrites=true&w=majority',
+  process.env.DATABASE_URL,
   (error) => {
     if (error) {
       // eslint-disable-next-line no-console
@@ -21,11 +24,9 @@ mongoose.connect(
   },
 );
 
-app.use(cors());
-
 app.use('/api', router);
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server runing on port ${PORT}`);
+  console.log(`Server runing on port ${process.env.PORT}`);
 });
