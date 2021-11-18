@@ -43,7 +43,7 @@ window.onload = () => {
       })
       .then((response) => {
         saveButton.disabled = false;
-        response.forEach((client) => {
+        response.data.forEach((client) => {
           nameInput.value = client.name;
           phoneInput.value = client.phone;
           logoInput.value = client.logo;

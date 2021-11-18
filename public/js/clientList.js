@@ -19,7 +19,7 @@ window.onload = () => {
   fetch(`${window.location.origin}/api/clients`)
     .then((response) => response.json())
     .then((response) => {
-      response.forEach((client) => {
+      response.data.forEach((client) => {
         const tr = document.createElement('tr');
         const NameTD = document.createElement('td');
         const phoneTD = document.createElement('td');
