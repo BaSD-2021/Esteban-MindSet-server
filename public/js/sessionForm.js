@@ -38,10 +38,11 @@ window.onload = () => {
       .then((response) => {
         saveButton.disabled = false;
         response.data.forEach((session) => {
+          const date = new Date(session.date).toISOString().substring(0, 10);
           postulantInput.value = session.postulant;
           psychologistInput.value = session.psychologist;
           statusInput.value = session.status;
-          dateInput.value = session.date;
+          dateInput.value = date;
           notesInput.value = session.notes;
         });
       })
@@ -55,6 +56,7 @@ window.onload = () => {
     saveButton.disabled = true;
 
     let url;
+    const date = new Date(dateInput.value).toISOString();
     const options = {
       headers: {
         'Content-Type': 'application/json',
@@ -63,12 +65,12 @@ window.onload = () => {
         postulant: postulantInput.value,
         psychologist: psychologistInput.value,
         status: statusInput.value,
-        date: dateInput.value,
+        date,
         notes: notesInput.value,
       }),
     };
 
-    if (params.get('clientId')) {
+    if (params.get('_id')) {
       options.method = 'PUT';
       url = `${window.location.origin}/api/sessions/${params.get('_id')}`;
     } else {
