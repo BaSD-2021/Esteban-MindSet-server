@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sessions</title>
+    <title>MindSet</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="../js/sessionList.js"></script>
+    <script src="../js/sessionForm.js"></script>
   </head>
   <body>
     <header>
@@ -24,22 +24,20 @@
       </nav>
     </header>
     <div class="container">
-      <h2 class="header">Sessions</h2>
-      <table class="list">
-        <thead>
-          <tr>
-            <th>Postulant</th>
-            <th>Psychologist</th>
-            <th>Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="session-table">
-        </tbody>
-      </table>
-      <button class="button" id="addSession" type="button">
-        Add Session
-      </button>
+      <h2 class="header">Sessions Form</h2>
+      <form id="form">
+        <input id="postulant" name="postulant" placeholder="Postulant" type="text" required/>
+        <input id="psychologist" name="psychologist" placeholder="Psychologist" type="text" required/>
+        <select name="status" id="status">
+          <option value="assigned">Assigned</option>
+          <option value="succesful">Succesful</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+        <input id="date" name="date" type="date" min="2018-01-01" max="2025-12-31" required/>
+        <textarea id="notes" name="notes" placeholder="Type your Notes"></textarea>
+        <div id="error_massage"></div>
+        <input id="saveButton" class="button" type="submit" value="Send">
+      </form>
     </div>
     <footer>
       <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
