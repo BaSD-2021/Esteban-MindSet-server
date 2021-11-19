@@ -7,7 +7,7 @@
     <title>MindSet</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="../js/profileList.js"></script>
+    <script src="../js/profileForm.js"></script>
   </head>
   <body>
     <header>
@@ -24,20 +24,13 @@
       </nav>
     </header>
     <div class="container">
-      <h2 class="header">Profiles</h2>
-      <table class="list">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="table-content">
-        </tbody>
-      </table>
-      <button class="button" id="addProfile" type="button">
-        Add Profile
-      </button>
+      <h2 class="header">Profile Form</h2>
+      <form id="form">
+        <input id="name" name="name" placeholder="Profile Name" type="text" required/>
+        <textarea id="description" name="description" placeholder="Type your Message"></textarea>
+        <div id="error_massage"></div>
+        <input id="saveButton" class="button" type="submit" value="Send">
+      </form>
     </div>
     <footer>
       <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>

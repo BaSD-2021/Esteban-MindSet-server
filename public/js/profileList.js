@@ -9,8 +9,11 @@ window.onload = () => {
       response.data.forEach((profile) => {
         const tr = document.createElement('tr');
         const NameTD = document.createElement('td');
+        const DeleteTD = document.createElement('td');
         NameTD.innerText = profile.name;
+        DeleteTD.innerText = 'DELETE';
         tr.append(NameTD);
+        tr.append(DeleteTD);
         tableContent.append(tr);
       });
     });
