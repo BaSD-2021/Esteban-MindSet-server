@@ -7,6 +7,7 @@
     <title>MindSet</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/modal.css">
     <script src="../js/profileList.js"></script>
   </head>
   <body>
@@ -39,6 +40,17 @@
         Add Profile
       </button>
     </div>
+    <section id="modal-section" class="modal-display-off"> 
+      <div id="modal-content">
+          <span id="modal-close-button">&times;</span>
+          <h1 id="modal-title"></h1>
+          <div id="modal-data-inputs"></div>
+          <div id="modal-buttons">
+            <button id="cancel-button">CANCEL</button>
+            <button id="procced-button">PROCCED</button>
+          </div>
+      </div>
+    </section>
     <footer>
       <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
     </footer>
