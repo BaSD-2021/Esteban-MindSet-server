@@ -85,7 +85,7 @@ window.onload = () => {
 
   nameInput.onblur = () => {
     saveButton.disabled = false;
-    if (!Number.isNaN(nameInput.value)) {
+    if (!Number.isNaN(parseFloat(nameInput.value))) {
       saveButton.disabled = true;
       document.getElementById('name-error').classList.remove('name-error-message');
       document.getElementById('name-error').classList.add('error-visibility-show');
