@@ -69,6 +69,7 @@ window.onload = () => {
         NameTD.innerText = profile.name;
         DeleteTD.append(button);
         button.innerHTML = "<img src='https://img.icons8.com/material-rounded/24/000000/delete.png'/>";
+        button.classList.add('delete-button-list');
         // eslint-disable-next-line no-underscore-dangle
         button.onclick = (event) => deleteProfile(profile._id, profile.name, event);
         NameTD.onclick = () => openEditProfileForm(profile);
