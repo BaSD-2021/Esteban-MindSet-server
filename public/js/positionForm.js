@@ -8,7 +8,7 @@ window.onload = () => {
   const professionalProfilesInput = document.getElementById('professionalProfiles');
   const isOpenInput = document.getElementById('isOpen');
 
-  //const form = document.getElementById('form');
+  // const form = document.getElementById('form');
   const saveButton = document.getElementById('saveButton');
   const errorMessage = document.getElementById('error_msg');
 
