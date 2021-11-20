@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="../js/index.js"></script>
-    <script src="../js/positionList.js"></script>
+    <script src="../js/positionForm.js"></script>
+    <script src="../js/positionForm.js"></script>
 </head>
 <body>
     <header>
@@ -25,20 +26,16 @@
         </nav>
       </header>
       <div class="container">
-        <h2 class="header">Positions</h2>
-        <table class="list">
-          <thead>
-          <tr>
-            <th>Job Description</th>
-            <th>Vacancy</th>
-          </tr>
-        </thead>
-        <tbody id="positions-table-content">
-        </tbody>
-        </table>
-        <button class="button" id="addPosition" type="button">
-          Add Position
-        </button>
+        <h2 class="header">Position form</h2>
+        <form id="form">
+            <input id="client" placeholder="Client" type="text">
+            <input id="jobDescription" placeholder="Job Description" type="text">
+            <input id="vacancy" placeholder="Vacancy" type="text">
+            <input id="professionalProfiles" placeholder="Profesional Profiles" type="text">
+            <input id="isOpen" placeholder="Is Open?" type="text">
+            <div id="error_msg"></div>
+            <input id="saveButton" class="button" type="submit" value="Send">
+        </form>
       </div>
 </body>
 <footer>

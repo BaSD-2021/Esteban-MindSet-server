@@ -1,8 +1,19 @@
+const openEditPosition = (id) => {
+  window.location.href = `${window.location.origin}/views/positionForm.html?_id=${id}`;
+};
+
+const openNewPosition = () => {
+  window.location.href = `${window.location.origin}/views/positionForm.html`;
+};
+
 window.onload = () => {
   const navButton = document.getElementById('positionsNav');
   navButton.classList.add('activePage');
 
   const tableContent = document.getElementById('positions-table-content');
+
+  const addPosition = document.getElementById('addPosition');
+  addPosition.onclick = openNewPosition;
 
   fetch(`${window.location.origin}/api/positions`)
     .then((response) => response.json())
@@ -16,6 +27,8 @@ window.onload = () => {
         vacancyTd.innerText = item.vacancy;
         tr.append(jobDescriptionTd, vacancyTd);
         tableContent.append(tr);
+        // eslint-disable-next-line no-underscore-dangle
+        tr.onclick = () => openEditPosition(item._id);
       });
     })
     .catch((error) => {
