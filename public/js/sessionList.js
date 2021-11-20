@@ -7,18 +7,6 @@ const openNewSession = () => {
   window.location.href = `${window.location.origin}/views/sessionForm.html`;
 };
 
-const deleteSession = (id, event) => {
-  event.stopPropagation();
-  const url = `http://localhost:4000/api/sessions/${id}`;
-  fetch(url, {
-    method: 'DELETE',
-  })
-    .then((response) => {
-      response.json();
-      window.location.href = `${window.location.origin}/views/sessionList.html`;
-    });
-};
-
 window.onload = () => {
   const navButton = document.getElementById('sessionsNav');
   navButton.classList.add('activePage');
@@ -27,6 +15,47 @@ window.onload = () => {
 
   const addSession = document.getElementById('addSession');
   addSession.onclick = openNewSession;
+
+  const modalSection = document.getElementById('modal-section');
+  const openModal = () => {
+    modalSection.classList.add('modal-section-display-on');
+  };
+
+  const closeModal = (e) => {
+    if (e.target === modalSection) {
+      modalSection.classList.remove('modal-section-display-on');
+      modalSection.classList.add('modal-display-off');
+    }
+  };
+
+  window.addEventListener('click', closeModal);
+  const modalCloseBtn = document.getElementById('modal-close-button');
+  modalCloseBtn.onclick = () => {
+    modalSection.classList.remove('modal-section-display-on');
+    modalSection.classList.add('modal-display-off');
+  };
+
+  const deleteSession = (id, postulantName, psychologistName, event) => {
+    event.stopPropagation();
+    event.stopPropagation();
+    document.getElementById('modal-title').innerText = 'You are about to delete a Session between:';
+    document.getElementById('modal-data-inputs').innerText = `${postulantName} and ${psychologistName}`;
+    openModal();
+    document.getElementById('cancel-button').onclick = () => {
+      modalSection.classList.remove('modal-section-display-on');
+      modalSection.classList.add('modal-display-off');
+    };
+    document.getElementById('procced-button').onclick = () => {
+      const url = `http://localhost:4000/api/sessions/${id}`;
+      fetch(url, {
+        method: 'DELETE',
+      })
+        .then((response) => {
+          response.json();
+          window.location.href = `${window.location.origin}/views/sessionList.html`;
+        });
+    };
+  };
 
   fetch(`${window.location.origin}/api/sessions`)
     .then((response) => response.json())
@@ -49,9 +78,10 @@ window.onload = () => {
         statusTD.innerText = item.status;
 
         const button = document.createElement('button');
-        button.innerText = 'Delete';
+        button.innerHTML = '<span class="material-icons">delete</span>';
+        button.classList.add('deleteBtn');
         // eslint-disable-next-line no-underscore-dangle
-        button.onclick = (event) => deleteSession(item._id, event);
+        button.onclick = (event) => deleteSession(item._id, postulantName, psychologistName, event);
         actionsTD.append(button);
 
         tr.append(postulantTD, psychologistTD, dateTD, statusTD, actionsTD);

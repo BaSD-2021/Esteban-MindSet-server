@@ -1,0 +1,23 @@
+.container {
+	max-width: 100%;
+}
+
+.container td {
+	vertical-align: middle;
+}
+
+.button, .container input[type="submit"] {
+  max-width: 100%;
+}
+
+.deleteBtn {
+  vertical-align: bottom;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  color: #27AE60;
+}

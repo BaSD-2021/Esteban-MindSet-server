@@ -46,7 +46,6 @@ header > nav > a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  width: 40%;
 }
 
 .list {
@@ -90,7 +89,7 @@ header > nav > a {
 /* form styles */
 
 .container {
-	max-width: 100%;
+	max-width: 400px;
 	margin: 10px auto;
 	padding: 16px;
 	background: #F7F7F7;
