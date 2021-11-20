@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position List</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="../js/index.js"></script>
+    <script src="../js/positionList.js"></script>
+</head>
+<body>
+    <header>
+        <a id="mindSetLogo" href="/"><span>Mind</span>SET</a>
+        <nav>
+          <a href="#">admins</a>
+          <a href="#">applications</a>
+          <a href="#">clients</a>
+          <a href="#">interviews</a>
+          <a id="positionsNav" href="../views/positionList.html">positions</a>
+          <a href="#">profiles</a>
+          <a href="#">psychologists</a>
+          <a href="#">sessions</a>
+        </nav>
+      </header>
+      <div class="container">
+        <h2 class="header">Positions</h2>
+        <table class="list">
+          <thead>
+          <tr>
+            <th>Job Description</th>
+            <th>Vacancy</th>
+          </tr>
+        </thead>
+        <tbody id="positions-table-content">
+        </tbody>
+        </table>
+        <button class="button" id="addClient" type="button">
+          Add Position
+        </button>
+      </div>
+</body>
+<footer>
+    <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
+  </footer>
+</html>
