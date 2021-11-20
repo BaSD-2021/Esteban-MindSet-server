@@ -13,7 +13,7 @@ window.onload = () => {
   const errorMessage = document.getElementById('error_msg');
 
   const params = new URLSearchParams(window.location.search);
-  saveButton.disable = !!params.get('positionId');
+  saveButton.disable = !!params.get('_id');
 
   const onFocusInput = () => {
     errorMessage.innerText = '';
@@ -24,4 +24,30 @@ window.onload = () => {
   vacancyInput.onfocus = onFocusInput;
   professionalProfilesInput.onfocus = onFocusInput;
   isOpenInput.onfocus = onFocusInput;
+
+  if (params.get('_id')) {
+    fetch(`${window.location.origin}/api/positions?_id=${params.get('_id')}`)
+      .then((response) => {
+        if (response.status !== 200) {
+          return response.json()
+            .then(({ message }) => {
+              throw new Error(message);
+            });
+        }
+        return response.json();
+      })
+      .then((response) => {
+        saveButton.disabled = false;
+        response.data.forEach((position) => {
+          clientInput.value = position.client;
+          jobDescriptionInput.value = position.jobDescription;
+          vacancyInput.value = position.vacancy;
+          professionalProfilesInput.value = position.professionalProfiles;
+          isOpenInput.value = position.isOpen;
+        });
+      })
+      .catch((error) => {
+        errorMessage.innerText = error;
+      });
+  }
 };
