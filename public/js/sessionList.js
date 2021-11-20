@@ -67,21 +67,26 @@ window.onload = () => {
         const dateTD = document.createElement('td');
         const statusTD = document.createElement('td');
         const actionsTD = document.createElement('td');
-        const postulantName = `${item.postulant.firstName} ${item.postulant.lastName}`;
-        const psychologistName = `${item.psychologist.firstName} ${item.psychologist.lastName}`;
-        const date = new Date(item.date);
-        const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`;
+        if (item.postulant) {
+          postulantTD.innerText = `${item.postulant.firstName} ${item.postulant.lastName}`;
+        }
+        if (item.psychologist) {
+          psychologistTD.innerText = `${item.psychologist.firstName} ${item.psychologist.lastName}`;
+        }
 
-        postulantTD.innerText = postulantName;
-        psychologistTD.innerText = psychologistName;
-        dateTD.innerText = formattedDate;
+        dateTD.innerText = item.date.replace('T', ' ');
         statusTD.innerText = item.status;
 
         const button = document.createElement('button');
         button.innerHTML = '<span class="material-icons">delete</span>';
         button.classList.add('deleteBtn');
+        button.onclick = (event) => deleteSession(
         // eslint-disable-next-line no-underscore-dangle
-        button.onclick = (event) => deleteSession(item._id, postulantName, psychologistName, event);
+          item._id,
+          postulantTD.textContent,
+          psychologistTD.textContent,
+          event,
+        );
         actionsTD.append(button);
 
         tr.append(postulantTD, psychologistTD, dateTD, statusTD, actionsTD);

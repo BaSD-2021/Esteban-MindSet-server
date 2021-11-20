@@ -2,33 +2,78 @@ window.onload = () => {
   const navButton = document.getElementById('sessionsNav');
   navButton.classList.add('activePage');
 
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('_id');
+
+  const dateInput = document.getElementById('date');
   const postulantInput = document.getElementById('postulant');
   const psychologistInput = document.getElementById('psychologist');
   const statusInput = document.getElementById('status');
-  const dateInput = document.getElementById('date');
   const notesInput = document.getElementById('notes');
 
   const form = document.getElementById('form');
   const saveButton = document.getElementById('saveButton');
   const errorMessage = document.getElementById('error_massage');
 
-  const params = new URLSearchParams(window.location.search);
-  saveButton.disabled = !!params.get('_id');
+  saveButton.disabled = !!sessionId;
 
   const onFocusInput = () => {
     errorMessage.innerText = '';
   };
 
-  postulantInput.onfocus = onFocusInput;
-  psychologistInput.onfocus = onFocusInput;
-  statusInput.onfocus = onFocusInput;
   dateInput.onfocus = onFocusInput;
-  notesInput.onfocus = onFocusInput;
+  postulantInput.onfocus = onFocusInput;
 
-  if (params.get('_id')) {
-    fetch(`${window.location.origin}/api/sessions?_id=${params.get('_id')}`)
+  fetch(`${window.location.origin}/api/postulants`)
+    .then((response) => {
+      if (response.status !== 200 && response.status !== 201) {
+        return response.json().then(({ message }) => {
+          throw new Error(message);
+        });
+      }
+      return response.json();
+    })
+    .then((response) => {
+      saveButton.disabled = false;
+      response.data.forEach((postulant) => {
+        const option = document.createElement('option');
+        // eslint-disable-next-line no-underscore-dangle
+        option.value = postulant._id;
+        option.innerText = `${postulant.firstName} ${postulant.lastName}`;
+        postulantInput.append(option);
+      });
+    })
+    .catch((error) => {
+      errorMessage.innerText = error;
+    });
+
+  fetch(`${window.location.origin}/api/psychologists`)
+    .then((response) => {
+      if (response.status !== 200 && response.status !== 201) {
+        return response.json().then(({ message }) => {
+          throw new Error(message);
+        });
+      }
+      return response.json();
+    })
+    .then((response) => {
+      saveButton.disabled = false;
+      response.data.forEach((psychologist) => {
+        const option = document.createElement('option');
+        // eslint-disable-next-line no-underscore-dangle
+        option.value = psychologist._id;
+        option.innerText = `${psychologist.firstName} ${psychologist.lastName}`;
+        psychologistInput.append(option);
+      });
+    })
+    .catch((error) => {
+      errorMessage.innerText = error;
+    });
+
+  if (sessionId) {
+    fetch(`${window.location.origin}/api/sessions?_id=${sessionId}`)
       .then((response) => {
-        if (response.status !== 200) {
+        if (response.status !== 200 && response.status !== 201) {
           return response.json().then(({ message }) => {
             throw new Error(message);
           });
@@ -38,13 +83,12 @@ window.onload = () => {
       .then((response) => {
         saveButton.disabled = false;
         response.data.forEach((session) => {
-          const date = new Date(session.date).toISOString().substring(0, 10);
-          // eslint-disable-next-line no-underscore-dangle
-          postulantInput.value = session.postulant._id;
-          // eslint-disable-next-line no-underscore-dangle
-          psychologistInput.value = session.psychologist._id;
+          dateInput.value = session.date;
           statusInput.value = session.status;
-          dateInput.value = date;
+          // eslint-disable-next-line no-underscore-dangle
+          postulantInput.value = session.postulant ? session.postulant._id : undefined;
+          // eslint-disable-next-line no-underscore-dangle
+          psychologistInput.value = session.psychologist ? session.psychologist._id : undefined;
           notesInput.value = session.notes;
         });
       })
@@ -56,25 +100,23 @@ window.onload = () => {
   form.onsubmit = (event) => {
     event.preventDefault();
     saveButton.disabled = true;
-
     let url;
-    const date = new Date(dateInput.value).toISOString();
     const options = {
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        date: dateInput.value,
         postulant: postulantInput.value,
         psychologist: psychologistInput.value,
         status: statusInput.value,
-        date,
         notes: notesInput.value,
       }),
     };
 
-    if (params.get('_id')) {
+    if (sessionId) {
       options.method = 'PUT';
-      url = `${window.location.origin}/api/sessions/${params.get('_id')}`;
+      url = `${window.location.origin}/api/sessions/${sessionId}`;
     } else {
       options.method = 'POST';
       url = `${window.location.origin}/api/sessions`;
@@ -90,7 +132,6 @@ window.onload = () => {
         return response.json();
       })
       .then(() => {
-        // eslint-disable-next-line no-underscore-dangle
         window.location.href = `${window.location.origin}/views/sessionList.html`;
       })
       .catch((error) => {

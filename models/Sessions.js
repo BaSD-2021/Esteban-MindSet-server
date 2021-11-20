@@ -20,7 +20,11 @@ const SessionSchema = new Schema(
       default: 'assigned',
       required: true,
     },
-    date: { type: Date, required: true },
+    date: {
+      type: String,
+      required: true,
+      match: /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})$/,
+    },
     notes: { type: String },
   },
   { timestamps: true },

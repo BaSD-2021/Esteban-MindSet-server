@@ -26,14 +26,20 @@
     <div class="container">
       <h2 class="header">Sessions Form</h2>
       <form id="form">
-        <input id="postulant" name="postulant" placeholder="Postulant" type="text" required/>
-        <input id="psychologist" name="psychologist" placeholder="Psychologist" type="text" required/>
+        <span>Date:</span>
+        <input id="date" name="date" type="datetime-local" required/>
+        <span>Postulant:</span>
+        <select id="postulant" name="postulant" required>
+        </select>
+        <span>Psychologist:</span>
+        <select id="psychologist" name="psychologist" required>
+        </select>
         <select name="status" id="status">
           <option value="assigned">Assigned</option>
           <option value="succesful">Succesful</option>
           <option value="cancelled">Cancelled</option>
         </select>
-        <input id="date" name="date" type="date" min="2018-01-01" max="2025-12-31" required/>
+        <span>Notes:</span>
         <textarea id="notes" name="notes" placeholder="Type your Notes"></textarea>
         <div id="error_massage"></div>
         <input id="saveButton" class="button" type="submit" value="Send">
