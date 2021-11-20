@@ -7,6 +7,18 @@ const openNewSession = () => {
   window.location.href = `${window.location.origin}/views/sessionForm.html`;
 };
 
+const deleteSession = (id, event) => {
+  event.stopPropagation();
+  const url = `http://localhost:4000/api/sessions/${id}`;
+  fetch(url, {
+    method: 'DELETE',
+  })
+    .then((response) => {
+      response.json();
+      window.location.href = `${window.location.origin}/views/sessionList.html`;
+    });
+};
+
 window.onload = () => {
   const navButton = document.getElementById('sessionsNav');
   navButton.classList.add('activePage');
@@ -25,11 +37,24 @@ window.onload = () => {
         const psychologistTD = document.createElement('td');
         const dateTD = document.createElement('td');
         const statusTD = document.createElement('td');
-        postulantTD.innerText = item.postulant;
-        psychologistTD.innerText = item.postulant;
-        dateTD.innerText = item.date;
+        const actionsTD = document.createElement('td');
+        const postulantName = `${item.postulant.firstName} ${item.postulant.lastName}`;
+        const psychologistName = `${item.psychologist.firstName} ${item.psychologist.lastName}`;
+        const date = new Date(item.date);
+        const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`;
+
+        postulantTD.innerText = postulantName;
+        psychologistTD.innerText = psychologistName;
+        dateTD.innerText = formattedDate;
         statusTD.innerText = item.status;
-        tr.append(postulantTD, psychologistTD, dateTD, statusTD);
+
+        const button = document.createElement('button');
+        button.innerText = 'Delete';
+        // eslint-disable-next-line no-underscore-dangle
+        button.onclick = (event) => deleteSession(item._id, event);
+        actionsTD.append(button);
+
+        tr.append(postulantTD, psychologistTD, dateTD, statusTD, actionsTD);
         tableContent.append(tr);
         // eslint-disable-next-line no-underscore-dangle
         tr.onclick = () => openEditSession(item._id);

@@ -39,8 +39,10 @@ window.onload = () => {
         saveButton.disabled = false;
         response.data.forEach((session) => {
           const date = new Date(session.date).toISOString().substring(0, 10);
-          postulantInput.value = session.postulant;
-          psychologistInput.value = session.psychologist;
+          // eslint-disable-next-line no-underscore-dangle
+          postulantInput.value = session.postulant._id;
+          // eslint-disable-next-line no-underscore-dangle
+          psychologistInput.value = session.psychologist._id;
           statusInput.value = session.status;
           dateInput.value = date;
           notesInput.value = session.notes;
