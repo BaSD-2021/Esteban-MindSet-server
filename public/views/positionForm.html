@@ -28,11 +28,16 @@
       <div class="container">
         <h2 class="header">Position form</h2>
         <form id="form">
-            <input id="client" placeholder="Client" type="text">
+            <span>Client:</span>
+            <input id="client" placeholder="Client" required>
+            <span>Job Description:</span>
             <input id="jobDescription" placeholder="Job Description" type="text">
+            <span>Vacancy:</span>
             <input id="vacancy" placeholder="Vacancy" type="text">
-            <input id="professionalProfiles" placeholder="Profesional Profiles" type="text">
-            <input id="isOpen" placeholder="Is Open?" type="text">
+            <span>Professional Profiles:</span>
+            <input id="professionalProfiles" placeholder="Professional Profiles" type="text" required>
+            <span>Is Open?</span>
+            <input id="isOpen" placeholder="You must enter true or false values" type="text" required>
             <div id="error_msg"></div>
             <input id="saveButton" class="button" type="submit" value="Send">
         </form>
