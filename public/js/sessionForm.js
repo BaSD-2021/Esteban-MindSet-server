@@ -26,7 +26,7 @@ window.onload = () => {
 
   fetch(`${window.location.origin}/api/postulants`)
     .then((response) => {
-      if (response.status !== 200 && response.status !== 201) {
+      if (response.status !== 200) {
         return response.json().then(({ message }) => {
           throw new Error(message);
         });
@@ -49,7 +49,7 @@ window.onload = () => {
 
   fetch(`${window.location.origin}/api/psychologists`)
     .then((response) => {
-      if (response.status !== 200 && response.status !== 201) {
+      if (response.status !== 200) {
         return response.json().then(({ message }) => {
           throw new Error(message);
         });
@@ -73,7 +73,7 @@ window.onload = () => {
   if (sessionId) {
     fetch(`${window.location.origin}/api/sessions?_id=${sessionId}`)
       .then((response) => {
-        if (response.status !== 200 && response.status !== 201) {
+        if (response.status !== 200) {
           return response.json().then(({ message }) => {
             throw new Error(message);
           });

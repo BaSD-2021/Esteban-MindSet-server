@@ -3,7 +3,6 @@ const openEditSession = (id) => {
   window.location.href = `${window.location.origin}/views/sessionForm.html?_id=${id}`;
 };
 const openNewSession = () => {
-  // eslint-disable-next-line no-underscore-dangle
   window.location.href = `${window.location.origin}/views/sessionForm.html`;
 };
 
