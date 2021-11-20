@@ -71,7 +71,7 @@ window.onload = () => {
         button.innerHTML = "<img src='https://img.icons8.com/material-rounded/24/000000/delete.png'/>";
         // eslint-disable-next-line no-underscore-dangle
         button.onclick = (event) => deleteProfile(profile._id, profile.name, event);
-        tr.onclick = () => openEditProfileForm(profile);
+        NameTD.onclick = () => openEditProfileForm(profile);
         tr.append(NameTD, DeleteTD);
         tableContent.append(tr);
       });
