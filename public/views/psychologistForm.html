@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSet</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/psychologist.css">
+    <script src="../js/psychologistForm.js"></script>
+    <script src="../js/modal.js"></script>
+  </head>
+  <body>
+    <header>
+      <a id="mindSetLogo" href="/"><span>Mind</span>SET</a>
+      <nav>
+        <a href="#">admins</a>
+        <a href="#">applications</a>
+        <a href="#">clients</a>
+        <a href="#">interviews</a>
+        <a href="#">positions</a>
+        <a href="#">Profiles</a>
+        <a id="psychologistNav" href="./psychologistForm.html">psychologists</a>
+        <a href="#">sessions</a>
+      </nav>
+    </header>
+    <div class="container">
+      <h2 class="header">Psychologist Form</h2>
+      <form id="form">
+        <div>
+          <input id="firstName" name="firstName" placeholder="Psychologist First Name" type="text" required/>
+          <p id="name-error" class="name-error-message">Please enter a valid name</p>
+        </div>
+        <div>
+          <input id="lastName" name="lastName" placeholder="Psychologist Last Name" type="text" required/>
+          <p id="name-error" class="name-error-message">Please enter a valid name</p>
+        </div>
+        <div>
+          <input id="email" name="email" placeholder="Psychologist Email" type="email" required/>
+          <p id="name-error" class="name-error-message">Please enter a valid name</p>
+        </div>
+        <div>
+          <input id="phone" name="phone" placeholder="Psychologist Phone" type="number" required/>
+          <p id="name-error" class="name-error-message">Please enter a valid name</p>
+        </div>
+        <div>
+          <input id="address" name="address" placeholder="Psychologist Address" type="text" required/>
+          <p id="name-error" class="name-error-message">Please enter a valid name</p>
+        </div>
+        <section>
+          <div class="days-availability">
+            <p>Monday</p>
+            <input id="monday-availability" name="monday-availability" placeholder="True or false" type="string" required/>
+            <input id="monday-from" name="monday-from" placeholder="From" type="number" required/>
+            <input id="monday-to" name="monday-to" placeholder="To" type="number" required/>
+          </div>
+          <div class="days-availability">
+            <p>Tuesday</p>
+            <input id="tuesday-availability" name="tuesday-availability" placeholder="True or false" type="string" required/>
+            <input id="tuesday-from" name="tuesday-from" placeholder="From" type="number" required/>
+            <input id="tuesday-to" name="tuesday-to" placeholder="To" type="number" required/>
+          </div>
+          <div class="days-availability">
+            <p>Wednesday</p>
+            <input id="wednesday-availability" name="wednesday-availability" placeholder="True or false" type="string" required/>
+            <input id="wednesday-from" name="wednesday-from" placeholder="From" type="number" required/>
+            <input id="wednesday-to" name="wednesday-to" placeholder="To" type="number" required/>
+          </div>
+          <div class="days-availability">
+            <p>Thursday</p>
+            <input id="thursday-availability" name="thursday-availability" placeholder="True or false" type="string" required/>
+            <input id="thursday-from" name="thursday-from" placeholder="From" type="number" required/>
+            <input id="thursday-to" name="thursday-to" placeholder="To" type="number" required/>
+          </div>
+          <div class="days-availability">
+            <p>Friday</p>
+            <input id="friday-availability" name="friday-availability" placeholder="True or false" type="string" required/>
+            <input id="friday-from" name="friday-from" placeholder="From" type="number" required/>
+            <input id="friday-to" name="friday-to" placeholder="To" type="number" required/>
+          </div>
+          <div class="days-availability">
+            <p>Saturday</p>
+            <input id="saturday-availability" name="saturday-availability" placeholder="True or false" type="string" required/>
+            <input id="saturday-from" name="saturday-from" placeholder="From" type="number" required/>
+            <input id="saturday-to" name="saturday-to" placeholder="To" type="number" required/>
+          </div>
+          <div class="days-availability">
+            <p>Sunday</p>
+            <input id="sunday-availability" name="sunday-availability" placeholder="True or false" type="string" required/>
+            <input id="sunday-from" name="sunday-from" placeholder="From" type="number" required/>
+            <input id="sunday-to" name="sunday-to" placeholder="To" type="number" required/>
+          </div>
+        </section>
+        <div id="error_massage"></div>
+        <input id="saveButton" class="button" type="submit" value="Send">
+      </form>
+    </div>
+    <footer>
+      <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
+    </footer>
+  </body>
+</html>

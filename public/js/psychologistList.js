@@ -11,7 +11,7 @@ const openNewPsychologistForm = () => {
 window.onload = () => {
   const navButton = document.getElementById('psychologistNav');
   const tableContent = document.getElementById('table-content');
-  const addPsychologistButton = document.getElementById('addPsychologist');
+  const addPsychologistButton = document.getElementById('addPsychologists');
 
   // MODAL SETTINGS
   const modalSection = document.getElementById('modal-section');
@@ -34,10 +34,10 @@ window.onload = () => {
   };
   // END MODAL SETTING
 
-  const deletePsychologist = (id, firstName, event) => {
+  const deletePsychologist = (id, firstName, lastName, event) => {
     event.stopPropagation();
     document.getElementById('modal-title').innerText = 'You are about to delete a Profile:';
-    document.getElementById('modal-data-inputs').innerText = `Profile: ${firstName}`;
+    document.getElementById('modal-data-inputs').innerText = `Psychologist: ${firstName} ${lastName}`;
     openModal();
     document.getElementById('cancel-button').onclick = () => {
       modalSection.classList.remove('modal-section-display-on');
@@ -73,7 +73,7 @@ window.onload = () => {
         const button = document.createElement('button');
         firstNameTD.innerText = psychologist.firstName;
         lastNameTD.innerText = psychologist.lastName;
-        availabilityTD.innerText = psychologist.availability.monday.to;
+        availabilityTD.innerText = psychologist.availability.availability;
         emailTD.innerText = psychologist.email;
         phoneTD.innerText = psychologist.phone;
         addressTD.innerText = psychologist.address;
@@ -81,8 +81,13 @@ window.onload = () => {
         button.innerHTML = "<img src='https://img.icons8.com/material-rounded/24/000000/delete.png'/>";
         button.classList.add('delete-button-list');
         button.onclick = (event) => {
-          // eslint-disable-next-line no-underscore-dangle
-          deletePsychologist(psychologist._id, psychologist.firstName, event);
+          deletePsychologist(
+            // eslint-disable-next-line no-underscore-dangle
+            psychologist._id,
+            psychologist.firstName,
+            psychologist.lastName,
+            event,
+          );
         };
         firstNameTD.onclick = () => openEditPsychologistForm(psychologist);
         tr.append(firstNameTD, lastNameTD, availabilityTD, emailTD, phoneTD, addressTD, deleteTD);
