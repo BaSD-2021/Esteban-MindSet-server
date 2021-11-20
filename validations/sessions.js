@@ -6,6 +6,8 @@ const statusEnum = {
   succesful: 'succesful',
 };
 
+const dateStringRegex = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})$/;
+
 const errorResHelper = (errorDescription, res, errCode = 400) => {
   res.status(errCode).json({ message: errorDescription });
 };
@@ -31,17 +33,8 @@ const validateSessions = (req, res, next) => {
   if (!Object.values(statusEnum).includes(req.body.status)) {
     invalidBodyAttrs.push("'Status'");
   }
-  if (!req.body.date) {
+  if (!req.body.date || !dateStringRegex.test(req.body.date)) {
     invalidBodyAttrs.push("'Date'");
-  }
-  if (req.body.date) {
-    try {
-      if (new Date(Date.parse(req.body.date)).toISOString() !== req.body.date) {
-        throw new Error('Wrong Date Format');
-      }
-    } catch {
-      invalidBodyAttrs.push("'Date'");
-    }
   }
   if (invalidBodyAttrs.length === 1) {
     return errorResHelper(
@@ -71,14 +64,8 @@ const validateSessionsUsedAttr = (req, res, next) => {
   if (req.body.status && !Object.values(statusEnum).includes(req.body.status)) {
     invalidBodyAttrs.push("'Status'");
   }
-  if (req.body.date) {
-    try {
-      if (new Date(Date.parse(req.body.date)).toISOString() !== req.body.date) {
-        throw new Error('Wrong Date Format');
-      }
-    } catch {
-      invalidBodyAttrs.push("'Date'");
-    }
+  if (req.body.date && !dateStringRegex.test(req.body.date)) {
+    invalidBodyAttrs.push("'Date'");
   }
   if (invalidBodyAttrs.length === 1) {
     return errorResHelper(

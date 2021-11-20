@@ -2,6 +2,8 @@ const Sessions = require('../models/Sessions');
 
 const listSessions = (req, res) => {
   Sessions.find(req.query)
+    .populate('postulant', ['firstName', 'lastName'])
+    .populate('psychologist', ['firstName', 'lastName'])
     .then((sessions) => {
       res.status(200).json({
         message: 'List of Sessions',
