@@ -34,25 +34,28 @@ window.onload = () => {
     modalSection.classList.add('modal-display-off');
   };
 
-  const deleteSession = (id, postulantName, psychologistName, event) => {
+  const deleteSession = (item, event) => {
     event.stopPropagation();
     event.stopPropagation();
     document.getElementById('modal-title').innerText = 'You are about to delete a Session between:';
-    document.getElementById('modal-data-inputs').innerText = `${postulantName} and ${psychologistName}`;
+    document.getElementById('modal-data-inputs').innerText = `${item.postulant.firstName} ${item.postulant.lastName}
+    and ${item.psychologist.firstName} ${item.psychologist.lastName}`;
     openModal();
     document.getElementById('cancel-button').onclick = () => {
       modalSection.classList.remove('modal-section-display-on');
       modalSection.classList.add('modal-display-off');
     };
     document.getElementById('procced-button').onclick = () => {
-      const url = `http://localhost:4000/api/sessions/${id}`;
+      // eslint-disable-next-line no-underscore-dangle
+      const url = `${window.location.origin}/api/sessions/${item._id}`;
       fetch(url, {
         method: 'DELETE',
       })
         .then((response) => {
           response.json();
           window.location.href = `${window.location.origin}/views/sessionList.html`;
-        });
+        })
+        .catch((error) => error);
     };
   };
 
@@ -77,15 +80,9 @@ window.onload = () => {
         statusTD.innerText = item.status;
 
         const button = document.createElement('button');
-        button.innerHTML = '<span class="material-icons">delete</span>';
+        button.innerHTML = '<img src="/assets/deleteIcon.png" alt="" srcset="">';
         button.classList.add('deleteBtn');
-        button.onclick = (event) => deleteSession(
-        // eslint-disable-next-line no-underscore-dangle
-          item._id,
-          postulantTD.textContent,
-          psychologistTD.textContent,
-          event,
-        );
+        button.onclick = (event) => deleteSession(item, event);
         actionsTD.append(button);
 
         tr.append(postulantTD, psychologistTD, dateTD, statusTD, actionsTD);
@@ -94,8 +91,5 @@ window.onload = () => {
         tr.onclick = () => openEditSession(item._id);
       });
     })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    });
+    .catch((error) => error);
 };
