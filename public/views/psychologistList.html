@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSet</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+    <script src="../js/psychologistList.js"></script>
+  </head>
+  <body>
+    <header>
+      <a id="mindSetLogo" href="/"><span>Mind</span>SET</a>
+      <nav>
+        <a href="#">admins</a>
+        <a href="#">applications</a>
+        <a href="#">clients</a>
+        <a href="#">interviews</a>
+        <a href="#">positions</a>
+        <a href="#">Profiles</a>
+        <a href="./psychologistList.html">psychologists</a>
+        <a href="#">sessions</a>
+      </nav>
+    </header>
+    <div class="container">
+      <h2 class="header">Psychologists</h2>
+      <table class="list">
+        <thead>
+          <tr>
+            <th>Frist Name</th>
+            <th>Last Name</th>
+            <th>Availability</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th class="actions-table">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="table-content">
+        </tbody>
+      </table>
+      <button class="button" id="addPsychologists" type="button">
+        Add Psychologists
+      </button>
+    </div>
+    <section id="modal-section" class="modal-display-off"> 
+      <div id="modal-content">
+          <span id="modal-close-button">&times;</span>
+          <h1 id="modal-title"></h1>
+          <div id="modal-data-inputs"></div>
+          <div id="modal-buttons">
+            <button id="cancel-button">CANCEL</button>
+            <button id="procced-button">PROCCED</button>
+          </div>
+      </div>
+    </section>
+    <footer>
+      <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
+    </footer>
+  </body>
+</html>
