@@ -1,0 +1,21 @@
+.name-error-message{
+  visibility: hidden;
+  display: inline-block;
+  margin: -15px 0 15px 0;
+  font-size: 12px;
+  color: red;
+}
+
+.container input,
+.container textarea,
+.container select {
+	margin-bottom: 0;
+}
+
+.error-visibility-show{
+  visibility: show;
+  display: inline-block;
+  margin: -15px 0 15px 0;
+  font-size: 12px;
+  color: red;
+}

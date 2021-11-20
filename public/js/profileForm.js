@@ -9,7 +9,7 @@ window.onload = () => {
   const errorMessage = document.getElementById('error_massage');
 
   const params = new URLSearchParams(window.location.search);
-  saveButton.disabled = !!params.get('ProfileId');
+  saveButton.disabled = !!params.get('profileId');
 
   const onFocusInput = () => {
     errorMessage.innerText = '';
@@ -79,5 +79,20 @@ window.onload = () => {
       .finally(() => {
         saveButton.disabled = false;
       });
+  };
+
+  // FORM VALIDATIONS
+
+  nameInput.onblur = () => {
+    saveButton.disabled = false;
+    if (!Number.isNaN(nameInput.value)) {
+      saveButton.disabled = true;
+      document.getElementById('name-error').classList.remove('name-error-message');
+      document.getElementById('name-error').classList.add('error-visibility-show');
+    }
+  };
+
+  nameInput.onfocus = () => {
+    document.getElementById('name-error').classList.add('name-error-message');
   };
 };
