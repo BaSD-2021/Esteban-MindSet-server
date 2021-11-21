@@ -11,10 +11,9 @@ function updateModalInfo(title, text) {
 }
 
 function closeModal(e) {
-  if (e.target === modalSection) {
-    modalSection.classList.remove('modal-section-display-on');
-    modalSection.classList.add('modal-display-off');
-  }
+  e.stopPropagation();
+  modalSection.classList.remove('modal-section-display-on');
+  modalSection.classList.add('modal-display-off');
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -23,7 +22,9 @@ function cancelModal() {
   modalSection.classList.add('modal-display-off');
 }
 
-window.addEventListener('click', closeModal);
+document.getElementById('cancel-button').onclick = closeModal;
+
+// window.addEventListener('click', closeModal);
 const modalCloseBtn = document.getElementById('modal-close-button');
 modalCloseBtn.onclick = () => {
   modalSection.classList.remove('modal-section-display-on');

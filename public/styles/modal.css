@@ -56,10 +56,6 @@
   font-weight: 700;
 }
 
-#modal-close-button:hover {
-  color: grey;
-  cursor: pointer;
-}
 
 #modal-buttons button {
   border: none;
@@ -79,4 +75,13 @@
 #modal-data-inputs {
   color: #07a551;
   font-size: 20px;
+}
+
+#modal-close-button:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+#procced-button:hover, #cancel-button:hover{
+  background-color: #cc9966;
 }
