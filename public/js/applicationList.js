@@ -17,7 +17,7 @@ window.onload = () => {
   fetch(`${window.location.origin}/api/applications`)
     .then((response) => response.json())
     .then((response) => {
-      response.data.forEach((application) => {
+      response.forEach((application) => {
         const tr = document.createElement('tr');
         const jobDescriptionTD = document.createElement('td');
         const postulantTD = document.createElement('td');
