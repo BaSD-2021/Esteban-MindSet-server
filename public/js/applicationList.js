@@ -17,7 +17,6 @@ window.onload = () => {
   fetch(`${window.location.origin}/api/applications`)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
       response.data.forEach((application) => {
         const tr = document.createElement('tr');
         const jobDescriptionTD = document.createElement('td');
@@ -26,7 +25,7 @@ window.onload = () => {
         const resultTD = document.createElement('td');
         jobDescriptionTD.innerText = application.positions?.jobDescription;
         postulantTD.innerText = `${application.postulants?.firstName} ${application.postulants?.lastName}`;
-        interviewTD.innerText = application.interview ?? '---';
+        interviewTD.innerText = application.interview?.date.substr(0, 10) ?? '---';
         resultTD.innerText = application.result ?? '---';
 
         // eslint-disable-next-line no-underscore-dangle

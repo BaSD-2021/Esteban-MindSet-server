@@ -1,0 +1,17 @@
+.container {
+  max-width: 800px;
+}
+
+.container td {
+  vertical-align: middle;
+}
+
+.list tbody tr:hover {
+  background-color: #27ae6055;
+}
+
+.button,
+.container input[type='submit'] {
+  max-width: 100%;
+  cursor: pointer;
+}

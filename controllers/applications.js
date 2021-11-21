@@ -8,7 +8,7 @@ const listApplication = (req, res) => {
       populate: { path: 'client', model: 'Clients', select: 'name' },
     })
     .populate('postulants', ['firstName', 'lastName'])
-    .populte('interviews', 'date')
+    .populate('interview', 'date')
     .then((application) => {
       res.status(200).json({
         message: 'List of Applications',
