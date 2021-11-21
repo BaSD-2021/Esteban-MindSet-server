@@ -59,7 +59,6 @@ window.onload = () => {
   fetch(`${window.location.origin}/api/positions`)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
       response.data.forEach((item) => {
         const tr = document.createElement('tr');
         const jobDescriptionTd = document.createElement('td');
@@ -80,7 +79,5 @@ window.onload = () => {
         tr.onclick = () => openEditPosition(item._id);
       });
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch((error) => error);
 };
