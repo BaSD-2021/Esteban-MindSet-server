@@ -68,7 +68,7 @@ window.onload = () => {
         const button = document.createElement('button');
         NameTD.innerText = profile.name;
         DeleteTD.append(button);
-        button.innerHTML = "<img src='https://img.icons8.com/material-rounded/24/000000/delete.png'/>";
+        button.innerHTML = "<img src='../assets/deleteIcon.png' alt='Delete icon'>";
         button.classList.add('delete-button-list');
         // eslint-disable-next-line no-underscore-dangle
         button.onclick = (event) => deleteProfile(profile._id, profile.name, event);
