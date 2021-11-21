@@ -15,10 +15,7 @@ window.onload = () => {
   const addPosition = document.getElementById('addPosition');
   addPosition.onclick = openNewPosition;
 
-  // Modal
-
   const modalSection = document.getElementById('modal-section');
-
   const openModal = () => {
     modalSection.classList.add('modal-section-display-on');
   };
@@ -62,7 +59,7 @@ window.onload = () => {
   fetch(`${window.location.origin}/api/positions`)
     .then((response) => response.json())
     .then((response) => {
-      console.log('response', response);
+      console.log(response);
       response.data.forEach((item) => {
         const tr = document.createElement('tr');
         const jobDescriptionTd = document.createElement('td');
