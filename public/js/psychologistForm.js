@@ -2,6 +2,8 @@ window.onload = () => {
   const navButton = document.getElementById('psychologistNav');
   const firstNameInput = document.getElementById('firstName');
   const lastNameInput = document.getElementById('lastName');
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
   const emailInput = document.getElementById('email');
   const phoneInput = document.getElementById('phone');
   const addressInput = document.getElementById('address');
@@ -61,8 +63,10 @@ window.onload = () => {
         response.data.forEach((psychologist) => {
           firstNameInput.value = psychologist.firstName;
           lastNameInput.value = psychologist.lastName;
+          usernameInput.value = psychologist.username;
+          passwordInput.value = psychologist.password;
           emailInput.value = psychologist.email;
-          phoneInput.value = psychologist.phone;
+          phoneInput.value = parseInt(psychologist.phone, 10);
           addressInput.value = psychologist.address;
           mondayAvailability.value = psychologist.availability.monday.availability;
           mondayFromInput.value = psychologist.availability.monday.from;
@@ -105,8 +109,45 @@ window.onload = () => {
         firstName: firstNameInput.value,
         lastName: lastNameInput.value,
         email: emailInput.value,
-        phone: phoneInput.value,
+        phone: parseInt(phoneInput.value, 10),
         address: addressInput.value,
+        availability: {
+          monday: {
+            availability: mondayAvailability.value,
+            from: mondayFromInput.value,
+            to: mondayToInput.value,
+          },
+          tuesday: {
+            availability: tuesdayAvailability.value,
+            from: tuesdayFromInput.value,
+            to: tuesdayToInput.value,
+          },
+          wednesday: {
+            availability: wednesdayAvailability.value,
+            from: wednesdayFromInput.value,
+            to: wednesdayToInput.value,
+          },
+          thursday: {
+            availability: thursdayAvailability.value,
+            from: thursdayFromInput.value,
+            to: thursdayToInput.value,
+          },
+          friday: {
+            availability: fridayAvailability.value,
+            from: fridayFromInput.value,
+            to: fridayToInput.value,
+          },
+          saturday: {
+            availability: saturdayAvailability.value,
+            from: saturdayFromInput.value,
+            to: saturdayToInput.value,
+          },
+          sunday: {
+            availability: sundayAvailability.value,
+            from: sundayFromInput.value,
+            to: sundayToInput.value,
+          },
+        },
       }),
     };
 

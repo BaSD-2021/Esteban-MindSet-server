@@ -65,6 +65,8 @@ window.onload = () => {
         const tr = document.createElement('tr');
         const firstNameTD = document.createElement('td');
         const lastNameTD = document.createElement('td');
+        const usernameTD = document.createElement('td');
+        const passwordTD = document.createElement('td');
         const availabilityTD = document.createElement('td');
         const emailTD = document.createElement('td');
         const phoneTD = document.createElement('td');
@@ -73,6 +75,8 @@ window.onload = () => {
         const button = document.createElement('button');
         firstNameTD.innerText = psychologist.firstName;
         lastNameTD.innerText = psychologist.lastName;
+        usernameTD.innerText = psychologist.username;
+        passwordTD.innerText = psychologist.password;
         availabilityTD.innerText = psychologist.availability.availability;
         emailTD.innerText = psychologist.email;
         phoneTD.innerText = psychologist.phone;
@@ -90,7 +94,17 @@ window.onload = () => {
           );
         };
         firstNameTD.onclick = () => openEditPsychologistForm(psychologist);
-        tr.append(firstNameTD, lastNameTD, availabilityTD, emailTD, phoneTD, addressTD, deleteTD);
+        tr.append(
+          firstNameTD,
+          lastNameTD,
+          usernameTD,
+          passwordTD,
+          availabilityTD,
+          emailTD,
+          phoneTD,
+          addressTD,
+          deleteTD,
+        );
         tableContent.append(tr);
       });
     });
