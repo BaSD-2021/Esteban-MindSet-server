@@ -20,7 +20,7 @@ window.onload = () => {
     openModal();
     // eslint-disable-next-line no-undef
     document.getElementById('cancel-button').onclick = closeModal;
-    document.getElementById('procced-button').onclick = () => {
+    document.getElementById('confirm-button').onclick = () => {
       const url = `${window.location.origin}/api/profiles/${id}`;
       fetch(url, {
         method: 'DELETE',
