@@ -10,22 +10,16 @@ function updateModalInfo(title, text) {
   document.getElementById('modal-data-inputs').innerText = text;
 }
 
-function closeModal(e) {
+function closeModal() {
+  modalSection.classList.remove('modal-section-display-on');
+  modalSection.classList.add('modal-display-off');
+}
+
+modalSection.onclick = (e) => {
   if (e.target === modalSection) {
-    modalSection.classList.remove('modal-section-display-on');
-    modalSection.classList.add('modal-display-off');
+    closeModal();
   }
-}
-
-// eslint-disable-next-line no-unused-vars
-function cancelModal() {
-  modalSection.classList.remove('modal-section-display-on');
-  modalSection.classList.add('modal-display-off');
-}
-
-window.addEventListener('click', closeModal);
-const modalCloseBtn = document.getElementById('modal-close-button');
-modalCloseBtn.onclick = () => {
-  modalSection.classList.remove('modal-section-display-on');
-  modalSection.classList.add('modal-display-off');
 };
+
+const modalCloseBtn = document.getElementById('modal-close-button');
+modalCloseBtn.onclick = closeModal;

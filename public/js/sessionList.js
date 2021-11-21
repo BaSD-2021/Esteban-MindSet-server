@@ -27,7 +27,7 @@ window.onload = () => {
     openModal();
     document.getElementById('cancel-button').onclick = () => {
     // eslint-disable-next-line no-undef
-      cancelModal();
+      closeModal();
     };
     document.getElementById('procced-button').onclick = () => {
       // eslint-disable-next-line no-underscore-dangle
