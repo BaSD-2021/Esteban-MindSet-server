@@ -15,35 +15,19 @@ window.onload = () => {
   const addSession = document.getElementById('addSession');
   addSession.onclick = openNewSession;
 
-  const modalSection = document.getElementById('modal-section');
-  const openModal = () => {
-    modalSection.classList.add('modal-section-display-on');
-  };
-
-  const closeModal = (e) => {
-    if (e.target === modalSection) {
-      modalSection.classList.remove('modal-section-display-on');
-      modalSection.classList.add('modal-display-off');
-    }
-  };
-
-  window.addEventListener('click', closeModal);
-  const modalCloseBtn = document.getElementById('modal-close-button');
-  modalCloseBtn.onclick = () => {
-    modalSection.classList.remove('modal-section-display-on');
-    modalSection.classList.add('modal-display-off');
-  };
-
   const deleteSession = (item, event) => {
     event.stopPropagation();
-    event.stopPropagation();
-    document.getElementById('modal-title').innerText = 'You are about to delete a Session between:';
-    document.getElementById('modal-data-inputs').innerText = `${item.postulant.firstName} ${item.postulant.lastName}
-    and ${item.psychologist.firstName} ${item.psychologist.lastName}`;
+    // eslint-disable-next-line no-undef
+    updateModalInfo(
+      'You are about to delete a Session between:',
+      `${item.postulant.firstName} ${item.postulant.lastName}
+    and ${item.psychologist.firstName} ${item.psychologist.lastName}`,
+    );
+    // eslint-disable-next-line no-undef
     openModal();
     document.getElementById('cancel-button').onclick = () => {
-      modalSection.classList.remove('modal-section-display-on');
-      modalSection.classList.add('modal-display-off');
+    // eslint-disable-next-line no-undef
+      cancelModal();
     };
     document.getElementById('procced-button').onclick = () => {
       // eslint-disable-next-line no-underscore-dangle
