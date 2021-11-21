@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ClientsSchema = new Schema({
-  name: { type: String, required: true, ref: 'Client Name' },
+  name: { type: String, required: true },
   phone: { type: Number, required: true },
   location: {
     country: { type: String, required: true },

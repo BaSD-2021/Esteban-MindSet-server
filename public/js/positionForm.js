@@ -41,7 +41,7 @@ window.onload = () => {
       .then((response) => {
         saveButton.disabled = false;
         response.data.forEach((position) => {
-          clientInput.value = position.client;
+          clientInput.value = position.client.name;
           jobDescriptionInput.value = position.jobDescription;
           vacancyInput.value = position.vacancy;
           professionalProfilesInput.value = position.professionalProfiles;
