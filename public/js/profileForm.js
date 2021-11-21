@@ -2,14 +2,14 @@ window.onload = () => {
   const navButton = document.getElementById('profilesNav');
   navButton.classList.add('activePage');
 
+  const params = new URLSearchParams(window.location.search);
+  const paramsId = params.get('profileId');
   const nameInput = document.getElementById('name');
-
   const form = document.getElementById('form');
   const saveButton = document.getElementById('saveButton');
   const errorMessage = document.getElementById('error_massage');
 
-  const params = new URLSearchParams(window.location.search);
-  saveButton.disabled = !!params.get('profileId');
+  saveButton.disabled = !!paramsId;
 
   const onFocusInput = () => {
     errorMessage.innerText = '';
@@ -17,10 +17,10 @@ window.onload = () => {
 
   nameInput.onfocus = onFocusInput;
 
-  if (params.get('profileId')) {
-    fetch(`${window.location.origin}/api/profiles?_id=${params.get('profileId')}`)
+  if (paramsId) {
+    fetch(`${window.location.origin}/api/profiles?_id=${paramsId}`)
       .then((response) => {
-        if (response.status !== 200 && response.status !== 201) {
+        if (response.status !== 200) {
           return response.json().then(({ message }) => {
             throw new Error(message);
           });
@@ -52,9 +52,9 @@ window.onload = () => {
       }),
     };
 
-    if (params.get('profileId')) {
+    if (paramsId) {
       options.method = 'PUT';
-      url = `${window.location.origin}/api/profiles/${params.get('profileId')}`;
+      url = `${window.location.origin}/api/profiles/${paramsId}`;
     } else {
       options.method = 'POST';
       url = `${window.location.origin}/api/profiles`;
@@ -70,7 +70,6 @@ window.onload = () => {
         return response.json();
       })
       .then(() => {
-        // eslint-disable-next-line no-underscore-dangle
         window.location.href = `${window.location.origin}/views/profileList.html`;
       })
       .catch((error) => {
@@ -80,8 +79,6 @@ window.onload = () => {
         saveButton.disabled = false;
       });
   };
-
-  // FORM VALIDATIONS
 
   nameInput.onblur = () => {
     saveButton.disabled = false;

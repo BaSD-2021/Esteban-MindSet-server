@@ -4,7 +4,6 @@ const openEditProfileForm = (profile) => {
 };
 
 const openNewProfileForm = () => {
-  // eslint-disable-next-line no-underscore-dangle
   window.location.href = `${window.location.origin}/views/profileForm.html`;
 };
 
@@ -13,36 +12,14 @@ window.onload = () => {
   const tableContent = document.getElementById('table-content');
   const addProfileButton = document.getElementById('addProfile');
 
-  // MODAL SETTINGS
-  const modalSection = document.getElementById('modal-section');
-  const openModal = () => {
-    modalSection.classList.add('modal-section-display-on');
-  };
-
-  const closeModal = (e) => {
-    if (e.target === modalSection) {
-      modalSection.classList.remove('modal-section-display-on');
-      modalSection.classList.add('modal-display-off');
-    }
-  };
-
-  window.addEventListener('click', closeModal);
-  const modalCloseBtn = document.getElementById('modal-close-button');
-  modalCloseBtn.onclick = () => {
-    modalSection.classList.remove('modal-section-display-on');
-    modalSection.classList.add('modal-display-off');
-  };
-  // END MODAL SETTING
-
   const deleteProfile = (id, name, event) => {
     event.stopPropagation();
     document.getElementById('modal-title').innerText = 'You are about to delete a Professional Profile:';
     document.getElementById('modal-data-inputs').innerText = `Profile: ${name}`;
+    // eslint-disable-next-line no-undef
     openModal();
-    document.getElementById('cancel-button').onclick = () => {
-      modalSection.classList.remove('modal-section-display-on');
-      modalSection.classList.add('modal-display-off');
-    };
+    // eslint-disable-next-line no-undef
+    document.getElementById('cancel-button').onclick = closeModal;
     document.getElementById('procced-button').onclick = () => {
       const url = `${window.location.origin}/api/profiles/${id}`;
       fetch(url, {
