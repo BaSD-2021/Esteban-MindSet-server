@@ -25,7 +25,9 @@ const createApplication = (req, res) => {
 const deleteApplication = (req, res) => {
   Applications.findByIdAndDelete(req.params.id, (error, chosenApplication) => {
     if (!chosenApplication) {
-      return res.status(404).json({ message: `Id ${req.params.id} does not exist` });
+      return res
+        .status(404)
+        .json({ message: `Id ${req.params.id} does not exist` });
     }
     if (error) {
       return res.status(400).json(error);
