@@ -1,5 +1,6 @@
 window.onload = () => {
   const navButton = document.getElementById('psychologistNav');
+  const params = new URLSearchParams(window.location.search);
   const firstNameInput = document.getElementById('firstName');
   const lastNameInput = document.getElementById('lastName');
   const usernameInput = document.getElementById('username');
@@ -28,6 +29,7 @@ window.onload = () => {
   const sundayAvailability = document.getElementById('sunday-availability');
   const sundayFromInput = document.getElementById('sunday-from');
   const sundayToInput = document.getElementById('sunday-to');
+  const paramsId = params.get('psychologistId');
 
   const form = document.getElementById('form');
   const saveButton = document.getElementById('saveButton');
@@ -35,8 +37,7 @@ window.onload = () => {
 
   navButton.classList.add('activePage');
 
-  const params = new URLSearchParams(window.location.search);
-  saveButton.disabled = !!params.get('psychologistId');
+  saveButton.disabled = !!paramsId;
 
   const onFocusInput = () => {
     errorMessage.innerText = '';
@@ -48,8 +49,8 @@ window.onload = () => {
   phoneInput.onfocus = onFocusInput;
   addressInput.onfocus = onFocusInput;
 
-  if (params.get('psychologistId')) {
-    fetch(`${window.location.origin}/api/psychologists?_id=${params.get('psychologistId')}`)
+  if (paramsId) {
+    fetch(`${window.location.origin}/api/psychologists?_id=${paramsId}`)
       .then((response) => {
         if (response.status !== 200 && response.status !== 201) {
           return response.json().then(({ message }) => {
@@ -151,9 +152,9 @@ window.onload = () => {
       }),
     };
 
-    if (params.get('psychologistId')) {
+    if (paramsId) {
       options.method = 'PUT';
-      url = `${window.location.origin}/api/psychologists/${params.get('psychologistId')}`;
+      url = `${window.location.origin}/api/psychologists/${paramsId}`;
     } else {
       options.method = 'POST';
       url = `${window.location.origin}/api/psychologists`;

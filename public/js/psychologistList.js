@@ -82,7 +82,7 @@ window.onload = () => {
         phoneTD.innerText = psychologist.phone;
         addressTD.innerText = psychologist.address;
         deleteTD.append(button);
-        button.innerHTML = "<img src='https://img.icons8.com/material-rounded/24/000000/delete.png'/>";
+        button.innerHTML = "<img src='../assets/deleteIcon.png'/>";
         button.classList.add('delete-button-list');
         button.onclick = (event) => {
           deletePsychologist(
