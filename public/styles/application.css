@@ -7,11 +7,31 @@
 }
 
 .list tbody tr:hover {
-  background-color: #27ae6055;
+  background-color: #27ae6022;
+}
+
+.list tbody tr:hover .deleteBtn img{
+  width: 100%;
+}
+
+.list tbody tr:hover .deleteBtn{
+  opacity: 100%;
 }
 
 .button,
 .container input[type='submit'] {
   max-width: 100%;
   cursor: pointer;
+}
+
+td.deleteBtn{
+  padding: 0;
+  height: fit-content;
+  background: linear-gradient(90deg, #27ae6000 0%, #27ae60AA 100%);
+  opacity: 0;
+  transition: opacity 250ms linear;
+}
+.deleteBtn img{
+  width: 0;
+  transition: width 250ms linear;
 }

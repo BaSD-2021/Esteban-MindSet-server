@@ -23,14 +23,17 @@ window.onload = () => {
         const postulantTD = document.createElement('td');
         const interviewTD = document.createElement('td');
         const resultTD = document.createElement('td');
+        const button = document.createElement('td');
         jobDescriptionTD.innerText = application.positions?.jobDescription;
         postulantTD.innerText = `${application.postulants?.firstName} ${application.postulants?.lastName}`;
         interviewTD.innerText = application.interview?.date.substr(0, 10) ?? '---';
         resultTD.innerText = application.result ?? '---';
-
+        button.innerHTML = '<img src="/assets/deleteIcon.png" alt="" srcset="">';
+        button.classList.add('deleteBtn');
+        // button.onclick = (event) => deleteSession(item, event);
         // eslint-disable-next-line no-underscore-dangle
         tr.onclick = () => openEditApplication(application._id);
-        tr.append(jobDescriptionTD, postulantTD, interviewTD, resultTD);
+        tr.append(jobDescriptionTD, postulantTD, interviewTD, resultTD, button);
         tableContent.append(tr);
       });
     });
