@@ -2,6 +2,12 @@ const Applications = require('../models/Applications');
 
 const listApplication = (req, res) => {
   Applications.find(req.query)
+    .populate({
+      path: 'positions',
+      select: 'jobDescription',
+      populate: { path: 'client', model: 'Clients', select: 'name' },
+    })
+    .populate('postulants', ['firstName', 'lastName'])
     .then((application) => res.status(200).json(application))
     .catch((error) => res.status(400).json({ message: error }));
 };
