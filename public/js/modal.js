@@ -1,19 +1,19 @@
 const modalSection = document.getElementById('modal-section');
 // eslint-disable-next-line no-unused-vars
-function openModal() {
+const openModal = () => {
   modalSection.classList.add('modal-section-display-on');
-}
+};
 
 // eslint-disable-next-line no-unused-vars
-function updateModalInfo(title, text) {
+const updateModalInfo = (title, text) => {
   document.getElementById('modal-title').innerText = title;
   document.getElementById('modal-data-inputs').innerText = text;
-}
+};
 
-function closeModal() {
+const closeModal = () => {
   modalSection.classList.remove('modal-section-display-on');
   modalSection.classList.add('modal-display-off');
-}
+};
 
 modalSection.onclick = (e) => {
   if (e.target === modalSection) {
