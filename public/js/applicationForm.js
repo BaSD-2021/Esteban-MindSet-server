@@ -30,7 +30,7 @@ resultInput.onfocus = onFocusInput;
 const fillSelect = (url, parent) => {
   fetch(`${window.location.origin}/api${url}`)
     .then((response) => {
-      if (response.status !== 200 && response.status !== 201) {
+      if (response.status !== 200) {
         return response.json().then(({ message }) => {
           throw new Error(message);
         });

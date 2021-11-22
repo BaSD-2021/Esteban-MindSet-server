@@ -6,6 +6,10 @@
   vertical-align: middle;
 }
 
+.list th {
+  cursor: auto;
+}
+
 .list tbody tr:hover {
   background-color: #27ae6022;
 }
