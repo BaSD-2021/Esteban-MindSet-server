@@ -8,14 +8,14 @@ window.onload = () => {
   const clientInput = document.getElementById('client');
   const jobDescriptionInput = document.getElementById('jobDescription');
   const vacancyInput = document.getElementById('vacancy');
-  const professionalProfilesInput = document.getElementById('professionalProfiles');
+  const professionalProfilesInput = document.getElementById('Profiles');
   const isOpenInput = document.getElementById('isOpen');
 
   const form = document.getElementById('form');
   const saveButton = document.getElementById('saveButton');
   const errorMessage = document.getElementById('error_msg');
 
-  saveButton.disable = !!params.get('_id');
+  saveButton.disable = !!positionId;
 
   const onFocusInput = () => {
     errorMessage.innerText = '';
@@ -26,6 +26,52 @@ window.onload = () => {
   vacancyInput.onfocus = onFocusInput;
   professionalProfilesInput.onfocus = onFocusInput;
   isOpenInput.onfocus = onFocusInput;
+
+  fetch(`${window.location.origin}/api/clients`)
+    .then((response) => {
+      if (response.status !== 200) {
+        return response.json().then(({ message }) => {
+          throw new Error(message);
+        });
+      }
+      return response.json();
+    })
+    .then((response) => {
+      saveButton.disabled = false;
+      response.data.forEach((client) => {
+        const option = document.createElement('option');
+        // eslint-disable-next-line no-underscore-dangle
+        option.value = client._id;
+        option.innerText = `${client.name}`;
+        clientInput.append(option);
+      });
+    })
+    .catch((error) => {
+      errorMessage.innerText = error;
+    });
+
+  fetch(`${window.location.origin}/api/profiles`)
+    .then((response) => {
+      if (response.status !== 200) {
+        return response.json().then(({ message }) => {
+          throw new Error(message);
+        });
+      }
+      return response.json();
+    })
+    .then((response) => {
+      saveButton.disabled = false;
+      response.data.forEach((profile) => {
+        const option = document.createElement('option');
+        // eslint-disable-next-line no-underscore-dangle
+        option.value = profile.professionalProfiles._id;
+        option.innerText = `${profile.professionalProfiles.name}`;
+        clientInput.append(option);
+      });
+    })
+    .catch((error) => {
+      errorMessage.innerText = error;
+    });
 
   if (positionId) {
     fetch(`${window.location.origin}/api/positions?_id=${positionId}`)
@@ -89,7 +135,6 @@ window.onload = () => {
         return response.json();
       })
       .then(() => {
-        // eslint-disable-next-line no-underscore-dangle
         window.location.href = `${window.location.origin}/views/positionList.html`;
       })
       .catch((error) => {

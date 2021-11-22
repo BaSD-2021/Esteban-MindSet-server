@@ -6,7 +6,25 @@ const openNewPosition = () => {
   window.location.href = `${window.location.origin}/views/positionForm.html`;
 };
 
-window.onload = () => {
+const deletePosition = (id, jobDescription, event) => {
+  event.stopPropagation();
+  document.getElementById('modal-title').innerText = 'You are about to delete the open Position of';
+  document.getElementById('modal-data-inputs').innerText = `${jobDescription}`;
+  document.getElementById('modal-section').classList.add('modal-section-display-on');
+  document.getElementById('procced-button').onclick = () => {
+    const url = `${window.location.origin}/api/positions/${id}`;
+    fetch(url, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        response.json();
+        window.location.href = `${window.location.origin}/views/positionList.html`;
+      })
+      .catch((error) => error);
+  };
+};
+
+const positionListOnLoad = () => {
   const navButton = document.getElementById('positionsNav');
   navButton.classList.add('activePage');
 
@@ -14,47 +32,6 @@ window.onload = () => {
 
   const addPosition = document.getElementById('addPosition');
   addPosition.onclick = openNewPosition;
-
-  const modalSection = document.getElementById('modal-section');
-  const openModal = () => {
-    modalSection.classList.add('modal-section-display-on');
-  };
-
-  const closeModal = (e) => {
-    if (e.target === modalSection) {
-      modalSection.classList.remove('modal-section-display-on');
-      modalSection.classList.add('modal-display-off');
-    }
-  };
-
-  window.addEventListener('click', closeModal);
-  const modalCloseBtn = document.getElementById('modal-close-button');
-  modalCloseBtn.onclick = () => {
-    modalSection.classList.remove('modal-section-display-on');
-    modalSection.classList.add('modal-display-off');
-  };
-
-  const deletePosition = (id, jobDescription, event) => {
-    event.stopPropagation();
-    document.getElementById('modal-title').innerText = 'You are about to delete the open Position of';
-    document.getElementById('modal-data-inputs').innerText = `${jobDescription}`;
-    openModal();
-    document.getElementById('cancel-button').onclick = () => {
-      modalSection.classList.remove('modal-section-display-on');
-      modalSection.classList.add('modal-display-off');
-    };
-    document.getElementById('procced-button').onclick = () => {
-      const url = `${window.location.origin}/api/positions/${id}`;
-      fetch(url, {
-        method: 'DELETE',
-        headers: {
-          'Content-type': 'application/json',
-        },
-      })
-        .then(window.location.reload())
-        .catch((error) => error);
-    };
-  };
 
   fetch(`${window.location.origin}/api/positions`)
     .then((response) => response.json())
@@ -81,3 +58,5 @@ window.onload = () => {
     })
     .catch((error) => error);
 };
+
+window.addEventListener('load', positionListOnLoad);

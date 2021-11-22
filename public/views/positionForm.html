@@ -7,8 +7,8 @@
     <title>Position List</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/modal.css">
     <script src="../js/index.js"></script>
-    <script src="../js/positionForm.js"></script>
     <script src="../js/positionForm.js"></script>
 </head>
 <body>
@@ -29,15 +29,17 @@
         <h2 class="header">Position form</h2>
         <form id="form">
             <span>Client:</span>
-            <input id="client" placeholder="Client" required>
+            <select id="client" name="client" required>
+            </select>
             <span>Job Description:</span>
             <input id="jobDescription" placeholder="Job Description" type="text">
             <span>Vacancy:</span>
             <input id="vacancy" placeholder="Vacancy" type="text">
             <span>Professional Profiles:</span>
-            <input id="professionalProfiles" placeholder="Professional Profiles" type="text" required>
+            <select id="Profiles" name="Profiles" placeholder="Professional Profiles" type="text" required>
+            </select>
             <span>Is Open?</span>
-            <input id="isOpen" placeholder="You must enter true or false values" type="text" required>
+            <input id="isOpen" placeholder="You must enter true or false values" type="checkbox" required>
             <div id="error_msg"></div>
             <input id="saveButton" class="button" type="submit" value="Send">
         </form>

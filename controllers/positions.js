@@ -1,7 +1,7 @@
 const Positions = require('../models/Positions');
 
 const listPositions = (req, res) => {
-  Positions.find(req.query).populate('client', 'name')
+  Positions.find(req.query).populate('client', 'name').populate('professionalProfiles', 'name')
     .then((positions) => res.status(200).json({
       message: 'List of positions:',
       data: positions,
