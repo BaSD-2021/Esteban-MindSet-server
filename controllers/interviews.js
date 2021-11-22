@@ -25,7 +25,6 @@ const createInterview = (req, res) => {
     date: bodyReq.date,
     notes: bodyReq.notes,
   });
-
   interview.save((error) => {
     if (error) {
       return res.status(400).json({

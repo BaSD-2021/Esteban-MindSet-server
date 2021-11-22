@@ -27,7 +27,7 @@ const validateInterview = (req, res, next) => {
 const validateUpdatedInterview = (req, res, next) => {
   const bodyReq = req.body;
   const enu = {
-    values: ['succesful', 'failed', 'cancelled', 'assigned', 'confirmed'],
+    values: ['successful', 'failed', 'cancelled', 'assigned', 'confirmed'],
   };
 
   if (bodyReq.postulant && !ObjectId.isValid(bodyReq.postulant)) {

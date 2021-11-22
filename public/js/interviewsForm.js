@@ -82,7 +82,7 @@ if (interviewId) {
     .then((response) => {
       saveButton.disabled = false;
       response.data.forEach((interview) => {
-        dateInput.value = interview.date.substring(0, interview.date.length - 1);
+        dateInput.value = interview.date.substring(0, 10);
         statusInput.value = interview.status;
         // eslint-disable-next-line no-underscore-dangle
         postulantNameInput.value = `${interview.postulant.firstName} ${interview.postulant.lastName}`;
@@ -109,11 +109,11 @@ form.onsubmit = (event) => {
 
   const options = {
     headers: {
-      'Content-Type': 'interview/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      postulant: postulantNameInput.option,
-      client: clientNameInput.option,
+      postulant: postulantNameInput.value,
+      client: clientNameInput.value,
       application: applicationInput.value,
       status: statusInput.value,
       date: dateInput.value,
@@ -126,7 +126,7 @@ form.onsubmit = (event) => {
     url = `${window.location.origin}/api/interviews/${interviewId}`;
   } else {
     options.method = 'POST';
-    url = `${window.location.origin}/api/interviews`;
+    url = `${window.location.origin}/api/interviews/`;
   }
 
   fetch(url, options)
