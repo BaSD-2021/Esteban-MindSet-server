@@ -40,7 +40,6 @@ const fillSelect = (url, parent, makeText) => {
       return response.json();
     })
     .then((response) => {
-      console.log(response);
       saveButton.disabled = false;
       response.data.forEach((el) => {
         const option = document.createElement('option');
