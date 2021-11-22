@@ -59,7 +59,6 @@ fillSelect('/clients', clientNameInput, (el) => el.name);
 fillSelect('/applications', applicationInput, (el) => el._id);
 
 const statusValues = ['successful', 'failed', 'cancelled', 'assigned', 'confirmed'];
-
 // eslint-disable-next-line no-plusplus
 for (let i = 0; i < statusValues.length; i++) {
   const option = document.createElement('option');
@@ -87,11 +86,11 @@ if (interviewId) {
         // eslint-disable-next-line no-underscore-dangle
         postulantNameInput.value = `${interview.postulant.firstName} ${interview.postulant.lastName}`;
         // eslint-disable-next-line no-underscore-dangle
-        postulantNameInput.option = interview.postulant._id;
+        postulantNameInput.value = interview.postulant._id;
         // eslint-disable-next-line no-underscore-dangle
         clientNameInput.value = interview.client.name;
         // eslint-disable-next-line no-underscore-dangle
-        clientNameInput.option = interview.client._id;
+        clientNameInput.value = interview.client._id;
         // eslint-disable-next-line no-underscore-dangle
         applicationInput.value = interview.application._id;
         notesInput.value = interview.notes;
