@@ -50,29 +50,6 @@ window.onload = () => {
       errorMessage.innerText = error;
     });
 
-  fetch(`${window.location.origin}/api/profiles`)
-    .then((response) => {
-      if (response.status !== 200) {
-        return response.json().then(({ message }) => {
-          throw new Error(message);
-        });
-      }
-      return response.json();
-    })
-    .then((response) => {
-      saveButton.disabled = false;
-      response.data.forEach((profile) => {
-        const option = document.createElement('option');
-        // eslint-disable-next-line no-underscore-dangle
-        option.value = profile.professionalProfiles._id;
-        option.innerText = `${profile.professionalProfiles.name}`;
-        clientInput.append(option);
-      });
-    })
-    .catch((error) => {
-      errorMessage.innerText = error;
-    });
-
   if (positionId) {
     fetch(`${window.location.origin}/api/positions?_id=${positionId}`)
       .then((response) => {
