@@ -12,6 +12,8 @@ window.onload = () => {
   const navButton = document.getElementById('psychologistNav');
   const tableContent = document.getElementById('table-content');
   const addPsychologistButton = document.getElementById('addPsychologists');
+  const confirmButton = document.getElementById('confirm-button');
+  const cancelButton = document.getElementById('cancel-button');
 
   const deletePsychologist = (id, firstName, lastName, event) => {
     event.stopPropagation();
@@ -20,8 +22,8 @@ window.onload = () => {
     // eslint-disable-next-line no-undef
     openModal();
     // eslint-disable-next-line no-undef
-    document.getElementById('cancel-button').onclick = closeModal;
-    document.getElementById('procced-button').onclick = () => {
+    cancelButton.onclick = closeModal;
+    confirmButton.onclick = () => {
       const url = `${window.location.origin}/api/psychologists/${id}`;
       fetch(url, {
         method: 'DELETE',
@@ -63,6 +65,7 @@ window.onload = () => {
           const addressTD = document.createElement('td');
           const deleteTD = document.createElement('td');
           const button = document.createElement('button');
+          const availabilityButton = document.createElement('button');
           firstNameTD.innerText = psychologist.firstName;
           lastNameTD.innerText = psychologist.lastName;
           usernameTD.innerText = psychologist.username;
@@ -70,7 +73,23 @@ window.onload = () => {
           emailTD.innerText = psychologist.email;
           phoneTD.innerText = psychologist.phone;
           addressTD.innerText = psychologist.address;
-          availabilityTD.innerText = 'Click to see availability';
+          availabilityTD.append(availabilityButton);
+          availabilityButton.innerText = 'Click to see';
+          availabilityButton.onclick = (event) => {
+            event.stopPropagation();
+            document.getElementById('modal-data-inputs').innerText = `Monday: ${psychologist.availability.monday.from} - ${psychologist.availability.monday.to}\n
+              Tuesday: ${psychologist.availability.tuesday.from} - ${psychologist.availability.tuesday.to}\n
+              Wednesday: ${psychologist.availability.wednesday.from} - ${psychologist.availability.wednesday.to}\n
+              Friday: ${psychologist.availability.friday.from} - ${psychologist.availability.friday.to}\n
+              Saturday: ${psychologist.availability.saturday.from} - ${psychologist.availability.saturday.to}\n
+              Thursday: ${psychologist.availability.thursday.from} - ${psychologist.availability.thursday.to}\n
+              Sunday: ${psychologist.availability.sunday.from} - ${psychologist.availability.sunday.to}\n`;
+            // modalContent.setAttribute('id', 'adjunst-modal');
+            confirmButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+            // eslint-disable-next-line no-undef
+            openModal();
+          };
           deleteTD.append(button);
           button.innerHTML = "<img src='../assets/deleteIcon.png'/>";
           button.classList.add('delete-button-list');

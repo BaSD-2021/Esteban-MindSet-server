@@ -182,9 +182,9 @@ window.onload = () => {
   };
 
   mondayAvailability.onblur = () => {
-    mondayFromInput.disabled = false;
-    mondayToInput.disabled = false;
     if (mondayAvailability.value === 'false') {
+      mondayFromInput.value = 0;
+      mondayToInput.value = 0;
       mondayFromInput.disabled = true;
       mondayToInput.disabled = true;
       mondayFromInput.classList.add('disabled-input');
@@ -198,9 +198,9 @@ window.onload = () => {
     mondayToInput.disabled = false;
   };
   tuesdayAvailability.onblur = () => {
-    tuesdayFromInput.disabled = false;
-    tuesdayToInput.disabled = false;
     if (tuesdayAvailability.value === 'false') {
+      tuesdayFromInput.value = 0;
+      tuesdayToInput.value = 0;
       tuesdayFromInput.disabled = true;
       tuesdayToInput.disabled = true;
       tuesdayFromInput.classList.add('disabled-input');
@@ -214,9 +214,9 @@ window.onload = () => {
     tuesdayToInput.disabled = false;
   };
   wednesdayAvailability.onblur = () => {
-    wednesdayFromInput.disabled = false;
-    wednesdayToInput.disabled = false;
     if (wednesdayAvailability.value === 'false') {
+      wednesdayFromInput.value = 0;
+      wednesdayToInput.value = 0;
       wednesdayFromInput.disabled = true;
       wednesdayToInput.disabled = true;
       wednesdayFromInput.classList.add('disabled-input');
@@ -230,9 +230,9 @@ window.onload = () => {
     wednesdayToInput.disabled = false;
   };
   thursdayAvailability.onblur = () => {
-    thursdayFromInput.disabled = false;
-    thursdayToInput.disabled = false;
     if (thursdayAvailability.value === 'false') {
+      thursdayFromInput.value = 0;
+      thursdayToInput.value = 0;
       thursdayFromInput.disabled = true;
       thursdayToInput.disabled = true;
       thursdayFromInput.classList.add('disabled-input');
@@ -246,9 +246,9 @@ window.onload = () => {
     thursdayToInput.disabled = false;
   };
   fridayAvailability.onblur = () => {
-    fridayFromInput.disabled = false;
-    fridayToInput.disabled = false;
     if (fridayAvailability.value === 'false') {
+      fridayFromInput.value = 0;
+      fridayToInput.value = 0;
       fridayFromInput.disabled = true;
       fridayToInput.disabled = true;
       fridayFromInput.classList.add('disabled-input');
@@ -262,9 +262,9 @@ window.onload = () => {
     fridayToInput.disabled = false;
   };
   saturdayAvailability.onblur = () => {
-    saturdayFromInput.disabled = false;
-    saturdayToInput.disabled = false;
     if (saturdayAvailability.value === 'false') {
+      saturdayFromInput.value = 0;
+      saturdayToInput.value = 0;
       saturdayFromInput.disabled = true;
       saturdayToInput.disabled = true;
       saturdayFromInput.classList.add('disabled-input');
@@ -278,9 +278,9 @@ window.onload = () => {
     saturdayToInput.disabled = false;
   };
   sundayAvailability.onblur = () => {
-    sundayFromInput.disabled = false;
-    sundayToInput.disabled = false;
     if (sundayAvailability.value === 'false') {
+      sundayFromInput.value = 0;
+      sundayToInput.value = 0;
       sundayFromInput.disabled = true;
       sundayToInput.disabled = true;
       sundayFromInput.classList.add('disabled-input');
