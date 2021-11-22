@@ -8,12 +8,12 @@ navButton.classList.add('activePage');
 
 const openEditInterviewsForm = (interview) => {
   // eslint-disable-next-line no-underscore-dangle
-  window.location.href = `${window.location.origin}/views/interviewsForm.html?interviewsId=${interview._id}`;
+  window.location.href = `${window.location.origin}/views/interviewForm.html?_id=${interview._id}`;
 };
 
 const openNewInterviewsForm = () => {
   // eslint-disable-next-line no-underscore-dangle
-  window.location.href = `${window.location.origin}/views/interviewsForm.html`;
+  window.location.href = `${window.location.origin}/views/interviewForm.html`;
 };
 
 let interviewId;

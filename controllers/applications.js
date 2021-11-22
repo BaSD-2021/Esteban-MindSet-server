@@ -2,7 +2,10 @@ const Applications = require('../models/Applications');
 
 const listApplication = (req, res) => {
   Applications.find(req.query)
-    .then((application) => res.status(200).json(application))
+    .then((application) => res.status(200).json({
+      message: 'List of clients:',
+      data: application,
+    }))
     .catch((error) => res.status(400).json({ message: error }));
 };
 

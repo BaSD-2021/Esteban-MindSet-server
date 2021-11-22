@@ -1,4 +1,5 @@
 .container {
+  min-width: 400px;
   max-width: 800px;
 }
 
@@ -38,4 +39,9 @@ td.deleteBtn{
 .deleteBtn img{
   width: 0;
   transition: width 250ms linear;
+}
+
+#form > label > span {
+  display: block;
+  padding-bottom: 1rem;
 }

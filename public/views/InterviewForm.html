@@ -17,23 +17,38 @@
     <header>
       <a id="mindSetLogo" href="../index.html"><span>Mind</span>SET</a>
       <nav>
-        <a id="adminsNav" href="/public/views/adminList.html">admins</a>
-        <a id="applicationsNav" href="/public/views/applicationList.html">applications</a>
-        <a id="clientsNav" href="/public/views/clientList.html">clients</a>
-        <a id="interviewsNav" href="/public/views/interviewList.html">interviews</a>
-        <a id="positionsNav" href="/public/views/positionList.html">positions</a>
-        <a id="profilesNav" href="/public/views/profileList.html">profiles</a>
-        <a id="psychologistsNav" href="/public/views/psychologistList.html">psychologists</a>
-        <a id="sessionsNav" href="/public/views/sessionList.html">sessions</a>
+        <a id="adminsNav" href="/views/adminList.html">admins</a>
+        <a id="applicationsNav" href="/views/applicationList.html">applications</a>
+        <a id="clientsNav" href="/views/clientList.html">clients</a>
+        <a id="interviewsNav" href="/views/interviewList.html">interviews</a>
+        <a id="positionsNav" href="/views/positionList.html">positions</a>
+        <a id="profilesNav" href="/views/profileList.html">profiles</a>
+        <a id="psychologistsNav" href="/views/psychologistList.html">psychologists</a>
+        <a id="sessionsNav" href="/views/sessionList.html">sessions</a>
       </nav>
     </header>
 
     <div class="container">
       <h2 class="header">Interview Form</h2>
       <form id="form">
+        <label for="postulantName"><span>Postulant Name</span></label>
+        <select name="postulantName" type="text" id="postulantName" required></select>
+        
+        <label for="clientName"><span>Client Name</span></label>
+        <select name="clientName" type="text" id="clientName" required></select>
+        
+        <label for="applicationId"><span>application ID</span></label>
+        <select name="applicationId" type="text" id="applicationId" required></select>
+        
+        <label for="status"><span>status</span></label>
+        <select name="status" type="text" id="status" required></select>
+        
+        <label for="date"><span>Date</span></label>
         <input id="date" name="date" type="datetime-local" required/>
-        <select id="postulant" name="postulant" required>
-        </select>
+        
+        <label for="notes"><span>notes</span></label>
+        <input name="notes" type="text" id="notes">
+        
         <div id="error_massage"></div>
         <input id="saveButton" class="button" type="submit" value="Send">
       </form>
