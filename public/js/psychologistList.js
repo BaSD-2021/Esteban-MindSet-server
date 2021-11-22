@@ -13,36 +13,14 @@ window.onload = () => {
   const tableContent = document.getElementById('table-content');
   const addPsychologistButton = document.getElementById('addPsychologists');
 
-  // MODAL SETTINGS
-  const modalSection = document.getElementById('modal-section');
-  const openModal = () => {
-    modalSection.classList.add('modal-section-display-on');
-  };
-
-  const closeModal = (e) => {
-    if (e.target === modalSection) {
-      modalSection.classList.remove('modal-section-display-on');
-      modalSection.classList.add('modal-display-off');
-    }
-  };
-
-  window.addEventListener('click', closeModal);
-  const modalCloseBtn = document.getElementById('modal-close-button');
-  modalCloseBtn.onclick = () => {
-    modalSection.classList.remove('modal-section-display-on');
-    modalSection.classList.add('modal-display-off');
-  };
-  // END MODAL SETTING
-
   const deletePsychologist = (id, firstName, lastName, event) => {
     event.stopPropagation();
     document.getElementById('modal-title').innerText = 'You are about to delete a Profile:';
     document.getElementById('modal-data-inputs').innerText = `Psychologist: ${firstName} ${lastName}`;
+    // eslint-disable-next-line no-undef
     openModal();
-    document.getElementById('cancel-button').onclick = () => {
-      modalSection.classList.remove('modal-section-display-on');
-      modalSection.classList.add('modal-display-off');
-    };
+    // eslint-disable-next-line no-undef
+    document.getElementById('cancel-button').onclick = closeModal;
     document.getElementById('procced-button').onclick = () => {
       const url = `${window.location.origin}/api/psychologists/${id}`;
       fetch(url, {
@@ -77,10 +55,10 @@ window.onload = () => {
         lastNameTD.innerText = psychologist.lastName;
         usernameTD.innerText = psychologist.username;
         passwordTD.innerText = psychologist.password;
-        availabilityTD.innerText = psychologist.availability.availability;
         emailTD.innerText = psychologist.email;
         phoneTD.innerText = psychologist.phone;
         addressTD.innerText = psychologist.address;
+        availabilityTD.innerText = 'Click to see availability';
         deleteTD.append(button);
         button.innerHTML = "<img src='../assets/deleteIcon.png'/>";
         button.classList.add('delete-button-list');
@@ -93,7 +71,7 @@ window.onload = () => {
             event,
           );
         };
-        firstNameTD.onclick = () => openEditPsychologistForm(psychologist);
+        tr.onclick = () => openEditPsychologistForm(psychologist);
         tr.append(
           firstNameTD,
           lastNameTD,

@@ -67,7 +67,7 @@ window.onload = () => {
           usernameInput.value = psychologist.username;
           passwordInput.value = psychologist.password;
           emailInput.value = psychologist.email;
-          phoneInput.value = parseInt(psychologist.phone, 10);
+          phoneInput.value = psychologist.phone;
           addressInput.value = psychologist.address;
           mondayAvailability.value = psychologist.availability.monday.availability;
           mondayFromInput.value = psychologist.availability.monday.from;
@@ -109,44 +109,46 @@ window.onload = () => {
       body: JSON.stringify({
         firstName: firstNameInput.value,
         lastName: lastNameInput.value,
+        username: usernameInput.value,
+        password: passwordInput.value,
         email: emailInput.value,
         phone: parseInt(phoneInput.value, 10),
         address: addressInput.value,
         availability: {
           monday: {
-            availability: mondayAvailability.value,
-            from: mondayFromInput.value,
-            to: mondayToInput.value,
+            availability: !!mondayAvailability.value,
+            from: parseInt(mondayFromInput.value, 10),
+            to: parseInt(mondayToInput.value, 10),
           },
           tuesday: {
-            availability: tuesdayAvailability.value,
-            from: tuesdayFromInput.value,
-            to: tuesdayToInput.value,
+            availability: !!tuesdayAvailability.value,
+            from: parseInt(tuesdayFromInput.value, 10),
+            to: parseInt(tuesdayToInput.value, 10),
           },
           wednesday: {
-            availability: wednesdayAvailability.value,
-            from: wednesdayFromInput.value,
-            to: wednesdayToInput.value,
+            availability: !!wednesdayAvailability.value,
+            from: parseInt(wednesdayFromInput.value, 10),
+            to: parseInt(wednesdayToInput.value, 10),
           },
           thursday: {
-            availability: thursdayAvailability.value,
-            from: thursdayFromInput.value,
-            to: thursdayToInput.value,
+            availability: !!thursdayAvailability.value,
+            from: parseInt(thursdayFromInput.value, 10),
+            to: parseInt(thursdayToInput.value, 10),
           },
           friday: {
-            availability: fridayAvailability.value,
-            from: fridayFromInput.value,
-            to: fridayToInput.value,
+            availability: !!fridayAvailability.value,
+            from: parseInt(fridayFromInput.value, 10),
+            to: parseInt(fridayToInput.value, 10),
           },
           saturday: {
-            availability: saturdayAvailability.value,
-            from: saturdayFromInput.value,
-            to: saturdayToInput.value,
+            availability: !!saturdayAvailability.value,
+            from: parseInt(saturdayFromInput.value, 10),
+            to: parseInt(saturdayToInput.value, 10),
           },
           sunday: {
-            availability: sundayAvailability.value,
-            from: sundayFromInput.value,
-            to: sundayToInput.value,
+            availability: !!sundayAvailability.value,
+            from: parseInt(sundayFromInput.value, 10),
+            to: parseInt(sundayToInput.value, 10),
           },
         },
       }),
