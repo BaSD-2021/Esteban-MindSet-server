@@ -1,3 +1,5 @@
+const tableContent = document.getElementById('clients-table-content');
+
 const openEditClient = (id) => {
   window.location.href = `${window.location.origin}/views/clientForm.html?_id=${id}`;
 };
@@ -17,19 +19,26 @@ const deleteClient = (id, name, event) => {
       method: 'DELETE',
     })
       .then((response) => {
-        response.json();
-        window.location.href = `${window.location.origin}/views/clientList.html`;
+        if (response.status !== 204) {
+          return response.json().then(({ message }) => {
+            throw new Error(message);
+          });
+        }
+        // eslint-disable-next-line no-use-before-define
+        clientListOnLoad();
+        // eslint-disable-next-line no-undef
+        return closeModal();
       })
       .catch((error) => error);
   };
 };
 
 const clientListOnLoad = () => {
+  while (tableContent.firstChild) {
+    tableContent.removeChild(tableContent.firstChild);
+  }
   const navButton = document.getElementById('clientsNav');
   navButton.classList.add('activePage');
-
-  const tableContent = document.getElementById('clients-table-content');
-
   const addClient = document.getElementById('addClient');
   addClient.onclick = openNewClient;
 
