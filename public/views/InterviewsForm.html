@@ -7,21 +7,24 @@
     <title>MindSet</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
-    <script async src="/public/js/index.js"></script>
-    <script async src="/public/js/interviewsForm.js"></script>
+    <link rel="stylesheet" href="../styles/interviews.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+    <script async src="../js/index.js"></script>
+    <script async src="../js/interviewsForm.js"></script>
+    <script async src="../js/modal.js"></script>
   </head>
   <body>
     <header>
       <a id="mindSetLogo" href="../index.html"><span>Mind</span>SET</a>
       <nav>
-        <a href="#">admins</a>
-        <a href="#">applications</a>
-        <a href="#">clients</a>
-        <a id="interviewsNav" href="./views/interviewsList.html">interviews</a>
-        <a href="#">positions</a>
-        <a href="#">profiles</a>
-        <a href="#">psychologists</a>
-        <a href="#">sessions</a>
+        <a id="adminsNav" href="./adminsList.html">admins</a>
+        <a id="applicationsNav" href="./applicationsList.html">applications</a>
+        <a id="clientsNav" href="./clientsList.html">clients</a>
+        <a id="interviewsNav" href="./interviewsList.html">interviews</a>
+        <a id="positionsNav" href="./positionsList.html">positions</a>
+        <a id="profilesNav" href="./profilesList.html">profiles</a>
+        <a id="psychologistsNav" href="./psychologistsList.html">psychologists</a>
+        <a id="sessionsNav" href="./sessionsList.html">sessions</a>
       </nav>
     </header>
 
@@ -35,6 +38,18 @@
         <input id="saveButton" class="button" type="submit" value="Send">
       </form>
     </div>
+
+    <section id="modal-section" class="modal-display-off">
+      <div id="modal-content">
+          <span id="modal-close-button">&times;</span>
+          <h1 id="modal-title"></h1>
+          <div id="modal-data-inputs"></div>
+          <div id="modal-buttons">
+            <button id="cancel-button">CANCEL</button>
+            <button id="procced-button">CONFIRM</button>
+          </div>
+      </div>
+    </section>
 
     <footer>
       <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
