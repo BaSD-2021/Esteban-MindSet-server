@@ -36,44 +36,56 @@ window.onload = () => {
         method: 'DELETE',
       })
         .then((response) => {
-          response.json();
-          window.location.href = `${window.location.origin}/views/sessionList.html`;
+          if (response.status !== 204) {
+            return response.json().then(({ message }) => {
+              throw new Error(message);
+            });
+          }
+          // eslint-disable-next-line no-undef
+          closeModal();
+          // eslint-disable-next-line no-use-before-define
+          listSessions();
+          return response.json();
         })
         .catch((error) => error);
     };
   };
+  const listSessions = () => {
+    tableContent.innerHTML = '';
+    fetch(`${window.location.origin}/api/sessions`)
+      .then((response) => response.json())
+      .then((response) => {
+        response.data.forEach((item) => {
+          const tr = document.createElement('tr');
+          const postulantTD = document.createElement('td');
+          const psychologistTD = document.createElement('td');
+          const dateTD = document.createElement('td');
+          const statusTD = document.createElement('td');
+          const actionsTD = document.createElement('td');
+          if (item.postulant) {
+            postulantTD.innerText = `${item.postulant.firstName} ${item.postulant.lastName}`;
+          }
+          if (item.psychologist) {
+            psychologistTD.innerText = `${item.psychologist.firstName} ${item.psychologist.lastName}`;
+          }
 
-  fetch(`${window.location.origin}/api/sessions`)
-    .then((response) => response.json())
-    .then((response) => {
-      response.data.forEach((item) => {
-        const tr = document.createElement('tr');
-        const postulantTD = document.createElement('td');
-        const psychologistTD = document.createElement('td');
-        const dateTD = document.createElement('td');
-        const statusTD = document.createElement('td');
-        const actionsTD = document.createElement('td');
-        if (item.postulant) {
-          postulantTD.innerText = `${item.postulant.firstName} ${item.postulant.lastName}`;
-        }
-        if (item.psychologist) {
-          psychologistTD.innerText = `${item.psychologist.firstName} ${item.psychologist.lastName}`;
-        }
+          dateTD.innerText = item.date.replace('T', ' ');
+          statusTD.innerText = item.status;
 
-        dateTD.innerText = item.date.replace('T', ' ');
-        statusTD.innerText = item.status;
+          const button = document.createElement('button');
+          button.innerHTML = '<img src="/assets/deleteIcon.png" alt="" srcset="">';
+          button.classList.add('deleteBtn');
+          button.onclick = (event) => deleteSession(item, event);
+          actionsTD.append(button);
 
-        const button = document.createElement('button');
-        button.innerHTML = '<img src="/assets/deleteIcon.png" alt="" srcset="">';
-        button.classList.add('deleteBtn');
-        button.onclick = (event) => deleteSession(item, event);
-        actionsTD.append(button);
+          tr.append(postulantTD, psychologistTD, dateTD, statusTD, actionsTD);
+          tableContent.append(tr);
+          // eslint-disable-next-line no-underscore-dangle
+          tr.onclick = () => openEditSession(item._id);
+        });
+      })
+      .catch((error) => error);
+  };
 
-        tr.append(postulantTD, psychologistTD, dateTD, statusTD, actionsTD);
-        tableContent.append(tr);
-        // eslint-disable-next-line no-underscore-dangle
-        tr.onclick = () => openEditSession(item._id);
-      });
-    })
-    .catch((error) => error);
+  listSessions();
 };
