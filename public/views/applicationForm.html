@@ -7,7 +7,10 @@
     <title>MindSet</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="../js/applicationForm.js"></script>
+    <link rel="stylesheet" href="../styles/modal.css">
+    <link rel="stylesheet" href="../styles/application.css">
+    <script src="../js/modal.js" async></script>
+    <script src="../js/applicationForm.js" async></script>
   </head>
   <body>
     <header>
@@ -26,9 +29,14 @@
     <div class="container">
       <h2 class="header">Applications Form</h2>
       <form id="form">
-        <input id="date" name="date" type="datetime-local" required/>
-        <select id="postulant" name="postulant" required>
-        </select>
+        <label for="position">Position:</label>
+        <select id="position" name="position" required></select>
+        <label for="postulant">Postulant:</label>
+        <select id="postulant" name="postulant" required></select>
+        <label for="interview">Interview:</label>
+        <select id="interview" name="interview"></select>
+        <label for="result">Result:</label>
+        <input type="text" id="result" name="result" required>
         <div id="error_message"></div>
         <input id="saveButton" class="button" type="submit" value="Send">
       </form>
