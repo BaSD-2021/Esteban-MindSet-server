@@ -1,7 +1,7 @@
 const Interviews = require('../models/Interviews');
 
 const listInterviews = (req, res) => {
-  Interviews.find(req.query)
+  Interviews.find(req.query).populate('postulant').populate('client').populate('application')
     .then((interviews) => {
       res.status(200).json({
         message: 'List of Interviews',

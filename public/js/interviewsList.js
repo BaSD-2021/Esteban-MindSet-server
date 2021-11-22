@@ -1,0 +1,34 @@
+const openEditInterviewsForm = (interview) => {
+  // eslint-disable-next-line no-underscore-dangle
+  window.location.href = `${window.location.origin}/views/interviewsForm.html?interviewsId=${interview._id}`;
+};
+
+const openNewInterviewsForm = () => {
+  // eslint-disable-next-line no-underscore-dangle
+  window.location.href = `${window.location.origin}/views/interviewsForm.html`;
+};
+
+const navButton = document.getElementById('interviewsNav');
+navButton.classList.add('activePage');
+
+const addInterviewButton = document.getElementById('addClient');
+addInterviewButton.onclick = openNewInterviewsForm;
+
+const tableContent = document.getElementById('table-content');
+
+fetch(`${window.location.origin}/api/interviews`)
+  .then((response) => response.json())
+  .then((response) => {
+    response.data.forEach((interview) => {
+      const tr = document.createElement('tr');
+      const dateTD = document.createElement('td');
+      const postulantNameTD = document.createElement('td');
+      const clientNameTD = document.createElement('td');
+      dateTD.innerText = interview.date;
+      postulantNameTD.innerText = `${interview.postulant.firstName} ${interview.postulant.lastName}`;
+      clientNameTD.innerText = interview.client.name;
+      tr.onclick = () => openEditInterviewsForm(interview);
+      tr.append(dateTD, postulantNameTD, clientNameTD);
+      tableContent.append(tr);
+    });
+  });
