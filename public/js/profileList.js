@@ -37,12 +37,11 @@ window.onload = () => {
               throw new Error(message);
             });
           }
-          return res.json();
+          // eslint-disable-next-line no-use-before-define
+          profileList();
+          // eslint-disable-next-line no-undef
+          return closeModal();
         })
-        // eslint-disable-next-line no-undef
-        .then(closeModal())
-        // eslint-disable-next-line no-use-before-define
-        .then(profileList())
         .catch((error) => error);
     };
   };
