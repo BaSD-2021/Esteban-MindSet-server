@@ -38,7 +38,7 @@ const workExperienceEDInputs = document.querySelectorAll('.workExperienceED');
 const workExperienceDescriptionInputs = document.querySelectorAll('.workExperienceDescription');
 const addFieldButtons = document.querySelectorAll('.addFields');
 const profilesForm = document.getElementById('profilesForm');
-// const form = document.getElementById('form');
+const form = document.getElementById('form');
 const saveButton = document.getElementById('saveButton');
 const errorMessage = document.getElementById('error_message');
 
@@ -116,6 +116,80 @@ const fillProfiles = (postulantProfiles) => {
     });
 };
 
+const profilesBodyContructor = () => {
+  const profiles = document.querySelectorAll("[name^='profile']");
+  const bodyProfiles = [];
+  profiles.forEach((el) => {
+    if (el.checked) bodyProfiles.push({ profileId: el.value });
+  });
+  return bodyProfiles;
+};
+
+const workExperienceBodyConstructor = () => {
+  const workExperienceBody = [];
+  workExperienceSDInputs.forEach((el, idx) => {
+    workExperienceBody.push({
+      startDate: el.value,
+      endDate: workExperienceEDInputs[idx].value,
+      description: workExperienceDescriptionInputs[idx].value,
+      company: workExperienceCompanyInputs[idx].value,
+    });
+  });
+  return workExperienceBody;
+};
+
+const studiesBodyConstructor = () => {
+  const primaryStudies = {
+    startDate: primarySDInput.value,
+    endDate: primaryEDInput.value,
+    school: primarySchoolInput,
+  };
+
+  const secondaryStudies = {
+    startDate: secondarySDInput.value,
+    endDate: secondaryEDInput.value,
+    school: secondarySchoolInput,
+  };
+
+  const tertiaryStudies = [];
+  tertiarySDInputs.forEach((el, idx) => {
+    tertiaryStudies.push({
+      startDate: el.value,
+      endDate: tertiaryEDInputs[idx].value,
+      description: tertiaryDescriptionInputs[idx].value,
+      institute: tertiaryInstituteInputs[idx].value,
+    });
+  });
+
+  const universityStudies = [];
+  universitySDInputs.forEach((el, idx) => {
+    universityStudies.push({
+      startDate: el.value,
+      endDate: universityEDInputs[idx].value,
+      description: universityDescriptionInputs[idx].value,
+      institute: universityInstituteInputs[idx].value,
+    });
+  });
+
+  const informalStudies = [];
+  informalSDInputs.forEach((el, idx) => {
+    informalStudies.push({
+      startDate: el.value,
+      endDate: informalEDInputs[idx].value,
+      description: informalDescriptionInputs[idx].value,
+      institute: informalInstituteInputs[idx].value,
+    });
+  });
+
+  return {
+    primaryStudies,
+    secondaryStudies,
+    tertiaryStudies,
+    universityStudies,
+    informalStudies,
+  };
+};
+
 const addNewSection = (ev) => {
   const firstSection = ev.target.parentElement.nextElementSibling;
   const newSection = document.createElement('section');
@@ -159,46 +233,55 @@ fillProfiles();
 //     });
 // }
 
-// form.onsubmit = (event) => {
-//   event.preventDefault();
-//   saveButton.disabled = true;
+form.onsubmit = (event) => {
+  event.preventDefault();
+  saveButton.disabled = true;
 
-//   if (postulantId) {
-//     window.location.href = `${window.location.origin}/views/postulantList.html`;
-//     return;
-//   }
+  if (postulantId) {
+    window.location.href = `${window.location.origin}/views/postulantList.html`;
+    return;
+  }
 
-//   const url = `${window.location.origin}/api/postulants`;
+  const url = `${window.location.origin}/api/postulants`;
 
-//   const options = {
-//     headers: {
-//       'Content-Type': 'postulant/json',
-//     },
-//     body: JSON.stringify({
-//       positions: positionInput.value,
-//       postulants: postulantInput.value,
-//       interview: interviewInput.value,
-//       result: resultInput.value,
-//     }),
-//     method: 'POST',
-//   };
+  const options = {
+    headers: {
+      'Content-Type': 'postulant/json',
+    },
+    body: JSON.stringify({
+      firstName: firstNameInput.value,
+      lastName: lastNameInput.value,
+      email: emailInput.value,
+      password: passwordInput.value,
+      address: addressInput.value,
+      birthday: birthdayInput.value,
+      available: availableInput.value,
+      phone: phoneInput.value,
+      profiles: profilesBodyContructor(),
+      'contactRange.from': contactFromInput.value,
+      'contactRange.to': contactToInput.value,
+      studies: studiesBodyConstructor(),
+      workExperience: workExperienceBodyConstructor(),
+    }),
+    method: 'POST',
+  };
 
-//   fetch(url, options)
-//     .then((response) => {
-//       if (response.status !== 200 && response.status !== 201) {
-//         return response.json().then(({ message }) => {
-//           throw new Error(message);
-//         });
-//       }
-//       return response.json();
-//     })
-//     .then(() => {
-//       window.location.href = `${window.location.origin}/views/postulantList.html`;
-//     })
-//     .catch((error) => {
-//       errorMessage.innerText = error;
-//     })
-//     .finally(() => {
-//       saveButton.disabled = false;
-//     });
-// };
+  fetch(url, options)
+    .then((response) => {
+      if (response.status !== 200 && response.status !== 201) {
+        return response.json().then(({ message }) => {
+          throw new Error(message);
+        });
+      }
+      return response.json();
+    })
+    .then(() => {
+      window.location.href = `${window.location.origin}/views/postulantList.html`;
+    })
+    .catch((error) => {
+      errorMessage.innerText = error;
+    })
+    .finally(() => {
+      saveButton.disabled = false;
+    });
+};
