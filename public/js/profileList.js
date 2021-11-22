@@ -12,6 +12,9 @@ window.onload = () => {
   const tableContent = document.getElementById('table-content');
   const addProfileButton = document.getElementById('addProfile');
 
+  addProfileButton.onclick = openNewProfileForm;
+  navButton.classList.add('activePage');
+
   const deleteProfile = (id, name, event) => {
     event.stopPropagation();
     document.getElementById('modal-title').innerText = 'You are about to delete a Professional Profile:';
@@ -28,30 +31,43 @@ window.onload = () => {
           'Content-type': 'application/json',
         },
       })
-        .then(window.location.reload())
+        .then((res) => {
+          if (res.status !== 204) {
+            return res.json().then((message) => {
+              throw new Error(message);
+            });
+          }
+          return res.json();
+        })
+        // eslint-disable-next-line no-undef
+        .then(closeModal())
+        // eslint-disable-next-line no-use-before-define
+        .then(profileList())
         .catch((error) => error);
     };
   };
 
-  addProfileButton.onclick = openNewProfileForm;
-  navButton.classList.add('activePage');
-  fetch(`${window.location.origin}/api/profiles`)
-    .then((response) => response.json())
-    .then((response) => {
-      response.data.forEach((profile) => {
-        const tr = document.createElement('tr');
-        const NameTD = document.createElement('td');
-        const DeleteTD = document.createElement('td');
-        const button = document.createElement('button');
-        NameTD.innerText = profile.name;
-        DeleteTD.append(button);
-        button.innerHTML = "<img src='../assets/deleteIcon.png' alt='Delete icon'>";
-        button.classList.add('delete-button-list');
-        // eslint-disable-next-line no-underscore-dangle
-        button.onclick = (event) => deleteProfile(profile._id, profile.name, event);
-        NameTD.onclick = () => openEditProfileForm(profile);
-        tr.append(NameTD, DeleteTD);
-        tableContent.append(tr);
+  const profileList = () => {
+    tableContent.innerHTML = '';
+    fetch(`${window.location.origin}/api/profiles`)
+      .then((response) => response.json())
+      .then((response) => {
+        response.data.forEach((profile) => {
+          const tr = document.createElement('tr');
+          const NameTD = document.createElement('td');
+          const DeleteTD = document.createElement('td');
+          const button = document.createElement('button');
+          NameTD.innerText = profile.name;
+          DeleteTD.append(button);
+          button.innerHTML = "<img src='../assets/deleteIcon.png' alt='Delete icon'>";
+          button.classList.add('delete-button-list');
+          // eslint-disable-next-line no-underscore-dangle
+          button.onclick = (event) => deleteProfile(profile._id, profile.name, event);
+          NameTD.onclick = () => openEditProfileForm(profile);
+          tr.append(NameTD, DeleteTD);
+          tableContent.append(tr);
+        });
       });
-    });
+  };
+  profileList();
 };

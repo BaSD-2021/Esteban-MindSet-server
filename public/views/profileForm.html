@@ -27,8 +27,7 @@
     <div class="container">
       <h2 class="header">Profile Form</h2>
       <form id="form">
-        <input id="name" name="name" placeholder="Profile Name" type="text" required/>
-        <p id="name-error" class="name-error-message">Please enter a valid name</p>
+        <input id="name" name="name" placeholder="Profile Name" type="text" required pattern="[A-Za-z ]*" title='Enter a valid name' />
         <div id="error_massage"></div>
         <input id="saveButton" class="button" type="submit" value="Send">
       </form>
