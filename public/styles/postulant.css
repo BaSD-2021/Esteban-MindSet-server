@@ -39,3 +39,7 @@ td.deleteBtn{
   width: 0;
   transition: width 250ms linear;
 }
+
+#form textarea{
+  resize: none;
+}
