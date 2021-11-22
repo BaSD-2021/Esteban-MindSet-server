@@ -17,18 +17,27 @@ const deletePosition = (id, jobDescription, event) => {
       method: 'DELETE',
     })
       .then((response) => {
-        response.json();
-        window.location.href = `${window.location.origin}/views/positionList.html`;
+        if (response.status !== 204) {
+          return response.json().then(({ message }) => {
+            throw new Error(message);
+          });
+        }
+        // eslint-disable-next-line no-use-before-define
+        positionListOnLoad();
+        // eslint-disable-next-line no-undef
+        return closeModal();
       })
       .catch((error) => error);
   };
 };
 
 const positionListOnLoad = () => {
+  const tableContent = document.getElementById('positions-table-content');
+  while (tableContent.firstChild) {
+    tableContent.removeChild(tableContent.firstChild);
+  }
   const navButton = document.getElementById('positionsNav');
   navButton.classList.add('activePage');
-
-  const tableContent = document.getElementById('positions-table-content');
 
   const addPosition = document.getElementById('addPosition');
   addPosition.onclick = openNewPosition;

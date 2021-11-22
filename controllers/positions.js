@@ -20,6 +20,7 @@ const createPosition = (req, res) => {
 
   positionCreated.save((error, position) => {
     if (error) {
+      console.log(JSON.stringify(error));
       return res.status(400).json({ message: error });
     }
     return res.status(201).json({
