@@ -23,19 +23,19 @@ const validateIdFormat = (req, res, next) => {
 const validateSessions = (req, res, next) => {
   const invalidBodyAttrs = [];
   if (!ObjectId.isValid(req.body.postulant)) {
-    invalidBodyAttrs.push("'Postulant ID'");
+    invalidBodyAttrs.push('Postulant ID');
   }
   if (!ObjectId.isValid(req.body.psychologist)) {
-    invalidBodyAttrs.push("'Psychologist ID'");
+    invalidBodyAttrs.push('Psychologist ID');
   }
   if (!Object.values(statusEnum).includes(req.body.status)) {
-    invalidBodyAttrs.push("'Status'");
+    invalidBodyAttrs.push('Status');
   }
   if (!req.body.date) {
-    invalidBodyAttrs.push("'Date'");
+    invalidBodyAttrs.push('Date');
   }
   if (req.body.date && !req.body.date.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})$/)) {
-    invalidBodyAttrs.push("'Date'");
+    invalidBodyAttrs.push('Date');
   }
   if (invalidBodyAttrs.length === 1) {
     return errorResHelper(
