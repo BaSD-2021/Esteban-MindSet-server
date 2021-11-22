@@ -29,23 +29,22 @@ window.onload = () => {
     // eslint-disable-next-line no-undef
       closeModal();
     };
-    document.getElementById('procced-button').onclick = () => {
+    document.getElementById('confirm-button').onclick = () => {
       // eslint-disable-next-line no-underscore-dangle
       const url = `${window.location.origin}/api/sessions/${item._id}`;
       fetch(url, {
         method: 'DELETE',
       })
-        .then((response) => {
-          if (response.status !== 204) {
-            return response.json().then(({ message }) => {
+        .then((res) => {
+          if (res.status !== 204) {
+            return res.json().then((message) => {
               throw new Error(message);
             });
           }
-          // eslint-disable-next-line no-undef
-          closeModal();
           // eslint-disable-next-line no-use-before-define
           listSessions();
-          return response.json();
+          // eslint-disable-next-line no-undef
+          return closeModal();
         })
         .catch((error) => error);
     };
