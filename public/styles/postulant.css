@@ -43,3 +43,26 @@ td.deleteBtn{
 #form textarea{
   resize: none;
 }
+
+.addFields {
+  font-size: 2rem;
+  color: #27ae60;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input[type='checkbox']{
+  margin: 4% auto;
+  margin-right: 4%;
+  width: auto;
+}
+
+h2, h3 {
+  margin-bottom: 4%;
+}

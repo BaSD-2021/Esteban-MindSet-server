@@ -40,17 +40,25 @@
         <input type="password" id="password" name="password" required>
         <section id="contactRange">
           <h2>Contact Range:</h2>
-          <label for="contactFrom">From:</label>
-          <input type="time" id="contactFrom" name="contactFrom" required>
-          <label for="contactTo">To:</label>
-          <input type="time" id="contactTo" name="contactTo" required>
+          <div class="flex">
+            <div>
+              <label for="contactFrom">From:</label>
+              <input type="time" id="contactFrom" name="contactFrom" required>
+            </div>
+            <div>
+              <label for="contactTo">To:</label>
+              <input type="time" id="contactTo" name="contactTo" required>
+            </div>
+          </div>
         </section>
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" required>
         <label for="birthday">Birthday:</label>
         <input type="date" id="birthday" name="birthday" required>
-        <label for="available">Available:</label>
-        <input type="checkbox" id="available" name="available" required>
+        <div class="flex">
+          <label for="available">Available:</label>
+          <input type="checkbox" id="available" name="available" required>
+        </div>
         <label for="phone">Phone:</label>
         <input type="tel" id="phone" name="phone" required>
         <section id="profilesForm">
@@ -60,66 +68,122 @@
           <h2>Studies:</h2>
           <section id="primaryStudies">
             <h3>Primary Studies:</h3>
-              <label for="primarySD">Start Date:</label>
-              <input type="date" id="primarySD" name="primarySD" required>
-              <label for="primaryED">End Date:</label>
-              <input type="date" id="primaryED" name="primaryED">
+            <div class="flex">
+              <div>
+                <label for="primarySD">Start Date:</label>
+                <input type="date" id="primarySD" name="primarySD" required>
+              </div>
+              <div>
+                <label for="primaryED">End Date:</label>
+                <input type="date" id="primaryED" name="primaryED">
+              </div>
+            </div>
               <label for="primarySchool">School:</label>
               <input type="text" id="primarySchool" name="primarySchool" required>
           </section>
           <section id="secondaryStudies">
             <h3>Secondary Studies:</h3>
-              <label for="secondarySD">Start Date:</label>
-              <input type="date" id="secondarySD" name="secondarySD" required>
-              <label for="secondaryED">End Date:</label>
-              <input type="date" id="secondaryED" name="secondaryED">
+            <div class="flex">
+              <div>
+                <label for="secondarySD">Start Date:</label>
+                <input type="date" id="secondarySD" name="secondarySD" required>
+              </div>
+              <div>
+                <label for="secondaryED">End Date:</label>
+                <input type="date" id="secondaryED" name="secondaryED">
+              </div>
+            </div>
               <label for="secondarySchool">School:</label>
               <input type="text" id="secondarySchool" name="secondarySchool" required>
           </section>
           <section id="tertiaryStudies">
-            <h3>Tertiary Studies:</h3>
-              <label for="tertiarySD">Start Date:</label>
-              <input type="date" id="tertiarySD" name="tertiarySD" required>
-              <label for="tertiaryED">End Date:</label>
-              <input type="date" id="tertiaryED" name="tertiaryED">
+            <div class="flex">
+              <h3>Tertiary Studies:</h3>
+              <div class='addFields'>&#10010;</div>
+            </div>
+            <section class="tertiaryStudy">
+              <div class="flex">
+                <div>
+                  <label for="tertiarySD">Start Date:</label>
+                  <input type="date" class="tertiarySD" name="tertiarySD" required>
+                </div>
+                <div>
+                  <label for="tertiaryED">End Date:</label>
+                  <input type="date" class="tertiaryED" name="tertiaryED">
+                </div>
+              </div>
               <label for="tertiaryDescription">Description:</label>
-              <textarea id="tertiaryDescription" name="tertiaryDescription" rows="5" cols="33"></textarea>
+              <textarea class="tertiaryDescription" name="tertiaryDescription" rows="5" cols="33"></textarea>
               <label for="tertiaryInstitute">Institute:</label>
-              <input type="text" id="tertiaryInstitute" name="tertiaryInstitute" required>
+              <input type="text" class="tertiaryInstitute" name="tertiaryInstitute" required>
+            </section>
           </section>
           <section id="univerityStudies">
-            <h3>Univerity Studies:</h3>
-              <label for="universitySD">Start Date:</label>
-              <input type="date" id="universitySD" name="universitySD" required>
-              <label for="universityED">End Date:</label>
-              <input type="date" id="universityED" name="universityED">
+            <div class="flex">
+              <h3>University Studies:</h3>
+              <div class='addFields'>&#10010;</div>
+            </div>
+            <section class="universityStudy">
+              <div class="flex">
+                <div>
+                  <label for="universitySD">Start Date:</label>
+                  <input type="date" class="universitySD" name="universitySD" required>
+                </div>
+                <div>
+                  <label for="universityED">End Date:</label>
+                  <input type="date" class="universityED" name="universityED">
+                </div>
+              </div>
               <label for="universityDescription">Description:</label>
-              <textarea id="universityDescription" name="universityDescription" rows="5" cols="33"></textarea>
+              <textarea class="universityDescription" name="universityDescription" rows="5" cols="33"></textarea>
               <label for="universityInstitute">Institute:</label>
-              <input type="text" id="universityInstitute" name="universityInstitute" required>
+              <input type="text" class="universityInstitute" name="universityInstitute" required>
+            </section>
           </section>
           <section id="informalStudies">
-            <h3>Informal Studies:</h3>
-              <label for="informalSD">Start Date:</label>
-              <input type="date" id="informalSD" name="informalSD" required>
-              <label for="informalED">End Date:</label>
-              <input type="date" id="informalED" name="informalED">
+            <div class="flex">
+              <h3>Informal Studies:</h3>
+              <div class='addFields'>&#10010;</div>
+            </div>
+            <section class="informalStudy">
+              <div class="flex">
+                <div>
+                  <label for="informalSD">Start Date:</label>
+                  <input type="date" class="informalSD" name="informalSD" required>
+                </div>
+                <div>
+                  <label for="informalED">End Date:</label>
+                  <input type="date" class="informalED" name="informalED">
+                </div>
+              </div>
               <label for="informalDescription">Description:</label>
-              <textarea id="informalDescription" name="informalDescription" rows="5" cols="33"></textarea>
+              <textarea class="informalDescription" name="informalDescription" rows="5" cols="33"></textarea>
               <label for="informalInstitute">Institute:</label>
-              <input type="text" id="informalInstitute" name="informalInstitute" required>
+              <input type="text" class="informalInstitute" name="informalInstitute" required>
+            </section>
           </section>
         </section>
         <section id="workExperience">
-          <h2>Work Experience:</h2>
-          <label for="workExperienceCompany">Company:</label>
-          <input type="text" id="workExperienceCompany" name="workExperienceCompany" required>
-          <label for="workExperienceSD">Start Date:</label>
-          <input type="date" id="workExperienceSD" name="workExperienceSD" required>
-          <label for="workExperienceED">End Date:</label>
-          <input type="date" id="workExperienceED" name="workExperienceED">
-          <label for="workExperienceDescription">Description:</label>
-          <textarea id="workExperienceDescription" name="workExperienceDescription" rows="5" cols="33"></textarea>
+          <div class='flex'>
+            <h2>Work Experience:</h2>
+            <div class='addFields'>&#10010;</div>
+          </div>
+          <section class="workExperiencePiece">
+            <label for="workExperienceCompany">Company:</label>
+            <input type="text" class="workExperienceCompany" name="workExperienceCompany" required>
+            <div class="flex">
+              <div>
+                <label for="workExperienceSD">Start Date:</label>
+                <input type="date" class="workExperienceSD" name="workExperienceSD" required>
+              </div>
+              <div>
+                <label for="workExperienceED">End Date:</label>
+                <input type="date" class="workExperienceED" name="workExperienceED">
+              </div>
+            </div>
+            <label for="workExperienceDescription">Description:</label>
+            <textarea class="workExperienceDescription" name="workExperienceDescription" rows="5" cols="33"></textarea>
+          </section>
         </section>
         <div id="error_message"></div>
         <input id="saveButton" class="button" type="submit" value="Send">
