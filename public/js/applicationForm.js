@@ -1,8 +1,8 @@
-const navButton = document.getElementById('sessionsNav');
+const navButton = document.getElementById('applicationsNav');
 navButton.classList.add('activePage');
 
 const params = new URLSearchParams(window.location.search);
-const applicationId = params.get('id');
+const applicationId = params.get('_id');
 
 const positionInput = document.getElementById('position');
 const postulantInput = document.getElementById('postulant');
@@ -14,6 +14,12 @@ const saveButton = document.getElementById('saveButton');
 const errorMessage = document.getElementById('error_message');
 
 saveButton.disabled = !!applicationId;
+
+const dateFormat = (date) => `${[`0${date.getMonth() + 1}`.slice(-2),
+  `0${date.getDate() + 1}`.slice(-2),
+  date.getFullYear()].join('/')} ${
+  [`0${date.getHours() + 1}`.slice(-2),
+    `0${date.getMinutes() + 1}`.slice(-2)].join(':')}`;
 
 const onFocusInput = () => {
   errorMessage.innerText = '';
@@ -33,12 +39,11 @@ const fillSelect = (url, parent) => {
     })
     .then((response) => {
       saveButton.disabled = false;
-      console.log(url, response.data);
       response.data.forEach((el) => {
         const option = document.createElement('option');
         // eslint-disable-next-line no-underscore-dangle
         option.value = el._id;
-        option.innerText = `${el.firstName ? el.firstName : ''} ${el.firstName ? el.lastName : ''}${el.jobDescription ? el.jobDescription : ''}${el.date ? new Date(el.date).toLocaleString() : ''}`;
+        option.innerText = `${el.firstName ? el.firstName : ''} ${el.firstName ? el.lastName : ''}${el.jobDescription ? el.jobDescription : ''}${el.date ? dateFormat(new Date(el.date)) : ''}`;
         parent.append(option);
       });
     })
@@ -51,10 +56,49 @@ fillSelect('/positions', positionInput);
 fillSelect('/postulants', postulantInput);
 fillSelect('/interviews', interviewInput);
 
+if (applicationId) {
+  positionInput.disabled = true;
+  postulantInput.disabled = true;
+  interviewInput.disabled = true;
+  resultInput.disabled = true;
+  saveButton.value = 'Back';
+  fetch(`${window.location.origin}/api/applications?_id=${applicationId}`)
+    .then((response) => {
+      if (response.status !== 200) {
+        return response.json().then(({ message }) => {
+          throw new Error(message);
+        });
+      }
+      return response.json();
+    })
+    .then((response) => {
+      saveButton.disabled = false;
+      response.data.forEach((application) => {
+        // eslint-disable-next-line no-underscore-dangle
+        positionInput.value = application?.positions?._id;
+        // eslint-disable-next-line no-underscore-dangle
+        postulantInput.value = application?.postulants?._id;
+        // eslint-disable-next-line no-underscore-dangle
+        interviewInput.value = application?.interview?._id;
+        resultInput.value = application.result;
+      });
+    })
+    .catch((error) => {
+      errorMessage.innerText = error;
+    });
+}
+
 form.onsubmit = (event) => {
   event.preventDefault();
   saveButton.disabled = true;
-  let url;
+
+  if (applicationId) {
+    window.location.href = `${window.location.origin}/views/applicationList.html`;
+    return;
+  }
+
+  const url = `${window.location.origin}/api/applications`;
+
   const options = {
     headers: {
       'Content-Type': 'application/json',
@@ -65,15 +109,8 @@ form.onsubmit = (event) => {
       interview: interviewInput.value,
       result: resultInput.value,
     }),
+    method: 'POST',
   };
-
-  if (applicationId) {
-    options.method = 'PUT';
-    url = `${window.location.origin}/api/applications/${applicationId}`;
-  } else {
-    options.method = 'POST';
-    url = `${window.location.origin}/api/applications`;
-  }
 
   fetch(url, options)
     .then((response) => {
