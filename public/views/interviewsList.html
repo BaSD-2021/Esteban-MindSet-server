@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/interviews.css">
+    <link rel="stylesheet" href="../styles/modal.css">
     <script async src="../js/index.js"></script>
     <script async src="../js/interviewsList.js"></script>
+    <script async src="../js/modal.js"></script>
   </head>
   <body>
     <header>
@@ -41,9 +43,21 @@
         </tbody>
       </table>
       <button class="button" id="addClient" type="button">
-        Add Client
+        Add Interview
       </button>
     </div>
+
+    <section id="modal-section" class="modal-display-off">
+      <div id="modal-content">
+          <span id="modal-close-button">&times;</span>
+          <h1 id="modal-title"></h1>
+          <div id="modal-data-inputs"></div>
+          <div id="modal-buttons">
+            <button id="cancel-button">CANCEL</button>
+            <button id="procced-button">CONFIRM</button>
+          </div>
+      </div>
+    </section>
 
     <footer>
       <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>

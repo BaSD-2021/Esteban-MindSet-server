@@ -1,3 +1,10 @@
+const navButton = document.getElementById('interviewsNav');
+navButton.classList.add('activePage');
+
+const proceedButton = document.getElementById('proceed-button')
+
+const tableContent = document.getElementById('table-content');
+
 const openEditInterviewsForm = (interview) => {
   // eslint-disable-next-line no-underscore-dangle
   window.location.href = `${window.location.origin}/views/interviewsForm.html?interviewsId=${interview._id}`;
@@ -7,14 +14,24 @@ const openNewInterviewsForm = () => {
   // eslint-disable-next-line no-underscore-dangle
   window.location.href = `${window.location.origin}/views/interviewsForm.html`;
 };
-
-const navButton = document.getElementById('interviewsNav');
-navButton.classList.add('activePage');
-
 const addInterviewButton = document.getElementById('addClient');
 addInterviewButton.onclick = openNewInterviewsForm;
 
-const tableContent = document.getElementById('table-content');
+let interviewId;
+
+const deleteInterview = (interview, event) => {
+  event.stopPropagation();
+  // eslint-disable-next-line no-underscore-dangle
+  interviewId = interview._id;
+  // eslint-disable-next-line no-undef
+  updateModalInfo(
+    'You are about to delete an Interview between',
+    `Postulant: ${interview?.postulant?.firstName} ${interview?.postulant?.lastName} \n
+    client: ${interview?.client?.name}`,
+  );
+  // eslint-disable-next-line no-undef
+  openModal();
+};
 
 fetch(`${window.location.origin}/api/interviews`)
   .then((response) => response.json())
@@ -36,7 +53,7 @@ fetch(`${window.location.origin}/api/interviews`)
       button.innerText = 'Delete';
 
       // eslint-disable-next-line no-underscore-dangle
-      button.onclick = () => deleteInterview(interview._id);
+      button.onclick = (event) => deleteInterview(interview, event);
       actionsTD.append(button);
 
       tr.onclick = () => openEditInterviewsForm(interview);
