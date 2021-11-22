@@ -20,6 +20,10 @@
   color: red;
 }
 
+#saveButton{
+  max-width: 100%;
+}
+
 .delete-button-list{
   margin-left: 12px;
   border: 2px solid transparent;
@@ -42,4 +46,30 @@
 
 .days-availability p{
   align-self: center;
+}
+
+.availability-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.availability-section div{
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 10px;
+}
+
+.availability-section div p{
+  text-align: center;
+  width: 150px;
+}
+
+.availability-section div input{
+  width: 20%;
+  margin-bottom: 15px;
+}
+
+.disabled-input{
+  cursor: not-allowed;
 }

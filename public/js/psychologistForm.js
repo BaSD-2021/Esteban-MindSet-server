@@ -30,7 +30,6 @@ window.onload = () => {
   const sundayFromInput = document.getElementById('sunday-from');
   const sundayToInput = document.getElementById('sunday-to');
   const paramsId = params.get('psychologistId');
-
   const form = document.getElementById('form');
   const saveButton = document.getElementById('saveButton');
   const errorMessage = document.getElementById('error_massage');
@@ -180,5 +179,118 @@ window.onload = () => {
       .finally(() => {
         saveButton.disabled = false;
       });
+  };
+
+  mondayAvailability.onblur = () => {
+    mondayFromInput.disabled = false;
+    mondayToInput.disabled = false;
+    if (mondayAvailability.value === 'false') {
+      mondayFromInput.disabled = true;
+      mondayToInput.disabled = true;
+      mondayFromInput.classList.add('disabled-input');
+      mondayToInput.classList.add('disabled-input');
+    }
+  };
+  mondayAvailability.onfocus = () => {
+    mondayFromInput.classList.remove('disabled-input');
+    mondayToInput.classList.remove('disabled-input');
+    mondayFromInput.disabled = false;
+    mondayToInput.disabled = false;
+  };
+  tuesdayAvailability.onblur = () => {
+    tuesdayFromInput.disabled = false;
+    tuesdayToInput.disabled = false;
+    if (tuesdayAvailability.value === 'false') {
+      tuesdayFromInput.disabled = true;
+      tuesdayToInput.disabled = true;
+      tuesdayFromInput.classList.add('disabled-input');
+      tuesdayToInput.classList.add('disabled-input');
+    }
+  };
+  tuesdayAvailability.onfocus = () => {
+    tuesdayFromInput.classList.remove('disabled-input');
+    tuesdayToInput.classList.remove('disabled-input');
+    tuesdayFromInput.disabled = false;
+    tuesdayToInput.disabled = false;
+  };
+  wednesdayAvailability.onblur = () => {
+    wednesdayFromInput.disabled = false;
+    wednesdayToInput.disabled = false;
+    if (wednesdayAvailability.value === 'false') {
+      wednesdayFromInput.disabled = true;
+      wednesdayToInput.disabled = true;
+      wednesdayFromInput.classList.add('disabled-input');
+      wednesdayToInput.classList.add('disabled-input');
+    }
+  };
+  wednesdayAvailability.onfocus = () => {
+    wednesdayFromInput.classList.remove('disabled-input');
+    wednesdayToInput.classList.remove('disabled-input');
+    wednesdayFromInput.disabled = false;
+    wednesdayToInput.disabled = false;
+  };
+  thursdayAvailability.onblur = () => {
+    thursdayFromInput.disabled = false;
+    thursdayToInput.disabled = false;
+    if (thursdayAvailability.value === 'false') {
+      thursdayFromInput.disabled = true;
+      thursdayToInput.disabled = true;
+      thursdayFromInput.classList.add('disabled-input');
+      thursdayToInput.classList.add('disabled-input');
+    }
+  };
+  thursdayAvailability.onfocus = () => {
+    thursdayFromInput.classList.remove('disabled-input');
+    thursdayToInput.classList.remove('disabled-input');
+    thursdayFromInput.disabled = false;
+    thursdayToInput.disabled = false;
+  };
+  fridayAvailability.onblur = () => {
+    fridayFromInput.disabled = false;
+    fridayToInput.disabled = false;
+    if (fridayAvailability.value === 'false') {
+      fridayFromInput.disabled = true;
+      fridayToInput.disabled = true;
+      fridayFromInput.classList.add('disabled-input');
+      fridayToInput.classList.add('disabled-input');
+    }
+  };
+  fridayAvailability.onfocus = () => {
+    fridayFromInput.classList.remove('disabled-input');
+    fridayToInput.classList.remove('disabled-input');
+    fridayFromInput.disabled = false;
+    fridayToInput.disabled = false;
+  };
+  saturdayAvailability.onblur = () => {
+    saturdayFromInput.disabled = false;
+    saturdayToInput.disabled = false;
+    if (saturdayAvailability.value === 'false') {
+      saturdayFromInput.disabled = true;
+      saturdayToInput.disabled = true;
+      saturdayFromInput.classList.add('disabled-input');
+      saturdayToInput.classList.add('disabled-input');
+    }
+  };
+  saturdayAvailability.onfocus = () => {
+    saturdayFromInput.classList.remove('disabled-input');
+    saturdayToInput.classList.remove('disabled-input');
+    saturdayFromInput.disabled = false;
+    saturdayToInput.disabled = false;
+  };
+  sundayAvailability.onblur = () => {
+    sundayFromInput.disabled = false;
+    sundayToInput.disabled = false;
+    if (sundayAvailability.value === 'false') {
+      sundayFromInput.disabled = true;
+      sundayToInput.disabled = true;
+      sundayFromInput.classList.add('disabled-input');
+      sundayToInput.classList.add('disabled-input');
+    }
+  };
+  sundayAvailability.onfocus = () => {
+    sundayFromInput.classList.remove('disabled-input');
+    sundayToInput.classList.remove('disabled-input');
+    sundayFromInput.disabled = false;
+    sundayToInput.disabled = false;
   };
 };
