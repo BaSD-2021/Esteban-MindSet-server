@@ -11,7 +11,7 @@ const openNewClient = () => {
 const deleteClient = (id, name, event) => {
   event.stopPropagation();
   document.getElementById('modal-title').innerText = 'You are about to delete';
-  document.getElementById('modal-data-inputs').innerText = `${name}`;
+  document.getElementById('modal-data-inputs').innerText = name;
   document.getElementById('modal-section').classList.add('modal-section-display-on');
   document.getElementById('procced-button').onclick = () => {
     const url = `${window.location.origin}/api/clients/${id}`;
