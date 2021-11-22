@@ -2,7 +2,7 @@ const navButton = document.getElementById('postulantsNav');
 navButton.classList.add('activePage');
 
 const params = new URLSearchParams(window.location.search);
-const postulantId = params.get('_id');
+const postulantId = params.get('id');
 
 const firstNameInput = document.getElementById('firstName');
 const lastNameInput = document.getElementById('lastName');
@@ -20,18 +20,22 @@ const primarySchoolInput = document.getElementById('primarySchool');
 const secondarySDInput = document.getElementById('secondarySD');
 const secondaryEDInput = document.getElementById('secondaryED');
 const secondarySchoolInput = document.getElementById('secondarySchool');
+const tertiarySection = document.querySelector('#tertiaryStudies div.flex');
 const tertiarySDInputs = document.querySelectorAll('.tertiarySD');
 const tertiaryEDInputs = document.querySelectorAll('.tertiaryED');
 const tertiaryDescriptionInputs = document.querySelectorAll('.tertiaryDescription');
 const tertiaryInstituteInputs = document.querySelectorAll('.tertiaryInstitute');
+const universitySection = document.querySelector('#universityStudies div.flex');
 const universitySDInputs = document.querySelectorAll('.universitySD');
 const universityEDInputs = document.querySelectorAll('.universityED');
 const universityDescriptionInputs = document.querySelectorAll('.universityDescription');
 const universityInstituteInputs = document.querySelectorAll('.universityInstitute');
+const informalSection = document.querySelector('#informalStudies div.flex');
 const informalSDInputs = document.querySelectorAll('.informalSD');
 const informalEDInputs = document.querySelectorAll('.informalED');
 const informalDescriptionInputs = document.querySelectorAll('.informalDescription');
 const informalInstituteInputs = document.querySelectorAll('.informalInstitute');
+const workExperienceSection = document.querySelector('#workExperience div.flex');
 const workExperienceCompanyInputs = document.querySelectorAll('.workExperienceCompany');
 const workExperienceSDInputs = document.querySelectorAll('.workExperienceSD');
 const workExperienceEDInputs = document.querySelectorAll('.workExperienceED');
@@ -106,7 +110,7 @@ const fillProfiles = (postulantProfiles) => {
         input.id = `profile-${id}`;
         label.htmlFor = `profile-${id}`;
         label.innerText = el.name;
-        input.checked = id in (postulantProfiles ?? [false]);
+        input.checked = (postulantProfiles ?? [false]).find((obj) => obj.profileId === id);
         div.append(label, input);
         profilesForm.append(div);
       });
@@ -190,63 +194,116 @@ const studiesBodyConstructor = () => {
   };
 };
 
-const addNewSection = (ev) => {
-  const firstSection = ev.target.parentElement.nextElementSibling;
+const addNewSection = (parent) => {
+  const firstSection = parent.nextElementSibling;
   const newSection = document.createElement('section');
   newSection.innerHTML = firstSection.innerHTML;
-  ev.target.parentElement.parentElement.append(newSection);
+  parent.parentElement.append(newSection);
 };
 
-addFieldButtons.forEach((el) => el.addEventListener('click', addNewSection));
+const studiesHTMLConstructor = (studies) => {
+  primarySDInput.value = studies.primaryStudies.startDate;
+  primaryEDInput.value = studies.primaryStudies.endDate;
+  primarySchoolInput.value = studies.primaryStudies.school;
 
-fillProfiles();
+  secondarySDInput.value = studies.secondaryStudies.startDate;
+  secondaryEDInput.value = studies.secondaryStudies.endDate;
+  secondarySchoolInput.value = studies.secondaryStudies.school;
 
-// if (postulantId) {
-//   positionInput.disabled = true;
-//   postulantInput.disabled = true;
-//   interviewInput.disabled = true;
-//   resultInput.disabled = true;
-//   saveButton.value = 'Back';
-//   fetch(`${window.location.origin}/api/postulants?_id=${postulantId}`)
-//     .then((response) => {
-//       if (response.status !== 200) {
-//         return response.json().then(({ message }) => {
-//           throw new Error(message);
-//         });
-//       }
-//       return response.json();
-//     })
-//     .then((response) => {
-//       saveButton.disabled = false;
-//       response.data.forEach((postulant) => {
-//         // eslint-disable-next-line no-underscore-dangle
-//         positionInput.value = postulant?.positions?._id;
-//         // eslint-disable-next-line no-underscore-dangle
-//         postulantInput.value = postulant?.postulants?._id;
-//         // eslint-disable-next-line no-underscore-dangle
-//         interviewInput.value = postulant?.interview?._id;
-//         resultInput.value = postulant.result;
-//       });
-//     })
-//     .catch((error) => {
-//       errorMessage.innerText = error;
-//     });
-// }
+  for (let i = 1; i < studies.tertiaryStudies.length; i += 1) {
+    addNewSection(tertiarySection);
+  }
+
+  studies.tertiaryStudies.forEach((el, idx) => {
+    tertiarySDInputs[idx].value = el.startDate;
+    tertiaryEDInputs[idx].value = el.endDate;
+    tertiaryDescriptionInputs[idx].value = el.description;
+    tertiaryInstituteInputs[idx].value = el.institute;
+  });
+
+  for (let i = 1; i < studies.universityStudies.length; i += 1) {
+    addNewSection(universitySection);
+  }
+
+  studies.universityStudies.forEach((el, idx) => {
+    universitySDInputs[idx].value = el.startDate;
+    universityEDInputs[idx].value = el.endDate;
+    universityDescriptionInputs[idx].value = el.description;
+    universityInstituteInputs[idx].value = el.institute;
+  });
+
+  for (let i = 1; i < studies.informalStudies.length; i += 1) {
+    addNewSection(informalSection);
+  }
+
+  studies.informalStudies.forEach((el, idx) => {
+    informalSDInputs[idx].value = el.startDate;
+    informalEDInputs[idx].value = el.endDate;
+    informalDescriptionInputs[idx].value = el.description;
+    informalInstituteInputs[idx].value = el.institute;
+  });
+};
+
+const workExperienceHTMLConstructor = (workExperience) => {
+  for (let i = 1; i < workExperience.length; i += 1) {
+    addNewSection(workExperienceSection);
+  }
+
+  workExperience.forEach((el, idx) => {
+    workExperienceSDInputs[idx].value = el.startDate;
+    workExperienceEDInputs[idx].value = el.endDate;
+    workExperienceDescriptionInputs[idx].value = el.description;
+    workExperienceCompanyInputs[idx].value = el.company;
+  });
+};
+
+addFieldButtons.forEach((el) => el.addEventListener('click', (ev) => addNewSection(ev.target.parentElement)));
+
+if (postulantId) {
+  fetch(`${window.location.origin}/api/postulants?_id=${postulantId}`)
+    .then((response) => {
+      if (response.status !== 200) {
+        return response.json().then(({ message }) => {
+          throw new Error(message);
+        });
+      }
+      return response.json();
+    })
+    .then((response) => {
+      saveButton.disabled = false;
+      response.data.forEach((postulant) => {
+        // eslint-disable-next-line no-underscore-dangle
+        firstNameInput.value = postulant.firstName;
+        lastNameInput.value = postulant.lastName;
+        emailInput.value = postulant.email;
+        passwordInput.value = postulant.password;
+        addressInput.value = postulant.address;
+        birthdayInput.value = postulant.birthday;
+        availableInput.value = postulant.available;
+        phoneInput.value = postulant.phone;
+        fillProfiles(postulant.profiles);
+        contactFromInput.value = postulant.contactRange?.from;
+        contactToInput.value = postulant.contactRange?.to;
+        studiesHTMLConstructor(postulant.studies);
+        workExperienceHTMLConstructor(postulant.workExperience);
+      });
+    })
+    .catch((error) => {
+      errorMessage.innerText = error;
+    });
+} else {
+  fillProfiles();
+}
 
 form.onsubmit = (event) => {
   event.preventDefault();
   saveButton.disabled = true;
 
-  if (postulantId) {
-    window.location.href = `${window.location.origin}/views/postulantList.html`;
-    return;
-  }
-
-  const url = `${window.location.origin}/api/postulants`;
+  let url;
 
   const options = {
     headers: {
-      'Content-Type': 'postulant/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       firstName: firstNameInput.value,
@@ -265,6 +322,14 @@ form.onsubmit = (event) => {
     }),
     method: 'POST',
   };
+
+  options.method = 'POST';
+  url = `${window.location.origin}/api/postulants`;
+
+  if (postulantId) {
+    options.method = 'PUT';
+    url = `${window.location.origin}/api/postulants/${postulantId}`;
+  }
 
   fetch(url, options)
     .then((response) => {

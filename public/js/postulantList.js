@@ -7,8 +7,7 @@ const tableContent = document.getElementById('table-content');
 let postulantId;
 
 const openEditPostulant = (id) => {
-  // eslint-disable-next-line no-underscore-dangle
-  window.location.href = `${window.location.origin}/views/postulantForm.html?_id=${id}`;
+  window.location.href = `${window.location.origin}/views/postulantForm.html?id=${id}`;
 };
 const openNewPostulant = () => {
   window.location.href = `${window.location.origin}/views/postulantForm.html`;
