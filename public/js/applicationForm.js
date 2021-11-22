@@ -15,12 +15,6 @@ const errorMessage = document.getElementById('error_message');
 
 saveButton.disabled = !!applicationId;
 
-const dateFormat = (date) => `${[`0${date.getMonth() + 1}`.slice(-2),
-  `0${date.getDate() + 1}`.slice(-2),
-  date.getFullYear()].join('/')} ${
-  [`0${date.getHours() + 1}`.slice(-2),
-    `0${date.getMinutes() + 1}`.slice(-2)].join(':')}`;
-
 const onFocusInput = () => {
   errorMessage.innerText = '';
 };
@@ -43,7 +37,7 @@ const fillSelect = (url, parent) => {
         const option = document.createElement('option');
         // eslint-disable-next-line no-underscore-dangle
         option.value = el._id;
-        option.innerText = `${el.firstName ? el.firstName : ''} ${el.firstName ? el.lastName : ''}${el.jobDescription ? el.jobDescription : ''}${el.date ? dateFormat(new Date(el.date)) : ''}`;
+        option.innerText = `${el.firstName ? el.firstName : ''} ${el.firstName ? el.lastName : ''}${el.jobDescription ? el.jobDescription : ''}${el.date ? el.date.slice(0, 19).replace('T', ' ') : ''}`;
         parent.append(option);
       });
     })
