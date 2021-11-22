@@ -1,8 +1,10 @@
 const navButton = document.getElementById('interviewsNav');
 const addInterviewButton = document.getElementById('addClient');
 const errorMessage = document.getElementById('error-message');
-const confirmDeleteButton = document.getElementById('procced-button');
+const confirmDeleteButton = document.getElementById('proceed-button');
 const tableContent = document.getElementById('table-content');
+
+navButton.classList.add('activePage');
 
 const openEditInterviewsForm = (interview) => {
   // eslint-disable-next-line no-underscore-dangle
@@ -52,7 +54,7 @@ const getInterviews = () => {
         clientNameTD.innerText = interview?.client?.name;
 
         const button = document.createElement('button');
-        button.innerText = 'Delete';
+        button.innerHTML = '<img src="../assets/images/deleteIcon.png">';
 
         // eslint-disable-next-line no-underscore-dangle
         button.onclick = (event) => deleteInterview(interview, event);
@@ -86,7 +88,5 @@ confirmDeleteButton.onclick = () => {
 };
 
 addInterviewButton.onclick = openNewInterviewsForm;
-
-navButton.classList.add('activePage');
 
 getInterviews();
