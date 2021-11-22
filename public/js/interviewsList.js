@@ -24,11 +24,23 @@ fetch(`${window.location.origin}/api/interviews`)
       const dateTD = document.createElement('td');
       const postulantNameTD = document.createElement('td');
       const clientNameTD = document.createElement('td');
-      dateTD.innerText = interview.date;
-      postulantNameTD.innerText = `${interview.postulant.firstName} ${interview.postulant.lastName}`;
-      clientNameTD.innerText = interview.client.name;
+      const actionsTD = document.createElement('td');
+
+      const date = interview.date.substring(0, 10);
+
+      dateTD.innerText = date;
+      postulantNameTD.innerText = `${interview?.postulant?.firstName} ${interview?.postulant?.lastName}`;
+      clientNameTD.innerText = interview?.client?.name;
+
+      const button = document.createElement('button');
+      button.innerText = 'Delete';
+
+      // eslint-disable-next-line no-underscore-dangle
+      button.onclick = () => deleteInterview(interview._id);
+      actionsTD.append(button);
+
       tr.onclick = () => openEditInterviewsForm(interview);
-      tr.append(dateTD, postulantNameTD, clientNameTD);
+      tr.append(dateTD, postulantNameTD, clientNameTD, actionsTD);
       tableContent.append(tr);
     });
   });
