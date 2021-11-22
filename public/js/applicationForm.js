@@ -37,7 +37,9 @@ const fillSelect = (url, parent) => {
         const option = document.createElement('option');
         // eslint-disable-next-line no-underscore-dangle
         option.value = el._id;
-        option.innerText = `${el.firstName ? el.firstName : ''} ${el.firstName ? el.lastName : ''}${el.jobDescription ? el.jobDescription : ''}${el.date ? el.date.slice(0, 19).replace('T', ' ') : ''}`;
+        option.innerText = `${el.firstName ? el.firstName : ''} ${el.firstName ? el.lastName : ''}
+        ${el.jobDescription ? el.jobDescription : ''}
+        ${el.date ? el.date.slice(0, 19).replace('T', ' ') : ''}`;
         parent.append(option);
       });
     })
