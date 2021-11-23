@@ -4,6 +4,8 @@ navButton.classList.add('activePage');
 const params = new URLSearchParams(window.location.search);
 const postulantId = params.get('id');
 
+const config = { attributes: true, childList: true, subtree: true };
+
 const firstNameInput = document.getElementById('firstName');
 const lastNameInput = document.getElementById('lastName');
 const emailInput = document.getElementById('email');
@@ -14,37 +16,67 @@ const addressInput = document.getElementById('address');
 const birthdayInput = document.getElementById('birthday');
 const availableInput = document.getElementById('available');
 const phoneInput = document.getElementById('phone');
+const container = document.querySelector('.container');
 const primarySDInput = document.getElementById('primarySD');
 const primaryEDInput = document.getElementById('primaryED');
 const primarySchoolInput = document.getElementById('primarySchool');
 const secondarySDInput = document.getElementById('secondarySD');
 const secondaryEDInput = document.getElementById('secondaryED');
 const secondarySchoolInput = document.getElementById('secondarySchool');
-const tertiarySection = document.querySelector('#tertiaryStudies div.flex');
-const tertiarySDInputs = document.querySelectorAll('.tertiarySD');
-const tertiaryEDInputs = document.querySelectorAll('.tertiaryED');
-const tertiaryDescriptionInputs = document.querySelectorAll('.tertiaryDescription');
-const tertiaryInstituteInputs = document.querySelectorAll('.tertiaryInstitute');
-const universitySection = document.querySelector('#universityStudies div.flex');
-const universitySDInputs = document.querySelectorAll('.universitySD');
-const universityEDInputs = document.querySelectorAll('.universityED');
-const universityDescriptionInputs = document.querySelectorAll('.universityDescription');
-const universityInstituteInputs = document.querySelectorAll('.universityInstitute');
-const informalSection = document.querySelector('#informalStudies div.flex');
-const informalSDInputs = document.querySelectorAll('.informalSD');
-const informalEDInputs = document.querySelectorAll('.informalED');
-const informalDescriptionInputs = document.querySelectorAll('.informalDescription');
-const informalInstituteInputs = document.querySelectorAll('.informalInstitute');
-const workExperienceSection = document.querySelector('#workExperience div.flex');
-const workExperienceCompanyInputs = document.querySelectorAll('.workExperienceCompany');
-const workExperienceSDInputs = document.querySelectorAll('.workExperienceSD');
-const workExperienceEDInputs = document.querySelectorAll('.workExperienceED');
-const workExperienceDescriptionInputs = document.querySelectorAll('.workExperienceDescription');
+let tertiarySection = document.querySelector('#tertiaryStudies div.flex');
+let tertiarySDInputs = document.querySelectorAll('.tertiarySD');
+let tertiaryEDInputs = document.querySelectorAll('.tertiaryED');
+let tertiaryDescriptionInputs = document.querySelectorAll('.tertiaryDescription');
+let tertiaryInstituteInputs = document.querySelectorAll('.tertiaryInstitute');
+let universitySection = document.querySelector('#universityStudies div.flex');
+let universitySDInputs = document.querySelectorAll('.universitySD');
+let universityEDInputs = document.querySelectorAll('.universityED');
+let universityDescriptionInputs = document.querySelectorAll('.universityDescription');
+let universityInstituteInputs = document.querySelectorAll('.universityInstitute');
+let informalSection = document.querySelector('#informalStudies div.flex');
+let informalSDInputs = document.querySelectorAll('.informalSD');
+let informalEDInputs = document.querySelectorAll('.informalED');
+let informalDescriptionInputs = document.querySelectorAll('.informalDescription');
+let informalInstituteInputs = document.querySelectorAll('.informalInstitute');
+let workExperienceSection = document.querySelector('#workExperience div.flex');
+let workExperienceCompanyInputs = document.querySelectorAll('.workExperienceCompany');
+let workExperienceSDInputs = document.querySelectorAll('.workExperienceSD');
+let workExperienceEDInputs = document.querySelectorAll('.workExperienceED');
+let workExperienceDescriptionInputs = document.querySelectorAll('.workExperienceDescription');
 const addFieldButtons = document.querySelectorAll('.addFields');
 const profilesForm = document.getElementById('profilesForm');
 const form = document.getElementById('form');
 const saveButton = document.getElementById('saveButton');
 const errorMessage = document.getElementById('error_message');
+
+const observer = new MutationObserver((mutationsList) => {
+  mutationsList.forEach((mutation) => {
+    if (mutation.type === 'childList') {
+      tertiarySection = document.querySelector('#tertiaryStudies div.flex');
+      tertiarySDInputs = document.querySelectorAll('.tertiarySD');
+      tertiaryEDInputs = document.querySelectorAll('.tertiaryED');
+      tertiaryDescriptionInputs = document.querySelectorAll('.tertiaryDescription');
+      tertiaryInstituteInputs = document.querySelectorAll('.tertiaryInstitute');
+      universitySection = document.querySelector('#universityStudies div.flex');
+      universitySDInputs = document.querySelectorAll('.universitySD');
+      universityEDInputs = document.querySelectorAll('.universityED');
+      universityDescriptionInputs = document.querySelectorAll('.universityDescription');
+      universityInstituteInputs = document.querySelectorAll('.universityInstitute');
+      informalSection = document.querySelector('#informalStudies div.flex');
+      informalSDInputs = document.querySelectorAll('.informalSD');
+      informalEDInputs = document.querySelectorAll('.informalED');
+      informalDescriptionInputs = document.querySelectorAll('.informalDescription');
+      informalInstituteInputs = document.querySelectorAll('.informalInstitute');
+      workExperienceSection = document.querySelector('#workExperience div.flex');
+      workExperienceCompanyInputs = document.querySelectorAll('.workExperienceCompany');
+      workExperienceSDInputs = document.querySelectorAll('.workExperienceSD');
+      workExperienceEDInputs = document.querySelectorAll('.workExperienceED');
+      workExperienceDescriptionInputs = document.querySelectorAll('.workExperienceDescription');
+    }
+  });
+});
+
+observer.observe(container, config);
 
 saveButton.disabled = !!postulantId;
 
@@ -110,7 +142,8 @@ const fillProfiles = (postulantProfiles) => {
         input.id = `profile-${id}`;
         label.htmlFor = `profile-${id}`;
         label.innerText = el.name;
-        input.checked = (postulantProfiles ?? [false]).find((obj) => obj.profileId === id);
+        // eslint-disable-next-line no-underscore-dangle
+        input.checked = !!(postulantProfiles ?? [false]).find((obj) => obj.profileId._id === id);
         div.append(label, input);
         profilesForm.append(div);
       });
@@ -146,16 +179,17 @@ const studiesBodyConstructor = () => {
   const primaryStudies = {
     startDate: primarySDInput.value,
     endDate: primaryEDInput.value,
-    school: primarySchoolInput,
+    school: primarySchoolInput.value,
   };
 
   const secondaryStudies = {
     startDate: secondarySDInput.value,
     endDate: secondaryEDInput.value,
-    school: secondarySchoolInput,
+    school: secondarySchoolInput.value,
   };
 
   const tertiaryStudies = [];
+
   tertiarySDInputs.forEach((el, idx) => {
     tertiaryStudies.push({
       startDate: el.value,
@@ -197,17 +231,18 @@ const studiesBodyConstructor = () => {
 const addNewSection = (parent) => {
   const firstSection = parent.nextElementSibling;
   const newSection = document.createElement('section');
+  newSection.classList = '';
   newSection.innerHTML = firstSection.innerHTML;
   parent.parentElement.append(newSection);
 };
 
 const studiesHTMLConstructor = (studies) => {
-  primarySDInput.value = studies.primaryStudies.startDate;
-  primaryEDInput.value = studies.primaryStudies.endDate;
+  primarySDInput.value = studies.primaryStudies.startDate.slice(0, 10);
+  primaryEDInput.value = studies.primaryStudies.endDate.slice(0, 10);
   primarySchoolInput.value = studies.primaryStudies.school;
 
-  secondarySDInput.value = studies.secondaryStudies.startDate;
-  secondaryEDInput.value = studies.secondaryStudies.endDate;
+  secondarySDInput.value = studies.secondaryStudies.startDate.slice(0, 10);
+  secondaryEDInput.value = studies.secondaryStudies.endDate.slice(0, 10);
   secondarySchoolInput.value = studies.secondaryStudies.school;
 
   for (let i = 1; i < studies.tertiaryStudies.length; i += 1) {
@@ -215,8 +250,8 @@ const studiesHTMLConstructor = (studies) => {
   }
 
   studies.tertiaryStudies.forEach((el, idx) => {
-    tertiarySDInputs[idx].value = el.startDate;
-    tertiaryEDInputs[idx].value = el.endDate;
+    tertiarySDInputs[idx].value = el.startDate.slice(0, 10);
+    tertiaryEDInputs[idx].value = el.endDate.slice(0, 10);
     tertiaryDescriptionInputs[idx].value = el.description;
     tertiaryInstituteInputs[idx].value = el.institute;
   });
@@ -226,8 +261,8 @@ const studiesHTMLConstructor = (studies) => {
   }
 
   studies.universityStudies.forEach((el, idx) => {
-    universitySDInputs[idx].value = el.startDate;
-    universityEDInputs[idx].value = el.endDate;
+    universitySDInputs[idx].value = el.startDate.slice(0, 10);
+    universityEDInputs[idx].value = el.endDate.slice(0, 10);
     universityDescriptionInputs[idx].value = el.description;
     universityInstituteInputs[idx].value = el.institute;
   });
@@ -237,8 +272,8 @@ const studiesHTMLConstructor = (studies) => {
   }
 
   studies.informalStudies.forEach((el, idx) => {
-    informalSDInputs[idx].value = el.startDate;
-    informalEDInputs[idx].value = el.endDate;
+    informalSDInputs[idx].value = el.startDate.slice(0, 10);
+    informalEDInputs[idx].value = el.endDate.slice(0, 10);
     informalDescriptionInputs[idx].value = el.description;
     informalInstituteInputs[idx].value = el.institute;
   });
@@ -250,8 +285,8 @@ const workExperienceHTMLConstructor = (workExperience) => {
   }
 
   workExperience.forEach((el, idx) => {
-    workExperienceSDInputs[idx].value = el.startDate;
-    workExperienceEDInputs[idx].value = el.endDate;
+    workExperienceSDInputs[idx].value = el.startDate.slice(0, 10);
+    workExperienceEDInputs[idx].value = el.endDate.slice(0, 10);
     workExperienceDescriptionInputs[idx].value = el.description;
     workExperienceCompanyInputs[idx].value = el.company;
   });
@@ -272,18 +307,21 @@ if (postulantId) {
     .then((response) => {
       saveButton.disabled = false;
       response.data.forEach((postulant) => {
-        // eslint-disable-next-line no-underscore-dangle
+        let from = postulant.contactRange?.from.toString();
+        let to = postulant.contactRange?.to.toString();
+        from = `${from.slice(0, 2)}:${from.slice(2)}`;
+        to = `${to.slice(0, 2)}:${to.slice(2)}`;
         firstNameInput.value = postulant.firstName;
         lastNameInput.value = postulant.lastName;
         emailInput.value = postulant.email;
         passwordInput.value = postulant.password;
         addressInput.value = postulant.address;
-        birthdayInput.value = postulant.birthday;
-        availableInput.value = postulant.available;
+        birthdayInput.value = postulant.birthday.slice(0, 10);
+        availableInput.checked = postulant.available;
         phoneInput.value = postulant.phone;
         fillProfiles(postulant.profiles);
-        contactFromInput.value = postulant.contactRange?.from;
-        contactToInput.value = postulant.contactRange?.to;
+        contactFromInput.value = from;
+        contactToInput.value = to;
         studiesHTMLConstructor(postulant.studies);
         workExperienceHTMLConstructor(postulant.workExperience);
       });
@@ -298,7 +336,6 @@ if (postulantId) {
 form.onsubmit = (event) => {
   event.preventDefault();
   saveButton.disabled = true;
-
   let url;
 
   const options = {
@@ -312,11 +349,13 @@ form.onsubmit = (event) => {
       password: passwordInput.value,
       address: addressInput.value,
       birthday: birthdayInput.value,
-      available: availableInput.value,
+      available: availableInput.checked,
       phone: phoneInput.value,
       profiles: profilesBodyContructor(),
-      'contactRange.from': contactFromInput.value,
-      'contactRange.to': contactToInput.value,
+      contactRange: {
+        from: contactFromInput.value.replace(':', ''),
+        to: contactToInput.value.replace(':', ''),
+      },
       studies: studiesBodyConstructor(),
       workExperience: workExperienceBodyConstructor(),
     }),

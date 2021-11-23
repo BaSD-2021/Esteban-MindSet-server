@@ -63,7 +63,6 @@ const deletePostulant = (req, res) => {
 
 const updatePostulants = (req, res) => {
   const bodyReq = req.body;
-
   Postulants.findByIdAndUpdate(
     req.params.id,
     {
