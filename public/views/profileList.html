@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSet</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+    <link rel="stylesheet" href="../styles/profile.css">
+    <script async src="../js/modal.js"></script>
+    <script async src="../js/profileList.js"></script>
+  </head>
+  <body>
+    <header>
+      <a id="mindSetLogo" href="/"><span>Mind</span>SET</a>
+      <nav>
+        <a href="#">admins</a>
+        <a href="#">applications</a>
+        <a href="#">clients</a>
+        <a href="#">interviews</a>
+        <a href="#">positions</a>
+        <a id="profilesNav" href="./profileList.html">Profiles</a>
+        <a href="#">psychologists</a>
+        <a href="#">sessions</a>
+      </nav>
+    </header>
+    <div class="container">
+      <h2 class="header">Profiles</h2>
+      <table class="list">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="actions-table">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="table-content">
+        </tbody>
+      </table>
+      <button class="button" id="addProfile" type="button">
+        Add Profile
+      </button>
+    </div>
+    <section id="modal-section" class="modal-display-off"> 
+      <div id="modal-content">
+          <span id="modal-close-button">&times;</span>
+          <h1 id="modal-title"></h1>
+          <div id="modal-data-inputs"></div>
+          <div id="modal-buttons">
+            <button id="cancel-button">CANCEL</button>
+            <button id="confirm-button">CONFIRM</button>
+          </div>
+      </div>
+    </section>
+    <footer>
+      <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
+    </footer>
+  </body>
+</html>
