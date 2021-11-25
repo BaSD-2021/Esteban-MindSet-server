@@ -21,7 +21,7 @@ const onFocusInput = () => {
 
 resultInput.onfocus = onFocusInput;
 
-const fillSelect = (url, parent) => {
+const fillSelect = (url, parent, makeText) => {
   fetch(`${window.location.origin}/api${url}`)
     .then((response) => {
       if (response.status !== 200) {
@@ -37,9 +37,7 @@ const fillSelect = (url, parent) => {
         const option = document.createElement('option');
         // eslint-disable-next-line no-underscore-dangle
         option.value = el._id;
-        option.innerText = `${el.firstName ? el.firstName : ''} ${el.firstName ? el.lastName : ''}
-        ${el.jobDescription ? el.jobDescription : ''}
-        ${el.date ? el.date.slice(0, 19).replace('T', ' ') : ''}`;
+        option.innerText = makeText(el);
         parent.append(option);
       });
     })
@@ -48,9 +46,9 @@ const fillSelect = (url, parent) => {
     });
 };
 
-fillSelect('/positions', positionInput);
-fillSelect('/postulants', postulantInput);
-fillSelect('/interviews', interviewInput);
+fillSelect('/positions', positionInput, (el) => `${el.firstName} ${el.lastName}`);
+fillSelect('/postulants', postulantInput, (el) => el.jobDescription);
+fillSelect('/interviews', interviewInput, (el) => el.date.slice(0, 19).replace('T', ' '));
 
 if (applicationId) {
   positionInput.disabled = true;
