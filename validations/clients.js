@@ -6,9 +6,9 @@ const required = (req, res, next) => {
     return res.status(400).json({ message: 'You must complete the phone number, make sure you digits numbers' });
   }
   if (!req.body.location.country
-      || !req.body.location.state
-      || !req.body.location.city
-      || !req.body.location.address) {
+    || !req.body.location.state
+    || !req.body.location.city
+    || !req.body.location.address) {
     return res.status(400).send({ message: 'You must complete all the location' });
   }
   return next();

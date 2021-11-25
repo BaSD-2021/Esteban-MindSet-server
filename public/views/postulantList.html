@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sessions</title>
-    <link rel="stylesheet" href="../styles/modal.css">
+    <title>MindSet</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/sessionStyles.css">
-    <script async src="../js/modal.js"></script>
-    <script async src="../js/sessionList.js"></script>
+    <link rel="stylesheet" href="../styles/modal.css">
+    <link rel="stylesheet" href="../styles/postulant.css">
+    <script src="../js/modal.js" async></script>
+    <script src="../js/postulantList.js" async></script>
   </head>
   <body>
     <header>
@@ -21,28 +21,28 @@
         <a id="clientsNav" href="/views/clientList.html">clients</a>
         <a id="interviewsNav" href="/views/interviewList.html">interviews</a>
         <a id="positionsNav" href="/views/positionList.html">positions</a>
+        <a id="postulantsNav" href="/views/postulantList.html">postulants</a>
         <a id="profilesNav" href="/views/profileList.html">profiles</a>
         <a id="psychologistsNav" href="/views/psychologistList.html">psychologists</a>
         <a id="sessionsNav" href="/views/sessionList.html">sessions</a>
       </nav>
     </header>
     <div class="container">
-      <h2 class="header">Sessions</h2>
+      <h2 class="header">Postulants</h2>
       <table class="list">
         <thead>
           <tr>
-            <th>Postulant</th>
-            <th>Psychologist</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th>Name</th>
+            <th>Mail</th>
+            <th>Available</th>
+            <th></th>
           </tr>
         </thead>
-        <tbody id="session-table">
+        <tbody id="table-content">
         </tbody>
       </table>
-      <button class="button" id="addSession" type="button">
-        Add Session
+      <button class="button" id="addPostulant" type="button">
+        Add Postulant
       </button>
     </div>
     <section id="modal-section" class="modal-display-off">
@@ -50,9 +50,10 @@
           <span id="modal-close-button">&times;</span>
           <h1 id="modal-title"></h1>
           <div id="modal-data-inputs"></div>
+          <div id="error_message"></div>
           <div id="modal-buttons">
             <button id="cancel-button">CANCEL</button>
-            <button id="confirm-button">CONFIRM</button>
+            <button id="procced-button">CONFIRM</button>
           </div>
       </div>
     </section>

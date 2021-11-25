@@ -1,7 +1,7 @@
 const Postulants = require('../models/Postulants');
 
 const listPostulants = (req, res) => {
-  Postulants.find(req.query)
+  Postulants.find(req.query).populate('profiles.profileId', 'name')
     .then((postulants) => {
       res.status(200).json({
         message: 'List of Postulants',
@@ -63,7 +63,6 @@ const deletePostulant = (req, res) => {
 
 const updatePostulants = (req, res) => {
   const bodyReq = req.body;
-
   Postulants.findByIdAndUpdate(
     req.params.id,
     {

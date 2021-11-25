@@ -10,7 +10,7 @@ const PositionsSchema = new Schema({
   },
   jobDescription: { type: String },
   vacancy: { type: Number },
-  professionalProfiles: [{ type: String, required: true }],
+  professionalProfiles: [{ type: String, required: true, ref: 'Profiles' }],
   isOpen: { type: Boolean, required: true },
 }, {
   timestamps: true,
