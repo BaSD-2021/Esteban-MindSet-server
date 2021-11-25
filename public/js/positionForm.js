@@ -83,7 +83,8 @@ if (positionId) {
     .then((response) => {
       saveButton.disabled = false;
       response.data.forEach((position) => {
-        clientInput.value = position.client.name;
+         // eslint-disable-next-line no-underscore-dangle
+        clientInput.value = position.client._id;
         jobDescriptionInput.value = position.jobDescription;
         vacancyInput.value = position.vacancy;
         professionalProfilesInput.value = position.professionalProfiles;
