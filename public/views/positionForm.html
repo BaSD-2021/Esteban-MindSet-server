@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position List</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+    <script async src="../js/index.js"></script>
+    <script async src="../js/positionForm.js"></script>
+</head>
+<body>
+    <header>
+        <a id="mindSetLogo" href="/"><span>Mind</span>SET</a>
+        <nav>
+          <a id="adminsNav" href="/views/adminList.html">admins</a>
+          <a id="applicationsNav" href="/views/applicationList.html">applications</a>
+          <a id="clientsNav" href="/views/clientList.html">clients</a>
+          <a id="postulantsNav" href="/views/postulantList.html">postulants</a>
+          <a id="interviewsNav" href="/views/interviewList.html">interviews</a>
+          <a id="positionsNav" href="/views/positionList.html">positions</a>
+          <a id="profilesNav" href="/views/profileList.html">profiles</a>
+          <a id="psychologistsNav" href="/views/psychologistList.html">psychologists</a>
+          <a id="sessionsNav" href="/views/sessionList.html">sessions</a>
+        </nav>
+      </header>
+      <div class="container">
+        <h2 class="header">Position form</h2>
+        <form id="form">
+            <span>Client:</span>
+            <select id="client" name="client" required>
+            </select>
+            <span>Job Description:</span>
+            <input id="jobDescription" placeholder="Job Description" type="text">
+            <span>Vacancy:</span>
+            <input id="vacancy" placeholder="Vacancy" type="text">
+            <span>Professional Profiles:</span>
+            <select id="Profiles" name="Profiles" placeholder="Professional Profiles" type="text" required>
+            </select>
+            <span>Is Open?</span>
+            <input id="isOpen" placeholder="You must enter true or false values" type="checkbox">
+            <div id="error_msg"></div>
+            <input id="saveButton" class="button" type="submit" value="Send">
+        </form>
+      </div>
+</body>
+<footer>
+    <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
+  </footer>
+</html>

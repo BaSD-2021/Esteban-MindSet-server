@@ -29,7 +29,7 @@
   text-align: center;
   margin: auto;
   padding: 20px;
-  border: 3px solid #cc9966;
+  border: 3px solid #CC9966;
   border-radius: 10px;
   width: 288px;
   height: 245px;
@@ -52,10 +52,15 @@
 
 #modal-close-button {
   align-self: flex-end;
+  align-self:flex-end;
   font-size: 35px;
   font-weight: 700;
 }
 
+#modal-close-button:hover{
+  color: grey;
+  cursor: pointer;
+}
 
 #modal-buttons button {
   border: none;
@@ -64,8 +69,8 @@
   border-radius: 8px;
   font-size: 15px;
   font-weight: bold;
-  color: #7e7e7e;
-  background-color: #e2c9af;
+  color: #7E7E7E;
+  background-color: #E2C9AF;
 }
 
 #modal-buttons button:hover {

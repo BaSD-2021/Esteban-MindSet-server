@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindSet</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <script async src="js/index.js"></script>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script async src="../js/sessionForm.js"></script>
   </head>
   <body>
     <header>
@@ -24,7 +24,30 @@
         <a id="sessionsNav" href="/views/sessionList.html">sessions</a>
       </nav>
     </header>
+    <div class="container">
+      <h2 class="header">Sessions Form</h2>
+      <form id="form">
+        <span>Date:</span>
+        <input id="date" name="date" type="datetime-local" required/>
+        <span>Postulant:</span>
+        <select id="postulant" name="postulant" required>
+        </select>
+        <span>Psychologist:</span>
+        <select id="psychologist" name="psychologist" required>
+        </select>
+        <select name="status" id="status">
+          <option value="assigned">Assigned</option>
+          <option value="succesful">Succesful</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+        <span>Notes:</span>
+        <textarea id="notes" name="notes" placeholder="Type your Notes"></textarea>
+        <div id="error_massage"></div>
+        <input id="saveButton" class="button" type="submit" value="Send">
+      </form>
+    </div>
     <footer>
       <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
     </footer>
+  </body>
 </html>

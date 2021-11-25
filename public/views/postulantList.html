@@ -7,15 +7,14 @@
     <title>MindSet</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/interviews.css">
     <link rel="stylesheet" href="../styles/modal.css">
-    <script async src="../js/index.js"></script>
-    <script async src="../js/interviewsList.js"></script>
-    <script async src="../js/modal.js"></script>
+    <link rel="stylesheet" href="../styles/postulant.css">
+    <script src="../js/modal.js" async></script>
+    <script src="../js/postulantList.js" async></script>
   </head>
   <body>
     <header>
-      <a id="mindSetLogo" href="../index.html"><span>Mind</span>SET</a>
+      <a id="mindSetLogo" href="/"><span>Mind</span>SET</a>
       <nav>
         <a id="adminsNav" href="/views/adminList.html">admins</a>
         <a id="applicationsNav" href="/views/applicationList.html">applications</a>
@@ -28,39 +27,38 @@
         <a id="sessionsNav" href="/views/sessionList.html">sessions</a>
       </nav>
     </header>
-
     <div class="container">
-      <h2 class="header">interviews</h2>
+      <h2 class="header">Postulants</h2>
       <table class="list">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Postulant</th>
-            <th>Client</th>
-            <th>Actions</th>
+            <th>Name</th>
+            <th>Mail</th>
+            <th>Available</th>
+            <th></th>
           </tr>
         </thead>
         <tbody id="table-content">
         </tbody>
       </table>
-      <button class="button" id="addClient" type="button">
-        Add Interview
+      <button class="button" id="addPostulant" type="button">
+        Add Postulant
       </button>
     </div>
-
     <section id="modal-section" class="modal-display-off">
       <div id="modal-content">
           <span id="modal-close-button">&times;</span>
           <h1 id="modal-title"></h1>
           <div id="modal-data-inputs"></div>
+          <div id="error_message"></div>
           <div id="modal-buttons">
             <button id="cancel-button">CANCEL</button>
-            <button id="proceed-button">CONFIRM</button>
+            <button id="procced-button">CONFIRM</button>
           </div>
       </div>
     </section>
-
     <footer>
       <div>© Quito's group, Radium Rocket "Become a Software Developer 2021"</div>
     </footer>
+  </body>
 </html>
