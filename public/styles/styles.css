@@ -67,6 +67,7 @@ header > nav > a {
 .list td {
 	padding: 12px 15px;
 	cursor: pointer;
+	text-align: center;
 }
 
 .list tbody tr {
