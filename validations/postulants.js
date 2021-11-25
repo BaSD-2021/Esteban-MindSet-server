@@ -4,7 +4,6 @@ const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@
 
 const validatePostulant = (req, res, next) => {
   const bodyReq = req.body;
-
   if (!bodyReq.firstName) {
     return res.status(400).json({ message: 'firstName is wrong or missing' });
   }
