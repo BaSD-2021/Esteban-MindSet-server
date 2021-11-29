@@ -12,7 +12,7 @@ const {
 } = controller;
 
 router.post('/', clientValidations.required, createClient);
-router.put('/:id', clientValidations.required, updateClient);
+router.put('/:id', updateClient);
 router.delete('/:id', deleteClient);
 router.get('/', listClients);
 
