@@ -9,8 +9,8 @@ const PostulantSchema = new Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     contactRange: {
-      from: { type: Number, required: true },
-      to: { type: Number, required: true },
+      from: { type: String, required: true },
+      to: { type: String, required: true },
     },
     address: { type: String, required: true },
     birthday: { type: Date, required: true },
