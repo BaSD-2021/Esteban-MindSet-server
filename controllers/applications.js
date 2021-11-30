@@ -43,6 +43,7 @@ const updateApplication = (req, res) => {
       interview: req.body.interview,
       result: req.body.result,
     },
+    { new: true },
     (err, updatedApplication) => {
       if (err) {
         return res.status(400).json({ message: err });
