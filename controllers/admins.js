@@ -1,7 +1,7 @@
 const Admins = require('../models/Admins');
 
 const getAdmins = (req, res) => {
-  Admins.find()
+  Admins.find(req.query)
     .then((admins) => res.status(200).json({
       message: 'List of admins',
       data: admins,
