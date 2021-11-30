@@ -34,6 +34,30 @@ const createApplication = (req, res) => {
   });
 };
 
+const updateApplication = (req, res) => {
+  Applications.findByIdAndUpdate(
+    req.params.id,
+    {
+      positions: req.body.positions,
+      postulants: req.body.postulants,
+      interview: req.body.interview,
+      result: req.body.result,
+    },
+    (err, updatedApplication) => {
+      if (err) {
+        return res.status(400).json({ message: err });
+      }
+      if (!updatedApplication) {
+        return res.status(404).json({ message: `The application 'id' (${req.params.id}) given  does not exist.` });
+      }
+      return res.status(200).json({
+        message: 'Application Updated',
+        data: updatedApplication,
+      });
+    },
+  );
+};
+
 const deleteApplication = (req, res) => {
   Applications.findByIdAndDelete(req.params.id, (error, chosenApplication) => {
     if (!chosenApplication) {
@@ -52,4 +76,5 @@ module.exports = {
   createApplication,
   deleteApplication,
   listApplication,
+  updateApplication,
 };
