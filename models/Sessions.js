@@ -16,7 +16,7 @@ const SessionSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ['cancelled', 'assigned', 'succesful'],
+      enum: ['cancelled', 'assigned', 'successful'],
       default: 'assigned',
       required: true,
     },
