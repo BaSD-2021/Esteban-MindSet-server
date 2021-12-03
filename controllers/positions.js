@@ -1,7 +1,7 @@
 const Positions = require('../models/Positions');
 
 const listPositions = (req, res) => {
-  Positions.find(req.query).populate('client', 'name')
+  Positions.find(req.query).populate('client', 'name').populate('professionalProfile')
     .then((positions) => res.status(200).json({
       message: 'List of positions:',
       data: positions,
@@ -14,7 +14,7 @@ const createPosition = (req, res) => {
     client: req.body.client,
     jobDescription: req.body.jobDescription,
     vacancy: req.body.vacancy,
-    professionalProfiles: req.body.professionalProfiles,
+    professionalProfile: req.body.professionalProfile,
     isOpen: req.body.isOpen,
   });
 
@@ -35,7 +35,7 @@ const updatePosition = (req, res) => {
     {
       jobDescription: req.body.jobDescription,
       vacancy: req.body.vacancy,
-      professionalProfiles: req.body.professionalProfiles,
+      professionalProfile: req.body.professionalProfile,
       isOpen: req.body.isOpen,
     },
     { new: true },
