@@ -26,6 +26,13 @@ const createApplication = (req, res) => {
     result: req.body.result,
   });
 
+  application.populate({
+    path: 'positions',
+    select: 'jobDescription',
+    populate: { path: 'client', model: 'Clients', select: 'name' },
+  });
+  application.populate('postulants', ['firstName', 'lastName']);
+  application.populate('interview', 'date');
   application.save((error, app) => {
     if (error) {
       return res.status(400).json({ message: error });
@@ -56,7 +63,13 @@ const updateApplication = (req, res) => {
         data: updatedApplication,
       });
     },
-  );
+  ).populate({
+    path: 'positions',
+    select: 'jobDescription',
+    populate: { path: 'client', model: 'Clients', select: 'name' },
+  })
+    .populate('postulants', ['firstName', 'lastName'])
+    .populate('interview', 'date');
 };
 
 const deleteApplication = (req, res) => {
