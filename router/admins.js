@@ -11,7 +11,7 @@ const {
   updateAdmin,
 } = controller;
 
-router.post('/', validations.validateUpdatedAdmin, createAdmin);
+router.post('/', validations.required, createAdmin);
 router.put('/:id', validations.validateUpdatedAdmin, updateAdmin);
 router.delete('/:id', validations.validateIdFormat, deleteAdmin);
 router.get('/', getAdmins);

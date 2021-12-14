@@ -4,6 +4,19 @@ const errorResHelper = (errorDescription, res, errCode = 400) => {
   res.status(errCode).json({ message: errorDescription });
 };
 
+const required = (req, res, next) => {
+  if (!req.body.name) {
+    return res.status(400).send({ message: 'Name is required' });
+  }
+  if (!req.body.username) {
+    return res.status(400).send({ message: 'Username is required' });
+  }
+  if (!req.body.password) {
+    return res.status(400).send({ message: 'Password is required' });
+  }
+  return next();
+};
+
 const validateUpdatedAdmin = (req, res, next) => {
   const bodyReq = req.body;
 
@@ -39,4 +52,5 @@ const validateIdFormat = (req, res, next) => {
 module.exports = {
   validateUpdatedAdmin,
   validateIdFormat,
+  required,
 };
