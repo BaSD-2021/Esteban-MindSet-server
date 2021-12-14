@@ -26,6 +26,14 @@ const createSession = (req, res) => {
     date: req.body.date,
     notes: req.body.notes,
   });
+  session.populate(
+    'psychologist',
+    'firstName lastName',
+  );
+  session.populate(
+    'postulant',
+    'firstName lastName',
+  );
   session.save((err, newSession) => {
     if (err) {
       return res.status(400).json({ message: err });
@@ -60,6 +68,12 @@ const updateSession = (req, res) => {
         data: updatedSession,
       });
     },
+  ).populate(
+    'postulant',
+    'firstName lastName',
+  ).populate(
+    'psychologist',
+    'firstName lastName',
   );
 };
 
