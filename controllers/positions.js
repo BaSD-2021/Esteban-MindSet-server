@@ -18,6 +18,9 @@ const createPosition = (req, res) => {
     isOpen: req.body.isOpen,
   });
 
+  positionCreated.populate('client', 'name');
+  positionCreated.populate('professionalProfile');
+
   positionCreated.save((error, position) => {
     if (error) {
       return res.status(400).json({ message: error });
@@ -51,7 +54,7 @@ const updatePosition = (req, res) => {
         data: newPosition,
       });
     },
-  );
+  ).populate('client', 'name').populate('professionalProfile');
 };
 
 const deletePosition = (req, res) => {

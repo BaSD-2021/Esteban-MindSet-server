@@ -25,6 +25,11 @@ const createInterview = (req, res) => {
     date: bodyReq.date,
     notes: bodyReq.notes,
   });
+
+  interview.populate('postulant');
+  interview.populate('client');
+  interview.populate('application');
+
   interview.save((error) => {
     if (error) {
       return res.status(400).json({
@@ -68,7 +73,7 @@ const updateInterview = (req, res) => {
         data: newInterview,
       });
     },
-  );
+  ).populate('postulant').populate('client').populate('application');
 };
 
 const deleteInterview = (req, res) => {
