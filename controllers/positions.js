@@ -36,6 +36,7 @@ const updatePosition = (req, res) => {
   Positions.findByIdAndUpdate(
     req.params.id,
     {
+      client: req.body.client,
       jobDescription: req.body.jobDescription,
       vacancy: req.body.vacancy,
       professionalProfile: req.body.professionalProfile,
