@@ -19,7 +19,7 @@
     "url": "https://github.com/estefrare/BaSD-MindSet/issues"
   },
   "engines": {
-    "node": "16.8.0"
+    "node": "14.x"
   },
   "homepage": "https://github.com/estefrare/BaSD-MindSet#readme",
   "dependencies": {
