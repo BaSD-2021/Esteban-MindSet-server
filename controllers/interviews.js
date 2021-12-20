@@ -68,7 +68,7 @@ const updateInterview = (req, res) => {
         data: newInterview,
       });
     },
-  );
+  ).populate('postulant').populate('client').populate('application');
 };
 
 const deleteInterview = (req, res) => {
