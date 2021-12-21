@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const UsersSchema = new Schema({
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  firebaseUid: { type: String, required: true },
   token: { type: String },
 });
 
