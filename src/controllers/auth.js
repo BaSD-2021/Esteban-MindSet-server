@@ -99,7 +99,38 @@ const login = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  try {
+    // Decoded and verify the token
+    const decoded = await jwt.verify(req.headers.token, process.env.JWT_KEY);
+    // Find user
+    const user = await Users.findById(decoded.userId);
+    if (!user) {
+      throw new Error('Invalid user credentials');
+    }
+    // Remove active token from DB
+    const updatedUser = await Users.findByIdAndUpdate(
+      decoded.userId,
+      { token: '' },
+      { new: true },
+    );
+    return res.status(200).json({
+      message: 'Success logout',
+      data: {
+        email: updatedUser.email,
+        // eslint-disable-next-line no-underscore-dangle
+        _id: updatedUser._id,
+      },
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: error.toString(),
+    });
+  }
+};
+
 module.exports = {
   register,
   login,
+  logout,
 };
