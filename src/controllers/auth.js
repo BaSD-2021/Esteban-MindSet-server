@@ -47,54 +47,56 @@ const register = async (req, res) => {
     });
   } catch (error) {
     // Return error
-    return res.status(400).json({ message: error });
+    return res.status(400).json({ message: error.toString() });
   }
 };
 
 const login = async (req, res) => {
-  // Check if the user exists
-  const user = await Users.findOne({ email: req.body.email });
-  if (!user) {
-    return res.status(401).json({
-      message: 'Invalid user credentials',
-    });
-  }
-  // Check if the passwords march
-  const match = await bcrypt.compare(req.body.password, user.password);
-  if (match) {
+  try {
+    // Check if the user exists
+    const user = await Users.findOne({ email: req.body.email });
+    if (!user) {
+      throw new Error('Invalid user credentials');
+    }
+    // Check if the passwords march
+    const match = await bcrypt.compare(req.body.password, user.password);
+    if (match) {
     // Create a new token
-    const token = jwt.sign(
-      {
-        email: user.email,
-        // eslint-disable-next-line no-underscore-dangle
-        userId: user._id,
-      },
-      process.env.JWT_KEY,
-      {
+      const token = jwt.sign(
+        {
+          email: user.email,
+          // eslint-disable-next-line no-underscore-dangle
+          userId: user._id,
+        },
+        process.env.JWT_KEY,
+        {
         /** expressed in seconds or a string describing a time span [zeit/ms](https://github.com/zeit/ms.js).
          * Eg: 60, "2 days", "10h", "7d" */
-        expiresIn: '1d',
-      },
-    );
-    // Save the new token on DB
-    const updatedUser = await Users.findOneAndUpdate(
-      { email: req.body.email },
-      { token },
-      { new: true },
-    );
-    return res.status(200).json({
-      message: 'User Logged',
-      data: {
-        email: updatedUser.email,
-        // eslint-disable-next-line no-underscore-dangle
-        _id: updatedUser._id,
-        token: updatedUser.token,
-      },
+          expiresIn: '1d',
+        },
+      );
+      // Save the new token on DB
+      const updatedUser = await Users.findOneAndUpdate(
+        { email: req.body.email },
+        { token },
+        { new: true },
+      );
+      return res.status(200).json({
+        message: 'User Logged',
+        data: {
+          email: updatedUser.email,
+          // eslint-disable-next-line no-underscore-dangle
+          _id: updatedUser._id,
+          token: updatedUser.token,
+        },
+      });
+    }
+    throw new Error('Invalid user credentials');
+  } catch (error) {
+    return res.status(400).json({
+      message: error.toString(),
     });
   }
-  return res.status(401).json({
-    message: 'Invalid user credentials',
-  });
 };
 
 module.exports = {
