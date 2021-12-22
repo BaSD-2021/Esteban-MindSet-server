@@ -6,7 +6,7 @@ const router = require('./router');
 
 const app = express();
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
 
@@ -24,6 +24,7 @@ mongoose.connect(
 );
 
 app.use('/api', router);
+app.get('/', (req, res) => res.send('<h1>MindSet Server Running </h1>'));
 
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console

@@ -2,11 +2,11 @@
   "name": "basd-mindset",
   "version": "0.0.1",
   "description": "MindSet App",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "start": "nodemon index.js",
+    "start": "nodemon src/index.js",
     "prepare": "husky install"
   },
   "repository": {
@@ -23,9 +23,11 @@
   },
   "homepage": "https://github.com/estefrare/BaSD-MindSet#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12"
   },
   "devDependencies": {

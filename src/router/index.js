@@ -1,6 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
+const auth = require('./auth');
 const admins = require('./admins');
 const applications = require('./applications');
 const clients = require('./clients');
@@ -11,6 +12,7 @@ const psychologists = require('./psychologists');
 const sessions = require('./sessions');
 const postulants = require('./postulants');
 
+router.use('/auth', auth);
 router.use('/admins', admins);
 router.use('/applications', applications);
 router.use('/clients', clients);
