@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const { ObjectId } = require('mongoose').Types;
 
 const validateInterview = (req, res, next) => {
@@ -30,13 +31,13 @@ const validateUpdatedInterview = (req, res, next) => {
     values: ['successful', 'failed', 'cancelled', 'assigned', 'confirmed'],
   };
 
-  if (bodyReq.postulant && !ObjectId.isValid(bodyReq.postulant)) {
+  if (bodyReq.postulant && !ObjectId.isValid(bodyReq.postulant._id)) {
     return res.status(400).json({ message: 'Postulant id value is incorrect' });
   }
-  if (bodyReq.client && !ObjectId.isValid(bodyReq.client)) {
+  if (bodyReq.client && !ObjectId.isValid(bodyReq.client._id)) {
     return res.status(400).json({ message: 'Client id value is incorrect' });
   }
-  if (bodyReq.application && !ObjectId.isValid(bodyReq.application)) {
+  if (bodyReq.application && !ObjectId.isValid(bodyReq.application._id)) {
     return res.status(400).json({ message: 'Application id value is incorrect' });
   }
   if (bodyReq.status && !bodyReq.status.match(enu)) {
