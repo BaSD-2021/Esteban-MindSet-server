@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const { ObjectId } = require('mongoose').Types;
 
 const statusEnum = {
@@ -56,10 +57,11 @@ const validateSessions = (req, res, next) => {
 
 const validateSessionsUsedAttr = (req, res, next) => {
   const invalidBodyAttrs = [];
-  if (req.body.postulant && !ObjectId.isValid(req.body.postulant)) {
+  // eslint-disable-next-line dot-notation
+  if (req.body.postulant && !ObjectId.isValid(req.body.postulant._id)) {
     invalidBodyAttrs.push('Postulant ID');
   }
-  if (req.body.psychologist && !ObjectId.isValid(req.body.psychologist)) {
+  if (req.body.psychologist && !ObjectId.isValid(req.body.psychologist._id)) {
     invalidBodyAttrs.push('Psychologist ID');
   }
   if (req.body.status && !Object.values(statusEnum).includes(req.body.status)) {
