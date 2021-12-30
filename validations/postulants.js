@@ -54,7 +54,7 @@ const validateUpdatedPostulant = (req, res, next) => {
   if (bodyReq.address && typeof bodyReq.address !== 'string') {
     return res.status(400).json({ message: 'address is wrong or missing' });
   }
-  if (bodyReq.birthday && !bodyReq.birthday.match(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/)) {
+  if (bodyReq.birthday && !bodyReq.birthday.match(/\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])/)) {
     return res.status(400).json({ message: 'birthday is wrong or missing' });
   }
   if (bodyReq.available && typeof bodyReq.available !== 'boolean') {
