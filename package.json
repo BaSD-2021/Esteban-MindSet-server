@@ -2,7 +2,7 @@
   "name": "basd-mindset",
   "version": "0.0.1",
   "description": "MindSet App",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
