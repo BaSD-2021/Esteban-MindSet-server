@@ -1,7 +1,7 @@
 const Postulants = require('../models/Postulants');
 
 const listPostulants = (req, res) => {
-  Postulants.find(req.query).populate('profiles.profileId', 'name')
+  Postulants.find({ isDeleted: false }).populate('profiles.profileId', 'name')
     .then((postulants) => {
       res.status(200).json({
         message: 'List of Postulants',
@@ -46,7 +46,9 @@ const createPostulant = (req, res) => {
 };
 
 const deletePostulant = (req, res) => {
-  Postulants.findByIdAndDelete(req.params.id, (error, pointedPostulant) => {
+  Postulants.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (error, pointedPostulant) => {
     if (error) {
       return res.status(400).json({
         message: error,

@@ -1,7 +1,7 @@
 const Admins = require('../models/Admins');
 
 const getAdmins = (req, res) => {
-  Admins.find(req.query)
+  Admins.find({ isDeleted: false })
     .then((admins) => res.status(200).json({
       message: 'List of admins',
       data: admins,
@@ -58,7 +58,9 @@ const updateAdmin = (req, res) => {
 };
 
 const deleteAdmin = (req, res) => {
-  Admins.findByIdAndDelete(req.params.id, (error) => {
+  Admins.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (error) => {
     if (error) {
       return res.status(400).json({ message: `Admin with id ${req.params.id} does not exist.` });
     }

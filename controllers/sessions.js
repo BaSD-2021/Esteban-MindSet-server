@@ -1,7 +1,7 @@
 const Sessions = require('../models/Sessions');
 
 const listSessions = (req, res) => {
-  Sessions.find(req.query).populate(
+  Sessions.find({ isDeleted: false }).populate(
     'postulant',
     'firstName lastName',
   )
@@ -78,7 +78,9 @@ const updateSession = (req, res) => {
 };
 
 const deleteSession = (req, res) => {
-  Sessions.findByIdAndDelete(req.params.id, (err, deletedSession) => {
+  Sessions.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (err, deletedSession) => {
     if (err) {
       return res.status(400).json({ message: err });
     }
