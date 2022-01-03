@@ -76,6 +76,7 @@ const PsychologistSchema = new Schema(
     },
     phone: Number,
     address: String,
+    isDeleted: { type: Boolean, default: false },
   },
   { timestamps: true },
 );

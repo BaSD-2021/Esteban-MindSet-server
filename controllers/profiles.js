@@ -1,7 +1,7 @@
 const Profiles = require('../models/Profiles');
 
 const listProfiles = (req, res) => {
-  Profiles.find(req.query)
+  Profiles.find({ isDeleted: false })
     .then((profiles) => res.status(200).json({ message: 'profiles list', data: profiles }))
     .catch((error) => res.status(400).json({ message: error }));
 };
@@ -39,7 +39,9 @@ const updateProfile = (req, res) => {
 };
 
 const deleteProfile = (req, res) => {
-  Profiles.findByIdAndDelete(req.params.id, (error, pointedProfile) => {
+  Profiles.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (error, pointedProfile) => {
     if (error) {
       return res.status(400).json({ message: error });
     }

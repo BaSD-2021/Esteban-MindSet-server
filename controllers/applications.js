@@ -1,7 +1,7 @@
 const Applications = require('../models/Applications');
 
 const listApplication = (req, res) => {
-  Applications.find(req.query)
+  Applications.find({ isDeleted: false })
     .populate({
       path: 'positions',
       select: 'jobDescription',
@@ -73,7 +73,9 @@ const updateApplication = (req, res) => {
 };
 
 const deleteApplication = (req, res) => {
-  Applications.findByIdAndDelete(req.params.id, (error, chosenApplication) => {
+  Applications.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (error, chosenApplication) => {
     if (!chosenApplication) {
       return res
         .status(404)

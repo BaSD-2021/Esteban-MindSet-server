@@ -1,7 +1,7 @@
 const Clients = require('../models/Clients');
 
 const listClients = (req, res) => {
-  Clients.find(req.query)
+  Clients.find({ isDeleted: false })
     .then((clients) => res.status(200).json({
       message: 'List of clients:',
       data: clients,
@@ -30,7 +30,9 @@ const createClient = (req, res) => {
 };
 
 const deleteClient = (req, res) => {
-  Clients.findByIdAndDelete(req.params.id, (error) => {
+  Clients.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (error) => {
     if (error) {
       return res.status(400).json({ message: `Client with id ${req.params.id} does not exist.` });
     }

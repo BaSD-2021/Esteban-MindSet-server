@@ -1,7 +1,7 @@
 const Positions = require('../models/Positions');
 
 const listPositions = (req, res) => {
-  Positions.find(req.query).populate('client', 'name').populate('professionalProfile')
+  Positions.find({ isDeleted: false }).populate('client', 'name').populate('professionalProfile')
     .then((positions) => res.status(200).json({
       message: 'List of positions:',
       data: positions,
@@ -59,7 +59,9 @@ const updatePosition = (req, res) => {
 };
 
 const deletePosition = (req, res) => {
-  Positions.findByIdAndDelete(req.params.id, (error) => {
+  Positions.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (error) => {
     if (error) {
       return res.status(404).json({ message: `Position with id ${req.params.id} does not extis` });
     }
