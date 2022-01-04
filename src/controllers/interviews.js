@@ -1,7 +1,7 @@
 const Interviews = require('../models/Interviews');
 
 const listInterviews = (req, res) => {
-  Interviews.find(req.query).populate('postulant').populate('client').populate('application')
+  Interviews.find({ isDeleted: false }).populate('postulant').populate('client').populate('application')
     .then((interviews) => {
       res.status(200).json({
         message: 'List of Interviews',
@@ -77,7 +77,9 @@ const updateInterview = (req, res) => {
 };
 
 const deleteInterview = (req, res) => {
-  Interviews.findByIdAndDelete(req.params.id, (error, pointedInterview) => {
+  Interviews.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (error, pointedInterview) => {
     if (error) {
       return res.status(400).json({
         message: error,

@@ -13,6 +13,7 @@ const ClientsSchema = new Schema({
   },
   logo: String,
   description: String,
+  isDeleted: { type: Boolean, default: false },
 }, {
   timestamps: true,
 });

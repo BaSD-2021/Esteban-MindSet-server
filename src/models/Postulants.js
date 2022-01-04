@@ -64,6 +64,7 @@ const PostulantSchema = new Schema(
       description: { type: String },
       _id: false,
     }],
+    isDeleted: { type: Boolean, default: false },
   },
   {
     timestamps: true,

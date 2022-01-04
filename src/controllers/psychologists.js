@@ -11,7 +11,7 @@ const availabilityObjectAttrConstructor = (req) => {
 };
 
 const listPsychologists = (req, res) => {
-  Psychologists.find(req.query)
+  Psychologists.find({ isDeleted: false })
     .then((psychologists) => {
       res.status(200).json({
         message: 'List of Psychologists',
@@ -73,7 +73,9 @@ const updatePsychologist = (req, res) => {
 };
 
 const deletePsychologist = (req, res) => {
-  Psychologists.findByIdAndDelete(req.params.id, (err, deletedPsychologist) => {
+  Psychologists.findByIdAndUpdate(req.params.id, {
+    isDeleted: true,
+  }, (err, deletedPsychologist) => {
     if (err) {
       return res.status(400).json({ message: err });
     }
