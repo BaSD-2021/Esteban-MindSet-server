@@ -11,14 +11,25 @@ const availabilityObjectAttrConstructor = (req) => {
 };
 
 const listPsychologists = (req, res) => {
-  Psychologists.find({ isDeleted: false })
-    .then((psychologists) => {
-      res.status(200).json({
-        message: 'List of Psychologists',
-        data: psychologists,
-      });
-    })
-    .catch((err) => res.status(400).json({ message: err }));
+  if ('_id' in req.query) {
+    Psychologists.find({ _id: req.query, isDeleted: false })
+      .then((psychologists) => {
+        res.status(200).json({
+          message: 'List of Psychologists',
+          data: psychologists,
+        });
+      })
+      .catch((err) => res.status(400).json({ message: err }));
+  } else {
+    Psychologists.find({ isDeleted: false })
+      .then((psychologists) => {
+        res.status(200).json({
+          message: 'List of Psychologists',
+          data: psychologists,
+        });
+      })
+      .catch((err) => res.status(400).json({ message: err }));
+  }
 };
 
 const createPsychologist = (req, res) => {

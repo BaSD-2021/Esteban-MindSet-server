@@ -1,21 +1,39 @@
 const Sessions = require('../models/Sessions');
 
 const listSessions = (req, res) => {
-  Sessions.find({ isDeleted: false }).populate(
-    'postulant',
-    'firstName lastName',
-  )
-    .populate(
-      'psychologist',
+  if ('_id' in req.query) {
+    Sessions.find({ _id: req.query, isDeleted: false }).populate(
+      'postulant',
       'firstName lastName',
     )
-    .then((sessions) => {
-      res.status(200).json({
-        message: 'List of Sessions',
-        data: sessions,
-      });
-    })
-    .catch((err) => res.status(400).json({ message: err }));
+      .populate(
+        'psychologist',
+        'firstName lastName',
+      )
+      .then((sessions) => {
+        res.status(200).json({
+          message: 'List of Sessions',
+          data: sessions,
+        });
+      })
+      .catch((err) => res.status(400).json({ message: err }));
+  } else {
+    Sessions.find({ isDeleted: false }).populate(
+      'postulant',
+      'firstName lastName',
+    )
+      .populate(
+        'psychologist',
+        'firstName lastName',
+      )
+      .then((sessions) => {
+        res.status(200).json({
+          message: 'List of Sessions',
+          data: sessions,
+        });
+      })
+      .catch((err) => res.status(400).json({ message: err }));
+  }
 };
 
 const createSession = (req, res) => {
