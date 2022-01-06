@@ -1,9 +1,15 @@
 const Profiles = require('../models/Profiles');
 
 const listProfiles = (req, res) => {
-  Profiles.find({ isDeleted: false })
-    .then((profiles) => res.status(200).json({ message: 'profiles list', data: profiles }))
-    .catch((error) => res.status(400).json({ message: error }));
+  if ('_id' in req.query) {
+    Profiles.find({ _id: req.query, isDeleted: false })
+      .then((profiles) => res.status(200).json({ message: 'profiles list', data: profiles }))
+      .catch((error) => res.status(400).json({ message: error }));
+  } else {
+    Profiles.find({ isDeleted: false })
+      .then((profiles) => res.status(200).json({ message: 'profiles list', data: profiles }))
+      .catch((error) => res.status(400).json({ message: error }));
+  }
 };
 
 const createProfile = (req, res) => {

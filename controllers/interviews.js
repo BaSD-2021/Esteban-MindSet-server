@@ -1,18 +1,33 @@
 const Interviews = require('../models/Interviews');
 
 const listInterviews = (req, res) => {
-  Interviews.find({ isDeleted: false }).populate('postulant').populate('client').populate('application')
-    .then((interviews) => {
-      res.status(200).json({
-        message: 'List of Interviews',
-        data: interviews,
+  if ('_id' in req.query) {
+    Interviews.find({ _id: req.query, isDeleted: false }).populate('postulant').populate('client').populate('application')
+      .then((interviews) => {
+        res.status(200).json({
+          message: 'List of Interviews',
+          data: interviews,
+        });
+      })
+      .catch((error) => {
+        res.status(400).json({
+          message: error,
+        });
       });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        message: error,
+  } else {
+    Interviews.find({ isDeleted: false }).populate('postulant').populate('client').populate('application')
+      .then((interviews) => {
+        res.status(200).json({
+          message: 'List of Interviews',
+          data: interviews,
+        });
+      })
+      .catch((error) => {
+        res.status(400).json({
+          message: error,
+        });
       });
-    });
+  }
 };
 
 const createInterview = (req, res) => {

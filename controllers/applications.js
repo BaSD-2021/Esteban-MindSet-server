@@ -1,21 +1,39 @@
 const Applications = require('../models/Applications');
 
 const listApplication = (req, res) => {
-  Applications.find({ isDeleted: false })
-    .populate({
-      path: 'positions',
-      select: 'jobDescription',
-      populate: { path: 'client', model: 'Clients', select: 'name' },
-    })
-    .populate('postulants', ['firstName', 'lastName'])
-    .populate('interview', 'date')
-    .then((application) => {
-      res.status(200).json({
-        message: 'List of Applications',
-        data: application,
-      });
-    })
-    .catch((error) => res.status(400).json({ message: error }));
+  if ('_id' in req.query) {
+    Applications.find({ _id: req.query, isDeleted: false })
+      .populate({
+        path: 'positions',
+        select: 'jobDescription',
+        populate: { path: 'client', model: 'Clients', select: 'name' },
+      })
+      .populate('postulants', ['firstName', 'lastName'])
+      .populate('interview', 'date')
+      .then((application) => {
+        res.status(200).json({
+          message: 'List of Applications',
+          data: application,
+        });
+      })
+      .catch((error) => res.status(400).json({ message: error }));
+  } else {
+    Applications.find({ isDeleted: false })
+      .populate({
+        path: 'positions',
+        select: 'jobDescription',
+        populate: { path: 'client', model: 'Clients', select: 'name' },
+      })
+      .populate('postulants', ['firstName', 'lastName'])
+      .populate('interview', 'date')
+      .then((application) => {
+        res.status(200).json({
+          message: 'List of Applications',
+          data: application,
+        });
+      })
+      .catch((error) => res.status(400).json({ message: error }));
+  }
 };
 
 const createApplication = (req, res) => {
