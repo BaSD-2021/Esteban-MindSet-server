@@ -1,12 +1,21 @@
 const Positions = require('../models/Positions');
 
 const listPositions = (req, res) => {
-  Positions.find({ isDeleted: false }).populate('client', 'name').populate('professionalProfile')
-    .then((positions) => res.status(200).json({
-      message: 'List of positions:',
-      data: positions,
-    }))
-    .catch((error) => res.status(400).json({ message: error }));
+  if ('_id' in req.query) {
+    Positions.find({ _id: req.query, isDeleted: false }).populate('client', 'name').populate('professionalProfile')
+      .then((positions) => res.status(200).json({
+        message: 'List of positions:',
+        data: positions,
+      }))
+      .catch((error) => res.status(400).json({ message: error }));
+  } else {
+    Positions.find({ isDeleted: false }).populate('client', 'name').populate('professionalProfile')
+      .then((positions) => res.status(200).json({
+        message: 'List of positions:',
+        data: positions,
+      }))
+      .catch((error) => res.status(400).json({ message: error }));
+  }
 };
 
 const createPosition = (req, res) => {

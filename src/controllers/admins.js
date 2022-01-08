@@ -1,14 +1,25 @@
 const Admins = require('../models/Admins');
 
 const getAdmins = (req, res) => {
-  Admins.find({ isDeleted: false })
-    .then((admins) => res.status(200).json({
-      message: 'List of admins',
-      data: admins,
-    }))
-    .catch((error) => res.status(400).json({
-      message: error,
-    }));
+  if ('_id' in req.query) {
+    Admins.find({ _id: req.query, isDeleted: false })
+      .then((admins) => res.status(200).json({
+        message: 'List of admins',
+        data: admins,
+      }))
+      .catch((error) => res.status(400).json({
+        message: error,
+      }));
+  } else {
+    Admins.find({ isDeleted: false })
+      .then((admins) => res.status(200).json({
+        message: 'List of admins',
+        data: admins,
+      }))
+      .catch((error) => res.status(400).json({
+        message: error,
+      }));
+  }
 };
 
 const createAdmin = (req, res) => {

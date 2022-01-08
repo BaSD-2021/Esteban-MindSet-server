@@ -1,12 +1,21 @@
 const Clients = require('../models/Clients');
 
 const listClients = (req, res) => {
-  Clients.find({ isDeleted: false })
-    .then((clients) => res.status(200).json({
-      message: 'List of clients:',
-      data: clients,
-    }))
-    .catch((error) => res.status(400).json({ message: error }));
+  if ('_id' in req.query) {
+    Clients.find({ _id: req.query, isDeleted: false })
+      .then((clients) => res.status(200).json({
+        message: 'List of clients:',
+        data: clients,
+      }))
+      .catch((error) => res.status(400).json({ message: error }));
+  } else {
+    Clients.find({ isDeleted: false })
+      .then((clients) => res.status(200).json({
+        message: 'List of clients:',
+        data: clients,
+      }))
+      .catch((error) => res.status(400).json({ message: error }));
+  }
 };
 
 const createClient = (req, res) => {

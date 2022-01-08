@@ -1,18 +1,33 @@
 const Postulants = require('../models/Postulants');
 
 const listPostulants = (req, res) => {
-  Postulants.find({ isDeleted: false }).populate('profiles.profileId', 'name')
-    .then((postulants) => {
-      res.status(200).json({
-        message: 'List of Postulants',
-        data: postulants,
+  if ('_id' in req.query) {
+    Postulants.find({ _id: req.query, isDeleted: false }).populate('profiles.profileId', 'name')
+      .then((postulants) => {
+        res.status(200).json({
+          message: 'List of Postulants',
+          data: postulants,
+        });
+      })
+      .catch((error) => {
+        res.status(400).json({
+          message: error,
+        });
       });
-    })
-    .catch((error) => {
-      res.status(400).json({
-        message: error,
+  } else {
+    Postulants.find({ isDeleted: false }).populate('profiles.profileId', 'name')
+      .then((postulants) => {
+        res.status(200).json({
+          message: 'List of Postulants',
+          data: postulants,
+        });
+      })
+      .catch((error) => {
+        res.status(400).json({
+          message: error,
+        });
       });
-    });
+  }
 };
 
 const createPostulant = (req, res) => {
