@@ -58,10 +58,10 @@ const validateSessions = (req, res, next) => {
 const validateSessionsUsedAttr = (req, res, next) => {
   const invalidBodyAttrs = [];
   // eslint-disable-next-line dot-notation
-  if (req.body.postulant && !ObjectId.isValid(req.body.postulant._id)) {
+  if (req.body.postulant && !ObjectId.isValid(req.body.postulant)) {
     invalidBodyAttrs.push('Postulant ID');
   }
-  if (req.body.psychologist && !ObjectId.isValid(req.body.psychologist._id)) {
+  if (req.body.psychologist && !ObjectId.isValid(req.body.psychologist)) {
     invalidBodyAttrs.push('Psychologist ID');
   }
   if (req.body.status && !Object.values(statusEnum).includes(req.body.status)) {
