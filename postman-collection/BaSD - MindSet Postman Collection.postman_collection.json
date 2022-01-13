@@ -904,47 +904,47 @@
 							"query": [
 								{
 									"key": "firstName",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "lastName",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "username",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "password",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "email",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "phone",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "address",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "createdAt",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "updatedAt",
-									"value": null,
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -1116,6 +1116,38 @@
 									"key": "id",
 									"value": "61929527b0bd320a40c2af9f"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "GetMe",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjM1MDZmMzc1MjI0N2ZjZjk0Y2JlNWQyZDZiNTlmYThhMmJhYjFlYzIiLCJ0eXAiOiJKV1QifQ.eyJyb2xlIjoiUE9TVFVMQU5UIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Jhc2QtMjAyMS1lc3RlYmFuIiwiYXVkIjoiYmFzZC0yMDIxLWVzdGViYW4iLCJhdXRoX3RpbWUiOjE2NDIxMTEyMzAsInVzZXJfaWQiOiIzYlZZUWxDeGVWZzBiZ0ZnUHhUZG9UdTBxT0czIiwic3ViIjoiM2JWWVFsQ3hlVmcwYmdGZ1B4VGRvVHUwcU9HMyIsImlhdCI6MTY0MjExMTIzMCwiZXhwIjoxNjQyMTE0ODMwLCJlbWFpbCI6ImVzdGViYW4uZnJhcmVAcmFkaXVtcm9ja2V0LmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJlc3RlYmFuLmZyYXJlQHJhZGl1bXJvY2tldC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.OnWEUktLAT2hdEQpasauZdt5eMIvC3A8s9H9ND7i9Pp6o-7J2aaAoRlX5-Vhe0BPUdKJ5SAQowEHSA4l8j1g98w7ZOFOY0QSNdSvhy7eYRi4kNH2BjyaeFN7hXOMB5yHdFGVKN4SSn1xoaQoOoP5lGAQq2aqU7E0txZ1g4rwd5y9x9G_VwFUL0Fgre3-9N3v5QovOMwNYD5t0MFtMXDKwNdlMMOuQlOJH_McEI2kjEaZN-pWQFZFesiFjMRe0sG8N77v2GXtq3HLJwHg3UifsdQMnOpgLQeJkB4mfUiO2YZUM-NksXbShZaITkcM0Em9eGfIu96jeKiI_ggvOailfQ",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/auth/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"me"
 							]
 						}
 					},

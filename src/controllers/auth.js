@@ -1,26 +1,43 @@
-const Users = require('../models/Users');
-const Firebase = require('../helper/firebase');
+const Postulants = require('../models/Postulants');
+const Psychologists = require('../models/Psychologists');
+const Admins = require('../models/Admins');
 
-const register = async (req, res) => {
+const getMe = async (req, res) => {
   try {
-    const newFirebaseUser = await Firebase.auth().createUser({
-      email: req.body.email,
-      password: req.body.password,
-    });
-    const userCreated = new Users({
-      email: req.body.email,
-      firebaseUid: newFirebaseUser.uid,
-    });
-    const userSaved = await userCreated.save();
-    return res.status(201).json({
-      message: 'User created',
-      data: userSaved,
+    const postulant = await Postulants.findOne({ firebaseUid: req.firebaseUid });
+    if (postulant) {
+      return res.status(201).json({
+        message: 'Postulant found',
+        data: postulant,
+      });
+    }
+
+    const psychologist = await Psychologists.findOne({ firebaseUid: req.firebaseUid });
+    if (psychologist) {
+      return res.status(201).json({
+        message: 'Psychologist created',
+        data: psychologist,
+      });
+    }
+
+    const admin = await Admins.findOne({ firebaseUid: req.firebaseUid });
+    if (admin) {
+      return res.status(201).json({
+        message: 'Admin created',
+        data: admin,
+      });
+    }
+
+    return res.status(204).json({
+      message: 'User not found',
     });
   } catch (error) {
-    return res.status(400).json({ message: error.toString() });
+    return res.status(400).json({
+      message: error.toString(),
+    });
   }
 };
 
 module.exports = {
-  register,
+  getMe,
 };

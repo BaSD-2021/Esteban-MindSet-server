@@ -7,7 +7,8 @@ const authMiddleware = (req, res, next) => {
       .json({ message: 'Provide a token' });
   }
   return firebase.auth().verifyIdToken(token)
-    .then(() => {
+    .then((response) => {
+      req.firebaseUid = response.uid;
       next();
     })
     .catch((error) => {
