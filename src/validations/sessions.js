@@ -23,10 +23,10 @@ const validateIdFormat = (req, res, next) => {
 
 const validateSessions = (req, res, next) => {
   const invalidBodyAttrs = [];
-  if (!ObjectId.isValid(req.body.postulant)) {
+  if (!ObjectId.isValid(req.body.postulant._id)) {
     invalidBodyAttrs.push('Postulant ID');
   }
-  if (!ObjectId.isValid(req.body.psychologist)) {
+  if (!ObjectId.isValid(req.body.psychologist._id)) {
     invalidBodyAttrs.push('Psychologist ID');
   }
   if (!Object.values(statusEnum).includes(req.body.status)) {
@@ -58,10 +58,10 @@ const validateSessions = (req, res, next) => {
 const validateSessionsUsedAttr = (req, res, next) => {
   const invalidBodyAttrs = [];
   // eslint-disable-next-line dot-notation
-  if (req.body.postulant && !ObjectId.isValid(req.body.postulant)) {
+  if (req.body.postulant && !ObjectId.isValid(req.body.postulant._id)) {
     invalidBodyAttrs.push('Postulant ID');
   }
-  if (req.body.psychologist && !ObjectId.isValid(req.body.psychologist)) {
+  if (req.body.psychologist && !ObjectId.isValid(req.body.psychologist._id)) {
     invalidBodyAttrs.push('Psychologist ID');
   }
   if (req.body.status && !Object.values(statusEnum).includes(req.body.status)) {
