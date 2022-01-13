@@ -1,5 +1,7 @@
 const { ObjectId } = require('mongoose').Types;
 
+const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 const errorResHelper = (errorDescription, res, errCode = 400) => {
   res.status(errCode).json({ message: errorDescription });
 };
@@ -8,8 +10,8 @@ const required = (req, res, next) => {
   if (!req.body.name) {
     return res.status(400).send({ message: 'Name is required' });
   }
-  if (!req.body.username) {
-    return res.status(400).send({ message: 'Username is required' });
+  if (!req.body.email || !req.body.email.match(emailRegex)) {
+    return res.status(400).json({ message: 'Email is wrong or missing' });
   }
   if (!req.body.password) {
     return res.status(400).send({ message: 'Password is required' });
@@ -18,19 +20,17 @@ const required = (req, res, next) => {
 };
 
 const validateUpdatedAdmin = (req, res, next) => {
-  const bodyReq = req.body;
-
-  if (bodyReq.name && typeof bodyReq.name !== 'string') {
+  if (req.body.name && typeof req.body.name !== 'string') {
     return res.status(400).json({
       message: 'Name is wrong or missing',
     });
   }
-  if (bodyReq.username && typeof bodyReq.username !== 'string') {
+  if (!req.body.email || !req.body.email.match(emailRegex)) {
     return res.status(400).json({
-      message: 'Username is wrong or missing',
+      message: 'Email is wrong or missing',
     });
   }
-  if (bodyReq.password && typeof bodyReq.password !== 'string') {
+  if (req.body.password && typeof req.body.password !== 'string') {
     return res.status(400).json({
       message: 'Password is wrong or missing',
     });

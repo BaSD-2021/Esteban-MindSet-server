@@ -50,6 +50,7 @@ const availabilitySchema = new Schema({
 
 const PsychologistSchema = new Schema(
   {
+    firebaseUid: { type: String, required: true },
     firstName: {
       type: String,
       required: true,
