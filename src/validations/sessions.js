@@ -4,7 +4,7 @@ const { ObjectId } = require('mongoose').Types;
 const statusEnum = {
   cancelled: 'cancelled',
   assigned: 'assigned',
-  succesful: 'succesful',
+  successful: 'successful',
 };
 
 const errorResHelper = (errorDescription, res, errCode = 400) => {
