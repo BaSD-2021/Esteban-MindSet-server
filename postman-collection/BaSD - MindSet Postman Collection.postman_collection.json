@@ -82,7 +82,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "618d9f65d0bc12cf242866b7"
+									"value": "61e039bcc0a913f383f1be9c"
 								}
 							]
 						}
@@ -96,7 +96,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"618d99c53a4c61f86dc4b58b\",\n    \"name\": \"Pedro\",\n    \"username\": \"pedro.garcia\",\n    \"password\": \"test123\"\n}",
+							"raw": "{\n    \"name\": \"Esteban Frare\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"test123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -834,7 +834,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\": \"Joe\",\r\n    \"last_name\": \"Rave\",\r\n    \"availability\": {\r\n        \"monday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"tuesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"wednesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"thursday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"friday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"saturday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"sunday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        }\r\n    },\r\n    \"username\": \"username\",\r\n    \"password\": \"password\",\r\n    \"email\": \"email@gmail.com\",\r\n    \"phone\": 4242654,\r\n    \"address\": \"address 123\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Sigmund\",\r\n    \"lastName\": \"Freud\",\r\n    \"availability\": {\r\n        \"monday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"tuesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"wednesday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"thursday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"friday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"saturday\": {\r\n            \"availability\": true,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        },\r\n        \"sunday\": {\r\n            \"availability\": false,\r\n            \"from\": 1200,\r\n            \"to\": 1600\r\n        }\r\n    },\r\n    \"username\": \"s.freud\",\r\n    \"password\": \"test123\",\r\n    \"email\": \"freud@gmail.com\",\r\n    \"phone\": 4242654,\r\n    \"address\": \"address 123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -877,7 +877,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6191deb39a2f680e696655b3"
+									"value": "61e040babbc87a92fda0f1e7"
 								}
 							]
 						}
