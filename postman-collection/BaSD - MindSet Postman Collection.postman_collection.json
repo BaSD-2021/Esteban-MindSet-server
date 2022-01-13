@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4644c80e-625c-47f6-9c5a-f63ce1b48460",
+		"_postman_id": "a8248219-3682-4c0e-ba06-1b6409789ec7",
 		"name": "BaSD - MindSet Postman Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1007,10 +1007,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/api/postulants",
+							"raw": "http://localhost:4000/api/postulants",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
 								"api",
 								"postulants"
@@ -1033,7 +1035,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"janedoe@gmail.com\",\r\n    \"password\": \"janedoe123\",\r\n    \"contactRange\": {\r\n        \"from\": \"0900\",\r\n        \"to\": \"1600\"\r\n    },\r\n    \"address\": \"Street 12349\",\r\n    \"birthday\": \"1997-06-10\",\r\n    \"available\": \"true\",\r\n    \"phone\": \"153495837\",\r\n    \"profiles\": [\r\n        {\r\n            \"profileId\": \"6190485b457b8b1fa200a8f4\"\r\n        },\r\n        {\r\n            \"profileId\": \"61903bb97d023460f260f849\"\r\n        },\r\n        {\r\n            \"profileId\": \"61909cbc6a24b277d43dc96f\"\r\n        }\r\n    ],\r\n    \"studies\": {\r\n        \"primaryStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"secondaryStudies\": {\r\n            \"startDate\": \"2007-05-20\",\r\n            \"endDate\": \"2015-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"tertiaryStudies\": [\r\n            {\r\n                \"startDate\": \"2019-05-20\",\r\n                \"endDate\": \"2019-07-20\",\r\n                \"description\": \"SCRUM master\",\r\n                \"institute\": \"UNR\"\r\n            },\r\n            {\r\n                \"startDate\": \"2016-05-20\",\r\n                \"endDate\": \"2020-05-20\",\r\n                \"description\": \"International Laws\",\r\n                \"institute\": \"UNR\"\r\n            }\r\n        ],\r\n        \"universityStudies\": [\r\n            {\r\n                \"startDate\": \"2020-05-20\",\r\n                \"description\": \"Business management\",\r\n                \"institute\": \"UAI\"\r\n            },\r\n            {\r\n                \"startDate\": \"2015-05-20\",\r\n                \"endDate\": \"2018-09-20\",\r\n                \"description\": \"Project management\",\r\n                \"institute\": \"UCA\"\r\n            }\r\n        ],\r\n        \"informalStudies\": [\r\n            {\r\n                \"startDate\": \"2021-03-20\",\r\n                \"description\": \"Business management\",\r\n                \"institute\": \"UAI\"\r\n            }\r\n        ]\r\n    },\r\n    \"workExperience\": [\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"dishwasher\"\r\n        },\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"dishwasher\"\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Esteban\",\r\n    \"lastName\": \"Frare\",\r\n    \"email\": \"esteban.frare@radiumrocket.com\",\r\n    \"password\": \"esteban1\",\r\n    \"contactRange\": {\r\n        \"from\": \"0900\",\r\n        \"to\": \"1600\"\r\n    },\r\n    \"address\": \"Street 12349\",\r\n    \"birthday\": \"1997-06-10\",\r\n    \"available\": true,\r\n    \"phone\": \"153495837\",\r\n    \"profiles\": [\r\n        {\r\n            \"profileId\": \"6190485b457b8b1fa200a8f4\"\r\n        },\r\n        {\r\n            \"profileId\": \"61903bb97d023460f260f849\"\r\n        },\r\n        {\r\n            \"profileId\": \"61909cbc6a24b277d43dc96f\"\r\n        }\r\n    ],\r\n    \"studies\": {\r\n        \"primaryStudies\": {\r\n            \"startDate\": \"2000-05-20\",\r\n            \"endDate\": \"2007-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"secondaryStudies\": {\r\n            \"startDate\": \"2007-05-20\",\r\n            \"endDate\": \"2015-05-20\",\r\n            \"school\": \"San francisco\"\r\n        },\r\n        \"tertiaryStudies\": [\r\n            {\r\n                \"startDate\": \"2019-05-20\",\r\n                \"endDate\": \"2019-07-20\",\r\n                \"description\": \"SCRUM master\",\r\n                \"institute\": \"UNR\"\r\n            },\r\n            {\r\n                \"startDate\": \"2016-05-20\",\r\n                \"endDate\": \"2020-05-20\",\r\n                \"description\": \"International Laws\",\r\n                \"institute\": \"UNR\"\r\n            }\r\n        ],\r\n        \"universityStudies\": [\r\n            {\r\n                \"startDate\": \"2020-05-20\",\r\n                \"description\": \"Business management\",\r\n                \"institute\": \"UAI\"\r\n            },\r\n            {\r\n                \"startDate\": \"2015-05-20\",\r\n                \"endDate\": \"2018-09-20\",\r\n                \"description\": \"Project management\",\r\n                \"institute\": \"UCA\"\r\n            }\r\n        ],\r\n        \"informalStudies\": [\r\n            {\r\n                \"startDate\": \"2021-03-20\",\r\n                \"description\": \"Business management\",\r\n                \"institute\": \"UAI\"\r\n            }\r\n        ]\r\n    },\r\n    \"workExperience\": [\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"dishwasher\"\r\n        },\r\n        {\r\n            \"company\": \"Starbucks\",\r\n            \"startDate\": \"2019-03-15\",\r\n            \"endDate\": \"2020-03-16\",\r\n            \"description\": \"dishwasher\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1041,10 +1043,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/postulants",
+							"raw": "http://localhost:4000/api/postulants",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
 								"api",
 								"postulants"
@@ -1059,10 +1063,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/postulants/:id",
+							"raw": "http://localhost:4000/api/postulants/:id",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
 								"api",
 								"postulants",
@@ -1094,10 +1100,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/postulants/:id",
+							"raw": "http://localhost:4000/api/postulants/:id",
+							"protocol": "http",
 							"host": [
-								"{{url}}"
+								"localhost"
 							],
+							"port": "4000",
 							"path": [
 								"api",
 								"postulants",
