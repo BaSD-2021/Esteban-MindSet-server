@@ -1,3 +1,5 @@
+const { startSession } = require('mongoose');
+const Firebase = require('../helper/firebase');
 const Psychologists = require('../models/Psychologists');
 
 const availabilityObjectAttrConstructor = (req) => {
@@ -32,26 +34,42 @@ const listPsychologists = (req, res) => {
   }
 };
 
-const createPsychologist = (req, res) => {
-  const psychologist = new Psychologists({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    availability: req.body.availability,
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    phone: req.body.phone,
-    address: req.body.address,
-  });
-  psychologist.save((err, newPsychologist) => {
-    if (err) {
-      return res.status(400).json({ message: err });
-    }
-    return res.status(201).json({
-      message: 'Psychologist Created',
-      data: newPsychologist,
+const createPsychologist = async (req, res) => {
+  let firebaseUid;
+  try {
+    const newFirebaseUser = await Firebase.auth().createUser({
+      email: req.body.email,
+      password: req.body.password,
     });
-  });
+    firebaseUid = newFirebaseUser.uid;
+
+    await Firebase.auth().setCustomUserClaims(newFirebaseUser.uid, { role: 'PSYCHOLOGIST' });
+
+    const newPsychologist = new Psychologists({
+      firebaseUid: newFirebaseUser.uid,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      availability: req.body.availability,
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      phone: req.body.phone,
+      address: req.body.address,
+    });
+
+    const psychologist = await newPsychologist.save();
+
+    return res.status(201).json({
+      message: 'Psychologist created',
+      data: psychologist,
+    });
+  } catch (error) {
+    // Remove firebase user if it was created
+    if (firebaseUid) {
+      await Firebase.auth().deleteUser(firebaseUid);
+    }
+    return res.status(400).json({ message: error });
+  }
 };
 
 const updatePsychologist = (req, res) => {
@@ -83,18 +101,28 @@ const updatePsychologist = (req, res) => {
   );
 };
 
-const deletePsychologist = (req, res) => {
-  Psychologists.findByIdAndUpdate(req.params.id, {
-    isDeleted: true,
-  }, (err, deletedPsychologist) => {
-    if (err) {
-      return res.status(400).json({ message: err });
-    }
-    if (!deletedPsychologist) {
-      return res.status(404).json({ message: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
-    }
+const deletePsychologist = async (req, res) => {
+  // Use session to handle rollback
+  const session = await startSession();
+  session.startTransaction();
+
+  try {
+    const response = await Psychologists.findByIdAndUpdate(req.params.id, {
+      isDeleted: true,
+    }).session(session);
+
+    await Firebase.auth().deleteUser(response.firebaseUid);
+
+    // Confirm DATABASE update
+    session.commitTransaction();
     return res.status(204).send();
-  });
+  } catch (error) {
+    // Cancel DATABASE update
+    session.abortTransaction();
+    return res.status(404).json({
+      message: `The psychologist 'id' (${req.params.id}) given  does not exist.`,
+    });
+  }
 };
 
 module.exports = {
