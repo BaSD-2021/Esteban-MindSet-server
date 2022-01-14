@@ -4,7 +4,7 @@ const { ObjectId } = require('mongoose').Types;
 const statusEnum = {
   cancelled: 'cancelled',
   assigned: 'assigned',
-  succesful: 'succesful',
+  successful: 'successful',
 };
 
 const errorResHelper = (errorDescription, res, errCode = 400) => {
@@ -23,10 +23,10 @@ const validateIdFormat = (req, res, next) => {
 
 const validateSessions = (req, res, next) => {
   const invalidBodyAttrs = [];
-  if (!ObjectId.isValid(req.body.postulant)) {
+  if (!ObjectId.isValid(req.body.postulant._id)) {
     invalidBodyAttrs.push('Postulant ID');
   }
-  if (!ObjectId.isValid(req.body.psychologist)) {
+  if (!ObjectId.isValid(req.body.psychologist._id)) {
     invalidBodyAttrs.push('Psychologist ID');
   }
   if (!Object.values(statusEnum).includes(req.body.status)) {
