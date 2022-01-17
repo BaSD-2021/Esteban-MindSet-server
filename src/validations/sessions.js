@@ -4,6 +4,7 @@ const { ObjectId } = require('mongoose').Types;
 const statusEnum = {
   cancelled: 'cancelled',
   assigned: 'assigned',
+  confirmed: 'confirmed',
   successful: 'successful',
 };
 
