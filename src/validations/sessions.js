@@ -6,6 +6,7 @@ const statusEnum = {
   assigned: 'assigned',
   confirmed: 'confirmed',
   successful: 'successful',
+  closed: 'closed',
 };
 
 const errorResHelper = (errorDescription, res, errCode = 400) => {
