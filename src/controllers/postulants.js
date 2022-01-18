@@ -1,5 +1,7 @@
 const Postulants = require('../models/Postulants');
 const Firebase = require('../helper/firebase');
+const Positions = require('../models/Positions');
+const Applications = require('../models/Applications');
 
 const listPostulants = (req, res) => {
   if ('_id' in req.query) {
@@ -137,9 +139,49 @@ const updatePostulants = (req, res) => {
   );
 };
 
+const setProfilePostulants = async (req, res) => {
+  try {
+    await Postulants.findByIdAndUpdate(
+      req.params.id,
+      {
+        profiles: req.body.profile,
+      },
+      { new: true },
+    );
+
+    const positions = await Positions.find({
+      professionalProfile: req.body.profile,
+      isDeleted: false,
+    });
+
+    const applications = positions.map((position) => {
+      const application = new Applications({
+        // eslint-disable-next-line no-underscore-dangle
+        positions: position._id,
+        postulants: req.params.id,
+        interview: undefined,
+        result: 'Pending',
+      });
+      return application.save();
+    });
+
+    const applicationsCreated = await Promise.all(applications);
+
+    return res.status(201).json({
+      message: 'Postulant updated and Applications created',
+      data: applicationsCreated,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: error.toString(),
+    });
+  }
+};
+
 module.exports = {
   listPostulants,
   createPostulant,
   deletePostulant,
   updatePostulants,
+  setProfilePostulants,
 };

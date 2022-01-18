@@ -9,6 +9,7 @@ const {
   updatePostulants,
   deletePostulant,
   listPostulants,
+  setProfilePostulants,
 } = controller;
 
 const {
@@ -18,6 +19,7 @@ const {
 } = validations;
 
 router.post('/', validatePostulant, createPostulant);
+router.put('/profile/:id', validatePostulantId, setProfilePostulants);
 router.put('/:id', validatePostulantId, validateUpdatedPostulant, updatePostulants);
 router.delete('/:id', validatePostulantId, deletePostulant);
 router.get('/', listPostulants);
