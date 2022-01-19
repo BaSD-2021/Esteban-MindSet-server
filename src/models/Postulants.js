@@ -19,7 +19,6 @@ const PostulantSchema = new Schema(
     phone: { type: Number, required: true },
     profiles: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: 'Profiles',
     },
     studies: {
