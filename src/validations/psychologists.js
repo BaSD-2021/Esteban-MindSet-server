@@ -35,11 +35,6 @@ const availabilityObjectModel = {
     from: '',
     to: '',
   },
-  sunday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
 };
 
 const availabilityObjectValidator = (object) => {

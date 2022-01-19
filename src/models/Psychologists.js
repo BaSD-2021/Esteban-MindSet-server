@@ -42,10 +42,6 @@ const availabilitySchema = new Schema({
     type: availabilityDaySchema,
     required: true,
   },
-  sunday: {
-    type: availabilityDaySchema,
-    required: true,
-  },
 }, { _id: false });
 
 const PsychologistSchema = new Schema(
